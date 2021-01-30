@@ -93,7 +93,33 @@ const routes = [
     name: "Profile",
     component: Profile,
     children: [
-
+      {
+        path: "",
+        name: "Article",
+        component: () => import("@/views/Users/Article.vue")
+      },
+      {
+        path: "myteam",
+        name: "MyTeam",
+        component: () => import("@/views/Users/MyTeam.vue"),
+        children: [
+          {
+            path: "",
+            name: "MyMyTeam",
+            component: () => import("@/views/Users/MyMyTeam.vue")            
+          },
+          {
+            path: "newteam",
+            name: "NewTeam",
+            component: () => import("@/views/Users/NewTeam.vue")
+          }
+        ]
+      },
+      {
+        path: "alarm",
+        name: "Alarm",
+        component: () => import("@/views/Users/Alarm.vue")
+      },
     ]
   },
 
