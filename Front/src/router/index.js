@@ -9,6 +9,7 @@ import Search from "../views/Tabs/Search.vue";
 import Chat from "../views/Tabs/Chat.vue";
 
 
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -25,7 +26,21 @@ const routes = [
     name: "Signup",
     component: Signup,
     children: [
-
+      {
+        path: "",
+        name: "Signup",
+        component: () => import("../components/Signup/Signup.vue")
+      },
+      {
+        path: "myteam",
+        name: "MyTeam",
+        component: () => import("../components/Signup/MyTeam.vue")
+      },
+      {
+        path: "welcome",
+        name: "Welcome",
+        component: () => import("../components/Signup/Welcome.vue")
+      },
     ]
   },
   {
@@ -57,7 +72,7 @@ const routes = [
     children: [
 
     ]
-  },
+  }, 
   {
     path: "/search",
     name: "Seacrh",
