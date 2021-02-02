@@ -1,21 +1,23 @@
 <template>
   <div>
     <br>
-    <b-card-group columns>
+    <b-card-group columns deck>
         <b-card
+          v-b-modal.modal-1
           v-for="(team, idx) in myteams"
           :key = "idx"
+          :team="team"
+          :src = "team.img"
           border-variant="success"
           tag="article"
           style="max-width: 15rem;"
           class="mb-2"
-          v-b-modal.modal-prevent-closing
         >
           <b-container>
 
               
             <b-avatar 
-            src="https://placekitten.com/300/300" 
+            :src="team.img" 
             size="6rem"
             class="d-flex"
             >
@@ -32,29 +34,14 @@
               </b-card-text>
             <b-button pill variant="danger" size="sm">내 팀 제거</b-button>
           </b-container>
-          <b-modal
-            id="modal-prevent-closing"
-            ref="modal"
-            title="Submit Your Name"
-            @show="resetModal"
-            @hidden="resetModal"
-            @ok="handleOk"
-          >
-            <form ref="form" @submit.stop.prevent="handleSubmit">
-              <b-form-group
-                label="Name"
-                label-for="name-input"
-                invalid-feedback="Name is required"
-              >
-                <b-form-input
-                  id="name-input"
-                  v-model="team.nickname"
-                  required
-                ></b-form-input>
-              </b-form-group>
-            </form>
-          </b-modal>
         </b-card>
+        <b-modal id="modal-1" title="BootstrapVue">
+          <p 
+            class="my-4"
+            :team="team">
+            {{ team.name }}
+            </p>
+        </b-modal>
     </b-card-group>
 
 
