@@ -103,8 +103,9 @@ const routes = [
         name: "MyTeam",
         component: () => import("@/views/Users/MyTeam.vue"),
         children: [
+
           {
-            path: "",
+            path: "mymyteam",
             name: "MyMyTeam",
             component: () => import("@/views/Users/MyMyTeam.vue")            
           },
