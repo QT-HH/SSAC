@@ -3,12 +3,13 @@
     <br>
     <b-container class="bv-example-row bv-example-row-flex-cols ml-auto">
       <b-row align-v="start">
-        <b-col class="text-center"><b-button v-b-toggle.collapse-1 class="m-1" block variant="dark">축구</b-button></b-col>
-        <b-col class="text-center"><b-button v-b-toggle.collapse-2 class="m-1" block variant="dark">야구</b-button></b-col>
-        <b-col class="text-center"><b-button v-b-toggle.collapse-3 class="m-1" block variant="dark">LoL</b-button></b-col>
+        <b-col class="text-center"><router-link :to="{name : 'NewTeamFootball' }" class="text-decoration-none"><b-button class="m-1" block variant="dark">축구</b-button></router-link></b-col>
+        <b-col class="text-center"><router-link :to="{name : 'NewTeamBaseball' }" class="text-decoration-none"><b-button class="m-1" block variant="dark">야구</b-button></router-link></b-col>
+        <b-col class="text-center"><router-link :to="{name : 'NewTeamLol' }" class="text-decoration-none"><b-button class="m-1" block variant="dark">LoL</b-button></router-link></b-col>
       </b-row>
     </b-container>
-    <br>
+    <router-view />
+    <!-- <br>
     <b-collapse id="collapse-1">
       <b-card-group columns deck>
       <b-card
@@ -115,7 +116,7 @@
         </b-container>
       </b-card>
     </b-card-group>
-    </b-collapse>
+    </b-collapse> -->
   </div>
 </template>
 

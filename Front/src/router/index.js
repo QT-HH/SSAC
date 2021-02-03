@@ -112,7 +112,25 @@ const routes = [
           {
             path: "newteam",
             name: "NewTeam",
-            component: () => import("@/views/Users/NewTeam.vue")
+            component: () => import("@/views/Users/NewTeam.vue"),
+            children: [
+
+              {
+                path: "newteamfootball",
+                name: "NewTeamFootball",
+                component: () => import("@/views/Users/NewTeamFootball.vue")            
+              },
+              {
+                path: "newteambaseball",
+                name: "NewTeamBaseball",
+                component: () => import("@/views/Users/NewTeamBaseball.vue")            
+              },
+              {
+                path: "newteamlol",
+                name: "NewTeamLol",
+                component: () => import("@/views/Users/NewTeamLol.vue")            
+              },
+            ]
           }
         ]
       },
