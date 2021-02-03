@@ -16,6 +16,8 @@
 </template>
 
 <script>
+import {login} from "../../api/user/login.js"
+
 export default {
   name: "Welcome",
   methods: {

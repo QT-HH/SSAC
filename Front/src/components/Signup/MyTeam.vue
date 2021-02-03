@@ -170,6 +170,7 @@ export default {
                     }
                 },
                 (err) => {
+                    console.log(err)
                     alert("로그인 실패하였습니다2.")
                 }
             );

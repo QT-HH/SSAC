@@ -42,9 +42,14 @@
       <div class="sns-login">
         <div class="text">
           <p>SNS 간편 로그인</p>
-          <p>카카오톡</p>
-          <p>네이버</p>
-          <div class="bar"></div>
+          <button
+          class="btn btn--back btn--login"
+          @click="KakaoLogin"
+            >카카오톡</button>
+          <button
+          class="btn btn--back btn--login"
+          @click="NaverLogin"
+            >네이버</button>
         </div>
 
         <!-- <kakaoLogin :component="component" /> -->
@@ -74,7 +79,8 @@ import * as EmailValidator from "email-validator";
 // import KakaoLogin from "../../components/user/snsLogin/Kakao.vue";
 // import GoogleLogin from "../../components/user/snsLogin/Google.vue";
 // import UserApi from "../../api/UserApi";
-import { login } from "@/api/user/login.js";
+import { login, kakaologin, naverlogin } from "@/api/user/login.js";
+
 
 export default {
   components: {
@@ -123,54 +129,68 @@ export default {
     },
     onLogin() {
       if (this.isSubmit) {
-        // let { email, password } = this;
-        // let data = {
-        //   email,
-        //   password
-        // };
-
-        //요청 후에는 버튼 비활성화
-        this.isSubmit = false;
-
-        // UserApi.requestLogin(
-        //   data,
-        //   res => {
-        //     //통신을 통해 전달받은 값 콘솔에 출력
-        //     //console.log(res);
-
-        //     //요청이 끝나면 버튼 활성화
-        //     this.isSubmit = true;
-
-        //     this.$router.push("/Components");
-        //   },
-        //   error => {
-        //     //요청이 끝나면 버튼 활성화
-        //     alert('없는 계정 또는 잘못된 비밀번호입니다.')
-        //     this.isSubmit = true;
-        //   }
-        // );
+        localStorage.setItem("access-token", "");
+        login(
+          this.email, this.password,
+          (res) => {
+            if (res.data.message === "success") {
+              let token = res.data["access-token"];
+              this.$store.commit("setIsLogined", true);
+              localStorage.setItem("access-token", token);
+  
+              this.$store.dispatch("GET_MEMBER_INFO", token);
+              this.$router.push("/sports");
+            } else {
+              this.isLoginError = true;
+            }
+          },
+          (err) => {
+            console.error(err);
+            alert("아이디 또는 비밀번호가 일치하지 않습니다.");
+          }
+        )
       }
     },
-    confirm() {
+    KakaoLogin() {
       localStorage.setItem("access-token", "");
-      login(
-        this.email, this.password,
-        (res) => {
-          if (res.data.message === "success") {
-            let token = res.data["access-token"];
-            this.$store.commit("setIsLogined", true);
-            localStorage.setItem("access-token", token);
-
-            this.$store.dispatch("GET_MEMBER_INFO", token);
-            this.$router.push("/sports");
-          } else {
-            this.isLoginError = true;
-          }
-        },
-        (err) => {
-          console.error(err);
-          alert("아이디 또는 비밀번호가 일치하지 않습니다.");
-        }
+      kakaologin(
+          (res) => {
+            if (res.data.message === "success") {
+              let token = res.data["access-token"];
+              this.$store.commit("setIsLogined", true);
+              localStorage.setItem("access-token", token);
+  
+              this.$store.dispatch("GET_KAKAO_INFO", token);
+              this.$router.push("/sports");
+            } else {
+              this.isLoginError = true;
+            }
+          },
+          (err) => {
+            console.error(err);
+            alert("아이디 또는 비밀번호가 일치하지 않습니다.");
+          }        
+      )
+    },
+    NaverLogin() {
+      localStorage.setItem("access-token", "");
+      naverlogin(
+          (res) => {
+            if (res.data.message === "success") {
+              let token = res.data["access-token"];
+              this.$store.commit("setIsLogined", true);
+              localStorage.setItem("access-token", token);
+  
+              this.$store.dispatch("GET_NAVER_INFO", token);
+              this.$router.push("/sports");
+            } else {
+              this.isLoginError = true;
+            }
+          },
+          (err) => {
+            console.error(err);
+            alert("아이디 또는 비밀번호가 일치하지 않습니다.");
+          }        
       )
     }
   },
