@@ -1,8 +1,7 @@
 <template>
   <div>
       <br>
-
-      <b-card-group columns deck>
+      <b-card-group columns>
       <b-card
         v-for="(team, idx) in showlol"
         :key = "idx"
@@ -42,19 +41,15 @@
 import { mapState } from 'vuex'
 
 export default {
-  name: "NewTeamLol",
-  computed: {
-    ...mapState([
-      'teams'
-    ]),
-    showlol: function () {
-      // console.log(this.$store)
-      return this.teams.filter (function (team) {
-        return team.category === 'lol'
-      })
-    },
-  },
-
+    name: 'NewTeamSearchResult',
+    computed: {
+      ...mapState({
+        teams: 'teams'
+      }),
+      showlol: function () {
+      return this.teams
+      },
+    }
 }
 </script>
 

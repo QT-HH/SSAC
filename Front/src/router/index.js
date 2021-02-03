@@ -130,6 +130,11 @@ const routes = [
                 name: "NewTeamLol",
                 component: () => import("@/views/Users/NewTeamLol.vue")            
               },
+              {
+                path: "NewTeamSearchResult",
+                name: "NewTeamSearchResult",
+                component: () => import("@/views/Users/NewTeamSearchResult.vue")            
+              },
             ]
           }
         ]
