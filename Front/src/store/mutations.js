@@ -5,7 +5,7 @@ export default {
   createUser1(state, newuser) {
     state.newUser.email = newuser.email
     state.newUser.password = newuser.password
-    state.newUser.nickname = newuser.nickname
+    state.newUser.nickName = newuser.nickName
   },
   createUser2(state, myteams) {
     state.newUser.myteams = myteams
