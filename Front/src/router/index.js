@@ -108,7 +108,57 @@ const routes = [
     name: "Profile",
     component: Profile,
     children: [
+      {
+        path: "",
+        name: "Article",
+        component: () => import("@/views/Users/Article.vue")
+      },
+      {
+        path: "myteam",
+        name: "MyTeam",
+        component: () => import("@/views/Users/MyTeam.vue"),
+        children: [
 
+          {
+            path: "mymyteam",
+            name: "MyMyTeam",
+            component: () => import("@/views/Users/MyMyTeam.vue")            
+          },
+          {
+            path: "newteam",
+            name: "NewTeam",
+            component: () => import("@/views/Users/NewTeam.vue"),
+            children: [
+
+              {
+                path: "newteamfootball",
+                name: "NewTeamFootball",
+                component: () => import("@/views/Users/NewTeamFootball.vue")            
+              },
+              {
+                path: "newteambaseball",
+                name: "NewTeamBaseball",
+                component: () => import("@/views/Users/NewTeamBaseball.vue")            
+              },
+              {
+                path: "newteamlol",
+                name: "NewTeamLol",
+                component: () => import("@/views/Users/NewTeamLol.vue")            
+              },
+              {
+                path: "NewTeamSearchResult",
+                name: "NewTeamSearchResult",
+                component: () => import("@/views/Users/NewTeamSearchResult.vue")            
+              },
+            ]
+          }
+        ]
+      },
+      {
+        path: "alarm",
+        name: "Alarm",
+        component: () => import("@/views/Users/Alarm.vue")
+      },
     ]
   },
 

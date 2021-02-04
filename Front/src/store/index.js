@@ -43,7 +43,7 @@ const state = {
 
 export default new Vuex.Store({
   state,
-  mutations,
   getters,
-  actions
+  actions,
+  mutations
 });
