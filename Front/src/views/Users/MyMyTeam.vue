@@ -51,7 +51,7 @@ export default {
 
   computed: {
    ...mapState({
-     myteams: 'myteams'
+     myteams: 'myTeams'
    })
   },
   methods: {

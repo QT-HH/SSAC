@@ -12,7 +12,7 @@ Vue.use(Vuex);
 const state = {
   isLogin: false,
   userInfo: null,
-  myteams: [
+  myTeams: [
     {name: "T1", img: "https://placekitten.com/300/300" , nickname: "", followers: 14565, category: "lol"},
     {name: "대구FC", img: "https://placekitten.com/300/300" , nickname: "", followers: 1234, category: "football"},
     {name: "삼성라이온즈", img: "https://placekitten.com/300/300" , nickname: "", followers: 76567, category: "baseaball"},
