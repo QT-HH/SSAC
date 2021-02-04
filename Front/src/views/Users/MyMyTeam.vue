@@ -35,13 +35,7 @@
             <b-button pill variant="danger" size="sm">내 팀 제거</b-button>
           </b-container>
         </b-card>
-        <b-modal id="modal-1" title="BootstrapVue">
-          <p 
-            class="my-4"
-            :team="team">
-            {{ team.name }}
-            </p>
-        </b-modal>
+        
     </b-card-group>
 
 
@@ -61,34 +55,7 @@ export default {
    })
   },
   methods: {
-      checkFormValidity() {
-        const valid = this.$refs.form.checkValidity()
-        this.nameState = valid
-        return valid
-      },
-      resetModal() {
-        this.name = ''
-        this.nameState = null
-      },
-      handleOk(bvModalEvt) {
-        // Prevent modal from closing
-        bvModalEvt.preventDefault()
-        // Trigger submit handler
-        this.handleSubmit()
-      },
-      handleSubmit() {
-        // Exit when the form isn't valid
-        if (!this.checkFormValidity()) {
-          return
-        }
-        // Push the name to submitted names
-        // this.$store.dispatch('handleSubmit', this.team)
-        // Hide the modal manually
-        this.$nextTick(() => {
-          this.$bvModal.hide('modal-prevent-closing')
-        })
-      }
-    }
+  }
 }
 </script>
 
