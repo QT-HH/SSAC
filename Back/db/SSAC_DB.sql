@@ -56,3 +56,13 @@ insert into team (event_no, name, logo, count) values (2, '케이티 위즈', 's
 insert into team (event_no, name, logo, count) values (2, 'LG 트윈스', 'src', 0);
 insert into team (event_no, name, logo, count) values (2, 'NC 다이노스', 'src', 0);
 insert into team (event_no, name, logo, count) values (2, 'SK 와이번스', 'src', 0);
+insert into team (event_no, name, logo, count) values (3, 'DWG KIA', 'src', 0);
+insert into team (event_no, name, logo, count) values (3, 'DRX', 'src', 0);
+insert into team (event_no, name, logo, count) values (3, 'Gen.G Esports', 'src', 0);
+insert into team (event_no, name, logo, count) values (3, 'Afreeca Freecs', 'src', 0);
+insert into team (event_no, name, logo, count) values (3, 'T1', 'src', 0);
+insert into team (event_no, name, logo, count) values (3, 'kt Rolster', 'src', 0);
+insert into team (event_no, name, logo, count) values (3, 'Liiv SANDBOX', 'src', 0);
+insert into team (event_no, name, logo, count) values (3, 'NONGSHIM REDFORCE', 'src', 0);
+insert into team (event_no, name, logo, count) values (3, 'Hanwha Life Esports', 'src', 0);
+insert into team (event_no, name, logo, count) values (3, 'Fredit BRION', 'src', 0);

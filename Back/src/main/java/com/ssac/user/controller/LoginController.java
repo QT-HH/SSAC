@@ -11,8 +11,6 @@ import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -51,9 +49,7 @@ public class LoginController {
 				resultMap.put("id", check.getId());
 				resultMap.put("nickname", check.getNickname());
 				resultMap.put("message", "success");
-				MultiValueMap<String, String> headers = new LinkedMultiValueMap();
-				headers.add("Access-Control-Allow-Origin", "*");
-				return new ResponseEntity<Map<String, Object>>(resultMap, headers, HttpStatus.OK);
+				return new ResponseEntity<Map<String, Object>>(resultMap, HttpStatus.OK);
 			}
 		} catch(Exception e) {
 			System.out.println("JSON 파싱 실패");
