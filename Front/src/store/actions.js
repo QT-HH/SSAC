@@ -60,5 +60,13 @@ export default {
   },
   async CREATE_USER2({ commit }, myteams) {
     commit('createUser2', myteams)
-  }
+  },
+  saveQuestion: function ({ commit }, answerData) {
+    // console.log('actions')
+    commit('ADD_ANSWER', answerData)
+  },
+  saveMyTeam: function ({ commit }, selectTeam) {
+    // console.log('actions')
+    commit('ADD_MYTEAM', selectTeam)
+  },
 };

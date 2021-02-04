@@ -18,6 +18,7 @@ const state = {
     nickname: "",
     myteams: []
   },
+  surveyAnswers: [],
   myTeams: [
     {name: "T1", img: "https://placekitten.com/300/300" , nickname: "", followers: 14565, category: "lol"},
     {name: "대구FC", img: "https://placekitten.com/300/300" , nickname: "", followers: 1234, category: "football"},
@@ -38,7 +39,7 @@ const state = {
     {name: "한화생명", img: "https://placekitten.com/300/300", nickname: "", followers: 14565, category: "lol"},
     {name: "대구FC", img: "https://placekitten.com/300/300", nickname: "", followers: 1234, category: "football"},
     {name: "삼성라이온즈", img: "https://placekitten.com/300/300", nickname: "", followers: 76567, category: "baseball"},
-  ]
+  ],
 };
 
 export default new Vuex.Store({

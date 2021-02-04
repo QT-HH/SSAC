@@ -9,5 +9,15 @@ export default {
   },
   createUser2(state, myteams) {
     state.newUser.myteams = myteams
-  }
+  },
+  ADD_ANSWER: function (state, answerData) {
+    // console.log('mutations')
+    // console.log(answerData)
+    state.surveyAnswers.push(answerData)
+  },
+  ADD_MYTEAM: function (state, selectTeam) {
+    // console.log('mutations')
+    console.log(selectTeam)
+    state.myTeams.push(selectTeam)
+  }  
 };
