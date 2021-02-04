@@ -4,7 +4,7 @@
       <h3>(최소 1개 이상)</h3>
       선택한 팀들:
       <button v-for="(team, idx) in myteams" :key="idx" @click="addmyteams(team)">
-          {{team.name}} ({{translate[team.category]}})
+          {{ team.name }} ({{ translate[team.category]}})
       </button>
       <!-- {{myteams}} -->
       
@@ -49,6 +49,7 @@
 
 <script>
 import { signup } from "@/api/user/signup.js"
+import axios from 'axios'
 
 export default {
     name: "MyTeam",
@@ -56,59 +57,68 @@ export default {
         return {
             items: [
                 {
-                    category: "Football",
-                    name : "포항스틸러스",
-                    fandom : 1234 
-                },
-                {   
-                    category: "Football",
-                    name : "대구FC",
-                    fandom : 100000
-                },
-                {
-                    category: "Football",
-                    name: "서울FC",
-                    fandom : 123
-                },
-                {
-                    category: "Baseball",
-                    name : "삼성라이온즈",
-                    fandom : 1234 
-                },
-                {
-                    category: "Baseball",
-                    name : "롯데자이언츠",
-                    fandom : 100000
-                },
-                {
-                    category: "Baseball",
-                    name: "한화이글스",
-                    fandom : 123
-                },
-                {
-                    category: "LOL",
-                    name : "T1",
-                    fandom : 1234 
-                },
-                {
-                    category: "LOL",
-                    name : "젠지",
-                    fandom : 100000
-                },
-                {
-                    category: "LOL",
-                    name: "KT",
-                    fandom : 123
+                    "no": Number,
+                    "event_no": Number,
+                    "name": "",
+                    "logo": "",
+                    "count": Number
                 }
-            ],
-            cat: "",
-            query: "",
-            translate: {
-                "Football": "축구",
-                "Baseball": "야구",
-                "LOL": "롤"
-            },
-            myteams: []
+            ]
+            // [ 
+            //     {
+            //         category: "Football",
+            //         name : "포항스틸러스",
+            //         fandom : 1234 
+            //     },
+            //     {   
+            //         category: "Football",
+            //         name : "대구FC",
+            //         fandom : 100000
+            //     },
+            //     {
+            //         category: "Football",
+            //         name: "서울FC",
+            //         fandom : 123
+            //     },
+            //     {
+            //         category: "Baseball",
+            //         name : "삼성라이온즈",
+            //         fandom : 1234 
+            //     },
+            //     {
+            //         category: "Baseball",
+            //         name : "롯데자이언츠",
+            //         fandom : 100000
+            //     },
+            //     {
+            //         category: "Baseball",
+            //         name: "한화이글스",
+            //         fandom : 123
+            //     },
+            //     {
+            //         category: "LOL",
+            //         name : "T1",
+            //         fandom : 1234 
+            //     },
+            //     {
+            //         category: "LOL",
+            //         name : "젠지",
+            //         fandom : 100000
+            //     },
+            //     {
+            //         category: "LOL",
+            //         name: "KT",
+            //         fandom : 123
+            //     }
+            // ],
+            // cat: "",
+            // query: "",
+            // event_no: {
+            //     1 : "축구",
+            //     2 : "야구",
+            //     3 : "롤"
+            // },
+            // myteams: []
         }
     },
     // filters: {
@@ -159,7 +169,7 @@ export default {
             this.$router.push("/signup");
         },
         completeSignup() {
-            this.$dispatch("CREATE_USER2", this.myteams)
+            this.$store.dispatch("CREATE_USER2", this.myteams)
             signup(
                 this.$store.state.newUser,
                 (res) => {
@@ -175,6 +185,10 @@ export default {
                 }
             );
         }
+    },
+    mounted: function () {
+        axios.get("").then(response => (this.items = response))
+        console.log('MyTeams')
     }
 }
 </script>

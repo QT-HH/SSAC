@@ -7,7 +7,7 @@ export default {
     let decode = jwt_decode(token);
 
     await findById(
-      decode.email,
+      decode.userid,
       (res) => {
         if (res.data.message === "success") {
           commit("setUserInfo", res.data.userInfo);
@@ -24,7 +24,7 @@ export default {
     let decode = jwt_decode(token);
 
     await findByKakao(
-      decode.email,
+      decode.userid,
       (res) => {
         if (res.data.message === "success") {
           commit("setUserInfo", res.data.userInfo);
@@ -42,7 +42,7 @@ export default {
     let decode = jwt_decode(token);
 
     await findByNaver(
-      decode.email,
+      decode.userid,
       (res) => {
         if (res.data.message === "success") {
           commit("setUserInfo", res.data.userInfo);
