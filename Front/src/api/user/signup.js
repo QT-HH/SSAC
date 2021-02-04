@@ -12,7 +12,7 @@ function signup(newuser, success, fail) {
   };
 
   instance
-    .post("http:/localhost:9000/ssac/user", JSON.stringify(body))
+    .post("http://i4d102.p.ssafy.io:9000/ssac/user", JSON.stringify(body))
     .then(success)
     .catch(fail);
 }

@@ -5,6 +5,8 @@ import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,7 +17,7 @@ import com.ssac.user.dto.User;
 import com.ssac.user.service.UserService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://i4d102.p.ssafy.io:8080")
 @RequestMapping("/user")
 public class UserController {
 	@Autowired
@@ -33,8 +35,11 @@ public class UserController {
 			user.setNickname((String) jsonObj.get("usernickname"));
 			System.out.println(user.getId());
 			System.out.println(user.getNickname());
-			if(userService.createUser(user) > 0)
-				return new ResponseEntity<String>("success", HttpStatus.OK);
+			if(userService.createUser(user) > 0) {
+				MultiValueMap<String, String> headers = new LinkedMultiValueMap();
+				headers.add("Access-Control-Allow-Origin", "*");
+				return new ResponseEntity<String>("success", headers, HttpStatus.OK);
+			}
 		} catch(Exception e) {
 			System.out.println("JSON 파싱 실패");
 		}

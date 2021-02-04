@@ -11,6 +11,8 @@ import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,7 +24,7 @@ import com.ssac.user.jwt.service.JwtService;
 import com.ssac.user.service.UserService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://i4d102.p.ssafy.io:8080")
 @RequestMapping("/login")
 public class LoginController {
 	@Autowired
@@ -49,7 +51,9 @@ public class LoginController {
 				resultMap.put("id", check.getId());
 				resultMap.put("nickname", check.getNickname());
 				resultMap.put("message", "success");
-				return new ResponseEntity<Map<String, Object>>(resultMap, HttpStatus.OK);
+				MultiValueMap<String, String> headers = new LinkedMultiValueMap();
+				headers.add("Access-Control-Allow-Origin", "*");
+				return new ResponseEntity<Map<String, Object>>(resultMap, headers, HttpStatus.OK);
 			}
 		} catch(Exception e) {
 			System.out.println("JSON 파싱 실패");
