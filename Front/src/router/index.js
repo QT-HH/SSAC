@@ -91,7 +91,29 @@ const routes = [
       {
         path: "recommend",
         name: "Recommend",
-        component: () => import("@/components/Search/Recommend.vue")
+        component: () => import("@/components/Search/Recommend.vue"),
+        children: [
+          {
+            path: "",
+            name: "Question1",
+            component: () => import("../components/Search/Question1.vue")
+          },
+          {
+            path: "question2",
+            name: "Question2",
+            component: () => import("../components/Search/Question2.vue")
+          },
+          {
+            path: "question3",
+            name: "Question3",
+            component: () => import("../components/Search/Question3.vue")
+          },
+          {
+            path: "question4",
+            name: "Question4",
+            component: () => import("../components/Search/Question4.vue")
+          },                        
+        ]
       },
     ]
   },

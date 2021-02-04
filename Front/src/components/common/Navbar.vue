@@ -17,6 +17,7 @@
           </b-nav-item>
         </b-navbar-nav>
       </div>
+      
     </b-navbar>
 
     <b-navbar type="dark" variant="dark" class="p-0 nav-content">
