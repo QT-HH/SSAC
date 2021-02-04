@@ -11,7 +11,13 @@ Vue.use(Vuex);
 
 const state = {
   isLogin: false,
-  userInfo: null
+  userInfo: null,
+  newUser: {
+    email: "",
+    password: "",
+    nickname: "",
+    myteams: []
+  }
 };
 
 export default new Vuex.Store({

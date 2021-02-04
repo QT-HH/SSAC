@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-navbar type="dark" variant="dark" class="pb-0">
-      <b-navbar-item><router-link to="/sports" class="text-white text-decoration-none"><h1>SSAC</h1></router-link></b-navbar-item>
+      <b-navbar-nav><router-link to="/sports" class="text-white text-decoration-none"><h1>SSAC</h1></router-link></b-navbar-nav>
       <div class="ml-auto nav-content">
 
         <b-navbar-nav>
