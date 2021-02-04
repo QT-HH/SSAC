@@ -12,7 +12,7 @@ function login(email, password, success, fail) {
   };
 
   instance
-    .post("/", JSON.stringify(body))
+    .post("http:/localhost:9000/ssac/login/login", JSON.stringify(body))
     .then(success)
     .catch(fail);
 }
