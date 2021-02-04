@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-table
-      hover="true"
+      hover
       head-variant="light"
       :items="items"
       :fields="fields"
