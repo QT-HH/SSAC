@@ -4,7 +4,7 @@
       <h3>(최소 1개 이상)</h3>
       선택한 팀들:
       <button v-for="(team, idx) in myteams" :key="idx" @click="addmyteams(team)">
-          {{ team.name }} ({{ translate[team.category]}})
+          {{ team.name }} ({{ translate[team.event_no] }})
       </button>
       <!-- {{myteams}} -->
       
@@ -23,7 +23,7 @@
                   <b-col v-for="(item, idx) in filterTeam(cat,query)" :key="idx" cols="4" class="my-3">
                     <b-card :title="item.name" img-src="" img-alt="Image" img-top @click="addmyteams(item)">
                     <template #footer>
-                        <small class="text-muted">{{ item.fandom }}명</small>
+                        <small class="text-muted">{{ item.count }}명</small>
                     </template>
                     </b-card>
                   </b-col>                  
@@ -55,7 +55,8 @@ export default {
     name: "MyTeam",
     data() {
         return {
-            items: [
+            items: 
+            [
                 {
                     "no": Number,
                     "event_no": Number,
@@ -63,62 +64,62 @@ export default {
                     "logo": "",
                     "count": Number
                 }
-            ]
+            ],
             // [ 
             //     {
-            //         category: "Football",
+            //         event_no: 1,
             //         name : "포항스틸러스",
-            //         fandom : 1234 
+            //         count : 1234 
             //     },
             //     {   
-            //         category: "Football",
+            //         event_no: 1,
             //         name : "대구FC",
-            //         fandom : 100000
+            //         count : 100000
             //     },
             //     {
-            //         category: "Football",
+            //         event_no: 1,
             //         name: "서울FC",
-            //         fandom : 123
+            //         count : 123
             //     },
             //     {
-            //         category: "Baseball",
+            //         event_no: 2,
             //         name : "삼성라이온즈",
-            //         fandom : 1234 
+            //         count : 1234 
             //     },
             //     {
-            //         category: "Baseball",
+            //         event_no: 2,
             //         name : "롯데자이언츠",
-            //         fandom : 100000
+            //         count : 100000
             //     },
             //     {
-            //         category: "Baseball",
+            //         event_no: 2,
             //         name: "한화이글스",
-            //         fandom : 123
+            //         count : 123
             //     },
             //     {
-            //         category: "LOL",
+            //         event_no: 3,
             //         name : "T1",
-            //         fandom : 1234 
+            //         count : 1234 
             //     },
             //     {
-            //         category: "LOL",
+            //         event_no: 3,
             //         name : "젠지",
-            //         fandom : 100000
+            //         count : 100000
             //     },
             //     {
-            //         category: "LOL",
+            //         event_no: 3,
             //         name: "KT",
-            //         fandom : 123
+            //         count : 123
             //     }
             // ],
-            // cat: "",
-            // query: "",
-            // event_no: {
-            //     1 : "축구",
-            //     2 : "야구",
-            //     3 : "롤"
-            // },
-            // myteams: []
+            cat: 0,
+            query: "",
+            translate: {
+                1 : "축구",
+                2 : "야구",
+                3 : "롤"
+            },
+            myteams: []
         }
     },
     // filters: {
@@ -137,20 +138,20 @@ export default {
     // },
     methods: {
         turnAll: function() {
-            this.cat = ""
+            this.cat = 0
         },
         turnFootball: function() {
-            this.cat = "Football"
+            this.cat = 1
         },
         turnBaseball: function() {
-            this.cat = "Baseball"
+            this.cat = 2
         },
         turnLOL: function() {
-            this.cat = "LOL"
+            this.cat = 3
         },
         filterTeam: function(cat,que) {
             return this.items.filter(function(it){
-                return it.category.includes(cat) && it.name.includes(que)
+                return it.event_no*cat === 0 || (it.event_no === cat && it.name.includes(que))
             })
         },
         addmyteams: function(item) {
@@ -187,7 +188,7 @@ export default {
         }
     },
     mounted: function () {
-        axios.get("").then(response => (this.items = response))
+        axios.get("http://localhost:9000/ssac/team/list").then(response => (this.items = response))
         console.log('MyTeams')
     }
 }
