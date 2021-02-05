@@ -25,7 +25,7 @@
           <b-nav-item style="width:25%"><router-link to="/sports" class="text-decoration-none">스포츠</router-link></b-nav-item>
           <b-nav-item style="width:25%"><router-link to="/feed" class="text-decoration-none">피드</router-link></b-nav-item>
           <b-nav-item style="width:25%"><router-link to="/search" class="text-decoration-none">검색</router-link></b-nav-item>
-          <b-nav-item style="width:25%"><router-link to="/chat" class="text-decoration-none">채팅</router-link></b-nav-item>
+          <b-nav-item style="width:25%"><router-link to="/chatting" class="text-decoration-none">채팅</router-link></b-nav-item>
           <!-- <b-nav-item style="width:25%" @click="gotoFeed" class="">피드</b-nav-item> -->
       </b-navbar-nav>
     </b-navbar>

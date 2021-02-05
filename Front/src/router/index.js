@@ -6,7 +6,7 @@ import Signup from "../views/Users/Signup.vue";
 import Sports from "../views/Tabs/Sports.vue";
 import Feed from "../views/Tabs/Feed.vue";
 import Search from "../views/Tabs/Search.vue";
-import Chat from "../views/Tabs/Chat.vue";
+import Chat from "../views/Tabs/Chatting.vue";
 
 
 
@@ -118,11 +118,15 @@ const routes = [
     ]
   },
   {
-    path: "/chat",
-    name: "Chat",
+    path: "/chatting",
+    name: "Chatting",
     component: Chat,
     children: [
-
+      {
+        path: "",
+        name: "chatRoom",
+        component: () => import("../components/chat/chatRoom.vue")
+      },  
     ]
   },
   {
@@ -142,7 +146,7 @@ const routes = [
         children: [
 
           {
-            path: "mymyteam",
+            path: "",
             name: "MyMyTeam",
             component: () => import("@/views/Users/MyMyTeam.vue")            
           },
