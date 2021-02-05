@@ -1,7 +1,6 @@
 <template>
   <div>
       <h1>좋아하는 팀을 고르세요.</h1>
-      <h3>(최소 1개 이상)</h3>
       선택한 팀들:
       <button v-for="(team, idx) in myteams" :key="idx" @click="addmyteams(team)">
           {{ team.name }} ({{ translate[team.event_no] }})
@@ -174,7 +173,7 @@ export default {
             signup(
                 this.$store.state.newUser,
                 (res) => {
-                    if (res.data.message === "success") {
+                    if (res.data === "success") {
                         this.$router.push("/signup/welcome")
                     } else {
                         alert("로그인 실패하였습니다1.")
@@ -188,7 +187,7 @@ export default {
         }
     },
     mounted: function () {
-        axios.get("http://localhost:9000/ssac/team/list").then(response => (this.items = response))
+        axios.get("http://i4d102.p.ssafy.io:9000/ssac/team/list").then(response => (this.items = response.data))
         console.log('MyTeams')
     }
 }
