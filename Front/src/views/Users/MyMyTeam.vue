@@ -12,6 +12,7 @@
           tag="article"
           style="max-width: 15rem;"
           class="mb-2"
+          @click="selectTeam(team)"
         >
           <b-container>
 
@@ -35,6 +36,10 @@
             <b-button pill variant="danger" size="sm">내 팀 제거</b-button>
           </b-container>
         </b-card>
+
+        <b-modal id="modal-1" title="BootstrapVue">
+          <p class="my-4">{{ this.selectedData }}</p>
+        </b-modal>
         
     </b-card-group>
 
@@ -48,13 +53,23 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'MyMyTeam',
-
+  data: () =>{
+    return {
+      selectedData: Object,
+    }
+  },
   computed: {
    ...mapState({
      myteams: 'myTeams'
    })
   },
   methods: {
+    selectTeam(team) {
+      this.selectedData = team
+    },
+    nicknaming(nickname) {
+      
+    }
   }
 }
 </script>
