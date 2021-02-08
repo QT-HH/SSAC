@@ -18,8 +18,8 @@
                     size="125"
                     tile
                 >
-                    <v-img :src="post.imgsrc"></v-img>
-                  </v-avatar>
+                  <v-img :src="post.imgsrc"></v-img>
+                </v-avatar>
 
             </div>
           </v-card>
