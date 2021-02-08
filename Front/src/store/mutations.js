@@ -2,6 +2,14 @@ export default {
   setIsLogined(state, isLogin) {
     state.isLogin = isLogin;
   },
+  setUserInfo(state, userInfo) {
+    state.isLogin = true;
+    state.userInfo = userInfo;
+  },
+  logout(state) {
+    state.isLogin = false;
+    state.userInfo = null;
+  },
   createUser1(state, newuser) {
     state.newUser.email = newuser.email
     state.newUser.password = newuser.password
