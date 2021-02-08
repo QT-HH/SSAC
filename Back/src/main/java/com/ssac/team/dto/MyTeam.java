@@ -1,4 +1,4 @@
-package com.ssac.team.controller;
+package com.ssac.team.dto;
 
 import lombok.*;
 
@@ -11,4 +11,5 @@ public class MyTeam {
 	private int no;
 	private String id;
 	private int team_no;
+	private String name;
 }

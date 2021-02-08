@@ -13,6 +13,10 @@ public class User {
 	private String nickname;
 	private int point;
 	
+	public User(String id) {
+		this.id = id;
+	}
+	
 	public User(String id, String pw, String nickname) {
 		this.id = id;
 		this.pw = pw;
