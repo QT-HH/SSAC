@@ -1,28 +1,147 @@
 <template>
-  <div>
+  <div class="mt-1">
     <v-sheet>
-      <v-btn
-        icon
-        class="ma-2"
-        @click="prev"
-        color="blue"
+        <h1>
+          Upcoming!
+        </h1>
+      <v-carousel
+        cycle
+        height="300"
+        hide-delimiter-background
+        show-arrows-on-hover
+        light
       >
-        <v-icon>mdi-chevron-left</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        class="ma-2"
-        @click="next"
+        <v-carousel-item
+          v-for="(event, i) in events"
+          :key="i"
+        >
+          <v-sheet
+            height="100%"
+            color="white"
+          >
+            <v-card
+              class="mx-auto"
+              max-width="344"
+            >
+              <v-avatar
+                  size="172"
+                  tile
+              >
+                <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"></v-img>
+              </v-avatar>
+              <v-avatar
+                  size="172"
+                  tile
+              >
+                <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"></v-img>
+              </v-avatar>
+
+              <v-card-title>
+                {{event.name}}
+              </v-card-title>
+
+              <v-card-subtitle>
+                {{event.start}}
+              </v-card-subtitle>
+            </v-card>
+          </v-sheet>
+        </v-carousel-item>
+      </v-carousel>
+    </v-sheet>
+
+    <br>
+    <v-sheet>
+      <v-toolbar
+        flat
       >
-        <v-icon>mdi-chevron-right</v-icon>
-      </v-btn>
+      <v-row align="center" justify="space-around">
+        <v-btn
+          outlined
+          color="grey darken-2"
+          @click="setToday"
+          small
+          class="mr-3"
+        >
+          Today
+        </v-btn>
+        <v-btn
+          icon
+          @click="prev"
+          color="blue"
+        >
+          <v-icon>mdi-chevron-left</v-icon>
+        </v-btn>
+        <v-toolbar-title v-if="$refs.calendar">
+          {{ $refs.calendar.title }}
+        </v-toolbar-title>
+        <v-btn
+          icon
+          @click="next"
+        >
+          <v-icon>mdi-chevron-right</v-icon>
+        </v-btn>
+        <v-btn
+          outlined
+          color="grey darken-2"
+          @click="toggle"
+          small
+        >
+          change
+        </v-btn>
+      </v-row>
+      </v-toolbar>
     </v-sheet>
     <v-sheet height="600">
       <v-calendar
+        categories="test01"
         ref="calendar"
         v-model="focus"
-        :events="event"
+        :events="events"
+        color="blue"
+        @click:event="showEvent"
+        @click:more="viewDay"
+        @click:date="viewDay"
+        :type="type[tog]"
       ></v-calendar>
+      <v-menu
+        v-model="selectedOpen"
+        :close-on-content-click="false"
+        :activator="selectedElement"
+        offset-x
+      >
+        <v-card
+          color="grey lighten-4"
+          min-width="350px"
+          flat
+        >
+          <v-toolbar
+            :color="selectedEvent.color"
+            dark
+          >
+            <v-toolbar-title v-html="selectedEvent.name"></v-toolbar-title>
+            <v-spacer></v-spacer>
+            <v-btn icon>
+              <v-icon>mdi-heart</v-icon>
+            </v-btn>
+            <v-btn icon>
+              <v-icon>mdi-dots-vertical</v-icon>
+            </v-btn>
+          </v-toolbar>
+
+          <v-card-text>
+            
+          </v-card-text>
+          <v-card-actions>
+            <v-btn
+              text
+              color="secondary"
+              @click="selectedOpen = false"
+            >
+              닫기
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-menu>
     </v-sheet>
 
     <br>
@@ -36,41 +155,41 @@
   export default {
     name:"Schedule",
     data: () => ({
-      focus: '',
-      type: 'month',
-      typeToLabel: {
-        month: 'Month',
-        week: 'Week',
-        day: 'Day',
-        '4day': '4 Days',
+      focus: new Date(),
+      tog:true,
+      type: {
+        true:"month",
+        false:"day",
       },
       selectedEvent: {},
       selectedElement: null,
       selectedOpen: false,
-      events: [],
       colors: ['blue', 'indigo', 'deep-purple', 'cyan', 'green', 'orange', 'grey darken-1'],
-      names: ['Meeting', 'Holiday', 'PTO', 'Travel', 'Event', 'Birthday', 'Conference', 'Party'],
-      event:[
+      events:[
         {
+          teams:["T1","Gen.G"],
           name:"T1",
           start: '2021-02-18 18:30',
-          end: '2021-02-20 19:30',
-          // color: "green",
-          timed: true,
-        },
-        {
-          name:"test",
-          start: new Date(),
-          end: new Date(),
+          end: '2021-02-18 19:30',
           // color: "green",
           // timed: true,
         },
         {
           name:"test",
-          start: new Date(),
-          end: new Date(),
+          start: '2021-02-08 18:30',
+          end: '2021-02-08 19:30',
+          // color: "green",
+          // timed: false,
+          eventParsed: {
+            category:"test01"
+          }
+        },
+        {
+          name:"test",
+          start: '2021-02-16 18:30', 
+          // end: '2021-02-16 19:30',
           color: "green",
-          timed: true,
+          // timed: true,
         },
         {
           name:"test",
@@ -88,14 +207,16 @@
         },
       ],
     }),
-    mounted () {
-      this.$refs.calendar.checkChange()
-    },
+    // mounted () {
+    //   this.$refs.calendar.checkChange()
+    // },
     methods: {
+      toggle () {
+        this.tog = !this.tog
+      },
       viewDay ({ date }) {
         this.focus = date
-        console.log(date)
-        // this.type = 'day'
+        this.tog = false
       },
       getEventColor (event) {
         return event.color
@@ -104,7 +225,6 @@
         this.focus = ''
       }, 
       prev () {
-        console.log(this.focus)
         this.$refs.calendar.prev()
       },
       next () {
@@ -128,35 +248,10 @@
 
         nativeEvent.stopPropagation()
       },
-      updateRange ({ start, end }) {
-        const events = []
-
-        const min = new Date(`${start.date}T00:00:00`)
-        const max = new Date(`${end.date}T23:59:59`)
-        const days = (max.getTime() - min.getTime()) / 86400000
-        const eventCount = this.rnd(days, days + 20)
-
-        for (let i = 0; i < eventCount; i++) {
-          const allDay = this.rnd(0, 3) === 0
-          const firstTimestamp = this.rnd(min.getTime(), max.getTime())
-          const first = new Date(firstTimestamp - (firstTimestamp % 900000))
-          const secondTimestamp = this.rnd(2, allDay ? 288 : 8) * 900000
-          const second = new Date(first.getTime() + secondTimestamp)
-
-          events.push({
-            name: this.names[this.rnd(0, this.names.length - 1)],
-            start: first,
-            end: second,
-            color: this.colors[this.rnd(0, this.colors.length - 1)],
-            timed: !allDay,
-          })
-        }
-
-        this.events = events
-        console.log(this.events)
-      },
-      rnd (a, b) {
-        return Math.floor((b - a + 1) * Math.random()) + a
+      sortAsce : function() {
+        this.event.sort(function(a,b){
+          return a.start - b.start;
+        })
       },
     },
   }
