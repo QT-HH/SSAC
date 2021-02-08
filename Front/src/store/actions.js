@@ -69,4 +69,10 @@ export default {
     // console.log('actions')
     commit('ADD_MYTEAM', selectTeam)
   },
+  nicknaming: function ({commit}, {selectedData,nickname}) {
+    commit('NICKNAMING', {selectedData,nickname})
+  },
+  usernickname: function ({commit}, {nickname,introduce}) {
+    commit('USERNICKNAME', {nickname,introduce})
+  }
 };

@@ -1,11 +1,18 @@
 <template>
-  <div>
-  <b-list-group-item class="d-flex align-items-center">
-    <b-avatar class="mr-3" src="https://mblogthumb-phinf.pstatic.net/MjAxNzAzMTVfNTQg/MDAxNDg5NTMzMTAxODE0.AeJFquh3hBXmeRfjEMwxExA6jvsw-GhYYU-bdA66huMg.4r8b21NSf1qh4slVD2_U9mRXiUAT2LdjWdrn0UcU7_Ig.JPEG.doghter4our/IMG_5250.jpg?type=w800"></b-avatar>
-    <span class="mr-auto">{{ team.name }}</span>
-    <span class="mr-auto">{{ team.friend_name }} 님 외에 {{ team.people }}명이 좋아합니다.</span>
-  </b-list-group-item>  
-  </div>
+  <v-list-item>
+    <v-list-item-avatar>
+      <v-img
+        :alt="team.name"
+        src="https://mblogthumb-phinf.pstatic.net/MjAxNzAzMTVfMTg0/MDAxNDg5NTMzMTAwNjQ0.V7tqJArWLv350swvN0w8KFfjGEE8LFauuomjhAjJv9Eg.ARhfQCD6kfix4RdJt5YK4EYdvW6HIT2ctqkPlw6RRgsg.JPEG.doghter4our/IMG_5221.jpg?type=w800"
+      ></v-img>
+    </v-list-item-avatar>
+
+    <v-list-item-content>
+      <span class="mr-auto">{{ team.name }}</span>
+      <span class="mr-auto">{{ team.friend_name }} 님 외에 {{ team.people }}명이 좋아합니다.</span>
+    </v-list-item-content>
+
+  </v-list-item> 
 </template>
 
 <script>

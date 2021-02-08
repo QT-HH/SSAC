@@ -1,29 +1,47 @@
 <template>
   <div>
     <!-- 검색창 -->
-    <b-input-group prepend="검색" class="my-3 ml-3 mr-3">
-      <b-form-input></b-form-input>
-      <b-input-group-append>
-        <b-icon-search font-scale="2" class="ml-2 mr-4" @click="realSearch"></b-icon-search>
-      </b-input-group-append>
-    </b-input-group>
+    <div>
+      <v-row 
+        align="center"
+        justify="space-around"
+      >
+        <v-col cols=8>
+          <v-text-field
+            label="검색어를 입력하세요."
+            v-model="query"
+          ></v-text-field>
+        </v-col>
+        <v-cols cols=2>
+          <v-btn @click="realSearch">
+            검색
+          </v-btn>
+        </v-cols>
+      </v-row>
+
+    </div>
 
     <!-- <li v-for="(user, idx) in users" :key="idx"><img src="user.img" alt="img"> {{user.name}}</li> -->
-    <p v-if="searched">유저 검색 결과<span></span></p>
-    <b-list-group style="max-width: 500px;">
-      <userSearchResult v-for="(user, idx) in users" 
-      :key="idx"
-      :user="user"
-      />
-    </b-list-group>    
-    
-    <p v-if="searched">팀 검색 결과<span></span></p>
-    <b-list-group style="max-width: 500px;">
-      <teamSearchResult v-for="(team, idx) in teams" 
-      :key="idx"
-      :team="team"
-      />
-    </b-list-group>    
+    <!-- <p v-if="searched">유저 검색 결과<span></span></p> -->
+
+    <v-list subheader>
+      <v-subheader>유저 검색 결과</v-subheader>
+
+      <userSearchResult 
+        v-for="(user,idx) in users"
+        :key="idx"
+        :user="user"
+        />
+    </v-list>
+
+    <v-list subheader>
+      <v-subheader>팀 검색 결과</v-subheader>
+      <teamSearchResult 
+        v-for="(team,idx) in teams"
+        :key="idx"
+        :team="team"
+        />
+    </v-list>
 
   </div>
 </template>
@@ -31,7 +49,6 @@
 <script>
 import userSearchResult from './userSearchResult.vue'
 import teamSearchResult from './teamSearchResult.vue'
-
 export default {
   name: "realSearch",
   components: {
@@ -78,7 +95,7 @@ export default {
       //     console.error(error)
       //   })
      
-    }
+    },
   }
 }
 </script>

@@ -1,11 +1,13 @@
 <template>
   <div>
-    <div class="pt-3 d-flex justify-content-around">
-      <b-button variant="success" @click="showFootball">축구</b-button>
-      <b-button variant="success" @click="showBaseball">야구</b-button>
-      <b-button variant="success" @click="showLOL"> LOL </b-button>
-    </div>
+    <br>
+    <v-row align="center" justify="space-around">
+      <v-btn color="blue" @click="showFootball">축구</v-btn>
+      <v-btn color="blue" @click="showBaseball">야구</v-btn>
+      <v-btn color="blue" @click="showLOL"> LOL </v-btn>
+    </v-row>
 
+    <br>
     <div class="m-3">
       <football v-if="now === 'Football'"/>
       <baseball v-else-if="now === 'Baseball'"/>

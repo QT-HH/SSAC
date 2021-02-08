@@ -12,7 +12,7 @@ function login(email, password, success, fail) {
   };
 
   instance
-    .post("http://i4d102.p.ssafy.io:9000/ssac/login/login", JSON.stringify(body))
+    .post("/", JSON.stringify(body))
     .then(success)
     .catch(fail);
 }

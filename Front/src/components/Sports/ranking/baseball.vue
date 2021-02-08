@@ -1,15 +1,10 @@
 <template>
   <div>
-    <b-table
-      hover
-      head-variant="light"
+    <v-data-table
+      :headers="headers"
       :items="items"
-      :fields="fields"
-      :sort-by.sync="sortBy"
-      :sort-desc.sync="sortDesc"
-      responsive="sm"
-      sort-icon-left
-    ></b-table>
+      class="elevation-1"
+    ></v-data-table>
 
   </div>
 </template>
@@ -19,13 +14,16 @@ export default {
 name:"baseballranking",
   data() {
     return {
-      sortBy: 'winrate',
-      sortDesc: true,
-      fields: [
-        {key: 'name', sortable: false},
-        {key: 'winrate', sortable: true, class:"text-center"},
-        {key: '승', sortable: true, class:"text-center"},
-        {key: '패', sortable: true, class:"text-center"}
+      headers:[
+        {
+          text: '팀',
+          align:'end',
+          sortable: false,
+          value:'name'
+        },
+        { text: '승률', value: 'winrate'},
+        { text: '승', value: '승'},
+        { text: '패', value: '패'},
       ],
       items: [
         {

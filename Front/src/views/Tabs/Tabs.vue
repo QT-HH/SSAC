@@ -1,12 +1,12 @@
 <template>
   <div>
-    알림
+    <router-view />
   </div>
 </template>
 
 <script>
 export default {
-  name:"Alarm"
+  name:"Tabs",
 }
 </script>
 

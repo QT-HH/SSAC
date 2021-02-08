@@ -52,20 +52,13 @@
       <span>약관을 동의합니다.</span>
     </label> -->
 
-    <div>
-      <button
-        class="btn-bottom"
-        @click="backtoLogin"
-      >BEFORE
-      </button>
-      <button
-        class="btn-bottom"
-        @click="selectMyteam"
-        :disabled="!isSubmit"
-        :class="{disabled : !isSubmit}"
-        v-if="isSubmit === true"
-      >NEXT</button>
-    </div>
+    <button
+      class="btn-bottom"
+      @click="selectMyteam"
+      :disabled="!isSubmit"
+      :class="{disabled : !isSubmit}"
+      v-if="isSubmit === true"
+    >NEXT</button>
 
   </div>
 </template>
@@ -105,6 +98,7 @@ export default {
 
   methods: {
     checkForm() {
+
       if (this.email.length >= 0 && !EmailValidator.validate(this.email))
         this.error.email = "이메일 형식이 아닙니다.";
       else this.error.email = false;
@@ -139,11 +133,8 @@ export default {
           password
         };
         this.$store.dispatch("CREATE_USER1", newuser);
-        this.$router.push("/signup/myteam");
+        this.$router.push({name:"SelectTeam"});
       }
-    },
-    backtoLogin() {
-      this.$router.push("/");
     }
    
   },

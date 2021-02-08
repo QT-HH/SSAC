@@ -1,19 +1,48 @@
 <template>
-  <div>
-      <b-navbar type="dark" variant="dark" class="p-0 nav-content">
-        <b-navbar-nav class="nav-content pb-1 text-center" style="width:100%">
-          <b-nav-item style="width:33%"><router-link to="/sports/" class="text-decoration-none">일정</router-link></b-nav-item>
-          <b-nav-item style="width:33%"><router-link to="/sports/ranking" class="text-decoration-none">순위</router-link></b-nav-item>
-          <b-nav-item style="width:33%"><router-link to="/sports/news" class="text-decoration-none">뉴스</router-link></b-nav-item>
-          <!-- <b-nav-item style="width:25%" @click="gotoFeed" class="">피드</b-nav-item> -->
-        </b-navbar-nav>
-      </b-navbar>
-  </div>
+<div style="width:100%;">
+    <v-card>
+      <v-tabs
+        fixed-tabs
+        background-color="#536DFE"
+        dark
+        >
+        <v-tab @click="gotoSchedule">일정</v-tab>
+        <v-tab @click="gotoRanking">순위</v-tab>
+        <v-tab @click="gotoNews">뉴스</v-tab>
+        <v-tab @click="gotoChat">채팅</v-tab>
+      </v-tabs>
+    </v-card>
+
+ <!-- #82B1FF -->
+
+</div>
 </template>
 
 <script>
 export default {
-  name: "SportsNav"
+  name:"SportsNav",
+  methods: {
+    gotoSchedule() {
+      if (this.$route.path !== "/tabs") {
+        this.$router.push({name:"SportsSchedule"})
+      }
+    },
+    gotoRanking() {
+      if (this.$route.path !== "/tabs/ranking") {
+        this.$router.push({name:"SportsRanking"})
+      }
+    },
+    gotoNews() {
+      if (this.$route.path !== "/tabs/news") {
+        this.$router.replace({name:"SportsNews"})
+      }
+    },
+    gotoChat() {
+      if (this.$route.path !== "/tabs/chat") {
+        this.$router.replace({name:"SportsChat"})
+      }
+    },
+  }
 }
 </script>
 

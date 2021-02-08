@@ -1,16 +1,14 @@
 <template>
   <div>
-    <Navbar />
-    피드탭!
+    <div>
+      Feed
+    </div>
   </div>
 </template>
 
 <script>
-import Navbar from '@/components/common/Navbar.vue'
 export default {
-  components: {
-    Navbar
-  }
+  name:"Feed",
 }
 </script>
 

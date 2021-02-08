@@ -1,13 +1,33 @@
 <template>
   <div>
     <div class="p-3">
-      <div v-for="(post, idx) in posts" :key="idx">
-        <b-card :img-src=post.imgsrc img-alt="Card image" img-left class="mb-3">
-          <b-card-text>
-            {{post.headline}}
-          </b-card-text>
-        </b-card>
-      </div>
+      <v-row v-for="(post, idx) in posts" :key="idx">
+        <v-col cols=12>
+          <v-card
+            color="pink lighten-5"
+          >
+            <div class="d-flex flex-no-wrap justify-space-between">
+              <div>
+                  <v-card-title class="headline">
+                    {{ post.headline }}
+                  </v-card-title>
+                    <!-- <v-card-subtitle>Listen to your favorite artists and albums whenever and wherever, online and offline.</v-card-subtitle> -->
+              </div>
+                <v-avatar
+                    class="ma-3"
+                    size="125"
+                    tile
+                >
+                    <v-img :src="post.imgsrc"></v-img>
+                  </v-avatar>
+
+            </div>
+          </v-card>
+        </v-col>
+      </v-row>
+      <br>
+      <br>
+      <br>
     </div>
   </div>
 </template>

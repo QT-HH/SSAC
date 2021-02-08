@@ -1,19 +1,37 @@
 <template>
   <div>
-      <b-navbar type="dark" variant="dark" class="p-0 nav-content">
-        <b-navbar-nav class="nav-content pb-1 text-center" style="width:100%">
-          <b-nav-item style="width:33%"><router-link to="/search/" class="text-decoration-none">검색</router-link></b-nav-item>
-          <b-nav-item style="width:33%"><router-link to="/search/friendsteam" class="text-decoration-none">친구의팀</router-link></b-nav-item>
-          <b-nav-item style="width:33%"><router-link to="/search/recommend" class="text-decoration-none">팀추천</router-link></b-nav-item>
-          <!-- <b-nav-item style="width:25%" @click="gotoFeed" class="">피드</b-nav-item> -->
-        </b-navbar-nav>
-      </b-navbar>
+      <v-tabs
+        background-color="#536DFE"
+        dark
+        fixed-tabs
+        >
+        <v-tab @click="gotorealSearch">검색</v-tab>
+        <v-tab @click="gotoFriendsTeam">친구의 팀</v-tab>
+        <v-tab @click="gotoRecommend">팀 추천</v-tab>
+      </v-tabs>
   </div>
 </template>
 
 <script>
 export default {
-  name: "SearchNav"
+  name: "SearchNav",
+  methods: {
+    gotorealSearch() {
+      if (this.$route.path !== "/tabs/search") {
+        this.$router.push({name:"realSearch"})
+      }
+    },
+    gotoFriendsTeam() {
+      if (this.$route.path !== "/tabs/search/friendsteam") {
+        this.$router.push({name:"FriendsTeam"})
+      }
+    },
+    gotoRecommend() {
+      if (this.$route.path !== "/tabs/search/recommend") {
+        this.$router.replace({name:"Question1"})
+      }
+    },
+  },
 }
 </script>
 

@@ -5,7 +5,7 @@ export default {
   createUser1(state, newuser) {
     state.newUser.email = newuser.email
     state.newUser.password = newuser.password
-    state.newUser.nickname = newuser.nickName
+    state.newUser.nickName = newuser.nickName
   },
   createUser2(state, myteams) {
     state.newUser.myteams = myteams
@@ -19,5 +19,20 @@ export default {
     // console.log('mutations')
     console.log(selectTeam)
     state.myTeams.push(selectTeam)
-  }  
+  },
+  NICKNAMING: function (state, {selectedData,nickname}) {
+    state.myTeams = state.myTeams.map((team) => {
+      if (team.name === selectedData.name) {
+        return {
+          ...team,
+          nickname: nickname
+        }
+      }
+      return team
+    })
+  },
+  USERNICKNAME: function (state, {nickname,introduce})  {
+      state.user.nickname = nickname,
+      state.user.introduce = introduce  
+    }
 };
