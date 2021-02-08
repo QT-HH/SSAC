@@ -1,11 +1,5 @@
 <template>
   <div>
-    <div class="mt-9">
-      <br>
-      <br>
-      <br>
-    </div>
-
     <div v-for="(feed, idx) in feeds" :key="idx">
       <v-card
         class="mx-auto mt-5 mb-5"
@@ -41,6 +35,7 @@
           {{ feed.article }}
         </v-card-text>
 
+        
         <v-card-actions>
           <v-list-item class="grow">
             <v-row
@@ -54,10 +49,10 @@
               <span class="mr-1">·</span>
               <v-btn
                 icon
-                @click="show = !show"
+                @click="changeShow(idx)"
               >
                 <v-icon class="mr-1">                  
-                  {{ show? 'mdi-message-text' : 'mdi-message-text' }}
+                  mdi-message-text
                 </v-icon>
               </v-btn>
             </v-row>
@@ -66,7 +61,7 @@
 
         <!-- 댓글 -->
         <v-expand-transition>
-          <div v-show="show">
+          <v-card v-show="show[idx]">
             <v-divider></v-divider>
             <v-card-text>
               <div class="font-weight-bold ml-6 mb-2 overflow-y-scroll">
@@ -113,15 +108,11 @@
                 </div>
               </div>
             </v-card-text>
-          </div>
+          </v-card>
         </v-expand-transition>
+      
       </v-card>
     </div>
-
-    <div class="mb-1">
-      <br>
-      <br>
-    </div>    
   </div>
 </template>
 
@@ -196,7 +187,7 @@ export default {
           ]
         },
       ],
-      show: false,
+      show: [false,false,false],
       comment : {message: ''},
       user : {
         name: "이경연",
@@ -212,6 +203,9 @@ export default {
         src:this.feeds[key].user.src
       };
       this.feeds[key].comments.push(newComment)
+    },
+    changeShow(idx) {
+      this.$set(this.show, idx, !this.show[idx])
     }
   }
 }
