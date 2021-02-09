@@ -74,5 +74,8 @@ export default {
   },
   usernickname: function ({commit}, {nickname,introduce}) {
     commit('USERNICKNAME', {nickname,introduce})
+  },
+  footerOut: function ({commit}) {
+    commit('FOOTEROUT')
   }
 };

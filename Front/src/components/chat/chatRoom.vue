@@ -37,6 +37,7 @@ import 'vue-quick-chat/dist/vue-quick-chat.css';
 
 
 export default {
+    name: 'ChatRoom',
     components: {
         Chat
     },
@@ -115,6 +116,7 @@ export default {
             hideCloseButton: false,
             submitIconSize: 25,
             closeButtonIconSize: "20px",
+            submitImageIconSize: 20,
             asyncMode: false,
             toLoad: [
                 {
@@ -229,6 +231,8 @@ export default {
         },
         onClose() {
             this.visible = false;
+            this.$store.dispatch('footerOut');
+            this.$router.push({name:'SportsChat'});
         },
         onImageSelected(files, message){
             let src = 'https://149364066.v2.pressablecdn.com/wp-content/uploads/2017/03/vue.jpg'
