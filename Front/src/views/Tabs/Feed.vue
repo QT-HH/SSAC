@@ -1,5 +1,30 @@
 <template>
   <div>
+    <v-card 
+      ref="form"
+      max-width="350"
+      class="mx-auto mb-5"
+    >
+          <v-textarea
+            v-model="newText"
+            color="teal"
+          >
+            <template v-slot:label>
+              <div>
+                새 글 작성 <small></small>
+              </div>
+            </template>
+          </v-textarea>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="primary"
+            text
+            @click="createNewFeed"
+            class="mx=auto"
+          >
+            Submit
+          </v-btn>
+    </v-card>
     <div v-for="(feed, idx) in feeds" :key="idx">
       <v-card
         class="mx-auto mt-5 mb-5"
@@ -113,6 +138,11 @@
       
       </v-card>
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
+
   </div>
 </template>
 
@@ -187,11 +217,13 @@ export default {
           ]
         },
       ],
-      show: [false,false,false],
+      show: [false,false,false,false,false,false,],
       comment : {message: ''},
       user : {
         name: "이경연",
-        src: require("@/assets/images/corinlee.jpg") }
+        src: require("@/assets/images/corinlee.jpg")
+      },
+      newText : ""
     }
   },
   methods: {
@@ -206,6 +238,24 @@ export default {
     },
     changeShow(idx) {
       this.$set(this.show, idx, !this.show[idx])
+    },
+    createNewFeed() {
+      let newArticle = 
+      {
+          src: require("@/assets/images/corinlee.jpg"), 
+          name:'', 
+          time: '', 
+          article: '', 
+          like: 0,
+          comments: []
+      }
+
+      newArticle.name = this.user.name
+      newArticle.time = "방금"
+      newArticle.article = this.newText
+
+      this.feeds.push(newArticle)
+      this.newText = ""
     }
   }
 }
