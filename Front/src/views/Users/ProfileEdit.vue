@@ -6,35 +6,33 @@
     </v-icon>
     <br>
     <br>
-    <br>
     <v-container class="text-center">
       <v-dialog v-model="dialog" width="500">
-      <template v-slot:activator="{ on, attrs }">
-        <v-avatar 
-        height="110" 
-        width="110"
-        v-bind="attrs"
-        v-on="on">
-          <img :src="user.img" alt="John">
-        </v-avatar>
-      </template>
-        <v-card >
+        <template v-slot:activator="{ on, attrs }">
+          <v-badge bordered bottom color="blue-grey lighten-4" icon="mdi-camera" offset-x="25" offset-y="25">
+            <v-avatar height="110" width="110" v-bind="attrs" v-on="on">
+              <img :src="user.img" alt="John">
+            </v-avatar>
+          </v-badge>
+        </template>
+        <v-card>
           <v-card-title class="headline blue--text text--lighten-1 ">
             프로필 사진
           </v-card-title>
 
-          <v-file-input class="d-flex align-center justify-center pa-4 mx-auto"
-            label="File input"
-            filled
-            prepend-icon="mdi-camera"
-          ></v-file-input>
+          <v-file-input class="d-flex align-center justify-center pa-4 mx-auto" label="File input" filled
+            prepend-icon="mdi-camera"></v-file-input>
 
           <v-divider></v-divider>
 
           <v-card-actions>
             <v-spacer></v-spacer>
+            <v-btn
+                text
+                @click="dialog = false"
+              >취소</v-btn>
             <v-btn color="primary" text @click="dialog = false">
-              I accept
+              적용
             </v-btn>
           </v-card-actions>
         </v-card>
@@ -57,25 +55,56 @@
         </v-btn>
 
       </v-container>
-      <br>
+
       <v-container class="d-flex align-center justify-center pa-4 mx-auto">
         <v-row align="center" justify="space-around">
-          <v-btn x-large @click="goback">취소</v-btn>
-          <v-btn v-if="this.nickname.length === 0 || this.introduce.length === 0" x-large disabled depressed
+          <v-btn large @click="goback">취소</v-btn>
+          <v-btn v-if="this.nickname.length === 0 || this.introduce.length === 0" large disabled depressed
             color="primary" @click="usernickname">
             확인
           </v-btn>
-          <v-btn v-else x-large color="primary" @click="usernickname">
+          <v-btn v-else large color="primary" @click="usernickname">
             확인
           </v-btn>
         </v-row>
       </v-container>
-      <br>
+
       <v-container class="d-flex align-center justify-center pa-4 mx-auto">
-        <v-btn text color="grey">
+        <v-dialog
+        transition="dialog-bottom-transition"
+        max-width="600"
+      >
+        <template v-slot:activator="{ on, attrs }">
+        <v-btn text color="grey"
+        v-bind="attrs"
+            v-on="on">
           회원탈퇴
         </v-btn>
-
+        </template>
+        <template v-slot:default="dialog">
+          <v-card>
+            <v-toolbar
+              color="primary"
+              dark
+            >회원탈퇴</v-toolbar>
+            <v-card-text>
+              <div class="text-h6 pa-12">나는 빡빡이다.</div>
+              <template>
+                <v-text-field :rules="rules"></v-text-field>
+              </template>
+            </v-card-text>
+            <v-card-actions class="justify-end">
+              <v-btn
+                text
+                @click="dialog.value = false"
+              >취소</v-btn>
+              <v-btn color="red" text @click="dialog.value = false">
+              회원탈퇴
+            </v-btn>
+            </v-card-actions>
+          </v-card>
+        </template>
+      </v-dialog>
       </v-container>
 
     </v-container>
@@ -92,6 +121,11 @@ export default {
       nickname: '',
       introduce: '',
       dialog: false,
+      rules: [
+        value => !!value || 'Required.',
+        value => value === '나는 빡빡이다' || '나는 빡빡이다를 작성하세요',
+        
+      ],
     }),
 
     computed: {
