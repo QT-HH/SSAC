@@ -3,11 +3,15 @@ import Vuex from 'vuex'
 import getters from "./getters";
 import actions from "./actions";
 import mutations from "./mutations";
+import socket from './modules/socket';
 
 Vue.use(Vuex)
 
+const debug = process.env.NODE_ENV !== 'production';
+
 const state = {
   isLogin: true,
+  isChatRoom: false,
   userInfo: null,
   isNav: false, 
   newUser: {
@@ -63,5 +67,10 @@ export default new Vuex.Store({
   state,
   mutations,
   actions,
-  getters
+  getters,
+  modules: {
+    socket,
+  },
+  strict: debug,
+  // plugins: debug ? [createLogger()] : []
 })
