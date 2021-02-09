@@ -81,7 +81,6 @@
               </v-dialog>
             </v-fab-transition>
 
-
           </v-card>
         </v-col>
       </v-row>
