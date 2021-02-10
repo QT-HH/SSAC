@@ -80,7 +80,6 @@
                 </v-card>
               </v-dialog>
             </v-fab-transition>
-
           </v-card>
         </v-col>
       </v-row>
@@ -103,9 +102,7 @@ export default {
           { icon: 'mdi-clipboard-text', iconClass: 'blue white--text', home: '전북 현대', away: '두산 베어스', participants: ['노정', '규태', '경연'] },
           { icon: 'mdi-gesture-tap-button', iconClass: 'amber white--text', home: 'DRX', away: 'FC서울', participants: ['노정', '규태', '경연'] },
         ],
-        items2: [
-          
-        ],
+
         // 여기는 채팅만드는 팀
         items3: [
           { icon: 'mdi-clipboard-text', iconClass: 'blue white--text', home: 'SK 와이번스', away: 'LG 트윈스', place: '런던, 영국'},
