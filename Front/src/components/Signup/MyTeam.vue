@@ -198,7 +198,7 @@ export default {
         }
     },
     mounted: function () {
-        axios.get("http://localhost:9000/ssac/team/list").then(response => (this.items = response))
+        axios.get("http://i4d102.p.ssafy.io:9000/ssac/team/list").then(response => (this.items = response.data))
         console.log('MyTeams')
     }
 }

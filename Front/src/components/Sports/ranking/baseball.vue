@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-data-table
+    <v-data-table 
       :headers="headers"
       :items="items"
       class="elevation-1"

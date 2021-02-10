@@ -5,6 +5,7 @@ import Signup from "../views/Users/Signup.vue";
 import Profile from "../views/Users/Profile.vue";
 import ProfileEdit from "../views/Users/ProfileEdit.vue";
 import Tabs from "../views/Tabs/Tabs.vue";
+import ChatRoom from '@/components/chat/chatRoom.vue';
 
 Vue.use(VueRouter)
 
@@ -97,7 +98,7 @@ const routes = [
           {
             path: "/tabs/chat",
             name: "SportsChat",
-            component: () => import("../components/Sports/Chat.vue"),
+            component: () => import("../components/Sports/chat.vue"),
             children: [
         
             ]
@@ -166,6 +167,11 @@ const routes = [
     children: [
 
     ]
+  },
+  {
+    path: '/tabs/chat-room/:id',
+    name: 'ChatRoom',
+    component: ChatRoom,
   },
 
 ]
