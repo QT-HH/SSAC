@@ -6,17 +6,17 @@
           <v-card style="height: 545px" width="max-content">
             <v-list two-line>
               <br>
-              <v-list-item  v-for="(item,idx) in items" :key="idx" link :to="`chat-room/${idx}`" >
+              <v-list-item  v-for="(chat,idx) in chats" :key="idx" link :to="`chat-room/${idx}`" >
                 <v-list-item-avatar @click="footerOut">
-                  <v-icon :class="[item.iconClass]">
-                    {{ item.icon }}
+                  <v-icon :class="[chat.iconClass]">
+                    {{ chat.icon }}
                   </v-icon>
                 </v-list-item-avatar>
 
                 <v-list-item-content @click="footerOut">
-                  <v-list-item-title>{{ item.home }} vs {{item.away}}</v-list-item-title>
+                  <v-list-item-title>{{ chat.home }} vs {{chat.away}}</v-list-item-title>
                   <v-list-item-subtitle>
-                    <v-chip v-for="(participant, idx) in item.participants" :key="idx" class="ma-2" x-small>
+                    <v-chip v-for="(participant, idx) in chat.participants" :key="idx" class="ma-2" x-small>
                       {{ participant }}
                     </v-chip>
                   </v-list-item-subtitle>
@@ -57,10 +57,10 @@
                     <v-subheader>대상 경기</v-subheader>
                     <v-list-item>
                       <v-list-item-content>
-                        <v-container v-for="(item, idx) in items3" :key="idx">
+                        <v-container v-for="(team, idx) in teams" :key="idx">
                           <v-card class="text-center align-center justify-center pa-4 mx-auto" link>
-                            <v-card-title class="justify-center">{{item.home}} vs {{item.away}}</v-card-title>
-                            <v-card-subtitle class="justify-center"> {{item.place}} </v-card-subtitle>
+                            <v-card-title class="justify-center">{{team.home}} vs {{team.away}}</v-card-title>
+                            <v-card-subtitle class="justify-center"> {{team.place}} </v-card-subtitle>
                           </v-card>
                         </v-container>
                       </v-list-item-content>
@@ -96,7 +96,7 @@ export default {
         notifications: false,
         sound: true,
         widgets: false,
-        items: [
+        chats: [
           { icon: 'mdi-clipboard-text', iconClass: 'amber white--text', home: '대구FC', away: 'T1', participants: ['노정', '규태', '경연'] },
           { icon: 'mdi-gesture-tap-button', iconClass: 'blue white--text', home: '삼성 라이온즈', away: 'GEN.G', participants: ['노정', '규태', '경연'] },
           { icon: 'mdi-clipboard-text', iconClass: 'blue white--text', home: '전북 현대', away: '두산 베어스', participants: ['노정', '규태', '경연'] },
@@ -104,12 +104,23 @@ export default {
         ],
 
         // 여기는 채팅만드는 팀
-        items3: [
+        temas: [
           { icon: 'mdi-clipboard-text', iconClass: 'blue white--text', home: 'SK 와이번스', away: 'LG 트윈스', place: '런던, 영국'},
           { icon: 'mdi-gesture-tap-button', iconClass: 'amber white--text', home: '강원FC', away: '수원FC', place: '가나, 아프리카'},
         ],
         members: [ '경연', '규태', '은지', '지원']
       }
+    },
+    created() {
+      getMatch(
+      this.$store.state.userInfo.userid,
+      (response) => {
+        console.log(response);
+        this.article = response.data;
+      },
+      (error) => {
+        console.log(error)
+      });
     },
     methods: {
       footerOut: function () {
