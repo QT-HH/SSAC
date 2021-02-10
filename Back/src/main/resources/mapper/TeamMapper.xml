@@ -6,4 +6,62 @@
 		select *
 		from team
 	</select>
+	
+	<select id="selectTeamByNo" parameterType="int" resultType="com.ssac.team.dto.Team">
+		select *
+		from team
+		where no = #{no}
+	</select>
+	
+	<select id="selectMyTeam" parameterType="String" resultType="com.ssac.team.dto.MyTeam">
+		select *
+		from myteam
+		where id = #{userid}	
+	</select>
+	
+	<insert id="insertMyTeam" parameterType="com.ssac.team.dto.MyTeam">
+		insert into myteam(id, team_no, name)
+		values (#{id}, #{team_no}, #{name})
+	</insert>
+	
+	<update id="updateMyTeamName" parameterType="com.ssac.team.dto.MyTeam">
+		update myteam
+		set name = #{name}
+		where id = #{id} and no = #{no}
+	</update>
+	
+	<delete id="deleteMyTeam" parameterType="com.ssac.team.dto.MyTeam">
+		delete from myteam
+		where id = #{id} and no = #{no}
+	</delete>
+	
+	<update id="updateTeamCount" parameterType="HashMap">
+		update team
+		set count = count + #{count}
+		where no = #{team_no}
+	</update>
+	
+	<select id="selectFootballteamBySearch" parameterType="HashMap" resultType="com.ssac.team.dto.Team">
+		select *
+		from team
+		where ((event_no = 1) and 
+		(no not in (select team_no from myteam where (id = #{userid}) and (event_no = 1)))) and
+		name like concat('%', #{search}, '%') 
+	</select>
+	
+	<select id="selectBaseballteamBySearch" parameterType="HashMap" resultType="com.ssac.team.dto.Team">
+		select *
+		from team
+		where ((event_no = 2) and 
+		(no not in (select team_no from myteam where (id = #{userid}) and (event_no = 2)))) and
+		name like concat('%', #{search}, '%') 
+	</select>
+	
+	<select id="selectLOLteamBySearch" parameterType="HashMap" resultType="com.ssac.team.dto.Team">
+		select *
+		from team
+		where ((event_no = 3) and 
+		(no not in (select team_no from myteam where (id = #{userid}) and (event_no = 3)))) and
+		name like concat('%', #{search}, '%') 
+	</select>
 </mapper>
