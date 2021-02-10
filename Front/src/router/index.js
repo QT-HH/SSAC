@@ -98,7 +98,7 @@ const routes = [
           {
             path: "/tabs/chat",
             name: "SportsChat",
-            component: () => import("../components/Sports/chat.vue"),
+            component: () => import("../components/Sports/Chat.vue"),
             children: [
         
             ]
