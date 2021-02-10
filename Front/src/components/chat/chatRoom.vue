@@ -44,6 +44,7 @@ export default {
     data() {
         return {
             visible: true,
+            // 참여 유저정보
             participants: [
                 {
                     name: 'Arnaldo',
@@ -56,11 +57,13 @@ export default {
                     profilePicture: 'https://lh3.googleusercontent.com/-G1d4-a7d_TY/AAAAAAAAAAI/AAAAAAAAAAA/AAKWJJPez_wX5UCJztzEUeCxOd7HBK7-jA.CMID/s83-c/photo.jpg'
                 }
             ],
+            // 참여 유저중에 스스로 하기 
             myself: {
                 name: 'Matheus S.',
                 id: 3,
                 profilePicture: 'https://lh3.googleusercontent.com/-G1d4-a7d_TY/AAAAAAAAAAI/AAAAAAAAAAA/AAKWJJPez_wX5UCJztzEUeCxOd7HBK7-jA.CMID/s83-c/photo.jpg'
             },
+            // 메세지 담기
             messages: [
                 {
                     content: 'received messages',
@@ -84,6 +87,7 @@ export default {
                     type: 'text'
                 }
             ],
+            //채팅 타이틀인데 경기 정보가 들어가있으면 좋을것같네요 ( T1 vs GEN.G)
             chatTitle: 'My chat title',
             placeholder: 'send your message',
             colors: {
@@ -118,6 +122,7 @@ export default {
             closeButtonIconSize: "20px",
             submitImageIconSize: 20,
             asyncMode: false,
+            // 일정시간 지나면 메세지에 있던 메세지가 toLoad로 이동
             toLoad: [
                 {
                     content: 'Hey, John Doe! How are you today?',
@@ -184,7 +189,7 @@ export default {
                         click: function (e) {
                           console.log(e);
                             alert('Link clicked!');
-                        },
+                        },  
                         mouseover: function (e) {
                           console.log(e);
                             alert('Link hovered!');
