@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.websocket.chat.mappers.ChatMapper;
 import com.websocket.chat.model.ChatMessage;
 import com.websocket.chat.model.ChatRoom;
+import com.websocket.chat.model.ChatUser;
 
 @Service
 public class ChatServiceImpl implements ChatService {
@@ -26,7 +27,7 @@ public class ChatServiceImpl implements ChatService {
 	}
 	
 	@Override
-	public List<String> getChatUser(String roomId) throws Exception {
+	public List<ChatUser> getChatUser(String roomId) throws Exception {
 		return mapper.selectChatUserByRoomId(roomId);
 	}
 	

@@ -10,13 +10,13 @@
 	
 	<!-- 채팅방에 인원 초대 -->
 	<insert id="insertChatUser" parameterType="HashMap">
-		insert into chat_user(roomId, userId)
-		values (#{roomId}, #{userId})
+		insert into chat_user(roomId, userId, userName)
+		values (#{roomId}, #{userId}, #{userName})
 	</insert>
 	
 	<!-- 채팅방 인원 목록 -->
-	<select id="selectChatUserByRoomId" parameterType="String" resultType="String">
-		select userId
+	<select id="selectChatUserByRoomId" parameterType="String" resultType="com.websocket.chat.model.ChatUser">
+		select userId, userName
 		from chat_user
 		where roomId = #{roomId}
 	</select>

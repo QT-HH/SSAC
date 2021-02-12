@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.websocket.chat.model.ChatMessage;
 import com.websocket.chat.model.ChatRoom;
+import com.websocket.chat.model.ChatUser;
 
 public interface ChatService {
 
@@ -12,7 +13,7 @@ public interface ChatService {
 
 	int createChatUser(HashMap<String, String> map) throws Exception;
 
-	List<String> getChatUser(String roomId) throws Exception;
+	List<ChatUser> getChatUser(String roomId) throws Exception;
 
 	int outChatRoom(HashMap<String, String> map) throws Exception;
 
