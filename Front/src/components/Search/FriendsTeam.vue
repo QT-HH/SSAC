@@ -1,11 +1,12 @@
 <template>
   <div>
-    <b-list-group style="max-width: 500px;">
-      <FriendsTeamResult v-for="(team, idx) in fri_teams" 
-      :key="idx"
-      :team="team"
-      />
-    </b-list-group>   
+    <v-list subheader>
+      <FriendsTeamResult 
+        v-for="(team,idx) in fri_teams"
+        :key="idx"
+        :team="team"
+        />
+    </v-list>
   </div>
 </template>
 

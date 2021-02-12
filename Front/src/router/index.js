@@ -1,16 +1,13 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
+import Vue from 'vue'
+import VueRouter from 'vue-router'
 import Login from "../views/Users/Login.vue";
-import Profile from "../views/Users/Profile.vue";
 import Signup from "../views/Users/Signup.vue";
-import Sports from "../views/Tabs/Sports.vue";
-import Feed from "../views/Tabs/Feed.vue";
-import Search from "../views/Tabs/Search.vue";
-import Chat from "../views/Tabs/Chat.vue";
+import Profile from "../views/Users/Profile.vue";
+import ProfileEdit from "../views/Users/ProfileEdit.vue";
+import Tabs from "../views/Tabs/Tabs.vue";
+import ChatRoom from '@/components/chat/chatRoom.vue';
 
-
-
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
 const routes = [
   {
@@ -27,102 +24,20 @@ const routes = [
     component: Signup,
     children: [
       {
-        path: "",
-        name: "Signup",
+        path: "/signup",
+        name: "Signup1",
         component: () => import("../components/Signup/Signup.vue")
       },
       {
-        path: "myteam",
-        name: "MyTeam",
+        path: "/signup/selectTeam",
+        name: "SelectTeam",
         component: () => import("../components/Signup/MyTeam.vue")
       },
       {
-        path: "welcome",
+        path: "/signup/welcome",
         name: "Welcome",
         component: () => import("../components/Signup/Welcome.vue")
       },
-    ]
-  },
-  {
-    path: "/sports",
-    name: "Sports",
-    component: Sports,
-    children: [
-      {
-        path: "",
-        name: "SportsSchedule",
-        component: () => import("../components/Sports/Schedule.vue")
-      },
-      {
-        path: "ranking",
-        name: "SportRanking",
-        component: () => import("@/components/Sports/Ranking.vue")
-      },
-      {
-        path: "news",
-        name: "SportNews",
-        component: () => import("@/components/Sports/News.vue")
-      },
-    ]
-  },
-  {
-    path: "/feed",
-    name: "Feed",
-    component: Feed,
-    children: [
-
-    ]
-  }, 
-  {
-    path: "/search",
-    name: "Seacrh",
-    component: Search,
-    children: [
-      {
-        path: "",
-        name: "realSearch",
-        component: () => import("../components/Search/realSearch.vue")
-      },
-      {
-        path: "friendsteam",
-        name: "FriendsTeam",
-        component: () => import("@/components/Search/FriendsTeam.vue")
-      },
-      {
-        path: "recommend",
-        name: "Recommend",
-        component: () => import("@/components/Search/Recommend.vue"),
-        children: [
-          {
-            path: "",
-            name: "Question1",
-            component: () => import("../components/Search/Question1.vue")
-          },
-          {
-            path: "question2",
-            name: "Question2",
-            component: () => import("../components/Search/Question2.vue")
-          },
-          {
-            path: "question3",
-            name: "Question3",
-            component: () => import("../components/Search/Question3.vue")
-          },
-          {
-            path: "question4",
-            name: "Question4",
-            component: () => import("../components/Search/Question4.vue")
-          },                        
-        ]
-      },
-    ]
-  },
-  {
-    path: "/chat",
-    name: "Chat",
-    component: Chat,
-    children: [
-
     ]
   },
   {
@@ -131,66 +46,140 @@ const routes = [
     component: Profile,
     children: [
       {
-        path: "",
+        path: "/profile",
         name: "Article",
-        component: () => import("@/views/Users/Article.vue")
+        component: () => import("@/components/profile/Article.vue")
       },
       {
-        path: "myteam",
+        path: "/profile/myteam",
         name: "MyTeam",
-        component: () => import("@/views/Users/MyTeam.vue"),
+        component: () => import("@/components/profile/MyTeam.vue"),
         children: [
 
           {
-            path: "mymyteam",
+            path: "/profile/mymyteam",
             name: "MyMyTeam",
-            component: () => import("@/views/Users/MyMyTeam.vue")            
+            component: () => import("@/components/profile/MyMyTeam.vue")            
           },
           {
-            path: "newteam",
+            path: "/profile/newteam",
             name: "NewTeam",
-            component: () => import("@/views/Users/NewTeam.vue"),
-            children: [
-
-              {
-                path: "newteamfootball",
-                name: "NewTeamFootball",
-                component: () => import("@/views/Users/NewTeamFootball.vue")            
-              },
-              {
-                path: "newteambaseball",
-                name: "NewTeamBaseball",
-                component: () => import("@/views/Users/NewTeamBaseball.vue")            
-              },
-              {
-                path: "newteamlol",
-                name: "NewTeamLol",
-                component: () => import("@/views/Users/NewTeamLol.vue")            
-              },
-              {
-                path: "NewTeamSearchResult",
-                name: "NewTeamSearchResult",
-                component: () => import("@/views/Users/NewTeamSearchResult.vue")            
-              },
-            ]
+            component: () => import("@//components/profile/NewTeam.vue"),
           }
         ]
       },
-      {
-        path: "alarm",
-        name: "Alarm",
-        component: () => import("@/views/Users/Alarm.vue")
-      },
     ]
   },
+  {
+    path: "/tabs",
+    name: "Tabs",
+    component: Tabs,
+    children: [
+      {
+        path: "/tabs",
+        name: "Sports",
+        component: () => import("../views/Tabs/Sports.vue"),
+        children: [
+          {
+            path: "/tabs",
+            name: "SportsSchedule",
+            component: () => import("../components/Sports/Schedule.vue")
+          },
+          {
+            path: "/tabs/ranking",
+            name: "SportsRanking",
+            component: () => import("../components/Sports/Ranking.vue")
+          },
+          {
+            path: "/tabs/news",
+            name: "SportsNews",
+            component: () => import("../components/Sports/News.vue")
+          },
+          {
+            path: "/tabs/chat",
+            name: "SportsChat",
+            component: () => import("../components/Sports/Chat.vue"),
+            children: [
+        
+            ]
+          },
+        ]
+      },
+      {
+        path: "/tabs/feed",
+        name: "Feed",
+        component: () => import("../views/Tabs/Feed.vue"),
+        children: [
+    
+        ]
+      },
+      {
+        path: "/tabs/search",
+        name: "Search",
+        component: () => import("../views/Tabs/Search.vue"),
+        children: [
+          {
+            path: "/tabs/search",
+            name: "realSearch",
+            component: () => import("@/components/Search/realSearch.vue")
+          },
+          {
+            path: "/tabs/search/friendsteam",
+            name: "FriendsTeam",
+            component: () => import("@/components/Search/FriendsTeam.vue")
+          },
+          {
+            path: "/tabs/search/recommend",
+            name: "Recommend",
+            component: () => import("@/components/Search/Recommend.vue"),
+            children: [
+              {
+                path: "/tabs/search/recommend",
+                name: "Question1",
+                component: () => import("@/components/Search/Question1.vue")
+              },
+              {
+                path: "/tabs/search/recommend/question2",
+                name: "Question2",
+                component: () => import("@/components/Search/Question2.vue")
+              },
+              {
+                path: "/tabs/search/recommend/question3",
+                name: "Question3",
+                component: () => import("@/components/Search/Question3.vue")
+              },
+              {
+                path: "/tabs/search/recommend/question4",
+                name: "Question4",
+                component: () => import("@/components/Search/Question4.vue")
+              },                        
+            ]
+          },
+        ]
+      },
 
-  
-];
+    ]
+  },
+  {
+    path: "/profile/edit",
+    name: "ProfileEdit",
+    component: ProfileEdit,
+    children: [
+
+    ]
+  },
+  {
+    path: '/tabs/chat-room/:id',
+    name: 'ChatRoom',
+    component: ChatRoom,
+  },
+
+]
 
 const router = new VueRouter({
-  mode: "history",
+  mode: 'history',
   base: process.env.BASE_URL,
   routes
-});
+})
 
-export default router;
+export default router

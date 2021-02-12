@@ -1,35 +1,114 @@
 <template>
   <div>
-    SSAC  
-    <b-icon-gear></b-icon-gear>
+    SSAC
     <div class="media">
+      <v-container >
+        <v-row no-gutters >
       <img class="d-flex mx-3 rounded-circle" width="80px" height="80px" src="https://mblogthumb-phinf.pstatic.net/MjAxNzAzMTVfMTE4/MDAxNDg5NTMzMTAwMjY0.m9UYu7Dt4CyJcaMMeAuIhOFP2nnXBnW5eUqx3rXZY14g.3axKiINI_FaRrOzK70_FY2qRXLulYTBkzwFIaeY8yd4g.JPEG.doghter4our/IMG_5252.jpg?type=w800" alt="Generic placeholder image">
-      <div class="media-body">
-        <p>첫번째 줄</p>
-        <p>두번째 줄</p>
-        <p>세번째 줄</p>
-      </div>
-    </div>    
+          <v-col >
+            <div class="pa-2 text"
 
+            >
+              게시글
+            </div>
+            <div class="pa-2 text"
+
+            >
+              123
+            </div>
+          </v-col>
+          <v-col>
+            <div class="pa-2 text"
+
+            >
+              팔로워
+            </div>
+            <div class="pa-2 text"
+
+            >
+              345
+            </div>
+          </v-col>
+          <v-col>
+            <div class="pa-2 text"
+
+            >
+              팔로잉
+            </div>
+            <div class="pa-2 text"
+
+            >
+              456
+            </div>
+          </v-col>
+        </v-row>
+      </v-container>
+      <v-container>
+        <div class="text-center">
+          <v-btn
+            style="width: 300px"
+            rounded
+            color="primary"
+            dark
+          >
+            팔로우
+          </v-btn>
+        </div>
+        <div class="text-center">
+          <v-btn
+            style="width: 300px"
+            rounded
+            color="grey lighten-2"
+            @click="gotoProfileEdit"
+          >
+            프로필 편집
+          </v-btn>
+        </div>
+      </v-container>
+    </div>
+    
     <hr>
-      <b-navbar type="lg" variant="dark" class="p-0 nav-content">
-        <b-navbar-nav class="nav-content pb-1 text-center" style="width:100%">
-          <b-nav-item style="width:50%"><router-link to="/profile/" class="text-decoration-none">게시글</router-link></b-nav-item>
-          <b-nav-item style="width:50%"><router-link to="/profile/myteam" class="text-decoration-none">마이팀</router-link></b-nav-item>
-          <!-- <b-nav-item style="width:33%"><router-link to="/profile/alarm" class="text-decoration-none">알림</router-link></b-nav-item> -->
-          <!-- <b-nav-item style="width:25%" @click="gotoFeed" class="">피드</b-nav-item> -->
-        </b-navbar-nav>
-      </b-navbar>
-      <router-view />
+    <div>
+      <v-tabs
+        background-color="#536DFE"
+        dark
+        fixed-tabs
+        >
+        <v-tab @click="gotoArticle">게시글</v-tab>
+        <v-tab @click="gotoMyTeam">마이팀</v-tab>
+      </v-tabs>
+    </div>
+    <router-view />
+    
   </div>
 </template>
 
 <script>
 export default {
-  name:"Profile"
+  name:"Profile",
+  methods:{
+    gotoArticle() {
+      if (this.$route.path !== "/profile") {
+        this.$router.push({name:"Article"})
+      }
+    },
+    gotoMyTeam() {
+      if (this.$route.path !== "/profile/myteam") {
+        this.$router.push({name:"MyMyTeam"})
+      }
+    },
+    gotoProfileEdit() {
+      if (this.$route.path !== "/profile/edit") {
+        this.$router.push({name:"ProfileEdit"})
+      }
+    },
+  }
 }
 </script>
 
-<style>
-
+<style scoped>
+  .v-col {
+    display: table-cell;
+    vertical-align: middle;
+}
 </style>

@@ -2,6 +2,14 @@ export default {
   setIsLogined(state, isLogin) {
     state.isLogin = isLogin;
   },
+  setUserInfo(state, userInfo) {
+    state.isLogin = true;
+    state.userInfo = userInfo;
+  },
+  logout(state) {
+    state.isLogin = false;
+    state.userInfo = null;
+  },
   createUser1(state, newuser) {
     state.newUser.email = newuser.email
     state.newUser.password = newuser.password
@@ -19,5 +27,23 @@ export default {
     // console.log('mutations')
     console.log(selectTeam)
     state.myTeams.push(selectTeam)
-  }  
+  },
+  NICKNAMING: function (state, {selectedData,nickname}) {
+    state.myTeams = state.myTeams.map((team) => {
+      if (team.name === selectedData.name) {
+        return {
+          ...team,
+          nickname: nickname
+        }
+      }
+      return team
+    })
+  },
+  USERNICKNAME: function (state, {nickname,introduce})  {
+      state.user.nickname = nickname,
+      state.user.introduce = introduce  
+    },
+  FOOTEROUT: function (state)  {
+      state.isChatRoom = !state.isChatRoom
+    }
 };

@@ -1,15 +1,10 @@
 <template>
   <div>
-    <b-table
-      hover="true"
-      head-variant="light"
-      :items="football"
-      :fields="fields"
-      :sort-by.sync="sortBy"
-      :sort-desc.sync="sortDesc"
-      responsive="sm"
-      sort-icon-left
-    ></b-table>
+  <v-data-table
+    :headers="headers"
+    :items="football"
+    class="elevation-1"
+  ></v-data-table>
 
   </div>
 </template>
@@ -19,13 +14,16 @@ export default {
   name:"footballranking",
   data() {
     return {
-      sortBy: 'score',
-      sortDesc: true,
-      fields: [
-        {key: 'name', sortable: false},
-        {key: 'score', sortable: true, class:"text-center"},
-        {key: '득점', sortable: true, class:"text-center"},
-        {key: '실점', sortable: true, class:"text-center"}
+      headers:[
+        {
+          text: '팀',
+          align:'end',
+          sortable: false,
+          value:'name'
+        },
+        { text: '승점', value: 'score'},
+        { text: '득점', value: '득점'},
+        { text: '실점', value: '실점'},
       ],
       football: [
         {

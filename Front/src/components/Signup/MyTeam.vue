@@ -3,34 +3,44 @@
       <h1>좋아하는 팀을 고르세요.</h1>
       <h3>(최소 1개 이상)</h3>
       선택한 팀들:
-      <button v-for="(team, idx) in myteams" :key="idx" @click="addmyteams(team)">
+      <v-btn v-for="(team, idx) in myteams" :key="idx" @click="addmyteams(team)">
           {{ team.name }} ({{ translate[team.event_no] }})
-      </button>
+      </v-btn>
       <!-- {{myteams}} -->
       
       <hr>
 
-      <input type="text" v-model="query">
-      <div>
-        <button @click="turnAll">전체</button>
-        <button @click="turnFootball">축구</button>
-        <button @click="turnBaseball">야구</button>
-        <button @click="turnLOL">롤</button>
-      </div>
-      <div>
-          <b-container class="">
-              <b-row>
-                  <b-col v-for="(item, idx) in filterTeam(cat,query)" :key="idx" cols="4" class="my-3">
-                    <b-card :title="item.name" img-src="" img-alt="Image" img-top @click="addmyteams(item)">
-                    <template #footer>
-                        <small class="text-muted">{{ item.count }}명</small>
-                    </template>
-                    </b-card>
-                  </b-col>                  
-              </b-row>
-          </b-container>
-          <!-- {{ items | sportsCategory(cat) | searchResult(query) }} -->
-      </div>
+        <v-container>
+        <v-row>
+            <v-col 
+            cols=4
+            v-for="(team, idx) in filterTeam(cat,query)"
+            :key="idx"
+            :team="team"
+            >
+            <v-card
+                hover
+                class="mx-auto"
+                style="max-width: 15rem;"
+                tag="article"
+                border-variant="success"
+            >
+                <v-img
+                :src="team.img"
+                class="white--text align-end"
+                height="100px"
+                >
+                <v-card-title>{{ team.name }}</v-card-title>
+                </v-img>
+
+                <v-card-text class="text--primary">
+                {{ team.count }} 명이 좋아합니다.
+                </v-card-text>
+
+            </v-card>
+            </v-col>
+        </v-row>
+        </v-container>
 
       <div>
         <button
@@ -151,7 +161,7 @@ export default {
         },
         filterTeam: function(cat,que) {
             return this.items.filter(function(it){
-                return it.event_no*cat === 0 || (it.event_no === cat && it.name.includes(que))
+                return (it.event_no*cat === 0 || it.event_no === cat) && it.name.includes(que)
             })
         },
         addmyteams: function(item) {

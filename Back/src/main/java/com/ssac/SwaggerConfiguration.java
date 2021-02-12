@@ -41,7 +41,7 @@ public class SwaggerConfiguration {
 		responseMessages.add(new ResponseMessageBuilder().code(500).message("서버 문제 발생 !!!").responseModel(new ModelRef("Error")).build());
 		responseMessages.add(new ResponseMessageBuilder().code(404).message("페이지를 찾을 수 없습니다 !!!").build());
 		return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo()).groupName(version).select()
-					.apis(RequestHandlerSelectors.basePackage("com.ssac.team.controller"))
+					.apis(RequestHandlerSelectors.basePackage("com.ssac"))
 					.paths(postPaths()).build()
 					.useDefaultResponseMessages(false)
 					.globalResponseMessage(RequestMethod.GET,responseMessages);

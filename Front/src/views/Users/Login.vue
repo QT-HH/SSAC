@@ -1,5 +1,6 @@
 <template>
   <div class="user" id="login">
+    <v-parallax src="https://cdn.vuetifyjs.com/images/parallax/material.jpg">
     <div class="wrapC">
       <h1>
         SSAC
@@ -31,25 +32,25 @@
         />
         <div class="error-text" v-if="error.password">{{error.password}}</div>
       </div>
-      <button
-        class="btn btn--back btn--login"
+      <v-btn
+        color="blue"
         @click="onLogin"
         :disabled="!isSubmit"
         :class="{disabled : !isSubmit}"
         v-if="isSubmit === true"
-      >로그인</button>
+      >로그인</v-btn>
 
       <div class="sns-login">
         <div class="text">
           <p>SNS 간편 로그인</p>
-          <button
-          class="btn btn--back btn--login"
+          <v-btn
+          color="yellow"
           @click="KakaoLogin"
-            >카카오톡</button>
-          <button
-          class="btn btn--back btn--login"
+            >카카오톡</v-btn>
+          <v-btn
+          color="green"
           @click="NaverLogin"
-            >네이버</button>
+            >네이버</v-btn>
         </div>
 
         <!-- <kakaoLogin :component="component" /> -->
@@ -69,6 +70,7 @@
         </div>
       </div>
     </div>
+  </v-parallax>
   </div>
 </template>
 

@@ -133,7 +133,7 @@ export default {
           password
         };
         this.$store.dispatch("CREATE_USER1", newuser);
-        this.$router.push("/signup/myteam");
+        this.$router.push({name:"SelectTeam"});
       }
     }
    
