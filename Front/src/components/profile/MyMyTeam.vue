@@ -99,6 +99,7 @@
 <script>
 import { mapState } from 'vuex'
 
+
 export default {
   name: 'MyMyTeam',
   data () {
@@ -106,6 +107,7 @@ export default {
         dialog: false,
         selectedData: Object,
         nickname: '',
+
       }
     },
   computed: {

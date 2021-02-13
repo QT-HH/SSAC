@@ -59,7 +59,7 @@
             border-variant="success"
           >
             <v-img
-              :src="team.img"
+              :src="team.logo"
               class="white--text align-end"
               height="100px"
             >
@@ -87,6 +87,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import { listTeams } from "@/api/profile/newteam.js"
 
 export default {
   name: "NewTeam",
@@ -101,6 +102,16 @@ export default {
     ...mapState([
       'teams'
     ]),
+  },
+  created() {
+    listTeams(
+      (response) => {
+        console.log(response);
+        this.teams = response.data
+      },
+      error => {
+        console.log(error);
+      });
   },
   methods: {
     realSearch: function() {
