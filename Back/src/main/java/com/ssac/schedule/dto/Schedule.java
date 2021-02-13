@@ -4,12 +4,15 @@ import lombok.Data;
 
 @Data
 public class Schedule {
-	private int no;
-	private String team1;
-	private String team2;
-	private int event_no;
+	private int id;
 	private String start;
-	private int result1;
-	private int result2;
-	private boolean done;
+	private String start_time;
+	private int team1_id;
+	private int team2_id;
+	private String name;
+	private int team1_score;
+	private int team2_score;
+	private int event_no;
+	private String betDone;
+	private String gameDone;
 }
