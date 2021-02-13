@@ -6,7 +6,12 @@
           <v-card style="height: 545px" width="max-content">
             <v-list two-line>
               <br>
-              <v-list-item  v-for="(chat,idx) in chats" :key="idx" link :to="`chat-room/${idx}`" >
+              <v-list-item  
+              v-for="(chat,idx) in chats" 
+              :key="idx" 
+              link 
+              :to="`chat-room/${idx}`"
+              @click="selectChat(idx)" >
                 <v-list-item-avatar @click="footerOut">
                   <v-icon :class="[chat.iconClass]">
                     {{ chat.icon }}
@@ -88,6 +93,10 @@
 </template>
 
 <script>
+
+import {listChatroom} from '@/api/sports/chat.js'
+
+
 export default {
   name:"chat",
   data () {
@@ -96,6 +105,7 @@ export default {
         notifications: false,
         sound: true,
         widgets: false,
+        idx:0,
         chats: [
           { icon: 'mdi-clipboard-text', iconClass: 'amber white--text', home: '대구FC', away: 'T1', participants: ['노정', '규태', '경연'] },
           { icon: 'mdi-gesture-tap-button', iconClass: 'blue white--text', home: '삼성 라이온즈', away: 'GEN.G', participants: ['노정', '규태', '경연'] },
@@ -112,21 +122,27 @@ export default {
       }
     },
     created() {
-      getMatch(
-      this.$store.state.userInfo.userid,
+      listChatroom(
+      this.$store.state.user.userid,
       (response) => {
         console.log(response);
-        this.article = response.data;
+        this.chats = response.data
       },
       (error) => {
         console.log(error)
       });
+
+      
+
     },
     methods: {
       footerOut: function () {
         this.$store.dispatch('footerOut');
         console.log(this.$store.state.isChatRoom);
-      }
+      },
+      selectTeam(idx) {
+      this.$store.state.chat.idx = idx
+    },
     }
 }
 </script>

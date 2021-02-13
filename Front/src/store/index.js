@@ -21,7 +21,11 @@ const state = {
     myteams: []
   },
   surveyAnswers: [],
+  chat: {
+    idx: 0
+  },
   user: {
+    userid: 0,
     email: "nojeong@naver.com",
     password: "123123123",
     nickname: "nojjeong",
