@@ -12,7 +12,7 @@ public class Schedule {
 	private String name;
 	private int team1_score;
 	private int team2_score;
-	private int event_no;
+	private int events_no;
 	private String betDone;
 	private String gameDone;
 }
