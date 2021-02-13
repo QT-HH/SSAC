@@ -1,7 +1,9 @@
 <template>
-  <v-app>
+  <v-app class="app">
     <router-view/>
+
     <Footer v-if="this.$store.state.isLogin && !this.$store.state.isChatRoom"/>
+
   </v-app>
 </template>
 
@@ -14,4 +16,11 @@ export default {
   },
 };
 </script>
+
+<style>
+.app {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+</style>
  

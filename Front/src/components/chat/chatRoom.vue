@@ -34,7 +34,7 @@
 <script>
 import {Chat} from 'vue-quick-chat';
 import 'vue-quick-chat/dist/vue-quick-chat.css';
-
+import {chatroomEnter} from '@/api/sports/chat.js'
 
 export default {
     name: 'ChatRoom',
@@ -145,7 +145,7 @@ export default {
             ],
             scrollBottom: {
                 messageSent: true,
-                messageReceived: false
+                messageReceived: true
             },
             displayHeader:true,
             profilePictureConfig: {
@@ -204,6 +204,24 @@ export default {
                 }
             }
         }
+    },
+    created () {
+        let para = {
+            roomid: this.$store.state.chat.idx,
+            userid: this.$store.state.user.userid
+        };
+        chatroomEnter(
+            para,
+            (response) => {
+                console.log(response);
+                // this.participants: response.data
+                // this.myself: response.data
+                // this.messages: response.data
+            },
+            (error) => {
+                console.log(error)
+            });
+
     },
     methods: {
         onType: function (event) {
@@ -265,4 +283,7 @@ export default {
 
 <style>
 
+.quick-chat-container {
+    height: 100vh;
+}
 </style>
