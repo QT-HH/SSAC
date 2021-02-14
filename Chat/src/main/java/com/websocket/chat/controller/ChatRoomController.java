@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -88,13 +89,56 @@ public class ChatRoomController {
 		HashMap<String, String> temp = new HashMap<String, String>();
 		temp.put("roomId", roomId);
 		temp.put("regtime", time);
-		List<ChatMessage> messages = chatService.getChatMessage(temp);
 		List<ChatUser> users = chatService.getChatUser(roomId);
+		List<ChatMessage> message = chatService.getChatMessage(temp);
+		Map<String, Object> myself = new HashMap<String, Object>();
+		List<Map<String, Object>> participants = new ArrayList<Map<String,Object>>();
+		List<Map<String, Object>> messages = new ArrayList<Map<String, Object>>();
+		Map<String, Object> id = new HashMap<String, Object>();
+		int ids = 2;
+		for(int i=0; i<users.size(); i++) {
+			if(users.get(i).getUserId().equals(userid)) {
+				myself.put("name", users.get(i).getUserName());
+				myself.put("id", 1);
+				myself.put("profilePicture", "img.src");
+			} else {
+				Map<String, Object> p = new HashMap<String, Object>();
+				p.put("name", users.get(i).getUserName());
+				p.put("id", ids);
+				p.put("profilePicture", "img.src");
+				id.put(users.get(i).getUserName(), ids);
+				ids++;
+				participants.add(p);
+			}
+		}
 		
+		for(int i=0; i<message.size(); i++) {
+			Map<String, Object> m = new HashMap<String, Object>();
+			m.put("content", message.get(i).getMessage());
+			if(message.get(i).getSender().equals(userid)) {
+				m.put("myself", true);
+				m.put("participantId", 1);
+			} else {
+				m.put("myself", false);
+				m.put("participantId", id.get(message.get(i).getSender()));
+			}
+			Map<String, Object> times = new HashMap<String, Object>();
+			times.put("year", Integer.parseInt(message.get(i).getRegtime().substring(0, 4)));
+			times.put("month", Integer.parseInt(message.get(i).getRegtime().substring(5, 7)));
+			times.put("day", Integer.parseInt(message.get(i).getRegtime().substring(8, 10)));
+			times.put("hour", Integer.parseInt(message.get(i).getRegtime().substring(11, 13)));
+			times.put("minute", Integer.parseInt(message.get(i).getRegtime().substring(14, 16)));
+			times.put("second", Integer.parseInt(message.get(i).getRegtime().substring(17, 19)));
+			times.put("millisecond", 0);
+			m.put("timestamp", times);
+			m.put("type", "text");
+			messages.add(m);
+		}
 		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("myself", myself);
+		result.put("participants", participants);
 		result.put("messages", messages);
-		result.put("users", users);
-		return new ResponseEntity<>(result, HttpStatus.NO_CONTENT);
+		return new ResponseEntity<>(result, HttpStatus.OK);
     }
     
 	@ApiOperation(value = "4. 채팅방 초대(채팅방 생성하고 나중에 초대)", notes = "입력 : 채팅방번호(roomId), 초대한 사람 아이디 배열(ids), 닉네임 배열(nicknames)")
