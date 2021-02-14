@@ -21,8 +21,9 @@ public class ChatController {
     @MessageMapping("/chat/message")
     public void message(ChatMessage message) {
         try {
+        	System.out.println("채팅 to server");
 			chatService.chatting(message);
-			System.out.println("채팅 to server");
+			System.out.println("채팅 to db");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

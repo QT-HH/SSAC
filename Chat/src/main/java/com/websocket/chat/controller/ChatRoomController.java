@@ -40,6 +40,7 @@ public class ChatRoomController {
     @ResponseBody
     public ChatRoom roomInfo(@PathVariable String roomId) {
         try {
+        	System.out.println("roomInfo");
 			return chatService.getChatRoomByRoomId(roomId);
 		} catch (Exception e) {
 			e.printStackTrace();
