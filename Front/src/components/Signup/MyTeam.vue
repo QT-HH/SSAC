@@ -184,7 +184,7 @@ export default {
             signup(
                 this.$store.state.newUser,
                 (res) => {
-                    if (res.data.message === "success") {
+                    if (res.data === "success") {
                         this.$router.push("/signup/welcome")
                     } else {
                         alert("로그인 실패하였습니다1.")
