@@ -8,7 +8,9 @@ import java.util.Map;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -63,7 +65,7 @@ public class NewsfeedCommentController {
 	}
 	
 	@ApiOperation(value = "뉴스피드 댓글 수정", notes = "입력 : 댓글번호(no), 내용(comment)")
-	@PostMapping("/commentUpdate")
+	@PatchMapping("/commentUpdate")
 	public ResponseEntity<?> updateComment(@RequestBody String js) throws Exception {
 		// 뉴스피드 댓글 수정하기
 		// 입력 : 댓글번호, 수정내용
@@ -72,7 +74,7 @@ public class NewsfeedCommentController {
 	}
 	
 	@ApiOperation(value = "뉴스피드 댓글 삭제", notes = "입력 : 댓글번호(no)")
-	@PostMapping("/commentDelete")
+	@DeleteMapping("/commentDelete")
 	public ResponseEntity<?> deleteComment(@RequestParam String no) throws Exception {
 		// 뉴스피드 댓글 삭제하기
 		// 입력 : 댓글번호

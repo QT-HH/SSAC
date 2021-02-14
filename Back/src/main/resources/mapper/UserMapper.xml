@@ -16,7 +16,7 @@
 	</insert>	
 	
 	<!-- 회원수정 -->
-	<update id="updateUser" parameterType="com.ssac.user.dto.User">
+	<update id="updateUserNickname" parameterType="com.ssac.user.dto.User">
 		update user
 		   set nickname = #{nickname}
 		 where id = #{id}
@@ -26,4 +26,30 @@
 	<delete id="deleteUser" parameterType="com.ssac.user.dto.User">
 		delete from user where id=#{id}
 	</delete>
+	
+	<!-- 팔로잉 목록 -->
+	<select id="selectFollowing" parameterType="String" resultType="String">
+		select follow_id
+		from follow
+		where id = #{userid}
+	</select>
+	
+	<!-- 팔로워 목록 -->
+	<select id="selectFollower" parameterType="String" resultType="String">
+		select id
+		from follow
+		where follow_id = #{userid}
+	</select>
+	
+	<!-- 비밀번호 변경 -->
+	<update id="updateUserPassword" parameterType="HashMap">
+		update user
+		set pw = #{userpw}
+		where id = #{userid}
+	</update>
+	
+	<!-- 팔로잉 -->
+	<insert id="insertFollowing" parameterType="HashMap">
+		insert into follow values (#{userid}, #{follow_id})
+	</insert>
 </mapper>

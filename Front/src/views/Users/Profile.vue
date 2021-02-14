@@ -6,8 +6,8 @@
         <v-row no-gutters >
       <img class="d-flex mx-3 rounded-circle" width="80px" height="80px" src="https://mblogthumb-phinf.pstatic.net/MjAxNzAzMTVfMTE4/MDAxNDg5NTMzMTAwMjY0.m9UYu7Dt4CyJcaMMeAuIhOFP2nnXBnW5eUqx3rXZY14g.3axKiINI_FaRrOzK70_FY2qRXLulYTBkzwFIaeY8yd4g.JPEG.doghter4our/IMG_5252.jpg?type=w800" alt="Generic placeholder image">
           <v-col >
-            <div class="pa-2 text"
-
+            <div  class="pa-2 text"
+              
             >
               게시글
             </div>
@@ -43,6 +43,9 @@
           </v-col>
         </v-row>
       </v-container>
+      <div class="d-flex align-center justify-center mx-auto">
+        {{this.introduce}}
+      </div>
       <v-container>
         <div class="text-center">
           <v-btn
@@ -84,8 +87,20 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name:"Profile",
+  data() {
+    return {
+      introduce: this.$store.state.user.introduce
+    }
+  },
+  computed: {
+      ...mapState([
+        'user'
+      ])
+    },
   methods:{
     gotoArticle() {
       if (this.$route.path !== "/profile") {
