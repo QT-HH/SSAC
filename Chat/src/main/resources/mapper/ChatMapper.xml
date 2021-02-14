@@ -16,7 +16,7 @@
 	
 	<!-- 채팅방 인원 목록 -->
 	<select id="selectChatUserByRoomId" parameterType="String" resultType="com.websocket.chat.model.ChatUser">
-		select userId, userName
+		select *
 		from chat_user
 		where roomId = #{roomId}
 	</select>

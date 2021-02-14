@@ -52,9 +52,21 @@ public class ChatRoomController {
     public ResponseEntity<?> room(@RequestParam String userid) throws Exception {
         // 채팅방 목록
     	// 입력 : userid
+		List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
     	List<ChatRoom> rooms = chatService.getChatRoom(userid);
+    	System.out.println(rooms.get(0).getName());
+    	System.out.println("ss");
+    	for(int i=0; i<rooms.size(); i++) {
+    		Map<String, Object> map = new HashMap<String, Object>();
+    		map.put("room", rooms.get(i));
+    		List<ChatUser> users = chatService.getChatUser(rooms.get(i).getRoomId());
+    		List<String> usernames = new ArrayList<String>();
+    		for(int j=0; j<users.size(); j++) usernames.add(users.get(j).getUserName());
+    		map.put("usernames", usernames);
+    		list.add(map);
+    	}
     	System.out.println("채팅방 목록 조회");
-        return new ResponseEntity<>(rooms, HttpStatus.OK);
+        return new ResponseEntity<>(list, HttpStatus.OK);
     }
 	
 	@ApiOperation(value = "2. 채팅방 생성(채팅할 사람 초대포함)", notes = "입력 : 채팅방이름(name), 채팅맴버 아이디 배열(ids), 채팅맴버 닉네임 배열(nicknames)")

@@ -1,10 +1,8 @@
 package com.websocket.chat.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 public class ChatMessage {
 
     // 메시지 타입 : 입장, 채팅
