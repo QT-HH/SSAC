@@ -1,4 +1,3 @@
-id,start,start_time,team1_id,team2_id,name,team1_score,team2_score,events_no,betDone,gameDone
 91,2021-04-03,14:00,28,23,KIA vs 두산,0,0,2,FALSE,FALSE
 92,2021-04-03,14:00,24,32,롯데 vs SK,0,0,2,FALSE,FALSE
 93,2021-04-03,14:00,30,31,LG vs NC,0,0,2,FALSE,FALSE

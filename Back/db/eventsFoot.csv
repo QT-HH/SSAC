@@ -1,4 +1,3 @@
-id,start,start_time,team1_id,team2_id,name,team1_score,team2_score,events_no,betDone,gameDone
 806,2021-02-27,14:00,10,4,전북 vs 서울,0,0,1,FALSE,FALSE
 807,2021-02-27,16:30,3,7,대구 vs 수원FC,0,0,1,FALSE,FALSE
 808,2021-02-28,14:00,12,9,포항 vs 인천,0,0,1,FALSE,FALSE
