@@ -108,9 +108,11 @@ public class ScheduleController {
 			Bet bet = new Bet();
 			long s = (long) jsonObj.get("schedule_id");
 			long n = (long) jsonObj.get("bet_num");
+			String userid = (String) jsonObj.get("userid");
 			bet.setSchedule_id((int) s);
-			bet.setUserid((String) jsonObj.get("userid"));
+			bet.setUserid(userid);
 			bet.setBet_num((int) n);
+			System.out.println(s+" "+n+" "+userid);
 			int result = 0;
 			if(scheduleService.checkBetting(bet).equals(bet.getUserid())) result = scheduleService.cancleBetting(bet);
 			else result = scheduleService.writeBetting(bet);
