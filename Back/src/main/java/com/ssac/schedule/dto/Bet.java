@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class Bet {
 	private int no;
-	private int schedule_no;
-	private String bet_id;
-	private int bet_team;
+	private int schedule_id;
+	private String userid;
+	private int bet_num;
 }
