@@ -103,17 +103,9 @@ public class ChatRoomController {
     public ResponseEntity<?> enterChatRoom(@RequestParam String roomId, @RequestParam String userid) throws Exception {
     	// 채팅 내역 불러오기
     	// 입력 : 채팅방번호(roomId), userid
-    	HashMap<String, String> map = new HashMap<String, String>();
-    	map.put("roomId", roomId);
-    	map.put("userid", userid);
-    	String time = chatService.getEnterTime(map);
-    	
-		// 첫입장이 아니면 첫입장 이후 메세지 다 불러오기
-		HashMap<String, String> temp = new HashMap<String, String>();
-		temp.put("roomId", roomId);
-		temp.put("regtime", time);
+		
 		List<ChatUser> users = chatService.getChatUser(roomId);
-		List<ChatMessage> message = chatService.getChatMessage(temp);
+		List<ChatMessage> message = chatService.getChatMessage(roomId);
 		Map<String, Object> myself = new HashMap<String, Object>();
 		List<Map<String, Object>> participants = new ArrayList<Map<String,Object>>();
 		List<Map<String, Object>> messages = new ArrayList<Map<String, Object>>();
@@ -164,34 +156,8 @@ public class ChatRoomController {
 		System.out.println("채팅방 입장 성공");
 		return new ResponseEntity<>(result, HttpStatus.OK);
     }
-    
-	@ApiOperation(value = "4. 채팅방 초대(채팅방 생성하고 나중에 초대)", notes = "입력 : 채팅방번호(roomId), 초대한 사람 아이디 배열(ids), 닉네임 배열(nicknames)")
-    @PostMapping("/roomInvite")
-    public ResponseEntity<?> inviteRoom(@RequestBody String js) throws Exception {
-    	// 채팅방에 친구 초대
-    	// 입력 : 채팅방번호(roomId), 초대한 사람 리스트(ids)
-    	JSONParser jsonParse = new JSONParser();
-		JSONObject jsonObj = null;
-		try {
-			jsonObj = (JSONObject) jsonParse.parse(js);
-			String roomId = (String) jsonObj.get("roomId");
-			List<String> ids = (List<String>) jsonObj.get("ids");
-			List<String> nicknames = (List<String>) jsonObj.get("nicknames");
-			for(int i=0; i<ids.size(); i++) {
-				HashMap<String, String> map = new HashMap<String, String>();
-				map.put("roomId", roomId);
-				map.put("userId", ids.get(i));
-				map.put("userName", nicknames.get(i));
-				chatService.createChatUser(map);
-			}
-			return new ResponseEntity<>("success", HttpStatus.OK);
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		return new ResponseEntity<>("fail", HttpStatus.NO_CONTENT);
-    }
     	
-	@ApiOperation(value = "5. 채팅방 나가기", notes = "입력 : userid, 채팅방번호(roomId)")
+	@ApiOperation(value = "4. 채팅방 나가기", notes = "입력 : userid, 채팅방번호(roomId)")
 	@DeleteMapping("/roomExit")
 	public ResponseEntity<?> exitChatRoom(@RequestBody String js) throws Exception {
 		JSONParser jsonParse = new JSONParser();

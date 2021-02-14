@@ -17,7 +17,6 @@ public interface ChatMapper {
 	public int deleteChatUser(HashMap<String, String> map) throws Exception;
 	public List<ChatRoom> selectChatRoom(String userId) throws Exception;
 	public int insertChatMessage(ChatMessage chatmessage) throws Exception;
-	public List<ChatMessage> selectChatMessage(HashMap<String, String> map) throws Exception;
-	public String selectEnter(HashMap<String, String> map) throws Exception;
+	public List<ChatMessage> selectChatMessage(String roomId) throws Exception;
 	public ChatRoom selectChatRoomByRoomId(String roomId) throws Exception;
 }
