@@ -130,15 +130,18 @@ public class ScheduleController {
 		JSONObject jsonObj = null;
 		try {
 			jsonObj = (JSONObject) jsonParse.parse(js);
-			int event_id = Integer.parseInt((String)jsonObj.get("event_id"));
-			int team_num = Integer.parseInt((String)jsonObj.get("team_num"));
-			int pm = Integer.parseInt((String) jsonObj.get("pm"));
-			HashMap<String, Object> map = new HashMap<String, Object>();
-			map.put("event_id", event_id);
-			map.put("pm", pm);
+			long event_id = (long) jsonObj.get("event_id");
+			long team_num = (long) jsonObj.get("team_num");
+			long pm = (long) jsonObj.get("pm");
 			System.out.println(event_id+" "+team_num+" "+pm);
+			int e = (int) event_id;
+			int t = (int) team_num;
+			int p = (int) pm;
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			map.put("event_id", e);
+			map.put("pm", p);
 			int result = 0;
-			if(team_num == 1) result = scheduleService.writeTeam1Score(map);
+			if(t == 1) result = scheduleService.writeTeam1Score(map);
 			else result = scheduleService.writeTeam2Score(map);
 			if(result > 0) return new ResponseEntity<>("success", HttpStatus.OK);
 		} catch(Exception e) {
