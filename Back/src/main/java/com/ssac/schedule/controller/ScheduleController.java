@@ -106,9 +106,11 @@ public class ScheduleController {
 		try {
 			jsonObj = (JSONObject) jsonParse.parse(js);
 			Bet bet = new Bet();
-			bet.setSchedule_id((int) jsonObj.get("schedule_id"));
+			long s = (long) jsonObj.get("schedule_id");
+			long n = (long) jsonObj.get("bet_num");
+			bet.setSchedule_id((int) s);
 			bet.setUserid((String) jsonObj.get("userid"));
-			bet.setBet_num((int) jsonObj.get("bet_num"));
+			bet.setBet_num((int) n);
 			int result = 0;
 			if(scheduleService.checkBetting(bet).equals(bet.getUserid())) result = scheduleService.cancleBetting(bet);
 			else result = scheduleService.writeBetting(bet);
