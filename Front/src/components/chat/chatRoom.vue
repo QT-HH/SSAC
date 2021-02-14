@@ -2,28 +2,21 @@
 
   <div>
     <Chat 
-          :participants="participants"
-          :myself="myself"
-          :messages="messages"
-          :chat-title="chatTitle"
-          :placeholder="placeholder"
-          :colors="colors"
-          :border-style="borderStyle"
-          :hide-close-button="hideCloseButton"
-          :close-button-icon-size="closeButtonIconSize"
-          :submit-icon-size="submitIconSize"
-          :submit-image-icon-size="submitImageIconSize"
-          :load-more-messages="toLoad.length > 0 ? loadMoreMessages : null"
-          :link-options="linkOptions"
-          :async-mode="asyncMode"
-          :scroll-bottom="scrollBottom"
-          :display-header="true"
-          :send-images="true"
-          :profile-picture-config="profilePictureConfig"
-          :timestamp-config="timestampConfig"
+       :participants="participants"
+       :myself="myself"
+       :messages="messages"
+       :onType="onType"
+       :onMessageSubmit="onMessageSubmit"
+       :chatTitle="chatTitle"
+       :placeholder="placeholder"
+       :colors="colors"
+       :borderStyle="borderStyle"
+       :hideCloseButton="hideCloseButton"
+       :closeButtonIconSize="closeButtonIconSize"
+       :submitIconSize="submitIconSize"
           @onImageClicked="onImageClicked"
           @onImageSelected="onImageSelected"
-          @onMessageSubmit="onMessageSubmit"
+          @onMessageSubmit="sendMessage"
           @onType="onType"
           @onClose="onClose">
           </Chat>
@@ -37,9 +30,15 @@
 <script src="/webjars/stomp-websocket/2.3.3-1/stomp.min.js"></script>
 <script>
 
+import Stomp from 'webstomp-client'
+import SockJS from 'sockjs-client'
+
 import {Chat} from 'vue-quick-chat';
 import 'vue-quick-chat/dist/vue-quick-chat.css';
 import {chatroomEnter} from '@/api/sports/chat.js'
+
+var sock = new SockJS("http://i4d102.p.ssafy.io:9090/ws-stomp");
+var ws = Stomp.over(sock);
 
 export default {
     name: 'ChatRoom',
@@ -48,7 +47,6 @@ export default {
     },
     data() {
         return {
-            
             roomId: '',
             room: {},
             sender: '',
@@ -56,15 +54,14 @@ export default {
             // 메세지 담기
             messages: [],
             visible: true,
-            participants: [
-            ],
-            myself: {
-            },
+            participants: [],
+            myself: {},
+            messages: [],
             chatTitle: 'My chat title',
             placeholder: 'send your message',
             colors: {
                 header: {
-                    bg: '#536DFE',
+                    bg: '#d30303',
                     text: '#fff'
                 },
                 message: {
@@ -73,15 +70,15 @@ export default {
                         text: '#bdb8b8'
                     },
                     others: {
-                        bg: '#536DFE',
+                        bg: '#fb4141',
                         text: '#fff'
                     },
                     messagesDisplay: {
                         bg: '#f7f3f3'
                     }
                 },
-                submitIcon: '#536DFE',
-                submitImageIcon: '#536DFE',
+                submitIcon: '#b91010',
+                submitImageIcon: '#b91010',
             },
             borderStyle: {
                 topLeft: "10px",
@@ -92,25 +89,73 @@ export default {
             hideCloseButton: false,
             submitIconSize: 25,
             closeButtonIconSize: "20px",
-            submitImageIconSize: 20,
             asyncMode: false,
+            toLoad: [
+                {
+                    content: 'Hey, John Doe! How are you today?',
+                    myself: false,
+                    participantId: 2,
+                    timestamp: {year: 2011, month: 3, day: 5, hour: 10, minute: 10, second: 3, millisecond: 123},
+                    uploaded: true,
+                    viewed: true,
+                    type: 'text'
+                },
+                {
+                    content: "Hey, Adam! I'm feeling really fine this evening.",
+                    myself: true,
+                    participantId: 3,
+                    timestamp: {year: 2010, month: 0, day: 5, hour: 19, minute: 10, second: 3, millisecond: 123},
+                    uploaded: true,
+                    viewed: true,
+                    type: 'text'
+                },
+            ],
             scrollBottom: {
                 messageSent: true,
-                messageReceived: true
+                messageReceived: false
             },
             displayHeader:true,
-            profilePictureConfig: {
-                others: true,
-                myself: true,
-                styles: {
-                    width: '30px',
-                    height: '30px',
-                    borderRadius: '50%'
-                }
-            },
             timestampConfig: {   
                 format: 'HH:mm',
                 relative: false
+            },
+            // there are other options, you can check them here
+            // https://soapbox.github.io/linkifyjs/docs/options.html
+            linkOptions: {
+                myself: {
+                    className: 'myLinkClass',
+                    events: {
+                        click: function (e) {
+                            alert('Link clicked!');
+                        },
+                        mouseover: function (e) {
+                            alert('Link hovered!');
+                        }
+                    },
+                    format: function (value, type) {
+                        if (type === 'url' && value.length > 50) {
+                            value = value.slice(0, 50) + '…';
+                        }
+                        return value;
+                    }
+                },
+                others: {
+                    className: 'othersLinkClass',
+                    events: {
+                        click: function (e) {
+                            alert('Link clicked!');
+                        },
+                        mouseover: function (e) {
+                            alert('Link hovered!');
+                        }
+                    },
+                    format: function (value, type) {
+                        if (type === 'url' && value.length > 50) {
+                            value = value.slice(0, 50) + '…';
+                        }
+                        return value;
+                    }
+                }
             },
             // there are other options, you can check them here
             // https://soapbox.github.io/linkifyjs/docs/options.html
@@ -118,16 +163,17 @@ export default {
     },
     created () {
         let para = {
-            roomid: this.$store.state.chat.idx,
+            roomid: this.$store.state.chat.roomid,
             userid: this.$store.state.user.userid
         };
         chatroomEnter(
             para,
             (response) => {
                 console.log(response);
-                // this.participants: response.data
-                // this.myself: response.data
-                // this.messages: response.data
+                this.participants= response.data.participants
+                this.myself= response.data.myself
+                this.messages= response.data.messages
+                this.connect()
             },
             (error) => {
                 console.log(error)
@@ -135,9 +181,29 @@ export default {
 
     },
     methods: {
+        connect() {
+            // pub/sub event
+            ws.connect({}, function(frame) {
+                ws.subscribe("/sub/chat/room/"+this.$store.state.chat.roomid, function(message) {
+                    var recv = JSON.parse(message.body);
+                    console.log(recv);
+                    vm.recvMessage(recv);
+                });
+                ws.send("/pub/chat/message", {}, JSON.stringify({type: 'TALK', message: "asd",roomId: this.$store.state.chat.roomid, sender:this.myself.id,}));
+            }, function(error) {
+                console.log(error);
+            });
+        },
         onType: function (event) {
             //here you can set any behavior
             console.log(event);
+        },
+        sendMessage: function() {
+            ws.send("http://i4d102.p.ssafy.io:9090/pub/chat/message", {}, JSON.stringify({type:'TALK', roomId:this.$store.state.chat.roomid, sender:this.myself.id, message:this.message}));
+            this.message = '';
+        },
+        recvMessage: function(recv) {
+            this.messages.unshift({"type":recv.type,"sender":recv.type=='ENTER'?'[알림]':recv.sender,"message":recv.message})
         },
         loadMoreMessages(resolve) {
             setTimeout(() => {
@@ -155,7 +221,7 @@ export default {
             */
             this.message = message;
             this.messages.push(message);
-
+        
             /*
             * you can update message state after the server response
             */
@@ -191,6 +257,7 @@ export default {
         }
     }
 }
+
 </script>
 
 <style>

@@ -11,14 +11,14 @@
               :key="idx" 
               link 
               :to="`chat-room/${idx}`"
-              @click="selectChat(idx)" >
+               >
                 <v-list-item-avatar @click="footerOut">
                   <v-icon>
                     fas fa-search
                   </v-icon>
                 </v-list-item-avatar>
 
-                <v-list-item-content @click="footerOut">  
+                <v-list-item-content @click="footerOut; selectChat(chat.room.roomId)">  
                   <v-list-item-title>{{ chat.room.name }}</v-list-item-title>
                   <v-list-item-subtitle>
                     <v-chip v-for="(name, idx) in chat.usernames" :key="idx" class="ma-2" x-small>
@@ -120,9 +120,9 @@ export default {
         // 채팅방 이름
         name: '',
         //채팅멤버 아이디 배열
-        ids: [],
+        ids: [this.$store.state.user.userid],
         //채팅멤버 닉네임 배열
-        nicknames: [],
+        nicknames: [this.$store.state.user.nickname],
         chats: [],
         // 여기는 채팅만드는 팀
         games: [],
@@ -148,8 +148,9 @@ export default {
         this.$store.dispatch('footerOut');
         console.log(this.$store.state.isChatRoom);
       },
-      selectChat(idx) {
-      this.$store.state.chat.idx = idx
+      selectChat(roomid) {
+        console.log(roomid);
+        this.$store.state.chat.roomid = roomid
       },
       teamselect(game) {
         this.name = game
@@ -186,6 +187,15 @@ export default {
             console.log(response);
             console.log(para);
             // this.$router.push({name:"SportsChat"})
+            listChatroom(
+              this.$store.state.user.userid,
+              (response) => {
+                console.log(response);
+                this.chats = response.data 
+              },
+              (error) => {
+                console.log(error)
+              });
             },  
           (error) => {
             console.log(error)

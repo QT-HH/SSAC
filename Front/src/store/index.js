@@ -22,7 +22,7 @@ const state = {
   },
   surveyAnswers: [],
   chat: {
-    idx: 0
+    roomid: ''
   },
   user: {
     userid: 'aaa@aaa.com',
