@@ -106,7 +106,7 @@ public class ChatRoomController {
 				p.put("name", users.get(i).getUserName());
 				p.put("id", ids);
 				p.put("profilePicture", "img.src");
-				id.put(users.get(i).getUserName(), ids);
+				id.put(users.get(i).getUserId(), ids);
 				ids++;
 				participants.add(p);
 			}

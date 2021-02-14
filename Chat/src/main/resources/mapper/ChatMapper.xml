@@ -50,7 +50,7 @@
 	
 	<!-- 첫방문 여부 -->
 	<select id="selectEnter" parameterType="HashMap" resultType="String">
-		select roomId, type, sender, message, regtime, username
+		select regtime
 		from chat_message
 		where type = "ENTER" and (roomId = #{roomId} and sender = #{userid}) 
 	</select>
