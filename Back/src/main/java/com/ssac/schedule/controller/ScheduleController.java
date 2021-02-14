@@ -130,9 +130,9 @@ public class ScheduleController {
 		JSONObject jsonObj = null;
 		try {
 			jsonObj = (JSONObject) jsonParse.parse(js);
-			int event_id = (int) jsonObj.get("event_id");
-			int team_num = (int) jsonObj.get("team_num");
-			int pm = (int) jsonObj.get("pm");
+			int event_id = Integer.parseInt((String)jsonObj.get("event_id"));
+			int team_num = Integer.parseInt((String)jsonObj.get("team_num"));
+			int pm = Integer.parseInt((String) jsonObj.get("pm"));
 			HashMap<String, Object> map = new HashMap<String, Object>();
 			map.put("event_id", event_id);
 			map.put("pm", pm);
