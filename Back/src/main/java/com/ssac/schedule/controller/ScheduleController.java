@@ -114,7 +114,8 @@ public class ScheduleController {
 			bet.setBet_num((int) n);
 			System.out.println(s+" "+n+" "+userid);
 			int result = 0;
-			if(scheduleService.checkBetting(bet).equals(bet.getUserid())) result = scheduleService.cancleBetting(bet);
+			String check = scheduleService.checkBetting(bet);
+			if(check != null) result = scheduleService.cancleBetting(bet);
 			else result = scheduleService.writeBetting(bet);
 			
 			if(result > 0) {
