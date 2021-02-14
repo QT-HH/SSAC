@@ -204,7 +204,8 @@ public class ScheduleController {
 				List<String> users = (List<String>) jsonObj.get("users");
 				long p = (long) jsonObj.get("point");
 				int point = (int) p;
-				System.out.println(e +" "+ users.get(0)+" "+ p);
+				System.out.println(e +" "+ p);
+				System.out.println(users.size());
 				// 포인트 정산하기
 				for(int i=0; i<users.size(); i++) {
 					HashMap<String, Object> map = new HashMap<String, Object>();
