@@ -13,12 +13,4 @@
 		where start = #{time}
 	</select>
 	
-	<insert id="insertBetting" parameterType="HashMap">
-		insert into bet (schedule_id, userid, bet_num)
-		
-	</insert>
-	
-	<select id="selectBetTeam1" parameterType="">
-	
-	</select>
 </mapper>
