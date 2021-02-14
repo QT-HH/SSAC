@@ -5,47 +5,44 @@
       <v-container >
         <v-row no-gutters >
       <img class="d-flex mx-3 rounded-circle" width="80px" height="80px" src="https://mblogthumb-phinf.pstatic.net/MjAxNzAzMTVfMTE4/MDAxNDg5NTMzMTAwMjY0.m9UYu7Dt4CyJcaMMeAuIhOFP2nnXBnW5eUqx3rXZY14g.3axKiINI_FaRrOzK70_FY2qRXLulYTBkzwFIaeY8yd4g.JPEG.doghter4our/IMG_5252.jpg?type=w800" alt="Generic placeholder image">
-          <v-col >
-            <div  class="pa-2 text"
-              
-            >
+          <v-row no-gutters>
+            <div class="d-flex align-center justify-center mx-auto">
+              {{this.nickname}}
+            </div>
+            <div class="d-flex align-center justify-center mx-auto">
+              {{this.introduce}}
+            </div>
+
+          </v-row>
+        </v-row>
+      </v-container>
+      <v-container>
+        <v-col >
+            <div  class="pa-2 text">
               게시글
             </div>
-            <div class="pa-2 text"
-
-            >
+            <div class="pa-2 text">
               123
             </div>
           </v-col>
           <v-col>
-            <div class="pa-2 text"
-
-            >
+            <div class="pa-2 text">
               팔로워
             </div>
-            <div class="pa-2 text"
-
-            >
+            <div class="pa-2 text">
               345
             </div>
           </v-col>
           <v-col>
-            <div class="pa-2 text"
-
-            >
+            <div class="pa-2 text">
               팔로잉
             </div>
-            <div class="pa-2 text"
-
-            >
+            <div class="pa-2 text">
               456
             </div>
           </v-col>
-        </v-row>
       </v-container>
-      <div class="d-flex align-center justify-center mx-auto">
-        {{this.introduce}}
-      </div>
+      
       <v-container>
         <div class="text-center">
           <v-btn
