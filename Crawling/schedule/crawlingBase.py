@@ -36,6 +36,7 @@ while True:
             events["draw_user"] = []
             events["betDone"] = False
             events["gameDone"] = False
+            events["calDone"] = False
             res.append(events)
     except:
         break
