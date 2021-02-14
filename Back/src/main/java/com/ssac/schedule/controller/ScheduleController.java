@@ -163,7 +163,7 @@ public class ScheduleController {
 		return new ResponseEntity<>("fail", HttpStatus.NO_CONTENT);
 	}
 	
-	@ApiOperation(value = "게임종료", notes = "입력 : 경기번호(event_id), 종료여부(true/false - string으로)")
+	@ApiOperation(value = "게임종료", notes = "입력 : 경기번호(event_id), 종료여부(bool : true/false - string으로)")
 	@PatchMapping("/gameDone")
 	public ResponseEntity<?> gamingDone(@RequestBody String js) throws Exception {
 		JSONParser jsonParse = new JSONParser();
@@ -180,17 +180,24 @@ public class ScheduleController {
 		return new ResponseEntity<>("fail", HttpStatus.NO_CONTENT);
 	}
 	
-	@ApiOperation(value = "정산종료", notes = "입력 : 경기번호(event_id), 아이디 배열(users)")
+	@ApiOperation(value = "정산종료", notes = "입력 : 경기번호(event_id), 아이디 배열(users), 포인트(point)")
 	@PatchMapping("/calDone")
 	public ResponseEntity<?> calculateDone(@RequestBody String js) throws Exception {
 		JSONParser jsonParse = new JSONParser();
 		JSONObject jsonObj = null;
 		try {
 			jsonObj = (JSONObject) jsonParse.parse(js);
-			if(scheduleService.calDone((int) jsonObj.get("event_id")) > 0) {
+			int event_id = (int) jsonObj.get("event_id");
+			if(scheduleService.calDone(event_id) > 0) {
 				List<String> users = (List<String>) jsonObj.get("users");
+				int point = (int) jsonObj.get("point");
 				// 포인트 정산하기
-				
+				for(int i=0; i<users.size(); i++) {
+					HashMap<String, Object> map = new HashMap<String, Object>();
+					map.put("userid", users.get(i));
+					map.put("point", point);
+					scheduleService.getPoint(map);
+				}
 				return new ResponseEntity<>("success", HttpStatus.OK);
 			}			
 		} catch(Exception e) {

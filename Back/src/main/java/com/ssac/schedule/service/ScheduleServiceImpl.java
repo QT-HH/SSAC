@@ -69,4 +69,9 @@ public class ScheduleServiceImpl implements ScheduleService {
 	public int cancleBetting(Bet bet) throws Exception {
 		return mapper.deleteBetting(bet);
 	}
+	
+	@Override
+	public int getPoint(HashMap<String, Object> map) throws Exception {
+		return mapper.updateUserPoint(map);
+	}
 }

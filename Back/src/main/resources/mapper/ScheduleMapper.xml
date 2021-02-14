@@ -65,4 +65,9 @@
 		where id = #{event_id}
 	</update>
 	
+	<update id="updateUserPoint" parameterType="HashMap">
+		update user
+		set point = point + #{point}
+		where id = #{userid}
+	</update>
 </mapper>

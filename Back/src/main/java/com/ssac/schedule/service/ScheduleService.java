@@ -30,4 +30,6 @@ public interface ScheduleService {
 
 	int cancleBetting(Bet bet) throws Exception;
 
+	int getPoint(HashMap<String, Object> map) throws Exception;
+
 }
