@@ -22,9 +22,11 @@ public class ChatController {
     public void message(ChatMessage message) {
         try {
 			chatService.chatting(message);
+			System.out.println("채팅 to server");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
         messagingTemplate.convertAndSend("/sub/chat/room/" + message.getRoomId(), message);
+        System.out.println("채팅 to client");
     }
 }

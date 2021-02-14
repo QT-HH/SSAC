@@ -54,8 +54,6 @@ public class ChatRoomController {
     	// 입력 : userid
 		List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
     	List<ChatRoom> rooms = chatService.getChatRoom(userid);
-    	System.out.println(rooms.get(0).getName());
-    	System.out.println("ss");
     	for(int i=0; i<rooms.size(); i++) {
     		Map<String, Object> map = new HashMap<String, Object>();
     		map.put("room", rooms.get(i));
@@ -109,20 +107,17 @@ public class ChatRoomController {
 		Map<String, Object> myself = new HashMap<String, Object>();
 		List<Map<String, Object>> participants = new ArrayList<Map<String,Object>>();
 		List<Map<String, Object>> messages = new ArrayList<Map<String, Object>>();
-		Map<String, Object> id = new HashMap<String, Object>();
-		int ids = 2;
+
 		for(int i=0; i<users.size(); i++) {
 			if(users.get(i).getUserId().equals(userid)) {
 				myself.put("name", users.get(i).getUserName());
-				myself.put("id", 1);
+				myself.put("id", users.get(i).getUserId());
 				myself.put("profilePicture", "https://placekitten.com/300/300");
 			} else {
 				Map<String, Object> p = new HashMap<String, Object>();
 				p.put("name", users.get(i).getUserName());
-				p.put("id", ids);
+				p.put("id", users.get(i).getUserId());
 				p.put("profilePicture", "https://placekitten.com/300/300");
-				id.put(users.get(i).getUserId(), ids);
-				ids++;
 				participants.add(p);
 			}
 		}
@@ -132,10 +127,10 @@ public class ChatRoomController {
 			m.put("content", message.get(i).getMessage());
 			if(message.get(i).getSender().equals(userid)) {
 				m.put("myself", true);
-				m.put("participantId", 1);
+				m.put("participantId", message.get(i).getSender());
 			} else {
 				m.put("myself", false);
-				m.put("participantId", id.get(message.get(i).getSender()));
+				m.put("participantId", message.get(i).getSender());
 			}
 			Map<String, Object> times = new HashMap<String, Object>();
 			times.put("year", Integer.parseInt(message.get(i).getRegtime().substring(0, 4)));
