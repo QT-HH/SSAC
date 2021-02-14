@@ -24,6 +24,17 @@
 		where schedule_id = #{schedule_id}
 	</select>
 	
+	<select id="selectBetByUserId" parameterType="com.ssac.schedule.dto.Bet" resultType="String">
+		select userid
+		from bet
+		where schedule_id = #{schedule_id} and userid = #{userid}
+	</select>
+	
+	<delete id="deleteBetting" parameterType="com.ssac.schedule.dto.Bet">
+		delete from bet
+		where schedule_id = #{schedule_id} and userid = #{userid}
+	</delete>
+	
 	<update id="updateBetDone" parameterType="HashMap">
 		update schedule
 		set betDone = #{bool}

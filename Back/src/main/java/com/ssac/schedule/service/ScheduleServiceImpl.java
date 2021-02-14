@@ -59,4 +59,14 @@ public class ScheduleServiceImpl implements ScheduleService {
 	public int writeTeam2Score(HashMap<String, Object> map) throws Exception {
 		return mapper.updateTeam2Score(map);
 	}
+	
+	@Override
+	public String checkBetting(Bet bet) throws Exception {
+		return mapper.selectBetByUserId(bet);
+	}
+	
+	@Override
+	public int cancleBetting(Bet bet) throws Exception {
+		return mapper.deleteBetting(bet);
+	}
 }

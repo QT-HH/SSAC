@@ -26,4 +26,8 @@ public interface ScheduleService {
 
 	int writeTeam2Score(HashMap<String, Object> map) throws Exception;
 
+	String checkBetting(Bet bet) throws Exception;
+
+	int cancleBetting(Bet bet) throws Exception;
+
 }

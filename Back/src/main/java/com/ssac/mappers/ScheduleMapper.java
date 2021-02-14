@@ -19,4 +19,6 @@ public interface ScheduleMapper {
 	public int updateCalDone(Integer event_id) throws Exception;
 	public int updateTeam1Score(HashMap<String, Object> map) throws Exception;
 	public int updateTeam2Score(HashMap<String, Object> map) throws Exception;
+	public String selectBetByUserId(Bet bet) throws Exception;
+	public int deleteBetting(Bet bet) throws Exception;
 }

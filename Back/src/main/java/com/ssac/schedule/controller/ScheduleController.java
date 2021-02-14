@@ -109,7 +109,11 @@ public class ScheduleController {
 			bet.setSchedule_id((int) jsonObj.get("schedule_id"));
 			bet.setUserid((String) jsonObj.get("userid"));
 			bet.setBet_num((int) jsonObj.get("bet_num"));
-			if(scheduleService.writeBetting(bet) > 0) {
+			int result = 0;
+			if(scheduleService.checkBetting(bet).equals(bet.getUserid())) result = scheduleService.cancleBetting(bet);
+			else result = scheduleService.writeBetting(bet);
+			
+			if(result > 0) {
 				System.out.println("배팅완료");
 				return new ResponseEntity<>("success", HttpStatus.OK);
 			}
