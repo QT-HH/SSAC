@@ -158,7 +158,8 @@ public class ScheduleController {
 		try {
 			jsonObj = (JSONObject) jsonParse.parse(js);
 			HashMap<String, Object> map = new HashMap<String, Object>();
-			map.put("event_id", (int) jsonObj.get("event_id"));
+			long event_id = (long) jsonObj.get("event_id");
+			map.put("event_id", (int) event_id);
 			map.put("bool", (String) jsonObj.get("bool"));
 			if(scheduleService.betDone(map) > 0) return new ResponseEntity<>("success", HttpStatus.OK);			
 		} catch(Exception e) {
@@ -175,7 +176,8 @@ public class ScheduleController {
 		try {
 			jsonObj = (JSONObject) jsonParse.parse(js);
 			HashMap<String, Object> map = new HashMap<String, Object>();
-			map.put("event_id", (int) jsonObj.get("event_id"));
+			long event_id = (long) jsonObj.get("event_id");
+			map.put("event_id", (int) event_id);
 			map.put("bool", (String) jsonObj.get("bool"));
 			if(scheduleService.gameDone(map) > 0) return new ResponseEntity<>("success", HttpStatus.OK);			
 		} catch(Exception e) {
@@ -191,10 +193,12 @@ public class ScheduleController {
 		JSONObject jsonObj = null;
 		try {
 			jsonObj = (JSONObject) jsonParse.parse(js);
-			int event_id = (int) jsonObj.get("event_id");
+			long e = (long) jsonObj.get("event_id");
+			int event_id = (int) e;
 			if(scheduleService.calDone(event_id) > 0) {
 				List<String> users = (List<String>) jsonObj.get("users");
-				int point = (int) jsonObj.get("point");
+				long p = (long) jsonObj.get("point");
+				int point = (int) p;
 				// 포인트 정산하기
 				for(int i=0; i<users.size(); i++) {
 					HashMap<String, Object> map = new HashMap<String, Object>();
