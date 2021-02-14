@@ -8,4 +8,6 @@ public interface ScheduleService {
 
 	List<Schedule> listSchedule() throws Exception;
 
+	List<String> getTodayGame(String time) throws Exception;
+
 }

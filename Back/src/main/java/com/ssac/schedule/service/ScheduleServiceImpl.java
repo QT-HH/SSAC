@@ -17,4 +17,9 @@ public class ScheduleServiceImpl implements ScheduleService {
 	public List<Schedule> listSchedule() throws Exception {
 		return mapper.selectSchedule();
 	}
+	
+	@Override
+	public List<String> getTodayGame(String time) throws Exception {
+		return mapper.selectToday(time);
+	}
 }

@@ -9,4 +9,5 @@ import com.ssac.schedule.dto.Schedule;
 @Mapper
 public interface ScheduleMapper {
 	public List<Schedule> selectSchedule() throws Exception;
+	public List<String> selectToday(String time) throws Exception;
 }

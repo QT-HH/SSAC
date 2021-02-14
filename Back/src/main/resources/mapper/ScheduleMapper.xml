@@ -6,4 +6,10 @@
 		select * 
 		from schedule
 	</select>
+	
+	<select id="selectToday" parameterType="String" resultType="String">
+		select name
+		from schedule
+		where start = #{time}
+	</select>
 </mapper>
