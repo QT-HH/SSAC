@@ -48,13 +48,6 @@
 		where roomId = #{roomId}
 	</select>
 	
-	<!-- 첫방문 여부 -->
-	<!-- <select id="selectEnter" parameterType="HashMap" resultType="String">
-		select regtime
-		from chat_message
-		where type = "ENTER" and (roomId = #{roomId} and sender = #{userid}) 
-	</select> -->
-	
 	<!-- 채팅방 정보 -->
 	<select id="selectChatRoomByRoomId" parameterType="String" resultType="com.websocket.chat.model.ChatRoom">
 		select *

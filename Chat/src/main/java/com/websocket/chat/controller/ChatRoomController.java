@@ -115,12 +115,12 @@ public class ChatRoomController {
 			if(users.get(i).getUserId().equals(userid)) {
 				myself.put("name", users.get(i).getUserName());
 				myself.put("id", 1);
-				myself.put("profilePicture", "img.src");
+				myself.put("profilePicture", "https://placekitten.com/300/300");
 			} else {
 				Map<String, Object> p = new HashMap<String, Object>();
 				p.put("name", users.get(i).getUserName());
 				p.put("id", ids);
-				p.put("profilePicture", "img.src");
+				p.put("profilePicture", "https://placekitten.com/300/300");
 				id.put(users.get(i).getUserId(), ids);
 				ids++;
 				participants.add(p);
