@@ -24,7 +24,7 @@ import com.ssac.user.service.UserService;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/schedule")
 public class ScheduleController {
 	@Autowired

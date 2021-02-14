@@ -12,7 +12,16 @@ import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -44,6 +53,7 @@ public class ChatRoomController {
         // 채팅방 목록
     	// 입력 : userid
     	List<ChatRoom> rooms = chatService.getChatRoom(userid);
+    	System.out.println("채팅방 목록 조회");
         return new ResponseEntity<>(rooms, HttpStatus.OK);
     }
 	
@@ -58,6 +68,7 @@ public class ChatRoomController {
 			jsonObj = (JSONObject) jsonParse.parse(js);
 			ChatRoom room = new ChatRoom((String) jsonObj.get("name"));
 			if(chatService.createChatRoom(room) > 0) {
+				System.out.println("채팅방 생성 성공");
 				List<String> ids = (List<String>) jsonObj.get("ids");
 				List<String> nicknames = (List<String>) jsonObj.get("nicknames");
 				for(int i=0; i<ids.size(); i++) {
@@ -138,6 +149,7 @@ public class ChatRoomController {
 		result.put("myself", myself);
 		result.put("participants", participants);
 		result.put("messages", messages);
+		System.out.println("채팅방 입장 성공");
 		return new ResponseEntity<>(result, HttpStatus.OK);
     }
     
