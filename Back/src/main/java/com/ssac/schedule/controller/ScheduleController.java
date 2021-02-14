@@ -130,7 +130,7 @@ public class ScheduleController {
 		JSONObject jsonObj = null;
 		try {
 			jsonObj = (JSONObject) jsonParse.parse(js);
-			String event_id = (String) jsonObj.get("event_id");
+			int event_id = (int) jsonObj.get("event_id");
 			int team_num = (int) jsonObj.get("team_num");
 			int pm = (int) jsonObj.get("pm");
 			HashMap<String, Object> map = new HashMap<String, Object>();
@@ -155,7 +155,7 @@ public class ScheduleController {
 		try {
 			jsonObj = (JSONObject) jsonParse.parse(js);
 			HashMap<String, Object> map = new HashMap<String, Object>();
-			map.put("event_id", (String) jsonObj.get("event_id"));
+			map.put("event_id", (int) jsonObj.get("event_id"));
 			map.put("bool", (String) jsonObj.get("bool"));
 			if(scheduleService.betDone(map) > 0) return new ResponseEntity<>("success", HttpStatus.OK);			
 		} catch(Exception e) {
@@ -172,7 +172,7 @@ public class ScheduleController {
 		try {
 			jsonObj = (JSONObject) jsonParse.parse(js);
 			HashMap<String, Object> map = new HashMap<String, Object>();
-			map.put("event_id", (String) jsonObj.get("event_id"));
+			map.put("event_id", (int) jsonObj.get("event_id"));
 			map.put("bool", (String) jsonObj.get("bool"));
 			if(scheduleService.gameDone(map) > 0) return new ResponseEntity<>("success", HttpStatus.OK);			
 		} catch(Exception e) {
