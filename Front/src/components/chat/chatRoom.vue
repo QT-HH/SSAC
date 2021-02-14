@@ -31,7 +31,12 @@
 
 </template>
 
+<script src="/webjars/vue/2.5.16/dist/vue.min.js"></script>
+<script src="/webjars/axios/0.17.1/dist/axios.min.js"></script>
+<script src="/webjars/sockjs-client/1.1.2/sockjs.min.js"></script>
+<script src="/webjars/stomp-websocket/2.3.3-1/stomp.min.js"></script>
 <script>
+
 import {Chat} from 'vue-quick-chat';
 import 'vue-quick-chat/dist/vue-quick-chat.css';
 import {chatroomEnter} from '@/api/sports/chat.js'
@@ -43,51 +48,18 @@ export default {
     },
     data() {
         return {
-            visible: true,
-            // 참여 유저정보
-            participants: [
-                {
-                    name: 'Arnaldo',
-                    id: 1,
-                    profilePicture: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a1/NafSadh_Profile.jpg/768px-NafSadh_Profile.jpg'
-                },
-                {
-                    name: 'José',
-                    id: 2,
-                    profilePicture: 'https://lh3.googleusercontent.com/-G1d4-a7d_TY/AAAAAAAAAAI/AAAAAAAAAAA/AAKWJJPez_wX5UCJztzEUeCxOd7HBK7-jA.CMID/s83-c/photo.jpg'
-                }
-            ],
-            // 참여 유저중에 스스로 하기 
-            myself: {
-                name: 'Matheus S.',
-                id: 3,
-                profilePicture: 'https://lh3.googleusercontent.com/-G1d4-a7d_TY/AAAAAAAAAAI/AAAAAAAAAAA/AAKWJJPez_wX5UCJztzEUeCxOd7HBK7-jA.CMID/s83-c/photo.jpg'
-            },
+            
+            roomId: '',
+            room: {},
+            sender: '',
+            message: '',
             // 메세지 담기
-            messages: [
-                {
-                    content: 'received messages',
-                    myself: false,
-                    participantId: 1,
-                    timestamp: {year: 2019, month: 3, day: 5, hour: 20, minute: 10, second: 3, millisecond: 123},
-                    type: 'text'
-                },
-                {
-                    content: 'sent messages',
-                    myself: true,
-                    participantId: 3,
-                    timestamp: {year: 2019, month: 4, day: 5, hour: 19, minute: 10, second: 3, millisecond: 123},
-                    type: 'text'
-                },
-                {
-                    content: 'other received messages',
-                    myself: false,
-                    participantId: 2,
-                    timestamp: {year: 2019, month: 5, day: 5, hour: 10, minute: 10, second: 3, millisecond: 123},
-                    type: 'text'
-                }
+            messages: [],
+            visible: true,
+            participants: [
             ],
-            //채팅 타이틀인데 경기 정보가 들어가있으면 좋을것같네요 ( T1 vs GEN.G)
+            myself: {
+            },
             chatTitle: 'My chat title',
             placeholder: 'send your message',
             colors: {
@@ -122,27 +94,6 @@ export default {
             closeButtonIconSize: "20px",
             submitImageIconSize: 20,
             asyncMode: false,
-            // 일정시간 지나면 메세지에 있던 메세지가 toLoad로 이동
-            toLoad: [
-                {
-                    content: 'Hey, John Doe! How are you today?',
-                    myself: false,
-                    participantId: 2,
-                    timestamp: {year: 2011, month: 3, day: 5, hour: 10, minute: 10, second: 3, millisecond: 123},
-                    uploaded: true,
-                    viewed: true,
-                    type: 'text'
-                },
-                {
-                    content: "Hey, Adam! I'm feeling really fine this evening.",
-                    myself: true,
-                    participantId: 3,
-                    timestamp: {year: 2010, month: 0, day: 5, hour: 19, minute: 10, second: 3, millisecond: 123},
-                    uploaded: true,
-                    viewed: true,
-                    type: 'text'
-                },
-            ],
             scrollBottom: {
                 messageSent: true,
                 messageReceived: true
@@ -163,46 +114,6 @@ export default {
             },
             // there are other options, you can check them here
             // https://soapbox.github.io/linkifyjs/docs/options.html
-            linkOptions: {
-                myself: {
-                    className: 'myLinkClass',
-                    events: {
-                        click: function (e) {
-                          console.log(e);
-                            alert('Link clicked!');
-                        },
-                        mouseover: function (e) {
-                          console.log(e);
-                            alert('Link hovered!');
-                        }
-                    },
-                    format: function (value, type) {
-                        if (type === 'url' && value.length > 50) {
-                            value = value.slice(0, 50) + '…';
-                        }
-                        return value;
-                    }
-                },
-                others: {
-                    className: 'othersLinkClass',
-                    events: {
-                        click: function (e) {
-                          console.log(e);
-                            alert('Link clicked!');
-                        },  
-                        mouseover: function (e) {
-                          console.log(e);
-                            alert('Link hovered!');
-                        }
-                    },
-                    format: function (value, type) {
-                        if (type === 'url' && value.length > 50) {
-                            value = value.slice(0, 50) + '…';
-                        }
-                        return value;
-                    }
-                }
-            }
         }
     },
     created () {
@@ -242,6 +153,7 @@ export default {
             * It's important to notice that even when your message wasn't send 
             * yet to the server you have to add the message into the array
             */
+            this.message = message;
             this.messages.push(message);
 
             /*

@@ -3,16 +3,20 @@
     <v-row align="center">
       <br>
       <br>
-      <br>
+      
       <v-col>
-        <v-card 
-        class="mx-auto" 
-        max-width="400" 
+        <div 
         v-for="(article, idx) in articles" 
         :key="idx" 
         :article="article"
+        >
+        <hr style="height:10px; visibility:hidden;" />
+        <v-card 
+        class="mx-auto rounded-card" 
+        max-width="400" 
         outlined
         type="white"
+        
 >
           <v-card-title>
             <span class="title font-weight-light">{{ article.title }}</span>
@@ -46,6 +50,7 @@
             </v-list-item>
           </v-card-actions>
         </v-card>
+        </div>
         <br>
         <br>
         <br>
@@ -71,5 +76,9 @@ export default {
 </script>
 
 <style>
+.rounded-card{
+    border-radius:50px;
+    width: 95%
+}
 
 </style>

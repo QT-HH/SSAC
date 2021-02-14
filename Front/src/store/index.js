@@ -25,8 +25,7 @@ const state = {
     idx: 0
   },
   user: {
-    userid: 0,
-    email: "nojeong@naver.com",
+    userid: 'aaa@aaa.com',
     password: "123123123",
     nickname: "nojjeong",
     myteams: ["T1"],
