@@ -12,6 +12,7 @@ import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,7 +29,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@RestController
+@Controller
 @CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/chat")
 public class ChatRoomController {
@@ -50,6 +51,7 @@ public class ChatRoomController {
 	
 	@ApiOperation(value = "1. 채팅방 목록조회", notes = "입력 : userid")
     @GetMapping("/roomList")
+	@ResponseBody
     public ResponseEntity<?> room(@RequestParam String userid) throws Exception {
         // 채팅방 목록
     	// 입력 : userid
@@ -70,6 +72,7 @@ public class ChatRoomController {
 	
 	@ApiOperation(value = "2. 채팅방 생성(채팅할 사람 초대포함)", notes = "입력 : 채팅방이름(name), 채팅맴버 아이디 배열(ids), 채팅맴버 닉네임 배열(nicknames)")
     @PostMapping("/roomCreate")
+	@ResponseBody
     public ResponseEntity<?> createRoom(@RequestBody String js) throws Exception {
     	// 채팅방 만들기
     	// 입력 : 채팅방이름(name), 초대맴버리스트(ids)
@@ -99,6 +102,7 @@ public class ChatRoomController {
 	
 	@ApiOperation(value = "3. 채팅방입장(첫입장 이후 채팅내역, 참여인원 목록 불러오기)", notes = "입력 : userid, 채팅방번호(roomId)")
     @GetMapping("/roomEnter")
+	@ResponseBody
     public ResponseEntity<?> enterChatRoom(@RequestParam String roomId, @RequestParam String userid) throws Exception {
     	// 채팅 내역 불러오기
     	// 입력 : 채팅방번호(roomId), userid
@@ -155,6 +159,7 @@ public class ChatRoomController {
     	
 	@ApiOperation(value = "4. 채팅방 나가기", notes = "입력 : userid, 채팅방번호(roomId)")
 	@DeleteMapping("/roomExit")
+	@ResponseBody
 	public ResponseEntity<?> exitChatRoom(@RequestBody String js) throws Exception {
 		JSONParser jsonParse = new JSONParser();
 		JSONObject jsonObj = null;
