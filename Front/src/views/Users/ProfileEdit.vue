@@ -1,7 +1,7 @@
 <template>
   <div>
     <strong class="title">SSAC</strong>
-    <v-icon left @click="gotoProfile">
+    <v-icon absolute top right @click="gotoProfile">
       mdi-arrow-left
     </v-icon>
     <br>

@@ -5,18 +5,21 @@
       <v-container >
         <v-row no-gutters >
       <img class="d-flex mx-3 rounded-circle" width="80px" height="80px" src="https://mblogthumb-phinf.pstatic.net/MjAxNzAzMTVfMTE4/MDAxNDg5NTMzMTAwMjY0.m9UYu7Dt4CyJcaMMeAuIhOFP2nnXBnW5eUqx3rXZY14g.3axKiINI_FaRrOzK70_FY2qRXLulYTBkzwFIaeY8yd4g.JPEG.doghter4our/IMG_5252.jpg?type=w800" alt="Generic placeholder image">
-          <v-row no-gutters>
+          <v-col>
             <div class="d-flex align-center justify-center mx-auto">
               {{this.nickname}}
             </div>
+            <br>
             <div class="d-flex align-center justify-center mx-auto">
               {{this.introduce}}
             </div>
 
-          </v-row>
+          </v-col>
         </v-row>
       </v-container>
       <v-container>
+        <v-row>
+
         <v-col >
             <div  class="pa-2 text">
               게시글
@@ -41,6 +44,7 @@
               456
             </div>
           </v-col>
+        </v-row>
       </v-container>
       
       <v-container>
@@ -90,7 +94,8 @@ export default {
   name:"Profile",
   data() {
     return {
-      introduce: this.$store.state.user.introduce
+      introduce: this.$store.state.user.introduce,
+      nickname: this.$store.state.user.nickname
     }
   },
   computed: {
