@@ -136,6 +136,7 @@ public class ScheduleController {
 			HashMap<String, Object> map = new HashMap<String, Object>();
 			map.put("event_id", event_id);
 			map.put("pm", pm);
+			System.out.println(event_id+" "+team_num+" "+pm);
 			int result = 0;
 			if(team_num == 1) result = scheduleService.writeTeam1Score(map);
 			else result = scheduleService.writeTeam2Score(map);
