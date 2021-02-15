@@ -16,7 +16,7 @@
        :submitIconSize="submitIconSize"
           @onImageClicked="onImageClicked"
           @onImageSelected="onImageSelected"
-          @onMessageSubmit="sendMessage"
+          @onMessageSubmit="send"
           @onType="onType"
           @onClose="onClose">
           </Chat>
@@ -24,8 +24,7 @@
 
 </template>
 
-<script src="/webjars/vue/2.5.16/dist/vue.min.js"></script>
-<script src="/webjars/axios/0.17.1/dist/axios.min.js"></script>
+
 <script src="/webjars/sockjs-client/1.1.2/sockjs.min.js"></script>
 <script src="/webjars/stomp-websocket/2.3.3-1/stomp.min.js"></script>
 <script>
@@ -61,24 +60,24 @@ export default {
             placeholder: 'send your message',
             colors: {
                 header: {
-                    bg: '#d30303',
+                    bg: '#536DFE',
                     text: '#fff'
                 },
                 message: {
                     myself: {
                         bg: '#fff',
-                        text: '#bdb8b8'
+                        text: '#616161'
                     },
                     others: {
-                        bg: '#fb4141',
+                        bg: '#536DFE',
                         text: '#fff'
                     },
                     messagesDisplay: {
                         bg: '#f7f3f3'
                     }
                 },
-                submitIcon: '#b91010',
-                submitImageIcon: '#b91010',
+                submitIcon: '#536DFE',
+                submitImageIcon: '#536DFE',
             },
             borderStyle: {
                 topLeft: "10px",
@@ -162,6 +161,8 @@ export default {
         }
     },
     created () {
+        this.connect()
+
         let para = {
             roomid: this.$store.state.chat.roomid,
             userid: this.$store.state.user.userid
@@ -173,7 +174,6 @@ export default {
                 this.participants= response.data.participants
                 this.myself= response.data.myself
                 this.messages= response.data.messages
-                this.connect()
             },
             (error) => {
                 console.log(error)
@@ -182,18 +182,80 @@ export default {
     },
     methods: {
         connect() {
-            // pub/sub event
-            ws.connect({}, function(frame) {
-                ws.subscribe("/sub/chat/room/"+this.$store.state.chat.roomid, function(message) {
-                    var recv = JSON.parse(message.body);
-                    console.log(recv);
-                    vm.recvMessage(recv);
-                });
-                ws.send("/pub/chat/message", {}, JSON.stringify({type: 'TALK', message: "asd",roomId: this.$store.state.chat.roomid, sender:this.myself.id,}));
-            }, function(error) {
-                console.log(error);
-            });
+            const serverURL = 'http://i4d102.p.ssafy.io:9090/ws-stomp'
+                let socket = new SockJS(serverURL);
+                this.stompClient = Stomp.over(socket);
+                console.log(`소켓 연결을 시도합니다. 서버 주소: ${serverURL}`)
+                this.stompClient.connect(
+                    {},
+                    frame => {
+                    // 소켓 연결 성공
+                    this.connected = true;
+                    console.log('소켓 연결 성공', frame);
+                    // 서버의 메시지 전송 endpoint를 구독합니다.
+                    // 이런형태를 pub sub 구조라고 합니다.
+                    this.stompClient.subscribe("/send", res => {
+                        console.log('구독으로 받은 메시지 입니다.', this.authname, JSON.parse(res.body));
+                        this.message = {
+                        id: JSON.parse(res.body).mrcUNo,
+                        roomNo: JSON.parse(res.body).mrcMrNo,
+                        author: this.user[JSON.parse(res.body).mrcUNo],
+                        contents: JSON.parse(res.body).mrcContent,
+                        image: '',
+                        imageUrl: '',
+                        date: moment().format('HH:mm:ss')
+                        }
+                        if(this.message.roomNo===this.mrNo){
+                        console.log("방번호가 일치합니다.")
+                        console.log(this.message)
+                        setTimeout(function () {
+                        var scrollContainer = document.getElementById('window__messages__container')
+                        var isScrolledToBottom = scrollContainer.scrollHeight - scrollContainer.clientHeight <= scrollContainer.scrollTop + 1
+                        if (!isScrolledToBottom) { scrollContainer.scrollTop = scrollContainer.scrollHeight }
+                        }, 201)
+                        // 받은 데이터를 json으로 파싱하고 리스트에 넣어줍니다.
+                        this.feed.push(this.message)
+                        }
+                    });
+                    const msg = { 
+                    roomId: this.$store.state.chat.roomid,
+                    type: 'TALK',
+                    sender: this.myself.id,
+                    message: this.message,
+                    username: this.myself.nickname
+                    };
+                    console.log(msg)
+                    this.stompClient.send("/pub", JSON.stringify(msg), {});
+                    // if (this.stompClient) {
+                    //   this.stompClient.unsubscribe("/send")
+                    //   this.stompClient.disconnect()
+                    //   this.socket.close()
+                    // }
+                    },
+                    error => {
+                    // 소켓 연결 실패
+                    console.log('소켓 연결 실패', error);
+                    this.connected = false;
+                    }
+
+                );      
         },
+        send(message) {
+            this.message = message
+            if (this.stompClient && this.stompClient.connected) {
+                const msg = { 
+                roomId: this.$store.state.chat.roomid,
+                type: 'TALK',
+                sender: this.myself.id,
+                message: this.message.content,
+                username: this.myself.name
+                };
+                console.log(msg)
+                this.stompClient.send("/pub/receive", JSON.stringify(msg), {});
+            }
+            this.message = ''
+    },  
+
         onType: function (event) {
             //here you can set any behavior
             console.log(event);
