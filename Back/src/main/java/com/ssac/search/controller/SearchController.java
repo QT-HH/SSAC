@@ -45,6 +45,9 @@ public class SearchController {
 			user.put("profile", temp.get(i).getProfile());
 			users.add(user);
 		}
+		
+		System.out.println("userid : "+userid);
+		System.out.println("search : "+search);
 		HashMap<String, String> hmap = new HashMap<String, String>();
 		hmap.put("userid", userid);
 		hmap.put("search", search);
@@ -61,8 +64,11 @@ public class SearchController {
 	
 	@ApiOperation(value = "팀추천", notes = "입력 : 유저이메일(userid), 설문결과(surveyAnswers)")
 	@GetMapping("/recommend")
-	public ResponseEntity<?> getRecommend(@RequestParam String userid, @RequestParam String search) throws Exception {
-		
+	public ResponseEntity<?> getRecommend(@RequestParam String userid, 
+			@RequestParam(value="surveyAnswers") String[] surveyAnswers) throws Exception {
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("userid", userid);
+		map.put("search", "");
 		return null;
 	}
 }
