@@ -1,17 +1,39 @@
 <template>
-  <div>
-    <h1>환영합니다!</h1>
-    <h4>
-      SSAC은 종합 스포츠 스케쥴 SNS입니다.<br> 
-      언제든지 당신의 팀을 설정하세요!<br>
-      친구들과 일정을 공유하세요!<br>
-      열심히 활동하여 레벨을 올리세요!
-    </h4>
+  <div class="fill-height">
+    <v-container>
+      <v-row class="mt-10 mb-5" align="center" justify="center">
+        <v-img
+          :src="welcome.src"
+          max-width="250"
+          max-height="200"
+          class="rounded-pill"
+        >
+        </v-img>
+      </v-row>
+    </v-container>
 
-    <button 
-      class="btn-botton"
-      @click="startSSAC"
-    >Let's Start!</button>
+    <v-row class="mt-5 mb-2" align="center" justify="center">
+      <h1>Hello!</h1>
+    </v-row>
+    <v-row class="mt-2 mb-5" align="center" justify="center">
+      <h5 align="center" justify="center">
+        Welcome to SSAC!<br> 
+        SSAC is a Sports SNS as Calendar<br> 
+        SSAC will help you enjoy your life<br>
+        with COVID-19<br>
+      </h5>
+    </v-row>
+
+    <v-row  class="mt-10" justify="center" align="center">
+      <v-btn
+        class="white--text"
+        color="#536DFE"
+        @click="startSSAC"
+        width="265"
+      >
+        Let's Start!
+      </v-btn>
+    </v-row>
   </div>
 </template>
 
@@ -20,6 +42,11 @@ import {login} from "../../api/user/login.js"
 
 export default {
   name: "Welcome",
+  data() {
+    return {
+      welcome : { src : require("@/assets/images/welcome2.png") }
+    }
+  },
   methods: {
     startSSAC() {
       localStorage.setItem("access-token", "");

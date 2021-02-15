@@ -45,7 +45,8 @@
             </v-img>
 
             <v-card-text class="text--primary">
-            {{ team.count }} 명이 좋아합니다.
+            <!-- {{ team.count }} 명이 좋아합니다. -->
+            {{team.name}}
             </v-card-text>
 
         </v-card>
@@ -54,23 +55,30 @@
     </v-container>
 
     <div>
-    <button
-        class="btn-bottom"
-        @click="backtoSignup"
-        >BEFORE
-    </button>
-    <button
-        class="btn-bottom"
-        @click="completeSignup"
-        >NEXT
-    </button>
+        <v-row class="mb-10" align="center" justify="center">
+            <v-btn 
+                class="mr-2 ml-2" 
+                @click="backtoSignup"
+                color="#536DFE"
+            >
+                <h3 class="mr-1 ml-1">BEFORE</h3>     
+            </v-btn>
+            <v-btn 
+                class="mr-2 ml-2" 
+                @click="completeSignup"
+                color="#536DFE"
+            >
+                <h3 class="mr-1 ml-1">NEXT</h3>
+            </v-btn>
+        </v-row>
     </div>
   </div>
 </template>
 
 <script>
 import { signup } from "@/api/user/signup.js"
-import axios from 'axios'
+import { getTeam } from "@/api/tabs/sports.js"
+// import axios from 'axios'
 
 export default {
     name: "MyTeam",
@@ -146,6 +154,7 @@ export default {
         },
         completeSignup() {
             this.$store.dispatch("CREATE_USER2", this.myteams)
+            // console.log(this.$store.state.newUser),
             signup(
                 this.$store.state.newUser,
                 (res) => {
@@ -163,8 +172,17 @@ export default {
         }
     },
     mounted: function () {
-        axios.get("http://i4d102.p.ssafy.io:9000/ssac/team/allTeamList").then(response => (this.items = response.data))
-        console.log(this.items)
+        getTeam(
+            (res) => {
+                this.items = res.data
+                // console.log(1)
+                // console.log(this.myteams)
+            },
+            (err) => {
+                console.log(err)
+                // console.log(2)
+            }
+        )
     }
 }
 </script>
