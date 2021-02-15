@@ -62,19 +62,21 @@ public class SearchController {
 	@ApiOperation(value = "팀추천", notes = "입력 : 유저이메일(userid), 설문결과(surveyAnswers)")
 	@GetMapping("/recommend")
 	public ResponseEntity<?> getRecommend(@RequestParam String userid, 
-			@RequestParam(value="surveyAnswers") String[] surveyAnswers) throws Exception {
+			@RequestParam(value="surveyAnswers") List<String> surveyAnswers) throws Exception {
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("userid", userid);
 		map.put("search", "");
-		System.out.println("팀추천 userid : "+userid+", 설문 : "+surveyAnswers[0]);
+		System.out.println("팀추천 userid : "+userid+", 설문 : "+surveyAnswers.get(0)+" "+surveyAnswers.size());
 		Random random = new Random();
 		random.setSeed(System.currentTimeMillis());
 		int idx = 0;
 		List<Team> teams = new ArrayList<Team>();
-		if(surveyAnswers[0].equals("축구")) teams = teamService.listFootballTeam(map);
-		else if(surveyAnswers[0].equals("야구")) teams = teamService.listBaseballTeam(map);
+		if(surveyAnswers.get(0).equals("축구")) teams = teamService.listFootballTeam(map);
+		else if(surveyAnswers.get(0).equals("야구")) teams = teamService.listBaseballTeam(map);
 		else teams = teamService.listLOLTeam(map);
 		idx = random.nextInt(teams.size()-1);
 		return new ResponseEntity<>(teams.get(idx), HttpStatus.OK);
 	}
+	
+	
 }
