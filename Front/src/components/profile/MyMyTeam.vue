@@ -9,6 +9,7 @@
       width="500"
     >
       <template v-slot:activator="{ on, attrs }">
+      <v-container>
       <v-row>
         <v-col 
           style="mx-4"
@@ -25,12 +26,14 @@
             class="mx-3 my-0 rounded-xl"
             tag="article"
             border-variant="success"
-            v-bind="attrs"
-            v-on="on"
-            @click="selectTeam(team)"
+            
+            
           >
           <v-list-item style="height:100%">
           <v-list-item-avatar
+            @click="selectTeam(team)"
+            v-bind="attrs"
+            v-on="on"
             rounded-lg
             size="50"
             color="grey"
@@ -42,23 +45,34 @@
             >
             </v-img>
           </v-list-item-avatar>
-            <v-list-item-content>
+            <v-list-item-content
+            @click="selectTeam(team)"
+            v-bind="attrs"
+            v-on="on">
               <v-list-item-title class="headline mb-1" style="padding:0px" v-if="team.nickname.length === 0 ">{{ team.name }}</v-list-item-title>
               <v-list-item-title style="padding:0px" v-else>{{ team.nickname }}</v-list-item-title>
               <v-list-item-subtitle >{{ team.count }} 명</v-list-item-subtitle>
             </v-list-item-content>
           <div >
-            <v-icon 
-            dark
-            class=" red rounded-circle d-inline-block">
-              mdi-minus
-            </v-icon>
+            <v-btn
+                icon
+                dark
+                small
+                class=" red rounded-circle d-inline-block"
+              >
+              <v-icon 
+              dark
+              >
+                mdi-minus
+              </v-icon>
+              </v-btn>
           </div>
           </v-list-item>
           </v-card>
 
         </v-col>
       </v-row>
+      </v-container>
       <br>
       <br>
       <br>
@@ -136,6 +150,7 @@ export default {
       this.$store.dispatch('nicknaming', {selectedData,nickname});
       console.log(selectedData);
       console.log(nickname);
+      this.nickname = ''
     }
   }
 }
