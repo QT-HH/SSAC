@@ -53,7 +53,7 @@ public class UserController {
 			System.out.println(user.getPw());
 			System.out.println(user.getNickname());
 			System.out.println("1");
-			User check = userService.findUser(user);
+			User check = userService.findUser(new User(user.getId()));
 			System.out.println("2");
 			if(check == null) {
 				// 회원가입 먼저
@@ -82,7 +82,7 @@ public class UserController {
 				}
 			}
 		} catch(Exception e) {
-			System.out.println("JSON 파싱 실패");
+			e.printStackTrace();
 		}
 		return new ResponseEntity<String>("fail", HttpStatus.NO_CONTENT);
 	}
