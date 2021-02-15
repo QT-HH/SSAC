@@ -12,8 +12,7 @@
 </template>
 
 <script>
-import data from "../../../../../Crawling/rankBase.json"
-// import data from "@/../../../Crawling/rankBase.json"
+import data from "./rankBase.json"
 
 export default {
 name:"baseballranking",

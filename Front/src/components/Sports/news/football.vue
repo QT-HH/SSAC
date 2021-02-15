@@ -71,7 +71,7 @@
 </template>
 
 <script>
-import data from "../../../../../Crawling/newsFoot.json"
+import data from "./newsFoot.json"
 
 export default {
   name: "NewsFoot",

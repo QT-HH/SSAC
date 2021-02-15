@@ -67,7 +67,7 @@
 </template>
 
 <script>
-import data from "../../../../../Crawling/newsBase.json"
+import data from "./newsBase.json"
 
 export default {
   name: "NewsBase",

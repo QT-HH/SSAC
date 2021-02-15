@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import data from "../../../../../Crawling/rankLOL.json"
+import data from "./rankLOL.json"
 export default {
   name:"lolranking",
   mounted() {
