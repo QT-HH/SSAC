@@ -12,6 +12,7 @@ import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,7 +29,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@RestController
+@Controller
 @CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/chat")
 public class ChatRoomController {
@@ -40,6 +41,7 @@ public class ChatRoomController {
     @ResponseBody
     public ChatRoom roomInfo(@PathVariable String roomId) {
         try {
+        	System.out.println("roomInfo");
 			return chatService.getChatRoomByRoomId(roomId);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -49,13 +51,12 @@ public class ChatRoomController {
 	
 	@ApiOperation(value = "1. 채팅방 목록조회", notes = "입력 : userid")
     @GetMapping("/roomList")
+	@ResponseBody
     public ResponseEntity<?> room(@RequestParam String userid) throws Exception {
         // 채팅방 목록
     	// 입력 : userid
 		List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
     	List<ChatRoom> rooms = chatService.getChatRoom(userid);
-    	System.out.println(rooms.get(0).getName());
-    	System.out.println("ss");
     	for(int i=0; i<rooms.size(); i++) {
     		Map<String, Object> map = new HashMap<String, Object>();
     		map.put("room", rooms.get(i));
@@ -71,6 +72,7 @@ public class ChatRoomController {
 	
 	@ApiOperation(value = "2. 채팅방 생성(채팅할 사람 초대포함)", notes = "입력 : 채팅방이름(name), 채팅맴버 아이디 배열(ids), 채팅맴버 닉네임 배열(nicknames)")
     @PostMapping("/roomCreate")
+	@ResponseBody
     public ResponseEntity<?> createRoom(@RequestBody String js) throws Exception {
     	// 채팅방 만들기
     	// 입력 : 채팅방이름(name), 초대맴버리스트(ids)
@@ -100,37 +102,27 @@ public class ChatRoomController {
 	
 	@ApiOperation(value = "3. 채팅방입장(첫입장 이후 채팅내역, 참여인원 목록 불러오기)", notes = "입력 : userid, 채팅방번호(roomId)")
     @GetMapping("/roomEnter")
+	@ResponseBody
     public ResponseEntity<?> enterChatRoom(@RequestParam String roomId, @RequestParam String userid) throws Exception {
     	// 채팅 내역 불러오기
     	// 입력 : 채팅방번호(roomId), userid
-    	HashMap<String, String> map = new HashMap<String, String>();
-    	map.put("roomId", roomId);
-    	map.put("userid", userid);
-    	String time = chatService.getEnterTime(map);
-    	
-		// 첫입장이 아니면 첫입장 이후 메세지 다 불러오기
-		HashMap<String, String> temp = new HashMap<String, String>();
-		temp.put("roomId", roomId);
-		temp.put("regtime", time);
+		
 		List<ChatUser> users = chatService.getChatUser(roomId);
-		List<ChatMessage> message = chatService.getChatMessage(temp);
+		List<ChatMessage> message = chatService.getChatMessage(roomId);
 		Map<String, Object> myself = new HashMap<String, Object>();
 		List<Map<String, Object>> participants = new ArrayList<Map<String,Object>>();
 		List<Map<String, Object>> messages = new ArrayList<Map<String, Object>>();
-		Map<String, Object> id = new HashMap<String, Object>();
-		int ids = 2;
+
 		for(int i=0; i<users.size(); i++) {
 			if(users.get(i).getUserId().equals(userid)) {
 				myself.put("name", users.get(i).getUserName());
-				myself.put("id", 1);
-				myself.put("profilePicture", "img.src");
+				myself.put("id", users.get(i).getUserId());
+				myself.put("profilePicture", "https://placekitten.com/300/300");
 			} else {
 				Map<String, Object> p = new HashMap<String, Object>();
 				p.put("name", users.get(i).getUserName());
-				p.put("id", ids);
-				p.put("profilePicture", "img.src");
-				id.put(users.get(i).getUserId(), ids);
-				ids++;
+				p.put("id", users.get(i).getUserId());
+				p.put("profilePicture", "https://placekitten.com/300/300");
 				participants.add(p);
 			}
 		}
@@ -140,10 +132,10 @@ public class ChatRoomController {
 			m.put("content", message.get(i).getMessage());
 			if(message.get(i).getSender().equals(userid)) {
 				m.put("myself", true);
-				m.put("participantId", 1);
+				m.put("participantId", message.get(i).getSender());
 			} else {
 				m.put("myself", false);
-				m.put("participantId", id.get(message.get(i).getSender()));
+				m.put("participantId", message.get(i).getSender());
 			}
 			Map<String, Object> times = new HashMap<String, Object>();
 			times.put("year", Integer.parseInt(message.get(i).getRegtime().substring(0, 4)));
@@ -164,35 +156,10 @@ public class ChatRoomController {
 		System.out.println("채팅방 입장 성공");
 		return new ResponseEntity<>(result, HttpStatus.OK);
     }
-    
-	@ApiOperation(value = "4. 채팅방 초대(채팅방 생성하고 나중에 초대)", notes = "입력 : 채팅방번호(roomId), 초대한 사람 아이디 배열(ids), 닉네임 배열(nicknames)")
-    @PostMapping("/roomInvite")
-    public ResponseEntity<?> inviteRoom(@RequestBody String js) throws Exception {
-    	// 채팅방에 친구 초대
-    	// 입력 : 채팅방번호(roomId), 초대한 사람 리스트(ids)
-    	JSONParser jsonParse = new JSONParser();
-		JSONObject jsonObj = null;
-		try {
-			jsonObj = (JSONObject) jsonParse.parse(js);
-			String roomId = (String) jsonObj.get("roomId");
-			List<String> ids = (List<String>) jsonObj.get("ids");
-			List<String> nicknames = (List<String>) jsonObj.get("nicknames");
-			for(int i=0; i<ids.size(); i++) {
-				HashMap<String, String> map = new HashMap<String, String>();
-				map.put("roomId", roomId);
-				map.put("userId", ids.get(i));
-				map.put("userName", nicknames.get(i));
-				chatService.createChatUser(map);
-			}
-			return new ResponseEntity<>("success", HttpStatus.OK);
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		return new ResponseEntity<>("fail", HttpStatus.NO_CONTENT);
-    }
     	
-	@ApiOperation(value = "5. 채팅방 나가기", notes = "입력 : userid, 채팅방번호(roomId)")
+	@ApiOperation(value = "4. 채팅방 나가기", notes = "입력 : userid, 채팅방번호(roomId)")
 	@DeleteMapping("/roomExit")
+	@ResponseBody
 	public ResponseEntity<?> exitChatRoom(@RequestBody String js) throws Exception {
 		JSONParser jsonParse = new JSONParser();
 		JSONObject jsonObj = null;

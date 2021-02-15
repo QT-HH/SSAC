@@ -15,4 +15,5 @@ public class Schedule {
 	private int events_no;
 	private String betDone;
 	private String gameDone;
+	private String calDone;
 }

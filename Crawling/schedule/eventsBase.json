@@ -13,7 +13,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 92,
@@ -29,7 +30,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 93,
@@ -45,7 +47,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 94,
@@ -61,7 +64,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 95,
@@ -77,7 +81,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 96,
@@ -93,7 +98,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 97,
@@ -109,7 +115,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 98,
@@ -125,7 +132,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 99,
@@ -141,7 +149,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 100,
@@ -157,7 +166,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 101,
@@ -173,7 +183,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 102,
@@ -189,7 +200,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 103,
@@ -205,7 +217,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 104,
@@ -221,7 +234,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 105,
@@ -237,7 +251,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 106,
@@ -253,7 +268,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 107,
@@ -269,7 +285,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 108,
@@ -285,7 +302,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 109,
@@ -301,7 +319,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 110,
@@ -317,7 +336,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 111,
@@ -333,7 +353,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 112,
@@ -349,7 +370,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 113,
@@ -365,7 +387,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 114,
@@ -381,7 +404,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 115,
@@ -397,7 +421,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 116,
@@ -413,7 +438,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 117,
@@ -429,7 +455,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 118,
@@ -445,7 +472,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 119,
@@ -461,7 +489,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 120,
@@ -477,7 +506,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 121,
@@ -493,7 +523,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 122,
@@ -509,7 +540,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 123,
@@ -525,7 +557,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 124,
@@ -541,7 +574,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 125,
@@ -557,7 +591,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 126,
@@ -573,7 +608,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 127,
@@ -589,7 +625,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 128,
@@ -605,7 +642,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 129,
@@ -621,7 +659,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 130,
@@ -637,7 +676,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 131,
@@ -653,7 +693,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 132,
@@ -669,7 +710,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 133,
@@ -685,7 +727,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 134,
@@ -701,7 +744,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 135,
@@ -717,7 +761,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 136,
@@ -733,7 +778,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 137,
@@ -749,7 +795,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 138,
@@ -765,7 +812,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 139,
@@ -781,7 +829,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 140,
@@ -797,7 +846,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 141,
@@ -813,7 +863,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 142,
@@ -829,7 +880,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 143,
@@ -845,7 +897,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 144,
@@ -861,7 +914,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 145,
@@ -877,7 +931,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 146,
@@ -893,7 +948,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 147,
@@ -909,7 +965,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 148,
@@ -925,7 +982,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 149,
@@ -941,7 +999,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 150,
@@ -957,7 +1016,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 151,
@@ -973,7 +1033,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 152,
@@ -989,7 +1050,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 153,
@@ -1005,7 +1067,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 154,
@@ -1021,7 +1084,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 155,
@@ -1037,7 +1101,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 156,
@@ -1053,7 +1118,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 157,
@@ -1069,7 +1135,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 158,
@@ -1085,7 +1152,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 159,
@@ -1101,7 +1169,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 160,
@@ -1117,7 +1186,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 161,
@@ -1133,7 +1203,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 162,
@@ -1149,7 +1220,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 163,
@@ -1165,7 +1237,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 164,
@@ -1181,7 +1254,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 165,
@@ -1197,7 +1271,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 166,
@@ -1213,7 +1288,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 167,
@@ -1229,7 +1305,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 168,
@@ -1245,7 +1322,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 169,
@@ -1261,7 +1339,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 170,
@@ -1277,7 +1356,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 171,
@@ -1293,7 +1373,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 172,
@@ -1309,7 +1390,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 173,
@@ -1325,7 +1407,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 174,
@@ -1341,7 +1424,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 175,
@@ -1357,7 +1441,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 176,
@@ -1373,7 +1458,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 177,
@@ -1389,7 +1475,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 178,
@@ -1405,7 +1492,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 179,
@@ -1421,7 +1509,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 180,
@@ -1437,7 +1526,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 181,
@@ -1453,7 +1543,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 182,
@@ -1469,7 +1560,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 183,
@@ -1485,7 +1577,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 184,
@@ -1501,7 +1594,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 185,
@@ -1517,7 +1611,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 186,
@@ -1533,7 +1628,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 187,
@@ -1549,7 +1645,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 188,
@@ -1565,7 +1662,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 189,
@@ -1581,7 +1679,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 190,
@@ -1597,7 +1696,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 191,
@@ -1613,7 +1713,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 192,
@@ -1629,7 +1730,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 193,
@@ -1645,7 +1747,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 194,
@@ -1661,7 +1764,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 195,
@@ -1677,7 +1781,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 196,
@@ -1693,7 +1798,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 197,
@@ -1709,7 +1815,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 198,
@@ -1725,7 +1832,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 199,
@@ -1741,7 +1849,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 200,
@@ -1757,7 +1866,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 201,
@@ -1773,7 +1883,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 202,
@@ -1789,7 +1900,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 203,
@@ -1805,7 +1917,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 204,
@@ -1821,7 +1934,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 205,
@@ -1837,7 +1951,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 206,
@@ -1853,7 +1968,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 207,
@@ -1869,7 +1985,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 208,
@@ -1885,7 +2002,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 209,
@@ -1901,7 +2019,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 210,
@@ -1917,7 +2036,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 211,
@@ -1933,7 +2053,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 212,
@@ -1949,7 +2070,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 213,
@@ -1965,7 +2087,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 214,
@@ -1981,7 +2104,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 215,
@@ -1997,7 +2121,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 216,
@@ -2013,7 +2138,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 217,
@@ -2029,7 +2155,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 218,
@@ -2045,7 +2172,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 219,
@@ -2061,7 +2189,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 220,
@@ -2077,7 +2206,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 221,
@@ -2093,7 +2223,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 222,
@@ -2109,7 +2240,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 223,
@@ -2125,7 +2257,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 224,
@@ -2141,7 +2274,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 225,
@@ -2157,7 +2291,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 226,
@@ -2173,7 +2308,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 227,
@@ -2189,7 +2325,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 228,
@@ -2205,7 +2342,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 229,
@@ -2221,7 +2359,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 230,
@@ -2237,7 +2376,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 231,
@@ -2253,7 +2393,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 232,
@@ -2269,7 +2410,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 233,
@@ -2285,7 +2427,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 234,
@@ -2301,7 +2444,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 235,
@@ -2317,7 +2461,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 236,
@@ -2333,7 +2478,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 237,
@@ -2349,7 +2495,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 238,
@@ -2365,7 +2512,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 239,
@@ -2381,7 +2529,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 240,
@@ -2397,7 +2546,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 241,
@@ -2413,7 +2563,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 242,
@@ -2429,7 +2580,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 243,
@@ -2445,7 +2597,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 244,
@@ -2461,7 +2614,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 245,
@@ -2477,7 +2631,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 246,
@@ -2493,7 +2648,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 247,
@@ -2509,7 +2665,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 248,
@@ -2525,7 +2682,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 249,
@@ -2541,7 +2699,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 250,
@@ -2557,7 +2716,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 251,
@@ -2573,7 +2733,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 252,
@@ -2589,7 +2750,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 253,
@@ -2605,7 +2767,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 254,
@@ -2621,7 +2784,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 255,
@@ -2637,7 +2801,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 256,
@@ -2653,7 +2818,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 257,
@@ -2669,7 +2835,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 258,
@@ -2685,7 +2852,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 259,
@@ -2701,7 +2869,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 260,
@@ -2717,7 +2886,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 261,
@@ -2733,7 +2903,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 262,
@@ -2749,7 +2920,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 263,
@@ -2765,7 +2937,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 264,
@@ -2781,7 +2954,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 265,
@@ -2797,7 +2971,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 266,
@@ -2813,7 +2988,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 267,
@@ -2829,7 +3005,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 268,
@@ -2845,7 +3022,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 269,
@@ -2861,7 +3039,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 270,
@@ -2877,7 +3056,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 271,
@@ -2893,7 +3073,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 272,
@@ -2909,7 +3090,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 273,
@@ -2925,7 +3107,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 274,
@@ -2941,7 +3124,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 275,
@@ -2957,7 +3141,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 276,
@@ -2973,7 +3158,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 277,
@@ -2989,7 +3175,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 278,
@@ -3005,7 +3192,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 279,
@@ -3021,7 +3209,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 280,
@@ -3037,7 +3226,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 281,
@@ -3053,7 +3243,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 282,
@@ -3069,7 +3260,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 283,
@@ -3085,7 +3277,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 284,
@@ -3101,7 +3294,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 285,
@@ -3117,7 +3311,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 286,
@@ -3133,7 +3328,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 287,
@@ -3149,7 +3345,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 288,
@@ -3165,7 +3362,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 289,
@@ -3181,7 +3379,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 290,
@@ -3197,7 +3396,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 291,
@@ -3213,7 +3413,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 292,
@@ -3229,7 +3430,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 293,
@@ -3245,7 +3447,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 294,
@@ -3261,7 +3464,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 295,
@@ -3277,7 +3481,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 296,
@@ -3293,7 +3498,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 297,
@@ -3309,7 +3515,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 298,
@@ -3325,7 +3532,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 299,
@@ -3341,7 +3549,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 300,
@@ -3357,7 +3566,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 301,
@@ -3373,7 +3583,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 302,
@@ -3389,7 +3600,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 303,
@@ -3405,7 +3617,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 304,
@@ -3421,7 +3634,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 305,
@@ -3437,7 +3651,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 306,
@@ -3453,7 +3668,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 307,
@@ -3469,7 +3685,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 308,
@@ -3485,7 +3702,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 309,
@@ -3501,7 +3719,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 310,
@@ -3517,7 +3736,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 311,
@@ -3533,7 +3753,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 312,
@@ -3549,7 +3770,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 313,
@@ -3565,7 +3787,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 314,
@@ -3581,7 +3804,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 315,
@@ -3597,7 +3821,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 316,
@@ -3613,7 +3838,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 317,
@@ -3629,7 +3855,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 318,
@@ -3645,7 +3872,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 319,
@@ -3661,7 +3889,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 320,
@@ -3677,7 +3906,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 321,
@@ -3693,7 +3923,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 322,
@@ -3709,7 +3940,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 323,
@@ -3725,7 +3957,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 324,
@@ -3741,7 +3974,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 325,
@@ -3757,7 +3991,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 326,
@@ -3773,7 +4008,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 327,
@@ -3789,7 +4025,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 328,
@@ -3805,7 +4042,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 329,
@@ -3821,7 +4059,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 330,
@@ -3837,7 +4076,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 331,
@@ -3853,7 +4093,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 332,
@@ -3869,7 +4110,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 333,
@@ -3885,7 +4127,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 334,
@@ -3901,7 +4144,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 335,
@@ -3917,7 +4161,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 336,
@@ -3933,7 +4178,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 337,
@@ -3949,7 +4195,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 338,
@@ -3965,7 +4212,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 339,
@@ -3981,7 +4229,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 340,
@@ -3997,7 +4246,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 341,
@@ -4013,7 +4263,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 342,
@@ -4029,7 +4280,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 343,
@@ -4045,7 +4297,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 344,
@@ -4061,7 +4314,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 345,
@@ -4077,7 +4331,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 346,
@@ -4093,7 +4348,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 347,
@@ -4109,7 +4365,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 348,
@@ -4125,7 +4382,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 349,
@@ -4141,7 +4399,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 350,
@@ -4157,7 +4416,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 351,
@@ -4173,7 +4433,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 352,
@@ -4189,7 +4450,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 353,
@@ -4205,7 +4467,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 354,
@@ -4221,7 +4484,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 355,
@@ -4237,7 +4501,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 356,
@@ -4253,7 +4518,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 357,
@@ -4269,7 +4535,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 358,
@@ -4285,7 +4552,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 359,
@@ -4301,7 +4569,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 360,
@@ -4317,7 +4586,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 361,
@@ -4333,7 +4603,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 362,
@@ -4349,7 +4620,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 363,
@@ -4365,7 +4637,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 364,
@@ -4381,7 +4654,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 365,
@@ -4397,7 +4671,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 366,
@@ -4413,7 +4688,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 367,
@@ -4429,7 +4705,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 368,
@@ -4445,7 +4722,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 369,
@@ -4461,7 +4739,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 370,
@@ -4477,7 +4756,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 371,
@@ -4493,7 +4773,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 372,
@@ -4509,7 +4790,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 373,
@@ -4525,7 +4807,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 374,
@@ -4541,7 +4824,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 375,
@@ -4557,7 +4841,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 376,
@@ -4573,7 +4858,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 377,
@@ -4589,7 +4875,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 378,
@@ -4605,7 +4892,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 379,
@@ -4621,7 +4909,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 380,
@@ -4637,7 +4926,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 381,
@@ -4653,7 +4943,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 382,
@@ -4669,7 +4960,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 383,
@@ -4685,7 +4977,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 384,
@@ -4701,7 +4994,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 385,
@@ -4717,7 +5011,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 386,
@@ -4733,7 +5028,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 387,
@@ -4749,7 +5045,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 388,
@@ -4765,7 +5062,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 389,
@@ -4781,7 +5079,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 390,
@@ -4797,7 +5096,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 391,
@@ -4813,7 +5113,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 392,
@@ -4829,7 +5130,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 393,
@@ -4845,7 +5147,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 394,
@@ -4861,7 +5164,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 395,
@@ -4877,7 +5181,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 396,
@@ -4893,7 +5198,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 397,
@@ -4909,7 +5215,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 398,
@@ -4925,7 +5232,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 399,
@@ -4941,7 +5249,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 400,
@@ -4957,7 +5266,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 401,
@@ -4973,7 +5283,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 402,
@@ -4989,7 +5300,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 403,
@@ -5005,7 +5317,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 404,
@@ -5021,7 +5334,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 405,
@@ -5037,7 +5351,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 406,
@@ -5053,7 +5368,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 407,
@@ -5069,7 +5385,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 408,
@@ -5085,7 +5402,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 409,
@@ -5101,7 +5419,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 410,
@@ -5117,7 +5436,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 411,
@@ -5133,7 +5453,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 412,
@@ -5149,7 +5470,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 413,
@@ -5165,7 +5487,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 414,
@@ -5181,7 +5504,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 415,
@@ -5197,7 +5521,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 416,
@@ -5213,7 +5538,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 417,
@@ -5229,7 +5555,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 418,
@@ -5245,7 +5572,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 419,
@@ -5261,7 +5589,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 420,
@@ -5277,7 +5606,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 421,
@@ -5293,7 +5623,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 422,
@@ -5309,7 +5640,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 423,
@@ -5325,7 +5657,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 424,
@@ -5341,7 +5674,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 425,
@@ -5357,7 +5691,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 426,
@@ -5373,7 +5708,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 427,
@@ -5389,7 +5725,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 428,
@@ -5405,7 +5742,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 429,
@@ -5421,7 +5759,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 430,
@@ -5437,7 +5776,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 431,
@@ -5453,7 +5793,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 432,
@@ -5469,7 +5810,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 433,
@@ -5485,7 +5827,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 434,
@@ -5501,7 +5844,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 435,
@@ -5517,7 +5861,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 436,
@@ -5533,7 +5878,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 437,
@@ -5549,7 +5895,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 438,
@@ -5565,7 +5912,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 439,
@@ -5581,7 +5929,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 440,
@@ -5597,7 +5946,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 441,
@@ -5613,7 +5963,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 442,
@@ -5629,7 +5980,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 443,
@@ -5645,7 +5997,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 444,
@@ -5661,7 +6014,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 445,
@@ -5677,7 +6031,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 446,
@@ -5693,7 +6048,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 447,
@@ -5709,7 +6065,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 448,
@@ -5725,7 +6082,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 449,
@@ -5741,7 +6099,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 450,
@@ -5757,7 +6116,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 451,
@@ -5773,7 +6133,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 452,
@@ -5789,7 +6150,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 453,
@@ -5805,7 +6167,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 454,
@@ -5821,7 +6184,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 455,
@@ -5837,7 +6201,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 456,
@@ -5853,7 +6218,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 457,
@@ -5869,7 +6235,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 458,
@@ -5885,7 +6252,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 459,
@@ -5901,7 +6269,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 460,
@@ -5917,7 +6286,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 461,
@@ -5933,7 +6303,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 462,
@@ -5949,7 +6320,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 463,
@@ -5965,7 +6337,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 464,
@@ -5981,7 +6354,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 465,
@@ -5997,7 +6371,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 466,
@@ -6013,7 +6388,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 467,
@@ -6029,7 +6405,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 468,
@@ -6045,7 +6422,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 469,
@@ -6061,7 +6439,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 470,
@@ -6077,7 +6456,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 471,
@@ -6093,7 +6473,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 472,
@@ -6109,7 +6490,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 473,
@@ -6125,7 +6507,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 474,
@@ -6141,7 +6524,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 475,
@@ -6157,7 +6541,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 476,
@@ -6173,7 +6558,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 477,
@@ -6189,7 +6575,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 478,
@@ -6205,7 +6592,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 479,
@@ -6221,7 +6609,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 480,
@@ -6237,7 +6626,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 481,
@@ -6253,7 +6643,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 482,
@@ -6269,7 +6660,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 483,
@@ -6285,7 +6677,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 484,
@@ -6301,7 +6694,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 485,
@@ -6317,7 +6711,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 486,
@@ -6333,7 +6728,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 487,
@@ -6349,7 +6745,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 488,
@@ -6365,7 +6762,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 489,
@@ -6381,7 +6779,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 490,
@@ -6397,7 +6796,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 491,
@@ -6413,7 +6813,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 492,
@@ -6429,7 +6830,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 493,
@@ -6445,7 +6847,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 494,
@@ -6461,7 +6864,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 495,
@@ -6477,7 +6881,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 496,
@@ -6493,7 +6898,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 497,
@@ -6509,7 +6915,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 498,
@@ -6525,7 +6932,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 499,
@@ -6541,7 +6949,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 500,
@@ -6557,7 +6966,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 501,
@@ -6573,7 +6983,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 502,
@@ -6589,7 +7000,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 503,
@@ -6605,7 +7017,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 504,
@@ -6621,7 +7034,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 505,
@@ -6637,7 +7051,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 506,
@@ -6653,7 +7068,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 507,
@@ -6669,7 +7085,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 508,
@@ -6685,7 +7102,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 509,
@@ -6701,7 +7119,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 510,
@@ -6717,7 +7136,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 511,
@@ -6733,7 +7153,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 512,
@@ -6749,7 +7170,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 513,
@@ -6765,7 +7187,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 514,
@@ -6781,7 +7204,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 515,
@@ -6797,7 +7221,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 516,
@@ -6813,7 +7238,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 517,
@@ -6829,7 +7255,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 518,
@@ -6845,7 +7272,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 519,
@@ -6861,7 +7289,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 520,
@@ -6877,7 +7306,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 521,
@@ -6893,7 +7323,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 522,
@@ -6909,7 +7340,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 523,
@@ -6925,7 +7357,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 524,
@@ -6941,7 +7374,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 525,
@@ -6957,7 +7391,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 526,
@@ -6973,7 +7408,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 527,
@@ -6989,7 +7425,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 528,
@@ -7005,7 +7442,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 529,
@@ -7021,7 +7459,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 530,
@@ -7037,7 +7476,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 531,
@@ -7053,7 +7493,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 532,
@@ -7069,7 +7510,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 533,
@@ -7085,7 +7527,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 534,
@@ -7101,7 +7544,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 535,
@@ -7117,7 +7561,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 536,
@@ -7133,7 +7578,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 537,
@@ -7149,7 +7595,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 538,
@@ -7165,7 +7612,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 539,
@@ -7181,7 +7629,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 540,
@@ -7197,7 +7646,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 541,
@@ -7213,7 +7663,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 542,
@@ -7229,7 +7680,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 543,
@@ -7245,7 +7697,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 544,
@@ -7261,7 +7714,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 545,
@@ -7277,7 +7731,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 546,
@@ -7293,7 +7748,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 547,
@@ -7309,7 +7765,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 548,
@@ -7325,7 +7782,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 549,
@@ -7341,7 +7799,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 550,
@@ -7357,7 +7816,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 551,
@@ -7373,7 +7833,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 552,
@@ -7389,7 +7850,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 553,
@@ -7405,7 +7867,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 554,
@@ -7421,7 +7884,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 555,
@@ -7437,7 +7901,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 556,
@@ -7453,7 +7918,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 557,
@@ -7469,7 +7935,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 558,
@@ -7485,7 +7952,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 559,
@@ -7501,7 +7969,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 560,
@@ -7517,7 +7986,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 561,
@@ -7533,7 +8003,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 562,
@@ -7549,7 +8020,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 563,
@@ -7565,7 +8037,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 564,
@@ -7581,7 +8054,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 565,
@@ -7597,7 +8071,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 566,
@@ -7613,7 +8088,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 567,
@@ -7629,7 +8105,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 568,
@@ -7645,7 +8122,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 569,
@@ -7661,7 +8139,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 570,
@@ -7677,7 +8156,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 571,
@@ -7693,7 +8173,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 572,
@@ -7709,7 +8190,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 573,
@@ -7725,7 +8207,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 574,
@@ -7741,7 +8224,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 575,
@@ -7757,7 +8241,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 576,
@@ -7773,7 +8258,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 577,
@@ -7789,7 +8275,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 578,
@@ -7805,7 +8292,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 579,
@@ -7821,7 +8309,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 580,
@@ -7837,7 +8326,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 581,
@@ -7853,7 +8343,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 582,
@@ -7869,7 +8360,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 583,
@@ -7885,7 +8377,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 584,
@@ -7901,7 +8394,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 585,
@@ -7917,7 +8411,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 586,
@@ -7933,7 +8428,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 587,
@@ -7949,7 +8445,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 588,
@@ -7965,7 +8462,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 589,
@@ -7981,7 +8479,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 590,
@@ -7997,7 +8496,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 591,
@@ -8013,7 +8513,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 592,
@@ -8029,7 +8530,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 593,
@@ -8045,7 +8547,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 594,
@@ -8061,7 +8564,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 595,
@@ -8077,7 +8581,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 596,
@@ -8093,7 +8598,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 597,
@@ -8109,7 +8615,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 598,
@@ -8125,7 +8632,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 599,
@@ -8141,7 +8649,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 600,
@@ -8157,7 +8666,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 601,
@@ -8173,7 +8683,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 602,
@@ -8189,7 +8700,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 603,
@@ -8205,7 +8717,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 604,
@@ -8221,7 +8734,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 605,
@@ -8237,7 +8751,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 606,
@@ -8253,7 +8768,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 607,
@@ -8269,7 +8785,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 608,
@@ -8285,7 +8802,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 609,
@@ -8301,7 +8819,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 610,
@@ -8317,7 +8836,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 611,
@@ -8333,7 +8853,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 612,
@@ -8349,7 +8870,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 613,
@@ -8365,7 +8887,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 614,
@@ -8381,7 +8904,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 615,
@@ -8397,7 +8921,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 616,
@@ -8413,7 +8938,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 617,
@@ -8429,7 +8955,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 618,
@@ -8445,7 +8972,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 619,
@@ -8461,7 +8989,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 620,
@@ -8477,7 +9006,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 621,
@@ -8493,7 +9023,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 622,
@@ -8509,7 +9040,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 623,
@@ -8525,7 +9057,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 624,
@@ -8541,7 +9074,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 625,
@@ -8557,7 +9091,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 626,
@@ -8573,7 +9108,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 627,
@@ -8589,7 +9125,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 628,
@@ -8605,7 +9142,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 629,
@@ -8621,7 +9159,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 630,
@@ -8637,7 +9176,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 631,
@@ -8653,7 +9193,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 632,
@@ -8669,7 +9210,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 633,
@@ -8685,7 +9227,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 634,
@@ -8701,7 +9244,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 635,
@@ -8717,7 +9261,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 636,
@@ -8733,7 +9278,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 637,
@@ -8749,7 +9295,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 638,
@@ -8765,7 +9312,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 639,
@@ -8781,7 +9329,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 640,
@@ -8797,7 +9346,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 641,
@@ -8813,7 +9363,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 642,
@@ -8829,7 +9380,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 643,
@@ -8845,7 +9397,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 644,
@@ -8861,7 +9414,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 645,
@@ -8877,7 +9431,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 646,
@@ -8893,7 +9448,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 647,
@@ -8909,7 +9465,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 648,
@@ -8925,7 +9482,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 649,
@@ -8941,7 +9499,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 650,
@@ -8957,7 +9516,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 651,
@@ -8973,7 +9533,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 652,
@@ -8989,7 +9550,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 653,
@@ -9005,7 +9567,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 654,
@@ -9021,7 +9584,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 655,
@@ -9037,7 +9601,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 656,
@@ -9053,7 +9618,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 657,
@@ -9069,7 +9635,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 658,
@@ -9085,7 +9652,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 659,
@@ -9101,7 +9669,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 660,
@@ -9117,7 +9686,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 661,
@@ -9133,7 +9703,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 662,
@@ -9149,7 +9720,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 663,
@@ -9165,7 +9737,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 664,
@@ -9181,7 +9754,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 665,
@@ -9197,7 +9771,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 666,
@@ -9213,7 +9788,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 667,
@@ -9229,7 +9805,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 668,
@@ -9245,7 +9822,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 669,
@@ -9261,7 +9839,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 670,
@@ -9277,7 +9856,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 671,
@@ -9293,7 +9873,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 672,
@@ -9309,7 +9890,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 673,
@@ -9325,7 +9907,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 674,
@@ -9341,7 +9924,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 675,
@@ -9357,7 +9941,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 676,
@@ -9373,7 +9958,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 677,
@@ -9389,7 +9975,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 678,
@@ -9405,7 +9992,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 679,
@@ -9421,7 +10009,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 680,
@@ -9437,7 +10026,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 681,
@@ -9453,7 +10043,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 682,
@@ -9469,7 +10060,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 683,
@@ -9485,7 +10077,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 684,
@@ -9501,7 +10094,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 685,
@@ -9517,7 +10111,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 686,
@@ -9533,7 +10128,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 687,
@@ -9549,7 +10145,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 688,
@@ -9565,7 +10162,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 689,
@@ -9581,7 +10179,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 690,
@@ -9597,7 +10196,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 691,
@@ -9613,7 +10213,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 692,
@@ -9629,7 +10230,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 693,
@@ -9645,7 +10247,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 694,
@@ -9661,7 +10264,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 695,
@@ -9677,7 +10281,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 696,
@@ -9693,7 +10298,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 697,
@@ -9709,7 +10315,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 698,
@@ -9725,7 +10332,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 699,
@@ -9741,7 +10349,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 700,
@@ -9757,7 +10366,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 701,
@@ -9773,7 +10383,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 702,
@@ -9789,7 +10400,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 703,
@@ -9805,7 +10417,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 704,
@@ -9821,7 +10434,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 705,
@@ -9837,7 +10451,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 706,
@@ -9853,7 +10468,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 707,
@@ -9869,7 +10485,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 708,
@@ -9885,7 +10502,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 709,
@@ -9901,7 +10519,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 710,
@@ -9917,7 +10536,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 711,
@@ -9933,7 +10553,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 712,
@@ -9949,7 +10570,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 713,
@@ -9965,7 +10587,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 714,
@@ -9981,7 +10604,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 715,
@@ -9997,7 +10621,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 716,
@@ -10013,7 +10638,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 717,
@@ -10029,7 +10655,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 718,
@@ -10045,7 +10672,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 719,
@@ -10061,7 +10689,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 720,
@@ -10077,7 +10706,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 721,
@@ -10093,7 +10723,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 722,
@@ -10109,7 +10740,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 723,
@@ -10125,7 +10757,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 724,
@@ -10141,7 +10774,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 725,
@@ -10157,7 +10791,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 726,
@@ -10173,7 +10808,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 727,
@@ -10189,7 +10825,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 728,
@@ -10205,7 +10842,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 729,
@@ -10221,7 +10859,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 730,
@@ -10237,7 +10876,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 731,
@@ -10253,7 +10893,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 732,
@@ -10269,7 +10910,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 733,
@@ -10285,7 +10927,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 734,
@@ -10301,7 +10944,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 735,
@@ -10317,7 +10961,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 736,
@@ -10333,7 +10978,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 737,
@@ -10349,7 +10995,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 738,
@@ -10365,7 +11012,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 739,
@@ -10381,7 +11029,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 740,
@@ -10397,7 +11046,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 741,
@@ -10413,7 +11063,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 742,
@@ -10429,7 +11080,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 743,
@@ -10445,7 +11097,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 744,
@@ -10461,7 +11114,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 745,
@@ -10477,7 +11131,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 746,
@@ -10493,7 +11148,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 747,
@@ -10509,7 +11165,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 748,
@@ -10525,7 +11182,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 749,
@@ -10541,7 +11199,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 750,
@@ -10557,7 +11216,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 751,
@@ -10573,7 +11233,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 752,
@@ -10589,7 +11250,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 753,
@@ -10605,7 +11267,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 754,
@@ -10621,7 +11284,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 755,
@@ -10637,7 +11301,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 756,
@@ -10653,7 +11318,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 757,
@@ -10669,7 +11335,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 758,
@@ -10685,7 +11352,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 759,
@@ -10701,7 +11369,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 760,
@@ -10717,7 +11386,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 761,
@@ -10733,7 +11403,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 762,
@@ -10749,7 +11420,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 763,
@@ -10765,7 +11437,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 764,
@@ -10781,7 +11454,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 765,
@@ -10797,7 +11471,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 766,
@@ -10813,7 +11488,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 767,
@@ -10829,7 +11505,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 768,
@@ -10845,7 +11522,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 769,
@@ -10861,7 +11539,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 770,
@@ -10877,7 +11556,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 771,
@@ -10893,7 +11573,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 772,
@@ -10909,7 +11590,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 773,
@@ -10925,7 +11607,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 774,
@@ -10941,7 +11624,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 775,
@@ -10957,7 +11641,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 776,
@@ -10973,7 +11658,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 777,
@@ -10989,7 +11675,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 778,
@@ -11005,7 +11692,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 779,
@@ -11021,7 +11709,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 780,
@@ -11037,7 +11726,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 781,
@@ -11053,7 +11743,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 782,
@@ -11069,7 +11760,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 783,
@@ -11085,7 +11777,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 784,
@@ -11101,7 +11794,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 785,
@@ -11117,7 +11811,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 786,
@@ -11133,7 +11828,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 787,
@@ -11149,7 +11845,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 788,
@@ -11165,7 +11862,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 789,
@@ -11181,7 +11879,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 790,
@@ -11197,7 +11896,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 791,
@@ -11213,7 +11913,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 792,
@@ -11229,7 +11930,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 793,
@@ -11245,7 +11947,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 794,
@@ -11261,7 +11964,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 795,
@@ -11277,7 +11981,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 796,
@@ -11293,7 +11998,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 797,
@@ -11309,7 +12015,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 798,
@@ -11325,7 +12032,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 799,
@@ -11341,7 +12049,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 800,
@@ -11357,7 +12066,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 801,
@@ -11373,7 +12083,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 802,
@@ -11389,7 +12100,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 803,
@@ -11405,7 +12117,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 804,
@@ -11421,7 +12134,8 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	},
 	{
 		"id": 805,
@@ -11437,6 +12151,7 @@
 		"team2_user": [],
 		"draw_user": [],
 		"betDone": false,
-		"gameDone": false
+		"gameDone": false,
+		"calDone": false
 	}
 ]

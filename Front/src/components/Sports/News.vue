@@ -1,65 +1,55 @@
 <template>
   <div>
-    <div class="p-3">
-      <v-row v-for="(post, idx) in posts" :key="idx">
-        <v-col cols=12>
-          <v-card
-            color="pink lighten-5"
-          >
-            <div class="d-flex flex-no-wrap justify-space-between">
-              <div>
-                  <v-card-title class="headline">
-                    {{ post.headline }}
-                  </v-card-title>
-                    <!-- <v-card-subtitle>Listen to your favorite artists and albums whenever and wherever, online and offline.</v-card-subtitle> -->
-              </div>
-                <v-avatar
-                    class="ma-3"
-                    size="125"
-                    tile
-                >
-                  <v-img :src="post.imgsrc"></v-img>
-                </v-avatar>
+    <br>
+    <v-row align="center" justify="space-around">
+      <v-btn color="blue" @click="showFootball">축구</v-btn>
+      <v-btn color="blue" @click="showBaseball">야구</v-btn>
+      <v-btn color="blue" @click="showLOL"> e스포츠 </v-btn>
+    </v-row>
 
-            </div>
-          </v-card>
-        </v-col>
-      </v-row>
-      <br>
-      <br>
-      <br>
+    <br>
+    <div class="m-3">
+      <football v-if="now === 'Football'"/>
+      <baseball v-else-if="now === 'Baseball'"/>
+      <lol v-else-if="now === 'LOL'"/>
+
     </div>
+
   </div>
 </template>
 
 <script>
+import football from "./news/football"
+import baseball from "./news/baseball"
+import lol from "./news/lol"
+
 export default {
   name: "SportsNews",
-  data() {
-    return { 
-      posts:[
-        {
-          imgsrc:"https://placekitten.com/70/70",
-          headline:"headline1",
-          content:"content1"
-        },
-        {
-          imgsrc:"",
-          headline:"headline2",
-          content:"content2"
-        },
-        {
-          imgsrc:"",
-          headline:"headline3",
-          content:"content3"
-        },
-        {
-          imgsrc:"",
-          headline:"headline4",
-          content:"content4"
-        },
-      ]
+  components:{
+    football,
+    baseball,
+    lol
+  },
+  watch:{
+    now: function () {
+
     }
+  },
+  data() {
+    return {
+      now:"Football",
+    }
+  },
+  methods:{
+    showFootball() {
+      this.now = "Football"
+    },
+    showBaseball() {
+      this.now = "Baseball"
+    },
+    showLOL() {
+      this.now = "LOL"
+    },
   }
 }
 </script>

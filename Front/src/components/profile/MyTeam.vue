@@ -1,8 +1,8 @@
 <template>
   <div>
     <v-tabs
-      background-color="#536DFE"
-      dark
+      
+      background-color="white"
       fixed-tabs
       >
       <v-tab @click="gotoMyMyTeam">내 팀</v-tab>

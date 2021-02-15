@@ -59,12 +59,14 @@ while True:
         event1["draw_user"] = []
         event1["betDone"] = False
         event1["gameDone"] = False
+        event1["calDone"] = False
 
         event2["team1_user"] = []
         event2["team2_user"] = []
         event2["draw_user"] = []
         event2["betDone"] = False
         event2["gameDone"] = False
+        event2["calDone"] = False
 
         res.append(event1)
         res.append(event2)

@@ -13,4 +13,61 @@
 		where start = #{time}
 	</select>
 	
+	<insert id="insertBetting" parameterType="com.ssac.schedule.dto.Bet">
+		insert into bet (schedule_id, userid, bet_num)
+		values (#{schedule_id}, #{userid}, #{bet_num})
+	</insert>
+	
+	<select id="selectBetting" parameterType="Integer" resultType="com.ssac.schedule.dto.Bet">
+		select *
+		from bet
+		where schedule_id = #{schedule_id}
+	</select>
+	
+	<select id="selectBetByUserId" parameterType="com.ssac.schedule.dto.Bet" resultType="String">
+		select userid
+		from bet
+		where schedule_id = #{schedule_id} and userid = #{userid}
+	</select>
+	
+	<delete id="deleteBetting" parameterType="com.ssac.schedule.dto.Bet">
+		delete from bet
+		where schedule_id = #{schedule_id} and userid = #{userid}
+	</delete>
+	
+	<update id="updateBetDone" parameterType="HashMap">
+		update schedule
+		set betDone = #{bool}
+		where id = #{event_id}
+	</update>
+	
+	<update id="updateGameDone" parameterType="HashMap">
+		update schedule
+		set gameDone = #{bool}
+		where id = #{event_id}
+	</update>
+	
+	<update id="updateCalDone" parameterType="Integer">
+		update schedule
+		set calDone = "TRUE"
+		where id = #{event_id}
+	</update>
+	
+	<update id="updateTeam1Score" parameterType="HashMap">
+		update schedule
+		set team1_score = team1_score + #{pm}
+		where id = #{event_id}
+	</update>
+	
+	<update id="updateTeam2Score" parameterType="HashMap">
+		update schedule
+		set team2_score = team2_score + #{pm}
+		where id = #{event_id}
+	</update>
+	
+	<update id="updateUserPoint" parameterType="HashMap">
+		update user
+		set point = point + #{point}
+		where id = #{userid}
+	</update>
 </mapper>

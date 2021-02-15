@@ -1,9 +1,7 @@
 <template>
   <v-app class="app">
     <router-view/>
-
     <Footer v-if="this.$store.state.isLogin && !this.$store.state.isChatRoom"/>
-
   </v-app>
 </template>
 

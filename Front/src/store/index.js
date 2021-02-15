@@ -22,14 +22,13 @@ const state = {
   },
   surveyAnswers: [],
   chat: {
-    idx: 0
+    roomid: ''
   },
   user: {
-    userid: 0,
-    email: "nojeong@naver.com",
+    userid: "aaa@aaa.com",
     password: "123123123",
     nickname: "nojjeong",
-    myteams: ["T1"],
+    myteams: [34,35],
     img: "https://placekitten.com/300/300",
     introduce: "Frei Aber Froh"
   },
