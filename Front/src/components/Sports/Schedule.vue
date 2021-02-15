@@ -104,11 +104,17 @@
                     >
                       정산끝
                     </v-col>
-                    <v-col cols=6>
+                    <v-col cols=4>
                         <span><h1>{{teamname[event.team1_id]}}</h1></span>
-
-                        {{event.team1_score}}
+                    </v-col>
+                    <v-col cols=4>
+                        {{event.team1_score}}   vs   {{event.team2_score}}
+                    </v-col>
+                    <v-col cols=4>
+                        <span><h1>{{teamname[event.team2_id]}}</h1></span>
+                    </v-col>
                         <br>
+                    <v-col cols=6>
                       <v-btn
                         @click="editScore(event,1,-1)"
                       >
@@ -126,12 +132,10 @@
                       >
                         투표!
                       </v-btn>
+
                     </v-col>
+
                     <v-col cols=6>
-                        {{teamname[event.team2_id]}}
-                        <br>
-                        {{event.team2_score}}
-                        <br>
                       <v-btn
                         @click="editScore(event,2,-1)"
                       >
