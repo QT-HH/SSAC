@@ -89,6 +89,7 @@ public class SearchController {
 			User user = userService.findUser(new User(id));
 			map.put("logo", team.getLogo());
 			map.put("name", team.getName());
+			map.put("no", no);
 			map.put("friend_name", user.getNickname());
 			map.put("people", (long) teams.get(i).get("count"));
 			result.add(map);
