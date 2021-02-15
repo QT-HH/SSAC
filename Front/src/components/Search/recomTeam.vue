@@ -1,18 +1,22 @@
 <template>
   <div class="text-center mt-4">
-    {{ surveyAnswers }}
+    <!-- {{ surveyAnswers }} -->
+    <!-- {{ user.email }} -->
+    {{ team }}
   </div>
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
+import { mapActions } from 'vuex'
+import axios from 'axios'
+
 export default {
   name: "recomTeam",
-  // data: function() {
-  //   return {
-  //     choices: ['한 명의 슈퍼스타가 이끄는 팀', '모두가 헌신하는 팀'],
-  //   }
-  // },
+  data: function() {
+    return {
+      team: [],
+    }
+  },
   methods: {
     ...mapActions ([
       'saveQuestion',
@@ -24,36 +28,42 @@ export default {
     }
   },
   computed: {
-    ...mapState ([
-      'surveyAnswers',
-    ])
+    surveyAnswers: function () {
+      return this.$store.state.surveyAnswers
+    },
+    userid: function () {
+      return this.$store.state.user.email
+    }    
+    // ...mapState ([
+    //   'surveyAnswers',
+    //   'user.email',
+    // ])
   },
+
   created() {
     console.log('created')
+    // console.log(user.email)
       // axios 요청부분 - 요청한번보내서 this.users랑 this.teams를 다 업데이트.
       // console.log(inputData)
-      
-      // const API_KEY = process.env.VUE_APP_YOUTUBE_API_KEY
-      // const API_URL = 'https://www.googleapis.com/youtube/v3/search'
 
-      // const params = {
-      //   params: {
-      //     key: API_KEY,
-      //     part: 'snippet',
-      //     q: inputData,
-      //     type: 'video'
-      //   }
-      // }
+      // 받아오는 정보
+      // no(고유번호), event_no(종목번호), name(팀명), logo(로고이미지), count(팔로우수)
+      const params = {
+        params: {
+          userid: this.userid,
+          surveyAnswers: this.surveyAnswers,
+        }
+      }
 
-      // axios.get(API_URL, params)
-      //   .then(response => {
-      //     console.log(response.data.items)
-      //     this.videos = response.data.items
-      //     this.searched = true // 유저검색결과 한 줄 
-      //   })
-      //   .catch(error => {
-      //     console.error(error)
-      //   })
+      axios.get(`http://i4d102.p.ssafy.io:9000/ssac/search/recommend/`, params)
+        .then(response => {
+          console.log(response.data.items)
+          this.team = response.data.items
+          // this.searched = true // 유저검색결과 한 줄 
+        })
+        .catch(error => {
+          console.error(error)
+        })
   }
 }
 </script>

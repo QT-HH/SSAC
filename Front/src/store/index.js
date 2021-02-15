@@ -22,7 +22,7 @@ const state = {
   },
   surveyAnswers: [],
   user: {
-    email: "nojeong@naver.com",
+    email: "aaa@aaa.com",
     password: "123123123",
     nickname: "nojjeong",
     myteams: ["T1"],
