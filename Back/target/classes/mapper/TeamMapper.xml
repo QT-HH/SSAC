@@ -73,4 +73,13 @@
 		order by count desc
 		limit 5
 	</select>
+	
+	<select id="selectFriendTeams" parameterType="String" resultType="HashMap">
+		select id, team_no, count(*) as count
+		from (select * from myteam where id in 
+		(select follow_id from follow where id = #{userid})) t
+		group by team_no
+		order by count(*) desc
+		limit 5;
+	</select>
 </mapper>
