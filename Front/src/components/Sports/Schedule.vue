@@ -1,18 +1,21 @@
 <template>
   <div class="mt-1">
-    <!-- <v-sheet>
-        <h1 class="ml-5">
-          Upcoming!
-        </h1>
+    <v-sheet>
+
       <v-carousel
         cycle
         height="300"
         hide-delimiter-background
         show-arrows-on-hover
         light
+        hide-delimiters
+        v-if="filterCarousel2(today,hm).length > 0"
       >
+        <h1 class="ml-5">
+          오늘의 경기
+        </h1>
         <v-carousel-item
-          v-for="(event, i) in events"
+          v-for="(event, i) in filterCarousel2(today,hm)"
           :key="i"
         >
           <v-sheet 
@@ -46,17 +49,20 @@
           </v-sheet>
         </v-carousel-item>
       </v-carousel>
-    </v-sheet> -->
+      <div v-else class="text-center">
+        <h1> 오늘은 경기가 없습니다 </h1>
+      </div>
+    </v-sheet>
     <v-expand-transition>
       <v-card
         v-show="expandDaily"
-        width="100%"
-        class="px-2 blue text-center"
+        width="95%"
+        class="mx-auto grey lighten-2 text-center"
         elevation="2"
       >
-        <v-card-title>
-          데일리 경기 ( {{ focus }} )
-        </v-card-title>
+        <div class="py-3 grey darken-3 white--text" @click="closeDaily">
+          <span><h2>{{focus}}</h2></span>
+        </div>
         <v-list-item
           v-for="(event, i) in filterDaily(focus)"
           :key="i"
@@ -65,8 +71,14 @@
             <v-icon v-text="item.icon"></v-icon>
           </v-list-item-icon> -->
           <v-list-item-content>
-            <v-list-item-title class="text--center" @click="changeShow(i)">
-              {{ event.name }}
+            <v-list-item-title class="text-center" @click="changeShow(i)">
+              <v-btn
+                rounded
+                :color="colors[event.events_no]"
+                dark
+              >
+                {{ event.name }}
+              </v-btn>
             </v-list-item-title>
              <v-expand-transition>
               <v-card
@@ -93,8 +105,8 @@
                       정산끝
                     </v-col>
                     <v-col cols=6>
-                        {{teamname[event.team1_id]}}
-                        <br>
+                        <span><h1>{{teamname[event.team1_id]}}</h1></span>
+
                         {{event.team1_score}}
                         <br>
                       <v-btn
@@ -277,12 +289,11 @@
         </v-card>
       </v-menu>  -->
     </v-sheet>
-
     <br>
     <br>
     <br>
     <br>
-
+    <br>
   </div>
 </template>
 
@@ -413,7 +424,8 @@ import {getSchedule, pmScore, betGame, endBet, endGame, calculPts } from "@/api/
         // },
       ],
       events:[],
-      today:''
+      today:'',
+      hm:'',
     }),
     mounted () { 
       this.$refs.calendar.checkChange()
@@ -429,8 +441,21 @@ import {getSchedule, pmScore, betGame, endBet, endGame, calculPts } from "@/api/
       )
       let now = new Date()
       let time = `${now.getFullYear()}-${now.getMonth()+1}-${now.getDate()}`
+      // let hourmin = `${now.getHours()}:${now.getMinutes()}`
+      let h = now.getHours()
+      let m = now.getMinutes()
+      h = `${h}`
+      m = `${m}`
+      if (h.length === 1){
+        h = `0${h}`
+      }
+      if (m.length === 1){
+        m = `0${h}`
+      }
       this.today = time
       this.focus = time
+      this.hm = `${h}:${m}`
+      // console.log(this.hm < '19:00')
       // this.events = this.originevents
     },
     methods: {
@@ -440,7 +465,10 @@ import {getSchedule, pmScore, betGame, endBet, endGame, calculPts } from "@/api/
       viewDay ( {date} ) {
         this.focus = date
         this.resetShow()
-        this.expandDaily = true
+        let items = this.filterDaily(date)
+        if (items.length > 0){
+          this.expandDaily = true
+        }
         // this.tog = false
       },
       getEventColor (event) {
@@ -682,11 +710,22 @@ import {getSchedule, pmScore, betGame, endBet, endGame, calculPts } from "@/api/
           return myteam.includes(ev.team1_id) || myteam.includes(ev.team2_id)
         })
       },
-      // filterCarousel : function() {
-      //   return this.events.fileter(function(ev){
-      //     return 
-      //   })
-      // },
+      filterCarousel : function(today,hm) {
+        let items = this.filterDaily(today)
+        // console.log(2)
+        // console.log(items)
+        return items.filter(function(ev){
+          return ev.start_time > hm
+        })
+      },
+      filterCarousel2 : function(today,hm) {
+        let items = this.filterCarousel(today,hm)
+        // console.log(1)
+        // console.log(items)
+        return items.sort(function(a,b){
+          return a.start_time - b.start_time
+        })
+      },
     }, 
   }
 </script>
