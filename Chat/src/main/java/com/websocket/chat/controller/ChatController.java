@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.simp.SimpMessageSendingOperations;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 
 @RequiredArgsConstructor
@@ -16,18 +16,15 @@ public class ChatController {
 	@Autowired
 	private ChatService chatService;
 
-    private final SimpMessageSendingOperations messagingTemplate;
-
-    @MessageMapping("/chat/message")
-    public void message(ChatMessage message) {
-        try {
-        	System.out.println("채팅 to server");
-			chatService.chatting(message);
-			System.out.println("채팅 to db");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-        messagingTemplate.convertAndSend("/sub/chat/room/" + message.getRoomId(), message);
-        System.out.println("채팅 to client");
+    @MessageMapping("/receive")
+    
+    @SendTo("/send")
+    
+    public ChatMessage SocketHandler(ChatMessage message) throws Exception {
+        System.out.println("방번호 : "+message.getRoomId());
+        System.out.println("보낸사람 : "+message.getSender());
+        System.out.println("내용 : "+message.getMessage());
+        chatService.chatting(message);
+        return message;
     }
 }
