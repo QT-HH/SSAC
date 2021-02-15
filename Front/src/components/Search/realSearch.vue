@@ -72,12 +72,15 @@ export default {
       searched: false,
     }
   },
+  computed: {
+    userid: function () {
+      return this.$store.state.user.email
+    }
+  },
   methods: {
     realSearch: function() {
       console.log('realSearch')
-      this.searched = true
-      // axios 요청부분 - 요청한번보내서 this.users랑 this.teams를 다 업데이트.
-
+      
       const params = {
         params: {
           userid: this.userid,
@@ -87,10 +90,11 @@ export default {
 
       axios.get(`http://i4d102.p.ssafy.io:9000/ssac/search/search/`, params)
         .then(response => {
-          console.log(response.data.items)
-          this.users = response.data.items
-          this.teams = response.data.items
-          // this.searched = true // 유저검색결과 한 줄 
+          console.log(response.data)
+          // axios 요청부분 - 요청한번보내서 this.users랑 this.teams를 다 업데이트.
+          this.users = response.data.users
+          this.teams = response.data.teams
+          this.searched = response.data.searched // 유저검색결과 한 줄 
         })
         .catch(error => {
           console.error(error)
