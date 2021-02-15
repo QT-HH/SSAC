@@ -163,8 +163,8 @@ export default {
         }
     },
     mounted: function () {
-        axios.get("http://i4d102.p.ssafy.io:9000/ssac/team/list").then(response => (this.items = response.data))
-        console.log('MyTeams')
+        axios.get("http://i4d102.p.ssafy.io:9000/ssac/team/allTeamList").then(response => (this.items = response.data))
+        console.log(this.items)
     }
 }
 </script>

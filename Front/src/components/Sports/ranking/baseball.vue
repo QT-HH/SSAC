@@ -13,6 +13,7 @@
 
 <script>
 import data from "../../../../../Crawling/rankBase.json"
+// import data from "@/../../../Crawling/rankBase.json"
 
 export default {
 name:"baseballranking",
