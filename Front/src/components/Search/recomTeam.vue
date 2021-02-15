@@ -27,6 +27,33 @@ export default {
     ...mapState ([
       'surveyAnswers',
     ])
+  },
+  created() {
+    console.log('created')
+      // axios 요청부분 - 요청한번보내서 this.users랑 this.teams를 다 업데이트.
+      // console.log(inputData)
+      
+      // const API_KEY = process.env.VUE_APP_YOUTUBE_API_KEY
+      // const API_URL = 'https://www.googleapis.com/youtube/v3/search'
+
+      // const params = {
+      //   params: {
+      //     key: API_KEY,
+      //     part: 'snippet',
+      //     q: inputData,
+      //     type: 'video'
+      //   }
+      // }
+
+      // axios.get(API_URL, params)
+      //   .then(response => {
+      //     console.log(response.data.items)
+      //     this.videos = response.data.items
+      //     this.searched = true // 유저검색결과 한 줄 
+      //   })
+      //   .catch(error => {
+      //     console.error(error)
+      //   })
   }
 }
 </script>
