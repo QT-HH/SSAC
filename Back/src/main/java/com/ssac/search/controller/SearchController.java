@@ -58,4 +58,11 @@ public class SearchController {
 		result.put("searched", true);
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
+	
+	@ApiOperation(value = "팀추천", notes = "입력 : 유저이메일(userid), 설문결과(surveyAnswers)")
+	@GetMapping("/recommend")
+	public ResponseEntity<?> getRecommend(@RequestParam String userid, @RequestParam String search) throws Exception {
+		
+		return null;
+	}
 }
