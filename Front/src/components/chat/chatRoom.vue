@@ -2,28 +2,21 @@
 
   <div>
     <Chat 
-          :participants="participants"
-          :myself="myself"
-          :messages="messages"
-          :chat-title="chatTitle"
-          :placeholder="placeholder"
-          :colors="colors"
-          :border-style="borderStyle"
-          :hide-close-button="hideCloseButton"
-          :close-button-icon-size="closeButtonIconSize"
-          :submit-icon-size="submitIconSize"
-          :submit-image-icon-size="submitImageIconSize"
-          :load-more-messages="toLoad.length > 0 ? loadMoreMessages : null"
-          :link-options="linkOptions"
-          :async-mode="asyncMode"
-          :scroll-bottom="scrollBottom"
-          :display-header="true"
-          :send-images="true"
-          :profile-picture-config="profilePictureConfig"
-          :timestamp-config="timestampConfig"
+       :participants="participants"
+       :myself="myself"
+       :messages="messages"
+       :onType="onType"
+       :onMessageSubmit="onMessageSubmit"
+       :chatTitle="chatTitle"
+       :placeholder="placeholder"
+       :colors="colors"
+       :borderStyle="borderStyle"
+       :hideCloseButton="hideCloseButton"
+       :closeButtonIconSize="closeButtonIconSize"
+       :submitIconSize="submitIconSize"
           @onImageClicked="onImageClicked"
           @onImageSelected="onImageSelected"
-          @onMessageSubmit="onMessageSubmit"
+          @onMessageSubmit="send"
           @onType="onType"
           @onClose="onClose">
           </Chat>
@@ -31,10 +24,20 @@
 
 </template>
 
+
+<script src="/webjars/sockjs-client/1.1.2/sockjs.min.js"></script>
+<script src="/webjars/stomp-websocket/2.3.3-1/stomp.min.js"></script>
 <script>
+
+import Stomp from 'webstomp-client'
+import SockJS from 'sockjs-client'
+
 import {Chat} from 'vue-quick-chat';
 import 'vue-quick-chat/dist/vue-quick-chat.css';
 import {chatroomEnter} from '@/api/sports/chat.js'
+
+var sock = new SockJS("http://i4d102.p.ssafy.io:9090/ws-stomp");
+var ws = Stomp.over(sock);
 
 export default {
     name: 'ChatRoom',
@@ -43,51 +46,16 @@ export default {
     },
     data() {
         return {
-            visible: true,
-            // 참여 유저정보
-            participants: [
-                {
-                    name: 'Arnaldo',
-                    id: 1,
-                    profilePicture: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a1/NafSadh_Profile.jpg/768px-NafSadh_Profile.jpg'
-                },
-                {
-                    name: 'José',
-                    id: 2,
-                    profilePicture: 'https://lh3.googleusercontent.com/-G1d4-a7d_TY/AAAAAAAAAAI/AAAAAAAAAAA/AAKWJJPez_wX5UCJztzEUeCxOd7HBK7-jA.CMID/s83-c/photo.jpg'
-                }
-            ],
-            // 참여 유저중에 스스로 하기 
-            myself: {
-                name: 'Matheus S.',
-                id: 3,
-                profilePicture: 'https://lh3.googleusercontent.com/-G1d4-a7d_TY/AAAAAAAAAAI/AAAAAAAAAAA/AAKWJJPez_wX5UCJztzEUeCxOd7HBK7-jA.CMID/s83-c/photo.jpg'
-            },
+            roomId: '',
+            room: {},
+            sender: '',
+            message: '',
             // 메세지 담기
-            messages: [
-                {
-                    content: 'received messages',
-                    myself: false,
-                    participantId: 1,
-                    timestamp: {year: 2019, month: 3, day: 5, hour: 20, minute: 10, second: 3, millisecond: 123},
-                    type: 'text'
-                },
-                {
-                    content: 'sent messages',
-                    myself: true,
-                    participantId: 3,
-                    timestamp: {year: 2019, month: 4, day: 5, hour: 19, minute: 10, second: 3, millisecond: 123},
-                    type: 'text'
-                },
-                {
-                    content: 'other received messages',
-                    myself: false,
-                    participantId: 2,
-                    timestamp: {year: 2019, month: 5, day: 5, hour: 10, minute: 10, second: 3, millisecond: 123},
-                    type: 'text'
-                }
-            ],
-            //채팅 타이틀인데 경기 정보가 들어가있으면 좋을것같네요 ( T1 vs GEN.G)
+            messages: [],
+            visible: true,
+            participants: [],
+            myself: {},
+            messages: [],
             chatTitle: 'My chat title',
             placeholder: 'send your message',
             colors: {
@@ -98,7 +66,7 @@ export default {
                 message: {
                     myself: {
                         bg: '#fff',
-                        text: '#bdb8b8'
+                        text: '#616161'
                     },
                     others: {
                         bg: '#536DFE',
@@ -120,9 +88,7 @@ export default {
             hideCloseButton: false,
             submitIconSize: 25,
             closeButtonIconSize: "20px",
-            submitImageIconSize: 20,
             asyncMode: false,
-            // 일정시간 지나면 메세지에 있던 메세지가 toLoad로 이동
             toLoad: [
                 {
                     content: 'Hey, John Doe! How are you today?',
@@ -145,18 +111,9 @@ export default {
             ],
             scrollBottom: {
                 messageSent: true,
-                messageReceived: true
+                messageReceived: false
             },
             displayHeader:true,
-            profilePictureConfig: {
-                others: true,
-                myself: true,
-                styles: {
-                    width: '30px',
-                    height: '30px',
-                    borderRadius: '50%'
-                }
-            },
             timestampConfig: {   
                 format: 'HH:mm',
                 relative: false
@@ -168,11 +125,9 @@ export default {
                     className: 'myLinkClass',
                     events: {
                         click: function (e) {
-                          console.log(e);
                             alert('Link clicked!');
                         },
                         mouseover: function (e) {
-                          console.log(e);
                             alert('Link hovered!');
                         }
                     },
@@ -187,11 +142,9 @@ export default {
                     className: 'othersLinkClass',
                     events: {
                         click: function (e) {
-                          console.log(e);
                             alert('Link clicked!');
-                        },  
+                        },
                         mouseover: function (e) {
-                          console.log(e);
                             alert('Link hovered!');
                         }
                     },
@@ -202,21 +155,25 @@ export default {
                         return value;
                     }
                 }
-            }
+            },
+            // there are other options, you can check them here
+            // https://soapbox.github.io/linkifyjs/docs/options.html
         }
     },
     created () {
+        this.connect()
+
         let para = {
-            roomid: this.$store.state.chat.idx,
+            roomid: this.$store.state.chat.roomid,
             userid: this.$store.state.user.userid
         };
         chatroomEnter(
             para,
             (response) => {
                 console.log(response);
-                // this.participants: response.data
-                // this.myself: response.data
-                // this.messages: response.data
+                this.participants= response.data.participants
+                this.myself= response.data.myself
+                this.messages= response.data.messages
             },
             (error) => {
                 console.log(error)
@@ -224,9 +181,91 @@ export default {
 
     },
     methods: {
+        connect() {
+            const serverURL = 'http://i4d102.p.ssafy.io:9090/ws-stomp'
+                let socket = new SockJS(serverURL);
+                this.stompClient = Stomp.over(socket);
+                console.log(`소켓 연결을 시도합니다. 서버 주소: ${serverURL}`)
+                this.stompClient.connect(
+                    {},
+                    frame => {
+                    // 소켓 연결 성공
+                    this.connected = true;
+                    console.log('소켓 연결 성공', frame);
+                    // 서버의 메시지 전송 endpoint를 구독합니다.
+                    // 이런형태를 pub sub 구조라고 합니다.
+                    this.stompClient.subscribe("/send", res => {
+                        console.log('구독으로 받은 메시지 입니다.', this.authname, JSON.parse(res.body));
+                        this.message = {
+                        id: JSON.parse(res.body).mrcUNo,
+                        roomNo: JSON.parse(res.body).mrcMrNo,
+                        author: this.user[JSON.parse(res.body).mrcUNo],
+                        contents: JSON.parse(res.body).mrcContent,
+                        image: '',
+                        imageUrl: '',
+                        date: moment().format('HH:mm:ss')
+                        }
+                        if(this.message.roomNo===this.mrNo){
+                        console.log("방번호가 일치합니다.")
+                        console.log(this.message)
+                        setTimeout(function () {
+                        var scrollContainer = document.getElementById('window__messages__container')
+                        var isScrolledToBottom = scrollContainer.scrollHeight - scrollContainer.clientHeight <= scrollContainer.scrollTop + 1
+                        if (!isScrolledToBottom) { scrollContainer.scrollTop = scrollContainer.scrollHeight }
+                        }, 201)
+                        // 받은 데이터를 json으로 파싱하고 리스트에 넣어줍니다.
+                        this.feed.push(this.message)
+                        }
+                    });
+                    const msg = { 
+                    roomId: this.$store.state.chat.roomid,
+                    type: 'TALK',
+                    sender: this.myself.id,
+                    message: this.message,
+                    username: this.myself.nickname
+                    };
+                    console.log(msg)
+                    this.stompClient.send("/pub", JSON.stringify(msg), {});
+                    // if (this.stompClient) {
+                    //   this.stompClient.unsubscribe("/send")
+                    //   this.stompClient.disconnect()
+                    //   this.socket.close()
+                    // }
+                    },
+                    error => {
+                    // 소켓 연결 실패
+                    console.log('소켓 연결 실패', error);
+                    this.connected = false;
+                    }
+
+                );      
+        },
+        send(message) {
+            this.message = message
+            if (this.stompClient && this.stompClient.connected) {
+                const msg = { 
+                roomId: this.$store.state.chat.roomid,
+                type: 'TALK',
+                sender: this.myself.id,
+                message: this.message.content,
+                username: this.myself.name
+                };
+                console.log(msg)
+                this.stompClient.send("/pub/receive", JSON.stringify(msg), {});
+            }
+            this.message = ''
+    },  
+
         onType: function (event) {
             //here you can set any behavior
             console.log(event);
+        },
+        sendMessage: function() {
+            ws.send("http://i4d102.p.ssafy.io:9090/pub/chat/message", {}, JSON.stringify({type:'TALK', roomId:this.$store.state.chat.roomid, sender:this.myself.id, message:this.message}));
+            this.message = '';
+        },
+        recvMessage: function(recv) {
+            this.messages.unshift({"type":recv.type,"sender":recv.type=='ENTER'?'[알림]':recv.sender,"message":recv.message})
         },
         loadMoreMessages(resolve) {
             setTimeout(() => {
@@ -242,8 +281,9 @@ export default {
             * It's important to notice that even when your message wasn't send 
             * yet to the server you have to add the message into the array
             */
+            this.message = message;
             this.messages.push(message);
-
+        
             /*
             * you can update message state after the server response
             */
@@ -279,6 +319,7 @@ export default {
         }
     }
 }
+
 </script>
 
 <style>
