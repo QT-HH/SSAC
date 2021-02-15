@@ -52,17 +52,13 @@ public class UserController {
 			System.out.println(user.getId());
 			System.out.println(user.getPw());
 			System.out.println(user.getNickname());
-			System.out.println("1");
 			User check = userService.findUser(new User(user.getId()));
-			System.out.println("2");
 			if(check == null) {
 				// 회원가입 먼저
-				System.out.println("3");
 				if(userService.createUser(user) > 0) {
 					// 마이팀 추가
-					System.out.println("4");
 					List<Integer> teams = (List<Integer>) jsonObj.get("userteam");
-					System.out.println("5 " + teams.size());
+					System.out.println("teams size " + teams.size());
 					for(int i=0; i<teams.size(); i++) {
 						MyTeam myteam = new MyTeam();
 						myteam.setId(user.getId());
