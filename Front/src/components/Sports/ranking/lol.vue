@@ -5,14 +5,19 @@
       :items="items"
       class="elevation-1"
       mobile-breakpoint="0"
+      hide-default-footer
     ></v-data-table>
 
   </div>
 </template>
 
 <script>
+import data from "../../../../../Crawling/rankLOL.json"
 export default {
-name:"lolranking",
+  name:"lolranking",
+  mounted() {
+    this.items = data
+  },
   data() {
     return {
       headers:[
@@ -22,8 +27,10 @@ name:"lolranking",
           sortable: false,
           value:'name'
         },
-        { text: '승률', value: 'winrate'},
-        { text: '득실차', value: '득실차'},
+        { text: '승률', value: 'rate', sortable: false,},
+        { text: '승', value: 'win', sortable: false,},
+        { text: '패', value: 'lose', sortable: false,},
+        { text: '득실', value: 'diff', sortable: false,},
       ],
       items: [
         {
