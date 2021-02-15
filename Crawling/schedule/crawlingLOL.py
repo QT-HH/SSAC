@@ -3,15 +3,19 @@ import sys
 sys.stdin = open('inputLOL.txt', 'rt', encoding='UTF8')
 
 team = {}
-
+team_name = {}
+teamname = ["담원 기아","DRX","젠지","아프리카","T1","KT","리브 샌박","농심","한화","프레딧"]
 teams = ["담원 기아","DRX","젠지e스포츠","아프리카 프릭스","T1","kt 롤스터","리브 샌드박스","농심 레드포스","한화생명e스포츠","프레딧 브리온"]
 for i in range(33,43):
     team[teams[i-33]] = i
+for i in range(len(teams)):
+    team_name[teams[i]] = teamname[i]
 
+print(team_name)
 # for i in range(33,42):
 #     team[i] = teams[i-32]
 # print(team)
-print(team)
+# print(team)
 res = []
 
 i = 1
@@ -29,7 +33,10 @@ while True:
         m,d = sch.split("월")
         if len(m) == 1:
             m = '0'+m
-        sch = "2021-{}-{}".format(m,d[:-1])
+        d=d[:-1]
+        if len(d) == 1:
+            d = '0'+d
+        sch = "2021-{}-{}".format(m,d)
         event1["start"] = sch
         event2["start"] = sch
         event1["start_time"] = "17:00"
@@ -43,8 +50,9 @@ while True:
         event2["team1_id"] = team[team3[1:]]
         event2["team2_id"] = team[team4]
 
-        event1["name"] = "{} vs {}".format(team1[1:],team2)
-        event2["name"] = "{} vs {}".format(team3[1:],team4)
+        event1["name"] = "{} vs {}".format(team_name[team1[1:]],team_name[team2])
+        event2["name"] = "{} vs {}".format(team_name[team3[1:]],team_name[team4])
+        # event2["name"] = "{} vs {}".format(team3[1:],team4)
 
         event1["team1_score"] = 0
         event1["team2_score"] = 0
