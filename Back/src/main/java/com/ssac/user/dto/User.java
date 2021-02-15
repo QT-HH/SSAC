@@ -12,6 +12,7 @@ public class User {
 	private String pw;
 	private String nickname;
 	private int point;
+	private String profile;
 	
 	public User(String id) {
 		this.id = id;

@@ -21,9 +21,7 @@ public interface ChatService {
 
 	int chatting(ChatMessage chatmessage) throws Exception;
 
-	List<ChatMessage> getChatMessage(HashMap<String, String> map) throws Exception;
-
-	String getEnterTime(HashMap<String, String> map) throws Exception;
+	List<ChatMessage> getChatMessage(String roomId) throws Exception;
 
 	ChatRoom getChatRoomByRoomId(String roomId) throws Exception;
 

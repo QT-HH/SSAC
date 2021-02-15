@@ -25,10 +25,10 @@ const state = {
     roomid: ''
   },
   user: {
-    userid: 'aaa@aaa.com',
+    userid: "aaa@aaa.com",
     password: "123123123",
     nickname: "nojjeong",
-    myteams: ["T1"],
+    myteams: [34,35],
     img: "https://placekitten.com/300/300",
     introduce: "Frei Aber Froh"
   },

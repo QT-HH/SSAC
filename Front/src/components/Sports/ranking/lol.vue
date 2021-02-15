@@ -4,6 +4,7 @@
       :headers="headers"
       :items="items"
       class="elevation-1"
+      mobile-breakpoint="0"
     ></v-data-table>
 
   </div>

@@ -12,11 +12,11 @@
             v-model="query"
           ></v-text-field>
         </v-col>
-        <v-cols cols=2>
+        <v-col cols=2>
           <v-btn @click="realSearch">
             검색
           </v-btn>
-        </v-cols>
+        </v-col>
       </v-row>
 
     </div>

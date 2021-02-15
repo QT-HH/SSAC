@@ -10,9 +10,10 @@
         :key="idx" 
         :article="article"
         >
-        <hr style="height:10px; visibility:hidden;" />
+        <hr style="height:14px; visibility:hidden;" />
         <v-card 
-        class="mx-auto rounded-card" 
+        :elevation="7"
+        class="mx-3 rounded-xl" 
         max-width="400" 
         outlined
         type="white"
