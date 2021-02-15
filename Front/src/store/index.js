@@ -17,7 +17,7 @@ const state = {
   newUser: {
     email: "",
     password: "",
-    nickname: "",
+    nickName: "",
     myteams: []
   },
   surveyAnswers: [],
