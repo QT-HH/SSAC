@@ -52,4 +52,11 @@
 	<insert id="insertFollowing" parameterType="HashMap">
 		insert into follow values (#{userid}, #{follow_id})
 	</insert>
+	
+	<!-- 유저 검색 -->
+	<select id="searchUser" parameterType="String" resultType="com.ssac.user.dto.User">
+		select *
+		from user
+		where nickname like concat('%', #{search}, '%')
+	</select>
 </mapper>

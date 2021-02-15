@@ -55,4 +55,9 @@ public class UserServiceImpl implements UserService {
 	public int doFollowing(HashMap<String, String> map) throws Exception {
 		return mapper.insertFollowing(map);
 	}
+	
+	@Override
+	public List<User> getSearchUser(String search) throws Exception {
+		return mapper.searchUser(search);
+	}
 }
