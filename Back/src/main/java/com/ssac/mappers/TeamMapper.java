@@ -20,4 +20,5 @@ public interface TeamMapper {
 	public List<Team> selectFootballteamBySearch(HashMap<String, String> map) throws Exception;
 	public List<Team> selectBaseballteamBySearch(HashMap<String, String> map) throws Exception;
 	public List<Team> selectLOLteamBySearch(HashMap<String, String> map) throws Exception;
+	public List<Team> selectSearchTeam(HashMap<String, String> map) throws Exception;
 }

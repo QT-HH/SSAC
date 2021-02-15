@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -38,23 +39,19 @@ public class SearchController {
 	public ResponseEntity<?> getSearchResult(@RequestParam String userid, @RequestParam String search) throws Exception {
 		List<User> temp = userService.getSearchUser(search);
 		List<Map<String,String>> users = new ArrayList<Map<String,String>>();
-		for(int i=0; i<temp.size(); i++) {
+		int size = temp.size()>5?5:temp.size();
+		for(int i=0; i<size; i++) {
 			Map<String, String> user = new HashMap<String, String>();
 			user.put("id", temp.get(i).getId());
 			user.put("nickname", temp.get(i).getNickname());
 			user.put("profile", temp.get(i).getProfile());
 			users.add(user);
 		}
-		
-		System.out.println("userid : "+userid);
-		System.out.println("search : "+search);
+		System.out.println("검색 userid : "+userid+", search : "+search);
 		HashMap<String, String> hmap = new HashMap<String, String>();
 		hmap.put("userid", userid);
 		hmap.put("search", search);
-		List<Team> teams = new ArrayList<Team>();
-		teams.addAll(teamService.listFootballTeam(hmap));
-		teams.addAll(teamService.listBaseballTeam(hmap));
-		teams.addAll(teamService.listLOLTeam(hmap));
+		List<Team> teams = teamService.searchTeam(hmap);
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("users", users);
 		result.put("teams", teams);
@@ -69,6 +66,15 @@ public class SearchController {
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("userid", userid);
 		map.put("search", "");
-		return null;
+		System.out.println("팀추천 userid : "+userid+", 설문 : "+surveyAnswers[0]);
+		Random random = new Random();
+		random.setSeed(System.currentTimeMillis());
+		int idx = 0;
+		List<Team> teams = new ArrayList<Team>();
+		if(surveyAnswers[0].equals("축구")) teams = teamService.listFootballTeam(map);
+		else if(surveyAnswers[0].equals("야구")) teams = teamService.listBaseballTeam(map);
+		else teams = teamService.listLOLTeam(map);
+		idx = random.nextInt(teams.size()-1);
+		return new ResponseEntity<>(teams.get(idx), HttpStatus.OK);
 	}
 }
