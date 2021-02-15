@@ -1,7 +1,9 @@
 <template>
   <div>
     <strong class="title">SSAC</strong>
-    <v-icon absolute top right @click="gotoProfile">
+    <v-icon  @click="gotoProfile" large style="position: absolute;
+    top: 10px;
+    right: 10px;">
       mdi-arrow-left
     </v-icon>
     <br>

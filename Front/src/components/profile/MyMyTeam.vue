@@ -32,11 +32,8 @@
             >
               <v-card-title v-if="team.nickname.length === 0 ">{{ team.name }}</v-card-title>
               <v-card-title v-else>{{ team.nickname }}</v-card-title>
+              <v-card-subtitle style="color:white">{{ team.count }} 명</v-card-subtitle>
             </v-img>
-
-            <v-card-text class="text--primary">
-              {{ team.count }} 명이 좋아합니다.
-            </v-card-text>
 
             <v-card-actions>
               <v-btn
@@ -49,6 +46,9 @@
 
         </v-col>
       </v-row>
+      <br>
+      <br>
+      <br>
       </template>
 
       <v-card>
