@@ -23,8 +23,8 @@
 </template>
 
 <script>
-import dataA from "../../../../../Crawling/rankFootA.json"
-import dataB from "../../../../../Crawling/rankFootB.json"
+import dataA from "./rankFootA.json"
+import dataB from "./rankFootB.json"
 
 export default {
   name:"footballranking",
