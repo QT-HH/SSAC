@@ -152,7 +152,12 @@ const routes = [
                 path: "/tabs/search/recommend/question4",
                 name: "Question4",
                 component: () => import("@/components/Search/Question4.vue")
-              },                        
+              },
+              {
+                path: "/tabs/search/recommend/recomteam",
+                name: "recomTeam",
+                component: () => import("@/components/Search/recomTeam.vue")
+              },                           
             ]
           },
         ]
