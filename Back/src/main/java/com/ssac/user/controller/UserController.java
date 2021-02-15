@@ -1,5 +1,6 @@
 package com.ssac.user.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,12 +52,16 @@ public class UserController {
 			System.out.println(user.getId());
 			System.out.println(user.getPw());
 			System.out.println(user.getNickname());
+			System.out.println("1");
 			User check = userService.findUser(user);
+			System.out.println("2");
 			if(check == null) {
 				// 회원가입 먼저
 				if(userService.createUser(user) > 0) {
 					// 마이팀 추가
+					System.out.println("3");
 					List<Integer> teams = (List<Integer>) jsonObj.get("userteam");
+					System.out.println("4 " + teams.size());
 					for(int i=0; i<teams.size(); i++) {
 						MyTeam myteam = new MyTeam();
 						myteam.setId(user.getId());
@@ -96,6 +101,10 @@ public class UserController {
 		List<String> follower = userService.getFollowerList(user.getId());
 		resultMap.put("following", following);
 		resultMap.put("follower", follower);
+		List<MyTeam> myteams = teamService.listMyTeam(user.getId());
+		List<Integer> myteam = new ArrayList<Integer>();
+		for(int i=0; i<myteams.size(); i++) myteam.add(myteams.get(i).getTeam_no());
+		resultMap.put("myteam", myteam);
 		return new ResponseEntity<>(resultMap, HttpStatus.OK);
 	}
 	
