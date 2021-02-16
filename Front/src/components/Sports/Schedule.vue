@@ -117,15 +117,16 @@
                     <v-col cols=6>
                       <v-btn
                         @click="editScore(event,1,-1)"
+                        v-if="mas"
                       >
                         -
                       </v-btn>
                       <v-btn
                         @click="editScore(event,1,1)"
+                        v-if="mas"
                       >
                         +
                       </v-btn>
-                      <br>
                       <v-btn
                         :disabled="isDisabled(event,event.team1_user)"
                         @click="betTeam(event,1)"
@@ -138,15 +139,16 @@
                     <v-col cols=6>
                       <v-btn
                         @click="editScore(event,2,-1)"
+                        v-if="mas"
                       >
                         -
                       </v-btn>
                       <v-btn
                         @click="editScore(event,2,1)"
+                        v-if="mas"
                       >
                         +
                       </v-btn>
-                      <br>
                       <v-btn
                         :disabled="isDisabled(event,event.team2_user)"
                         @click="betTeam(event,2)"
@@ -176,18 +178,21 @@
                     <v-col cols=12>
                       <v-btn
                         @click="endBetting(event)"
+                        v-if="mas"
                       >
                         베팅 끝내기
                       </v-btn>
                       <br>
                       <v-btn
                         @click="endtheGame(event)"
+                        v-if="mas"
                       >
                         경기 끝내기
                       </v-btn>
                       <br>
                       <v-btn
                         @click="calculEvent(event)"
+                        v-if="mas"
                       >
                         정산하기
                       </v-btn>
@@ -298,6 +303,14 @@
     <br>
     <br>
     <br>
+    <v-btn @click="master">
+      master user
+    </v-btn>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
   </div>
 </template>
 
@@ -307,6 +320,7 @@ import {getSchedule, pmScore, betGame, endBet, endGame, calculPts } from "@/api/
   export default {
     name:"Schedule",
     data: () => ({
+      mas:false,
       myteam:[
 
       ],
@@ -361,6 +375,7 @@ import {getSchedule, pmScore, betGame, endBet, endGame, calculPts } from "@/api/
         //   draw_user: [], // (무승부에 베팅한 유저 고유번호 리스트)
         //   betDone: "true", // (베팅 끝났는지)
         //   gameDone: "true", // (게임 끝났는지)
+        //   calDone: "true", // (게임 끝났는지)
         // }, 
         // {
         //   id: 2,
@@ -377,6 +392,7 @@ import {getSchedule, pmScore, betGame, endBet, endGame, calculPts } from "@/api/
         //   draw_user: [0], // (무승부에 베팅한 유저 고유번호 리스트)
         //   betDone: "false", // (베팅 끝났는지)
         //   gameDone: "true", // (게임 끝났는지)
+        //   calDone: "true", // (게임 끝났는지)
         // },
         // {
         //   id: 3,
@@ -393,6 +409,7 @@ import {getSchedule, pmScore, betGame, endBet, endGame, calculPts } from "@/api/
         //   draw_user: [14,15], // (무승부에 베팅한 유저 고유번호 리스트)
         //   betDone: "false", // (베팅 끝났는지)
         //   gameDone: "false", // (게임 끝났는지)
+        //   calDone: "false", // (게임 끝났는지)
         // },
         // {
         //   id: 4,
@@ -408,7 +425,7 @@ import {getSchedule, pmScore, betGame, endBet, endGame, calculPts } from "@/api/
         //   team2_user: [8,9,10,11], // (팀2에 베팅한 유저 고유번호 리스트)
         //   draw_user: [14,15], // (무승부에 베팅한 유저 고유번호 리스트)
         //   betDone: "false", // (베팅 끝났는지)
-        //   gameDone: "false", // (게임 끝났는지)
+        //   calDone: "false", // (게임 끝났는지)
         // },
         // {
         //   id: 5,
@@ -424,7 +441,7 @@ import {getSchedule, pmScore, betGame, endBet, endGame, calculPts } from "@/api/
         //   team2_user: [8,9,10,11,12,13,14,15], // (팀2에 베팅한 유저 고유번호 리스트)
         //   draw_user: [], // (무승부에 베팅한 유저 고유번호 리스트)
         //   betDone: "true", // (베팅 끝났는지)
-        //   gameDone: "false", // (게임 끝났는지)
+        //   calDone: "false", // (게임 끝났는지)
         // },
       ],
       events:[],
@@ -730,6 +747,9 @@ import {getSchedule, pmScore, betGame, endBet, endGame, calculPts } from "@/api/
           return a.start_time - b.start_time
         })
       },
+      master() {
+        this.mas = !this.mas
+      }
     }, 
   }
 </script>
