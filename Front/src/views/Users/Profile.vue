@@ -1,51 +1,81 @@
 <template>
   <div>
     SSAC
-    <div class="media">
-      <v-container >
+    <div 
+    style="border: 0px"
+    class="media">
+      <v-container  >
         <v-row no-gutters >
       <img class="d-flex mx-3 rounded-circle" width="80px" height="80px" src="https://mblogthumb-phinf.pstatic.net/MjAxNzAzMTVfMTE4/MDAxNDg5NTMzMTAwMjY0.m9UYu7Dt4CyJcaMMeAuIhOFP2nnXBnW5eUqx3rXZY14g.3axKiINI_FaRrOzK70_FY2qRXLulYTBkzwFIaeY8yd4g.JPEG.doghter4our/IMG_5252.jpg?type=w800" alt="Generic placeholder image">
-          <v-col >
-            <div class="pa-2 text"
-
-            >
-              게시글
-            </div>
-            <div class="pa-2 text"
-
-            >
-              123
-            </div>
-          </v-col>
           <v-col>
-            <div class="pa-2 text"
+            <div class="d-flex align-center justify-center mx-auto"
+            style="text-align:center;
+            font-weight: bold; 
 
-            >
-              팔로워
+            font-size: 1.5em;">
+              {{this.nickname}}
             </div>
-            <div class="pa-2 text"
+            <br>
+            <div class="d-flex align-center justify-center mx-auto"
+            style="text-align:center;
+            font-style: italic;
+            font-size: 1.0em;">
+              {{this.introduce}}
+            </div>
 
-            >
-              345
-            </div>
-          </v-col>
-          <v-col>
-            <div class="pa-2 text"
-
-            >
-              팔로잉
-            </div>
-            <div class="pa-2 text"
-
-            >
-              456
-            </div>
           </v-col>
         </v-row>
       </v-container>
       <v-container>
+        <v-row>
+
+        <v-col >
+            <div  class="pa-2 text" style="text-align:center">
+              게시글
+            </div>
+            <div 
+            style="text-align:center;
+            font-weight: bold; 
+            font-style: italic;
+            font-size: 1.0em;"
+            class="pa-2 text">
+              123
+            </div>
+          </v-col>
+          <v-col>
+            <div class="pa-2 text" style="text-align:center">
+              팔로워
+            </div>
+            <div 
+            style="text-align:center;
+            font-weight: bold; 
+            font-style: italic;
+            font-size: 1.0em;"
+            class="pa-2 text">
+              345
+            </div>
+          </v-col>
+          <v-col>
+            <div class="pa-2 text" style="text-align:center">
+              팔로잉
+            </div>
+
+            <div 
+            style="text-align:center;
+            font-weight: bold; 
+            font-style: italic;
+            font-size: 1.0em;"
+            class="pa-2 text">
+              789
+            </div>
+          </v-col>
+        </v-row>
+      </v-container>
+      
+      <v-container>
         <div class="text-center">
-          <v-btn
+          <v-btn 
+            :elevation="0"
             style="width: 300px"
             rounded
             color="primary"
@@ -56,6 +86,7 @@
         </div>
         <div class="text-center">
           <v-btn
+            :elevation="0"
             style="width: 300px"
             rounded
             color="grey lighten-2"
@@ -67,11 +98,10 @@
       </v-container>
     </div>
     
-    <hr>
     <div>
       <v-tabs
-        background-color="#536DFE"
-        dark
+        
+        background-color="white"
         fixed-tabs
         >
         <v-tab @click="gotoArticle">게시글</v-tab>
@@ -84,8 +114,21 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name:"Profile",
+  data() {
+    return {
+      introduce: this.$store.state.user.introduce,
+      nickname: this.$store.state.user.nickname
+    }
+  },
+  computed: {
+      ...mapState([
+        'user'
+      ])
+    },
   methods:{
     gotoArticle() {
       if (this.$route.path !== "/profile") {

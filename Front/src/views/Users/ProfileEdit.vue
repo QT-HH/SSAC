@@ -1,7 +1,9 @@
 <template>
   <div>
     <strong class="title">SSAC</strong>
-    <v-icon left @click="gotoProfile">
+    <v-icon  @click="gotoProfile" large style="position: absolute;
+    top: 10px;
+    right: 10px;">
       mdi-arrow-left
     </v-icon>
     <br>
@@ -49,13 +51,6 @@
 
         </v-col>
       </v-row>
-      <v-container class="d-flex align-center justify-center pa-4 mx-auto">
-        <v-btn text color="primary">
-          비밀번호 변경
-        </v-btn>
-
-      </v-container>
-
       <v-container class="d-flex align-center justify-center pa-4 mx-auto">
         <v-row align="center" justify="space-around">
           <v-btn large @click="goback">취소</v-btn>

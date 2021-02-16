@@ -17,17 +17,20 @@ const state = {
   newUser: {
     email: "",
     password: "",
-    nickname: "",
+    nickName: "",
     myteams: []
   },
   surveyAnswers: [],
+  chat: {
+    roomid: ''
+  },
   user: {
     email: "aaa@aaa.com",
     password: "123123123",
     nickname: "nojjeong",
-    myteams: ["T1"],
+    myteams: [34,35],
     img: "https://placekitten.com/300/300",
-    introduce: "안녕하세요"
+    introduce: "Frei Aber Froh"
   },
   myTeams: [
     {name: "T1", img: "https://placekitten.com/300/300" , nickname: "", count: 14565, event_no: 3},

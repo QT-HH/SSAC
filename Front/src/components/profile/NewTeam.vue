@@ -4,6 +4,7 @@
   
     <div>
       <v-text-field
+      :elevation="6"
         label="검색어를 입력하세요."
         v-model="query"
       ></v-text-field>
@@ -13,12 +14,14 @@
         justify="space-around"
       > 
         <v-btn
+          :elevation="6"
           @click="turnAll"
         >
           전체
         </v-btn>
 
         <v-btn
+          :elevation="6"
           color="primary"
           @click="turnFootball"
         >
@@ -26,6 +29,7 @@
         </v-btn>
 
         <v-btn
+          :elevation="6"
           color="error"
           @click="turnBaseball"
         >
@@ -33,6 +37,7 @@
         </v-btn>
 
         <v-btn
+          :elevation="6"
           color="green darken-1 white--text"
           @click="turnLOL"
         >
@@ -46,37 +51,54 @@
     <v-container>
       <v-row>
         <v-col 
-          cols=4
+          style="mx-4"
           v-for="(team, idx) in filterTeam(cat,query)"
           :key="idx"
           :team="team"
         >
           <v-card
+            :elevation="7"
+            rounded-xl
+            width="95%"
+            height="80"
             hover
-            class="mx-auto"
-            style="max-width: 15rem;"
+            class="mx-3 my-0 rounded-xl"
             tag="article"
             border-variant="success"
           >
-            <v-img
-              :src="team.img"
-              class="white--text align-end"
-              height="100px"
+          <v-list-item style="height:100%">
+            <v-list-item-avatar
+              rounded-lg
+              size="50"
+              color="grey"
             >
-              <v-card-title>{{ team.name }}</v-card-title>
-            </v-img>
-
-            <v-card-text class="text--primary">
-              {{ team.count }} 명이 좋아합니다.
-            </v-card-text>
-
-            <v-card-actions>
-              <v-btn
-                color="blue white--text"
+              <v-img
+                :src="team.logo"
+                class="white--text align-end"
+                height="60"
               >
-                내 팀 추가
+              </v-img>
+            </v-list-item-avatar>
+
+             <v-list-item-content>
+              <v-list-item-title class="headline mb-1" style="padding:0px">{{ team.name }}</v-list-item-title>
+              <v-list-item-subtitle >{{ team.count }} 명</v-list-item-subtitle>
+            </v-list-item-content>
+            <div >
+              <v-btn
+                icon
+                dark
+                small
+                class=" blue rounded-circle d-inline-block"
+              >
+              <v-icon 
+              dark
+              >
+                mdi-plus
+              </v-icon>
               </v-btn>
-            </v-card-actions>
+            </div>
+            </v-list-item>
           </v-card>
         </v-col>
       </v-row>
@@ -87,6 +109,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import { listTeams } from "@/api/profile/newteam.js"
 
 export default {
   name: "NewTeam",
@@ -101,6 +124,16 @@ export default {
     ...mapState([
       'teams'
     ]),
+  },
+  created() {
+    listTeams(
+      (response) => {
+        console.log(response);
+        this.teams = response.data
+      },
+      error => {
+        console.log(error);
+      });
   },
   methods: {
     realSearch: function() {

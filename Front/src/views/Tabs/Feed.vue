@@ -1,5 +1,10 @@
 <template>
-  <div>
+  <div id="Feed" class="flex container h-screen w-full">
+     
+    <!-- 새 글 작성 -->
+    <div class="px-5 py-3 border-b border-lighter flex items-center justify-between">
+        <h1 class="text-xl font-bold">Feed</h1>
+    </div>
     <v-card 
       ref="form"
       max-width="350"
@@ -16,6 +21,35 @@
             </template>
           </v-textarea>
           <v-spacer></v-spacer>
+          <!-- 사진 업로드 -->
+          <v-btn
+            icon
+            @click.stop="dialog = true"
+            >
+            <v-icon size="24px">
+              mdi-image
+            </v-icon>
+          </v-btn>          
+          <v-dialog v-model="dialog" width="500">
+            <v-card>
+              <v-file-input class="d-flex align-center justify-center pa-4 mx-auto" label="File input" filled
+                prepend-icon="mdi-camera"></v-file-input>
+
+              <v-divider></v-divider>
+
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn
+                    text
+                    @click="dialog = false"
+                  >취소</v-btn>
+                <v-btn color="primary" text @click="dialog = false">
+                  적용
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>          
+          <!-- 게시글 업로드 -->
           <v-btn
             color="primary"
             text
@@ -25,6 +59,8 @@
             Submit
           </v-btn>
     </v-card>
+
+    <!-- 피드 -->
     <div v-for="(feed, idx) in feeds" :key="idx">
       <v-card
         class="mx-auto mt-5 mb-5"
@@ -84,7 +120,7 @@
           </v-list-item>
         </v-card-actions>
 
-        <!-- 댓글 -->
+        <!-- 피드의 댓글 -->
         <v-expand-transition>
           <v-card v-show="show[idx]">
             <v-divider></v-divider>
@@ -143,10 +179,113 @@
     <br>
     <br>
 
+    <v-row justify="center">
+      <v-dialog
+        v-model="dialog"
+        fullscreen
+        hide-overlay
+        transition="dialog-transition"
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            color="primary"
+            dark
+            v-bind="attrs"
+            v-on="on"
+          >
+            Open Dialog
+          </v-btn>
+        </template>
+        <v-card>
+          <v-toolbar
+            dark
+            color="primary"
+          >
+            <v-btn
+              icon
+              dark
+              @click="dialog = false"
+            >
+              <v-icon>mdi-close</v-icon>
+            </v-btn>
+            <v-toolbar-title>Settings</v-toolbar-title>
+            <v-spacer></v-spacer>
+            <v-toolbar-items>
+              <v-btn
+                dark
+                text
+                @click="dialog = false"
+              >
+                Save
+              </v-btn>
+            </v-toolbar-items>
+          </v-toolbar>
+          <v-list
+            three-line
+            subheader
+          >
+            <v-subheader>User Controls</v-subheader>
+            <v-list-item>
+              <v-list-item-content>
+                <v-list-item-title>Content filtering</v-list-item-title>
+                <v-list-item-subtitle>Set the content filtering level to restrict apps that can be downloaded</v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-content>
+                <v-list-item-title>Password</v-list-item-title>
+                <v-list-item-subtitle>Require password for purchase or use password to restrict purchase</v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
+          <v-divider></v-divider>
+          <v-list
+            three-line
+            subheader
+          >
+            <v-subheader>General</v-subheader>
+            <v-list-item>
+              <v-list-item-action>
+                <v-checkbox v-model="notifications"></v-checkbox>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title>Notifications</v-list-item-title>
+                <v-list-item-subtitle>Notify me about updates to apps or games that I downloaded</v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-action>
+                <v-checkbox v-model="sound"></v-checkbox>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title>Sound</v-list-item-title>
+                <v-list-item-subtitle>Auto-update apps at any time. Data charges may apply</v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-action>
+                <v-checkbox v-model="widgets"></v-checkbox>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title>Auto-add widgets</v-list-item-title>
+                <v-list-item-subtitle>Automatically add home screen widgets</v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
+        </v-card>
+      </v-dialog>
+    </v-row>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
   </div>
+  
 </template>
 
 <script>
+import { mapState } from 'vuex';
 
 export default {
   name:"Feed",
@@ -215,7 +354,7 @@ export default {
               src: require("@/assets/images/qt.jpg"),
             }
           ]
-        },
+        }
       ],
       show: [false,false,false,false,false,false,],
       comment : {message: ''},
@@ -223,8 +362,14 @@ export default {
         name: "이경연",
         src: require("@/assets/images/corinlee.jpg")
       },
-      newText : ""
+      newText : "",
+      dialog:false
     }
+  },
+  computed: {
+    ...mapState([
+      'user'
+    ])
   },
   methods: {
     addNewComment(key) {
@@ -257,7 +402,7 @@ export default {
       this.feeds.push(newArticle)
       this.newText = ""
     }
-  }
+  },
 }
 </script>
 
