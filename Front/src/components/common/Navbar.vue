@@ -48,7 +48,6 @@
         dark
         fixed-tabs
         >
-
         <v-tab @click="gotoSports">스포츠</v-tab>
         <v-tab @click="gotoFeed">피드</v-tab>
         <v-tab @click="gotoSearch">검색</v-tab>

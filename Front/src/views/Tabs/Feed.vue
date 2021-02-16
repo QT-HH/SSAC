@@ -1,10 +1,33 @@
 <template>
-  <div id="Feed" class="flex container h-screen w-full">
+  <div style="width:100%;">
+    <v-system-bar color="deep-purple darken-3"></v-system-bar>
+    <v-app-bar
+      color="deep-purple accent-4"
+      dark
+      height="54px"
+    >
+      <v-row>
+        <v-col cols="3">
+        </v-col>
+        <v-col class="mt-1" cols="6">
+          <h2 align="center" justify="center">Feed</h2>
+        </v-col>
+        <v-col cols="3">
+        </v-col>
+      </v-row>
+      <!-- <v-btn icon>
+        <v-icon>mdi-dots-vertical</v-icon>
+      </v-btn>
+      <v-btn icon>
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
+
+      <v-btn icon>
+        <v-icon>mdi-filter</v-icon>
+      </v-btn> -->
+    </v-app-bar>
      
     <!-- 새 글 작성 -->
-    <div class="px-5 py-3 border-b border-lighter flex items-center justify-between">
-        <h1 class="text-xl font-bold">Feed</h1>
-    </div>
     <v-card 
       ref="form"
       max-width="350"

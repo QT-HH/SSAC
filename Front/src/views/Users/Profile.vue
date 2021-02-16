@@ -1,5 +1,38 @@
 <template>
-  <div>
+  <div style="width:100%;">
+    <!-- Systembar & Navbar -->
+    <v-system-bar color="deep-purple darken-3"></v-system-bar>
+    <v-app-bar
+      color="deep-purple accent-4"
+      dark
+      height="54px"
+    >
+      <v-row>
+        <v-col cols="3">
+          <v-btn icon class="mr-5" @click="gotoProfileEdit">
+            <v-icon>mdi-account-plus</v-icon>
+          </v-btn>
+        </v-col>
+        <v-col class="mt-1" cols="6">
+          <h2 align="center" justify="center">Profile</h2>
+        </v-col>
+        <v-col cols="3">         
+          <v-btn icon class="ml-5" @click="gotoProfileEdit">
+            <v-icon>mdi-dots-vertical</v-icon>
+          </v-btn>
+        </v-col>
+      </v-row>
+      <!-- <v-btn icon>
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
+
+      <v-btn icon>
+        <v-icon>mdi-filter</v-icon>
+      </v-btn> -->
+    </v-app-bar>
+
+
+
     <div 
     style="border: 0px"
     class="media">
@@ -89,31 +122,6 @@
             </div>
           </v-col>
         </v-row>
-      </v-container>
-      
-      <v-container>
-        <div class="text-center">
-          <v-btn 
-            :elevation="0"
-            style="width: 300px"
-            
-            color="primary"
-            dark
-          >
-            팔로우
-          </v-btn>
-        </div>
-        <div class="text-center">
-          <v-btn
-            :elevation="0"
-            style="width: 300px"
-            class="rounded-lg"
-            color="grey lighten-2"
-            @click="gotoProfileEdit"
-          >
-            프로필 편집
-          </v-btn>
-        </div>
       </v-container>
     </div>
     

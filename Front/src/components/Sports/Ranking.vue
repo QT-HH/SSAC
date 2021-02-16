@@ -1,20 +1,19 @@
 <template>
   <div>
-    <br>
-    <v-row align="center" justify="space-around">
-      <v-btn color="blue" @click="showFootball">축구</v-btn>
-      <v-btn color="blue" @click="showBaseball">야구</v-btn>
-      <v-btn color="blue" @click="showLOL"> LOL </v-btn>
-    </v-row>
+    <v-container class="ml-3 mr-3" rounded color="white">
+      <v-row align="center" justify="space-around">
+        <v-btn color="blue" @click="showFootball">축구</v-btn>
+        <v-btn color="blue" @click="showBaseball">야구</v-btn>
+        <v-btn color="blue" @click="showLOL"> LOL </v-btn>
+      </v-row>
 
-    <br>
-    <div class="m-3">
-      <football v-if="now === 'Football'"/>
-      <baseball v-else-if="now === 'Baseball'"/>
-      <lol v-else-if="now === 'LOL'"/>
-
-    </div>
-
+      <br>
+      <div class="m-3">
+        <football v-if="now === 'Football'"/>
+        <baseball v-else-if="now === 'Baseball'"/>
+        <lol v-else-if="now === 'LOL'"/>
+      </div>
+    </v-container>
   </div>
 </template>
 
