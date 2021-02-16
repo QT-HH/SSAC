@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div >
     <template>
       <v-row width="max-content">
         <v-col width="max-content">
-          <v-card style="height: 530px" width="max-content">
+          <v-card style="height:92vh" width="max-content">
             <v-list two-line>
               
               <v-list-item  
@@ -18,7 +18,7 @@
                   </v-icon>
                 </v-list-item-avatar>
 
-                <v-list-item-content @click="footerOut; selectChat(chat.room.roomId)">  
+                <v-list-item-content @click="footerOut(); selectChat(chat.room.roomId)">  
                   <v-list-item-title>{{ chat.room.name }}</v-list-item-title>
                   <v-list-item-subtitle>
                     <v-chip v-for="(name, idx) in chat.usernames" :key="idx" class="ma-2" x-small>
@@ -42,6 +42,11 @@
                   <v-btn color="indigo accent-2" dark absolute bottom right v-bind="attrs" v-on="on" @click="makechat">
                     <v-icon>mdi-plus</v-icon>
                   </v-btn>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  
                 </template>
                 <v-card>
                   <v-toolbar dark color="indigo accent-2">
@@ -63,7 +68,10 @@
                     <v-list-item>
                       <v-list-item-content>
                         <v-container v-for="(game, idx) in games" :key="idx">
-                          <v-card class="text-center align-center justify-center pa-0 mx-0 rounded-card" link @click="teamselect(game)">
+                          <v-card 
+                          :elevation="10"
+
+                          class="rounded-xl text-center align-center pa-0 mx-0" link @click="teamselect(game)">
                             <v-img
                               src="https://placekitten.com/300/300"
                               class="white--text align-end"
@@ -88,7 +96,9 @@
                     <v-list-item >
                       <v-container v-for="(member, idx) in members" :key="idx">
                         <v-list-item-content style="width:50px " @click="memberselect(member.nickname,member.id)">
-                          <v-chip dark class="justify-center indigo accent-2">{{member.nickname}}</v-chip>
+                          <v-chip 
+                            dark
+                            class="justify-center indigo accent-2">{{member.nickname}}</v-chip>
                         </v-list-item-content>
                       </v-container>
                     </v-list-item>
@@ -126,7 +136,8 @@ export default {
         chats: [],
         // 여기는 채팅만드는 팀
         games: [],
-        members: []
+        members: [],
+        img: ''
       }
     },
     created() {
@@ -157,11 +168,14 @@ export default {
         console.log(this.name);
       },
       memberselect(nickname, id) {
+        if (this.nicknames.indexOf(nickname) > 0){
+          console.log('duplicated!!!!');
+        }else{
         this.nicknames.push(nickname)
         this.ids.push(id)
         console.log(this.ids);
         console.log(this.nicknames);
-
+        }
       },
       makechat() {
         createChat(
@@ -170,6 +184,8 @@ export default {
             console.log(response);
             this.games = response.data.game
             this.members = response.data.follow
+
+            
           },
           (error) => {
             console.log(error)
@@ -200,6 +216,7 @@ export default {
           (error) => {
             console.log(error)
           });
+
       }
     }
 }

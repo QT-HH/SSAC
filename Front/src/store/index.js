@@ -24,6 +24,15 @@ const state = {
   chat: {
     roomid: ''
   },
+  photos: {
+    soccer: 'https://cdn.pixabay.com/photo/2014/10/14/20/24/the-ball-488716_1280.jpg',
+    soccer2: 'https://cdn.pixabay.com/photo/2016/04/24/21/29/football-1350720_1280.jpg',
+    baseball: 'https://cdn.pixabay.com/photo/2016/08/02/15/47/baseball-field-1563858_1280.jpg',
+    baseball2: 'https://cdn.pixabay.com/photo/2018/10/20/14/57/ball-3760961_1280.jpg',
+    lol: 'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTAyMTRfMjE5%2FMDAxNjEzMjgxOTMwMjcx.7k5_RdADdqTvtu_LABy5ezYAWDCgqhi-pkxNJuRN2OIg.53hxKV3U3FOOXaC0oUApXM5gMlhMSEfuH9xvAF1GVcEg.PNG.hoyababyddong%2F%25B8%25AE%25B1%25D7_%25BF%25C0%25BA%25EA_%25B7%25B9%25C0%25FC%25B5%25E53.png&type=sc960_832',
+    lol2: 'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMDExMTJfMTk2%2FMDAxNjA1MTQwMDM0MzU4.LYuhb-9Dm14yOBmZhDh137H9j2o5fYkAcDdNsMzVcX0g.3Vpewn0OYwqW8bZcVEkZpApxGMML2pC0YxVOp4_ccvog.PNG.jsgdfhf9t_608%2F20201112_091115.png&type=sc960_832',
+
+  },
   user: {
     userid: "aaa@aaa.com",
     password: "123123123",

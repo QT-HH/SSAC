@@ -3,6 +3,8 @@
     <v-footer
       fixed
       :padless="padless"
+      :rounded="rounded"
+      class="ml-2 mr-2 mb-2 opa "
     >
       <v-card
         tile
@@ -115,6 +117,7 @@ export default {
         'mdi-account',
       ],
       padless: true,
+      rounded: true,
       dialog: false,
       funcs: [
         "gotoSports",
@@ -154,5 +157,10 @@ export default {
 </script>
 
 <style>
+.opa {
+  opacity: 0.7;
+  
+}
+
 
 </style>
