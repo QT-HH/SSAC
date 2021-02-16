@@ -32,8 +32,9 @@ public class ImageService {
 			else if(teams.get(i).getEvent_no() == 2) eventRoot = "/baseball";
 			else eventRoot = "/lol";
 			String totalRoot = pathRoot + eventRoot;
-			File pFile = new File(totalRoot);
-			filename = teams.get(i).getName()+ext;
+			filename = teams.get(i).getName();
+			filename.replace(" ", "_");
+			filename += ext;
 			InputStream imgStream = new FileInputStream(totalRoot+filename);
 			byte[] imgByteArray = IOUtils.toByteArray(imgStream);
 			imgStream.close();
