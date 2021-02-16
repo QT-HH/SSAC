@@ -57,6 +57,7 @@
           >
             팔로우
           </v-btn>
+          <v-btn @click="temp">임시</v-btn>
         </div>
         <div class="text-center">
           <v-btn
@@ -88,21 +89,28 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+// import { mapState } from 'vuex'
+import axios from 'axios'
 
 export default {
   name:"Profile",
-  data() {
+  // data() {
+  //   return {
+
+  //   }
+  // },
+  data: function() {
     return {
-      introduce: this.$store.state.user.introduce,
-      nickname: this.$store.state.user.nickname
+      user: '',
+      // introduce: this.$store.state.user.introduce,
+      // nickname: this.$store.state.user.nickname
     }
   },
-  computed: {
-      ...mapState([
-        'user'
-      ])
-    },
+  // computed: {
+  //     ...mapState([
+  //       'user'
+  //     ])
+  //   },
   methods:{
     gotoArticle() {
       if (this.$route.path !== "/profile") {
@@ -119,7 +127,43 @@ export default {
         this.$router.push({name:"ProfileEdit"})
       }
     },
+    temp() {
+      const params = {
+      params: {
+        userid: this.userid,
+      }
+    }
+
+    axios.get(`http://i4d102.p.ssafy.io:9000/ssac/user/userSelect/`, params)
+      .then(response => {
+        console.log(response.data)
+        // this.articles = response.data.items
+        // this.users = response.data.items
+        // this.searched = true // 유저검색결과 한 줄 
+      })
+      .catch(error => {
+        console.error(error)
+      })
+
+    }
+  },
+
+
+  computed: {
+    // ...mapState({
+    //  articles: 'articles',
+    //  user: 'user'
+  //  })
+    userid: function () {
+      return this.$store.state.user.email
+    }
+
+  },
+  created() {
+    console.log('created')
+
   }
+
 }
 </script>
 

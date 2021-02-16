@@ -84,7 +84,7 @@ export default {
       }
     }
 
-    axios.get(`http://i4d102.p.ssafy.io:9000/ssac/user/userSelect`, params)
+    axios.get(`http://i4d102.p.ssafy.io:9000/ssac/user/userSelect/`, params)
       .then(response => {
         console.log(response.data)
         // this.articles = response.data.items
