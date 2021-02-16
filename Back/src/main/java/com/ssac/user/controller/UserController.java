@@ -1,5 +1,6 @@
 package com.ssac.user.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,12 +52,13 @@ public class UserController {
 			System.out.println(user.getId());
 			System.out.println(user.getPw());
 			System.out.println(user.getNickname());
-			User check = userService.findUser(user);
+			User check = userService.findUser(new User(user.getId()));
 			if(check == null) {
 				// 회원가입 먼저
 				if(userService.createUser(user) > 0) {
 					// 마이팀 추가
 					List<Integer> teams = (List<Integer>) jsonObj.get("userteam");
+					System.out.println("teams size " + teams.size());
 					for(int i=0; i<teams.size(); i++) {
 						MyTeam myteam = new MyTeam();
 						myteam.setId(user.getId());
@@ -76,7 +78,7 @@ public class UserController {
 				}
 			}
 		} catch(Exception e) {
-			System.out.println("JSON 파싱 실패");
+			e.printStackTrace();
 		}
 		return new ResponseEntity<String>("fail", HttpStatus.NO_CONTENT);
 	}
@@ -87,16 +89,26 @@ public class UserController {
 		// 유저 정보 조회
 		// 입력 : userid
 		// 출력 : 유저 정보
-		User user = userService.findUser(new User(userid));
-		Map<String, Object> resultMap = new HashMap<>();
-		resultMap.put("userid", user.getId());
-		resultMap.put("usernickname", user.getNickname());
-		resultMap.put("point", user.getPoint());
-		List<String> following = userService.getFollowingList(user.getId());
-		List<String> follower = userService.getFollowerList(user.getId());
-		resultMap.put("following", following);
-		resultMap.put("follower", follower);
-		return new ResponseEntity<>(resultMap, HttpStatus.OK);
+		try {
+			User user = userService.findUser(new User(userid));
+			Map<String, Object> resultMap = new HashMap<>();
+			resultMap.put("userid", user.getId());
+			resultMap.put("usernickname", user.getNickname());
+			resultMap.put("point", user.getPoint());
+			List<String> following = userService.getFollowingList(user.getId());
+			List<String> follower = userService.getFollowerList(user.getId());
+			resultMap.put("following", following);
+			resultMap.put("follower", follower);
+			List<MyTeam> myteams = teamService.listMyTeam(user.getId());
+			List<Integer> myteam = new ArrayList<Integer>();
+			for(int i=0; i<myteams.size(); i++) myteam.add(myteams.get(i).getTeam_no());
+			resultMap.put("myteam", myteam);
+			System.out.println("유저정보 조회 : "+userid);
+			return new ResponseEntity<>(resultMap, HttpStatus.OK);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity<>("fail", HttpStatus.NO_CONTENT);
 	}
 	
 	@ApiOperation(value = "유저 닉네임 수정", notes = "입력 : userid, userpw, 변경할닉네임(newnickname)")
@@ -112,6 +124,7 @@ public class UserController {
 			User check = new User();
 			check.setId((String)jsonObj.get("userid"));
 			User user = userService.findUser(check);
+			System.out.println("유저 닉네임 수정 : "+user.getId());
 			if(user.getPw().equals((String)jsonObj.get("userpw"))) {
 				user.setNickname((String)jsonObj.get("newnickname"));
 				if(userService.modifyUserNickname(user) > 0)
@@ -136,6 +149,7 @@ public class UserController {
 			User check = new User();
 			check.setId((String)jsonObj.get("userid"));
 			User user = userService.findUser(check);
+			System.out.println("유저 비밀번호 수정 : "+user.getId());
 			if(user.getPw().equals((String)jsonObj.get("userpw"))) {
 				HashMap<String, String> map = new HashMap<String, String>();
 				map.put("userid", user.getId());
@@ -162,6 +176,7 @@ public class UserController {
 			User check = new User();
 			check.setId((String)jsonObj.get("userid"));
 			User user = userService.findUser(check);
+			System.out.println("유저탈퇴 : "+user.getId());
 			if(user.getPw().equals((String)jsonObj.get("userpw"))) {
 				if(userService.removeUser(user) > 0)
 					return new ResponseEntity<String>("success", HttpStatus.OK);
@@ -182,6 +197,7 @@ public class UserController {
 			HashMap<String, String> map = new HashMap<String, String>();
 			map.put("userid", (String)jsonObj.get("userid"));
 			map.put("follow_id", (String)jsonObj.get("follow_id"));
+			System.out.println("팔로우 : "+map.get("userid")+" "+map.get("follow_id"));
 			if(userService.doFollowing(map) > 0)
 				return new ResponseEntity<String>("success", HttpStatus.OK);
 		} catch(Exception e) {

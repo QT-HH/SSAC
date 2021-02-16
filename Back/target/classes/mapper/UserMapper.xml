@@ -11,7 +11,7 @@
 
 	<!-- 회원등록 -->
 	<insert id="insertUser" parameterType="com.ssac.user.dto.User">
-		insert into user(id, pw, nickname)
+		insert into user (id, pw, nickname)
 		values (#{id}, #{pw}, #{nickname})
 	</insert>	
 	

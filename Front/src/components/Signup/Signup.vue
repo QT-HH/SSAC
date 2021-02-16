@@ -179,6 +179,7 @@ export default {
     selectMyteam() {
       if (this.isSubmit) {
         let {nickName, email, password} = this;
+        console.log(nickName,email,password)
         let newuser = {
           nickName,
           email,
