@@ -1,31 +1,34 @@
 <template>
   <div style="width:100%;">
-    <v-system-bar color="deep-purple darken-3"></v-system-bar>
-    <v-app-bar
-      color="deep-purple accent-4"
-      dark
-      height="54px"
-    >
-      <v-row>
-        <v-col cols="3">
-        </v-col>
-        <v-col class="mt-1" cols="6">
-          <h2 align="center" justify="center">Feed</h2>
-        </v-col>
-        <v-col cols="3">
-        </v-col>
-      </v-row>
-      <!-- <v-btn icon>
-        <v-icon>mdi-dots-vertical</v-icon>
-      </v-btn>
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
+    <!-- Systembar & Navbar -->
+    <div style="position:fixed; z-index:100; width:100%; top:0px;">
+      <v-system-bar color="deep-purple darken-3"></v-system-bar>
+      <v-app-bar
+        color="deep-purple accent-4"
+        dark
+        height="54px"
+      >
+        <v-row>
+          <v-col cols="3">
+          </v-col>
+          <v-col class="mt-1" cols="6">
+            <h2 align="center" justify="center">Feed</h2>
+          </v-col>
+          <v-col cols="3">
+          </v-col>
+        </v-row>
+        <!-- <v-btn icon>
+          <v-icon>mdi-dots-vertical</v-icon>
+        </v-btn>
+        <v-btn icon>
+          <v-icon>mdi-magnify</v-icon>
+        </v-btn>
 
-      <v-btn icon>
-        <v-icon>mdi-filter</v-icon>
-      </v-btn> -->
-    </v-app-bar>
+        <v-btn icon>
+          <v-icon>mdi-filter</v-icon>
+        </v-btn> -->
+      </v-app-bar>
+    </div>
      
     <!-- 새 글 작성 -->
     <v-card 
