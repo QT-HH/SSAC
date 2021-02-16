@@ -103,7 +103,7 @@ public class UserController {
 			List<Integer> myteam = new ArrayList<Integer>();
 			for(int i=0; i<myteams.size(); i++) myteam.add(myteams.get(i).getTeam_no());
 			resultMap.put("myteam", myteam);
-			System.out.println("유저정보 조회 : "+userid+" "+myteam.get(0));
+			System.out.println("유저정보 조회 : "+userid);
 			return new ResponseEntity<>(resultMap, HttpStatus.OK);
 		} catch(Exception e) {
 			e.printStackTrace();
