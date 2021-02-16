@@ -32,8 +32,17 @@
           </v-btn>          
           <v-dialog v-model="dialog" width="500">
             <v-card>
-              <v-file-input class="d-flex align-center justify-center pa-4 mx-auto" label="File input" filled
-                prepend-icon="mdi-camera"></v-file-input>
+              <v-file-input 
+                class="d-flex align-center justify-center pa-4 mx-auto" 
+                label="File input" 
+                filled
+                prepend-icon="mdi-camera"
+                accept="image/*"
+                multiple
+                chips
+                counter
+                v-model="files"
+              ></v-file-input>
 
               <v-divider></v-divider>
 
@@ -43,7 +52,7 @@
                     text
                     @click="dialog = false"
                   >취소</v-btn>
-                <v-btn color="primary" text @click="dialog = false">
+                <v-btn color="primary" text @click="upload">
                   적용
                 </v-btn>
               </v-card-actions>
@@ -69,31 +78,35 @@
         max-width="350"
       >
         <v-list-item class="grow">
-            <v-list-item-avatar color="grey darken-3">
+            <!-- <v-list-item-avatar color="grey darken-3">
               <v-img
                 class="elevation-6"
                 alt=""
                 :src="feed.src"
               ></v-img>
-            </v-list-item-avatar>
+            </v-list-item-avatar> -->
 
             <v-list-item-content>
-              <v-list-item-title>{{ feed.name }}</v-list-item-title>
+              <v-list-item-title>{{ feed.id }}</v-list-item-title>
             </v-list-item-content>
 
             <v-row
               align="center"
               justify="end"
             >
-              <v-icon class="mx-2">
+              <v-icon 
+                class="mx-2" 
+                v-if="feed.id === user.userid"
+                @click="editModal(feed)"
+              >
                 mdi-pencil
               </v-icon>
-              <span class="subheading">{{ feed.time }} 전</span>
+              <span class="subheading">{{ feed.regtime }}</span>
             </v-row>
         </v-list-item>
 
         <v-card-text class="headline font-weight-bold">
-          {{ feed.article }}
+          {{ feed.content }}
         </v-card-text>
 
         
@@ -103,14 +116,14 @@
               align="center"
               justify="end"
             >
-              <v-icon class="mr-1">
+              <v-icon class="mr-1" @click="likeFeed(feed)">
                 mdi-heart
               </v-icon>
               <span class="subheading mr-2">{{ feed.like }}</span>
               <span class="mr-1">·</span>
               <v-btn
                 icon
-                @click="changeShow(idx)"
+                @click="changeModal(feed)"
               >
                 <v-icon class="mr-1">                  
                   mdi-message-text
@@ -121,7 +134,7 @@
         </v-card-actions>
 
         <!-- 피드의 댓글 -->
-        <v-expand-transition>
+        <!-- <v-expand-transition>
           <v-card v-show="show[idx]">
             <v-divider></v-divider>
             <v-card-text>
@@ -170,7 +183,7 @@
               </div>
             </v-card-text>
           </v-card>
-        </v-expand-transition>
+        </v-expand-transition> -->
       
       </v-card>
     </div>
@@ -178,103 +191,211 @@
     <br>
     <br>
     <br>
-
     <v-row justify="center">
       <v-dialog
-        v-model="dialog"
+        v-model="modal"
         fullscreen
         hide-overlay
-        transition="dialog-transition"
+        transition="dialog-bottom-transition"
       >
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn
-            color="primary"
-            dark
-            v-bind="attrs"
-            v-on="on"
-          >
-            Open Dialog
-          </v-btn>
-        </template>
         <v-card>
           <v-toolbar
             dark
             color="primary"
           >
-            <v-btn
+            <!-- <v-btn
               icon
               dark
-              @click="dialog = false"
+              @click="modal = false"
             >
               <v-icon>mdi-close</v-icon>
-            </v-btn>
-            <v-toolbar-title>Settings</v-toolbar-title>
+            </v-btn> -->
+            <v-toolbar-title>댓글</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-toolbar-items>
               <v-btn
                 dark
                 text
-                @click="dialog = false"
+                @click="modal = false"
               >
-                Save
+                닫기
               </v-btn>
             </v-toolbar-items>
           </v-toolbar>
-          <v-list
-            three-line
-            subheader
+
+          <v-card
+            elevation="5"
+            max-width="444"
+            class="mx-auto"
           >
-            <v-subheader>User Controls</v-subheader>
-            <v-list-item>
-              <v-list-item-content>
-                <v-list-item-title>Content filtering</v-list-item-title>
-                <v-list-item-subtitle>Set the content filtering level to restrict apps that can be downloaded</v-list-item-subtitle>
-              </v-list-item-content>
-            </v-list-item>
-            <v-list-item>
-              <v-list-item-content>
-                <v-list-item-title>Password</v-list-item-title>
-                <v-list-item-subtitle>Require password for purchase or use password to restrict purchase</v-list-item-subtitle>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list>
+            <v-list two-line>
+              <v-list-item>
+                <v-list-item-avatar>
+                  <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
+                </v-list-item-avatar>
+                <v-list-item-content>
+                  <v-list-item-title>{{selected.id}}</v-list-item-title>
+                  <v-list-item-subtitle>{{selected.id}}</v-list-item-subtitle>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list>
+            <v-carousel
+              :continuous="false"
+              :cycle="cycle"
+              :show-arrows="false"
+              hide-delimiter-background
+              delimiter-icon="mdi-minus"
+              height="300"
+              v-if="selected.imgs"
+            >
+              <v-carousel-item
+                v-for="(img, i) in selected.imgs"
+                :key="i"
+              >
+                <v-sheet
+                  :color="colors[i]"
+                  height="100%"
+                  tile
+                >
+                  <v-row
+                    class="fill-height"
+                    align="center"
+                    justify="center"
+                  >
+                    <div class="display-3">
+                      {{ i }} Slide
+                    </div>
+                  </v-row>
+                </v-sheet>
+              </v-carousel-item>
+            </v-carousel>
+            <v-card-title>
+              {{selected.content}}
+            </v-card-title>
+          </v-card>
+
           <v-divider></v-divider>
-          <v-list
-            three-line
-            subheader
-          >
-            <v-subheader>General</v-subheader>
-            <v-list-item>
-              <v-list-item-action>
-                <v-checkbox v-model="notifications"></v-checkbox>
-              </v-list-item-action>
-              <v-list-item-content>
-                <v-list-item-title>Notifications</v-list-item-title>
-                <v-list-item-subtitle>Notify me about updates to apps or games that I downloaded</v-list-item-subtitle>
-              </v-list-item-content>
-            </v-list-item>
-            <v-list-item>
-              <v-list-item-action>
-                <v-checkbox v-model="sound"></v-checkbox>
-              </v-list-item-action>
-              <v-list-item-content>
-                <v-list-item-title>Sound</v-list-item-title>
-                <v-list-item-subtitle>Auto-update apps at any time. Data charges may apply</v-list-item-subtitle>
-              </v-list-item-content>
-            </v-list-item>
-            <v-list-item>
-              <v-list-item-action>
-                <v-checkbox v-model="widgets"></v-checkbox>
-              </v-list-item-action>
-              <v-list-item-content>
-                <v-list-item-title>Auto-add widgets</v-list-item-title>
-                <v-list-item-subtitle>Automatically add home screen widgets</v-list-item-subtitle>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list>
+              <v-timeline
+                align-top
+                dense
+              >
+                <v-timeline-item
+                  v-for="(comment, idx) in comments"
+                  :key="idx"
+                  small
+                >
+                  <!-- <template v-slot:icon>
+                    <v-avatar>
+                      <img :src="comment.src">
+                    </v-avatar>
+                  </template> -->
+                  <v-card class="elevation-1">
+                    <v-card-text><strong>{{ comment.nickname }}</strong> @{{ comment.regtime }}</v-card-text>
+                    <v-card-text class="font-weight-normal" v-show="!editCommBool[idx]">
+                      {{ comment.content }} 
+                        <v-icon
+                          v-if="comment.id === user.userid"
+                          @click="editCommentBool(comment.content,idx)"
+                        >
+                          <!-- @click="editModal(feed)" -->
+                          mdi-pencil
+                        </v-icon>
+                        <v-icon
+                          v-if="comment.id === user.userid"
+                          @click="delComment(comment.no,idx)"
+                        >
+                          mdi-delete
+                        </v-icon>
+                    </v-card-text>
+                    <div v-show="editCommBool[idx]">
+                      <v-text-field
+                        label="new Comments"
+                        solo
+                        v-model="editComm"
+                      ></v-text-field>
+                      <v-btn @click="editCommentBool('',idx)">
+                        취소
+                      </v-btn>
+                      <v-btn @click="editComment(comment,idx)">
+                        수정
+                      </v-btn>
+                    </div>
+                  </v-card>
+                </v-timeline-item>
+              </v-timeline>
+                <v-row>
+                  <v-col cols=2 class="ml-7">
+                    <v-list-item-avatar>
+                      <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
+                    </v-list-item-avatar>
+                  </v-col>
+                  <v-col cols=6 class="px-0">
+                    <v-text-field
+                      label="new Comments"
+                      solo
+                      v-model="newComment"
+                    ></v-text-field>
+                  </v-col>
+                  <v-col cols=3>
+                    <v-btn @click="addNewComment(selected.no)">
+                      입력
+                    </v-btn>
+                  </v-col>
+                </v-row>
         </v-card>
       </v-dialog>
     </v-row>
+
+    <v-row justify="center">
+      <v-dialog
+        v-model="editmodal"
+        fullscreen
+        hide-overlay
+        transition="dialog-top-transition"
+      >
+        <v-card>
+          <v-toolbar
+            dark
+            color="primary"
+          >
+            <!-- <v-btn
+              icon
+              dark
+              @click="modal = false"
+            >
+              <v-icon>mdi-close</v-icon>
+            </v-btn> -->
+            <v-toolbar-title>글 수정</v-toolbar-title>
+            <v-spacer></v-spacer>
+            <v-toolbar-items>
+              <v-btn
+                dark
+                text
+                @click="editmodal = false"
+              >
+                취소
+              </v-btn>
+            </v-toolbar-items>
+          </v-toolbar>
+          <v-divider></v-divider>
+          <v-container fluid>
+            <v-textarea
+              clearable
+              clear-icon="mdi-close-circle"
+              label="Content"
+              v-model="selected.content"
+            ></v-textarea>
+          <v-btn @click="deleteFeed(selected.no)">
+            삭제하기
+          </v-btn>
+          <v-btn @click="updateFeed(selected)">
+            수정하기
+          </v-btn>
+          </v-container>
+        </v-card>
+      </v-dialog>
+    </v-row>
+
     <br>
     <br>
     <br>
@@ -286,84 +407,107 @@
 
 <script>
 import { mapState } from 'vuex';
-
+import { getArticle, writeArticle, updateArticle, deleteArticle, likeArticle, getLikeUsers, unlikeArticle,  getComment, writeComment, updateComment, deleteComment} from '@/api/tabs/feed.js'
+//  
 export default {
   name:"Feed",
   data () {
     return {
       feeds: [
         {
-          src: require("@/assets/images/corinlee.jpg"), 
-          name:'이경연', 
-          time: '10분', 
-          article: '아 제발 대구에 메시 왔으면 좋겠다.', 
-          like: '1,000,003',
-          comments: [
-            {
-              from: '박노정',
-              message: '나도',
-              time: '3:07am',
-              src: require("@/assets/images/yesjeong.jpg"),
-            },
-            {
-              from: '백규태',
-              message: '스타디움 갈 사람~',
-              time: '3:08am',
-              src: require("@/assets/images/qt.jpg"),
-            }
-          ]
+          // src: require("@/assets/images/corinlee.jpg"), 
+          // id:'이경연', 
+          // regtime: '10분', 
+          // content: '아 제발 대구에 메시 왔으면 좋겠다.', 
+          // like: '1,000,003',
+          // no:1
+          // comments: [
+          //   {
+          //     from: '박노정',
+          //     message: '나도',
+          //     time: '3:07am',
+          //     src: require("@/assets/images/yesjeong.jpg"),
+          //   },
+          //   {
+          //     from: '백규태',
+          //     message: '스타디움 갈 사람~',
+          //     time: '3:08am',
+          //     src: require("@/assets/images/qt.jpg"),
+          //   }
+          // ]
         },
-        {
-          src: require("@/assets/images/qt.jpg"), 
-          name:'백규태', 
-          time: '25분', 
-          article: '맨유 1위~', 
-          like: '50',
-          comments: [
-            {
-              from: '이경연',
-              message: '배고프다.',
-              time: '3:07am',
-              src: require("@/assets/images/corinlee.jpg"),
-            },
-            {
-              from: '박노정',
-              message: '야식타임 고고',
-              time: '3:08am',
-              src: require("@/assets/images/yesjeong.jpg"),
-            }
-          ]          
-        },
-        {
-          src: require("@/assets/images/yesjeong.jpg"), 
-          name:'박노정', 
-          time: '2시간', 
-          article: '롤챔스 같이 볼 규태형아 구함', 
-          like: '5,000,000',
-          comments: [
-            {
-              from: '이경연',
-              message: '나는 왜 안불러?',
-              time: '3:07am',
-              src: require("@/assets/images/corinlee.jpg"),
-            },
-            {
-              from: '백규태',
-              message: '내 토요일에 교회가야된다 노정아. 일요일에는 절 가야하고',
-              time: '3:08am',
-              src: require("@/assets/images/qt.jpg"),
-            }
-          ]
-        }
+        // {
+        //   src: require("@/assets/images/qt.jpg"), 
+        //   name:'백규태', 
+        //   time: '25분', 
+        //   article: '맨유 1위~', 
+        //   like: '50',
+        //   comments: [
+        //     {
+        //       from: '이경연',
+        //       message: '배고프다.',
+        //       time: '3:07am',
+        //       src: require("@/assets/images/corinlee.jpg"),
+        //     },
+        //     {
+        //       from: '박노정',
+        //       message: '야식타임 고고',
+        //       time: '3:08am',
+        //       src: require("@/assets/images/yesjeong.jpg"),
+        //     }
+        //   ]          
+        // },
+        // {
+        //   src: require("@/assets/images/yesjeong.jpg"), 
+        //   name:'박노정', 
+        //   time: '2시간', 
+        //   article: '롤챔스 같이 볼 규태형아 구함', 
+        //   like: '5,000,000',
+        //   comments: [
+        //     {
+        //       from: '이경연',
+        //       message: '나는 왜 안불러?',
+        //       time: '3:07am',
+        //       src: require("@/assets/images/corinlee.jpg"),
+        //     },
+        //     {
+        //       from: '백규태',
+        //       message: '내 토요일에 교회가야된다 노정아. 일요일에는 절 가야하고',
+        //       time: '3:08am',
+        //       src: require("@/assets/images/qt.jpg"),
+        //     }
+        //   ]
+        // }
       ],
-      show: [false,false,false,false,false,false,],
-      comment : {message: ''},
-      user : {
-        name: "이경연",
-        src: require("@/assets/images/corinlee.jpg")
-      },
+      // show: [false,false,false,false,false,false,false,false,false,false,false,false],
+      // comment : {message: ''},
+      // user : {
+      //   name: "이경연",
+      //   src: require("@/assets/images/corinlee.jpg")
+      // },
       newText : "",
-      dialog:false
+      newComment : "",
+      editComm : "",
+      editCommBool : [false,],
+      dialog:false,
+      modal:false,
+      editmodal:false,
+      selected:{
+        no:Number,
+        id:String,
+        regtime:String,
+        like:Number,
+        content:String,
+      },
+      comments: [],
+      editFeed:{
+        no:Number,
+        id:String,
+        regtime:String,
+        like:Number,
+        content:String,
+      },
+      files:[],
     }
   },
   computed: {
@@ -371,37 +515,262 @@ export default {
       'user'
     ])
   },
+  mounted() {
+    // console.log(this.user.userid)
+    getArticle(
+      this.user.userid,
+      (res) => {
+        // console.log(res.data)
+        this.feeds = res.data
+      },
+      (err) => {
+        console.log(err)
+      }
+    )
+  },
   methods: {
-    addNewComment(key) {
-      let newComment = {
-        from : this.feeds[key].user.name,
-        time: new Date(),
-        message: this.feeds[key].comment.message,
-        src:this.feeds[key].user.src
-      };
-      this.feeds[key].comments.push(newComment)
-    },
     changeShow(idx) {
       this.$set(this.show, idx, !this.show[idx])
     },
-    createNewFeed() {
-      let newArticle = 
-      {
-          src: require("@/assets/images/corinlee.jpg"), 
-          name:'', 
-          time: '', 
-          article: '', 
-          like: 0,
-          comments: []
+    addNewComment(no) {
+      let comm = this.newComment
+      if (comm.length === 0){
+        alert("아무것도 입력하지 않았습니당")
+      } else {
+        writeComment(
+          this.user.userid,comm,
+          (res) => {
+            console.log(res.data)
+            this.comments.push({
+              "regtime": new Date(),
+              "no":no,
+              "nickname":this.user.nickname,
+              "id":this.user.userid,
+              "content":comm
+            })
+          },
+          (err) => {
+            console.log(err)
+            console.log(2)
+          }
+        )
+        this.newComment = ''
       }
+    },
+    editCommentBool(content,idx){
+      this.editCommBool[idx] = !this.editCommBool[idx]
+      this.editComm = content
+    },
+    editComment(comm,idx) {
+      let no = comm.no
+      let comment = this.editComm
+      if (comment.length>0){
+        updateComment(
+          no,comment,
+          (res) => {
+            console.log(res.data)
+            comm.content = comment
+            this.editCommBool[idx] = false
+          },
+          (err) => {
+            console.log(err)
+          }
+        )
+      } else {
+        alert("빈 댓글은 허용되지 않습니다.")
+      }
+    },
+    delComment(no,idx){
+      deleteComment(
+        no,
+        (res) => {
+          console.log(2)
+          console.log(res.data)
+          console.log(this.comments,idx)
+          // this.comments.splice(idx,1)
+        },
+        (err) => {
+          console.log(3)
+          console.log(err)
+        }
+      )
+    },
+    createNewFeed() {
+      writeArticle(
+        this.user.userid,this.newText,
+        (res) => {
+          console.log(res.data)
+          let newArticle = 
+          {
+              // src: require("@/assets/images/corinlee.jpg"), 
+              id:this.user.userid, 
+              regtime: new Date(), 
+              content: this.newText, 
+              like: 0,
+              no:20
+              // comments: []
+          }
+          this.feeds.push(newArticle)
+          this.newText = ""
+        },
+        (err) => {
+          console.log(err)
+        }
+      )
+    },
+    changeModal(feed) {
+      this.modal=!this.modal
+      this.selected = feed
+      // this.selected.no = feed.no
+      // this.selected.id = feed.id
+      // this.selected.regtime = feed.regtime
+      // this.selected.like = feed.like
+      // this.selected.content = feed.like
+      getComment(
+        feed.no,
+        (res) => {
+          this.comments = res.data
+        },
+        (err) => {
+          console.log(err)
+        }
+      )
+    },
+    editModal(feed) {
+      this.selected = feed
+      this.editmodal=!this.editmodal
+    },
+    updateFeed(selected) {
+      let no = selected.no
+      let content = selected.content
+      if (content !== null) {
+        updateArticle(
+          no,content,
+          (res) => {
+            alert("글이 수정되었습니다")
+            this.editmodal = !this.editmodal
+            console.log(res.data)
+          },
+          (err) => {
+            console.log(err)
+          }
+        )
+      } else {
+        alert("글 내용이 없습니다")
+      }
+    },
+    deleteFeed(no) {
+      deleteArticle(
+        no,
+        (res) => {
+          this.editmodal = !this.editmodal
+          console.log(res.data)
+        },
+        (err) => {
+          console.log(err)
+        }
+      )
+    },
+    likeFeed(event) {
+      // let userid = this.user.userid
+      let userid = "leegw215@naver.com"
+      let nickname = "이지원"
+      let no = event.no
+      let users = []
+      let bool = false
+      console.log(event.like)
+      getLikeUsers(
+        no,
+        (res) => {
+          // console.log(res.data)
+          console.log(1)
+          users = res.data
+          console.log(res.data)
+          for (let idx = 0; idx < users.length; idx++){
+            if (users[idx].like_id === userid) {
+              bool = true
+              break
+            }
+          }
+          console.log(2)
+          console.log(bool)
+          if (!bool) {
+            likeArticle(
+              userid,nickname,no,
+              (res) => {
+                console.log(3)
+                console.log(res.data)
+                event.like *= 1
+                event.like += 1
+                event.like += ''
+              },
+              (err) => {
+                console.log(err)
+              }
+            )
 
-      newArticle.name = this.user.name
-      newArticle.time = "방금"
-      newArticle.article = this.newText
+          } else {
+            unlikeArticle(
+              userid,no,
+              (res) => {
+                console.log(res.data)
+                event.like *= 1
+                event.like -= 1
+                event.like += ''
+              },
+              (err) => {
+                console.log(err)
+              }
+            )
+          }
+        },
+        (err) => {
+          console.log(err)
+        }
+      )
 
-      this.feeds.push(newArticle)
-      this.newText = ""
-    }
+    },
+    unlikeFeed(userid, no){
+      unlikeArticle(
+        userid,no,
+        (res) => {
+          console.log(res.data)
+        },
+        (err) => {
+          console.log(err)
+        }
+      )
+    },
+    likeUsers(no){
+      getLikeUsers(
+        no,
+        (res) => {
+          console.log(res.data)
+        },
+        (err) => {
+          console.log(err)
+        }
+      )
+    },
+    // async upload(){
+    //   this.dialog = false
+    //   let fd = new FormData();
+    //   fd.append('files',this.files)
+    //   await axios.post('http://localhost:1337/upload',
+    //     fd, {
+    //       headers: {
+    //         'Content-Type': 'multipart/form-data'
+    //       }
+    //     }
+    //   ).then( response => {
+    //     console.log('SUCCESS!!');
+    //     console.log(response.data)
+    //   })
+    //   .catch(function () {
+    //     console.log('FAILURE!!');
+    //   });
+    // }
+
   },
 }
 </script>

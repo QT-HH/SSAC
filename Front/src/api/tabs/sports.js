@@ -10,7 +10,7 @@ function getSchedule(success,fail) {
     .then(success)
     .catch(fail);
 }
-
+ 
 function pmScore(event_id,n,pm,success,fail) {
   let config = {
     event_id : event_id,
