@@ -30,6 +30,8 @@ public class NewsfeedController {
 		// 뉴스피드 불러오기 (내가쓴글 + 내 팔로워가 쓴 글)
 		// 입력 : userid
 		// 출력 : 뉴스피드 게시글 (개수는 협의)
+		
+		/// 게시글 
 		List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
 		Map<String, Object> resultMap1 = new HashMap<>();
 		resultMap1.put("no", "1");
