@@ -34,7 +34,11 @@ const state = {
 
   },
   user: {
+<<<<<<< HEAD
     userid: "aaa@aaa.com",
+=======
+    email: "aaa@aaa.com",
+>>>>>>> ecc9380c04f2d9eb9fb163c84d080d306714c8af
     password: "123123123",
     nickname: "nojjeong",
     myteams: [34,35],

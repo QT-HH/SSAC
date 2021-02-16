@@ -8,7 +8,7 @@
     </v-list-item-avatar>
 
     <v-list-item-content>
-      <v-list-item-title v-text="user.name"></v-list-item-title>
+      <v-list-item-title v-text="user.nickname"></v-list-item-title>
     </v-list-item-content>
 
   </v-list-item> 
