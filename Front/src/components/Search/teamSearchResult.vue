@@ -19,7 +19,7 @@
       <v-list-item-title v-text="team.name"></v-list-item-title>
     </v-list-item-content>
 
-    <v-icon @click="[saveMyTeam(team), changeIconType()]">{{ iconType }}</v-icon>
+    <v-icon @click="[saveMyTeam(team), changeIconType(), dbRequest()]">{{ iconType }}</v-icon>
 
 
 </v-list-item>
@@ -28,6 +28,8 @@
 
 <script>
 import { mapActions, mapState } from 'vuex'
+import axios from 'axios'
+
 export default {
   name: 'teamSearchResult',
   props: {
@@ -46,6 +48,30 @@ export default {
     ]),
     changeIconType: function() {
       this.iconType = 'blank'
+    },
+
+    dbRequest: function() {
+
+      console.log('created')
+      const params = {
+          params: {
+            userid: this.userid,
+            team_no: this.team_no
+          }
+        }
+
+      axios.post(`http://i4d102.p.ssafy.io:9000/ssac/team/myTeamInsert/`, params)
+        .then(response => {
+          console.log(response.data)
+          // axios 요청부분 - 요청한번보내서 this.users랑 this.teams를 다 업데이트.
+          // this.fri_teams = response.data
+          // this.searched = response.data.searched // 유저검색결과 한 줄 
+        })
+        .catch(error => {
+          console.error(error)
+        })
+      
+
     }
   },
   computed: {
