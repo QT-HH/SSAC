@@ -1,65 +1,73 @@
 <template>
-  <div class="user join wrapC">
-    <h1>회원가입</h1>
-    <div class="form-wrap">
-      <div class="input-with-label">
-        <label for="nickname">닉네임</label>
-        <input v-model="nickName" id="nickname" placeholder="닉네임을 입력하세요." type="text" />
-      </div>
+  <div class="fill-height">
+    <!-- 로고 -->
+    <v-container>
+      <v-row class="mt-5 mb-5" align="center" justify="center">
+        <v-img
+          :src="logo.src"
+          max-width="130"
+          max-height="50"
+          class="rounded-pill"
+        >
+        </v-img>
+      </v-row>
+    </v-container>
 
-      <div class="input-with-label">
-        <label for="email">이메일</label>
-        <input 
-          v-model="email"
-          v-bind:class="{error : error.email, complete:!error.email&&email.length!==0}"
-          id="email" 
-          placeholder="이메일을 입력하세요." 
-          type="text"
-          style="text-transform:lowercase"
-        />
-        <div class="error-text" v-if="error.email">{{error.email}}</div>
-      </div>
+    <v-row class="mt-4 mb-1 ml-7" align="center">
+      <h5>Create your Account</h5>
+    </v-row>
 
-      <div class="input-with-label">
-        <label for="password">비밀번호</label>
-        <input 
-          v-model="password" 
-          id="password" 
-          :type="passwordType" 
-          placeholder="비밀번호를 입력하세요."
-          v-bind:class="{error : error.password, complete:!error.password&&password.length!==0}"
-        />
-        <div class="error-text" v-if="error.password">{{error.password}}</div>
-      </div>
+    <!-- 회원가입 폼 -->
+    <v-form
+      ref="form"
+      lazy-validation
+      class="mt-2 mr-7 ml-7 mb-10"
+    >
+      <!-- 닉네임 -->
+      <v-text-field
+        v-model="nickName"
+        :error-messages="nickErrors"
+        label="nickname"
+        required
+      ></v-text-field>
+      <!-- 이메일 -->
+      <v-text-field
+        v-model="email"   
+        :rules="emailRules"
+        label="E-mail"
+        required
+        style="text-transform:lowercase"
+      ></v-text-field>
+      <!-- 비밀번호 -->
+      <v-text-field
+        v-model="password"
+        :error-messages="passErrors"
+        label="password"
+        :type="passwordType"
+        required
+      ></v-text-field>
+      <!-- 비밀번호 확인 -->
+      <v-text-field
+        v-model="passwordConfirm"
+        :error-messages="passconfirmErrors"
+        label="password-confirm"
+        :type="passwordConfirmType"
+        required
+      ></v-text-field>
+    </v-form>
 
-      <div class="input-with-label">
-        <label for="password-confirm">비밀번호 확인</label>
-        <input
-          v-model="passwordConfirm"
-          :type="passwordConfirmType"
-          id="password-confirm"
-          placeholder="비밀번호를 다시한번 입력하세요."
-          v-bind:class="{error : error.passwordConfirm, complete:!error.passwordConfirm&&passwordConfirm.length!==0}"
-        />
-        <div class="error-text" v-if="error.passwordConfirm">{{error.passwordConfirm}}</div>
-      </div>
-    </div>
-
-    <!-- <span @click="termPopup=true">약관보기</span>
-
-    <label>
-      <input v-model="isTerm" type="checkbox" id="term" />
-      <span>약관을 동의합니다.</span>
-    </label> -->
-
-    <button
-      class="btn-bottom"
-      @click="selectMyteam"
-      :disabled="!isSubmit"
-      :class="{disabled : !isSubmit}"
-      v-if="isSubmit === true"
-    >NEXT</button>
-
+    <v-row  class="mt-3 mb-3" justify="center" align="center">
+      <v-btn
+        class="white--text"
+        color="#536DFE"
+        @click="selectMyteam"
+        :disabled="!isSubmit"
+        :class="{disabled : !isSubmit}"
+        width="265"
+      >
+        NEXT
+      </v-btn>
+    </v-row>
   </div>
 </template>
 
@@ -67,9 +75,44 @@
 import * as EmailValidator from "email-validator";
 import PV from "password-validator";
 
+
 export default {
   name: "Signup",
+  data: () => {
+    return {
+      pass:false,
+      passconf:false,
+      nick:false,
+      email: "",
+      emailRules: [
+        v => !!v || '이메일을 입력해주세요.',
+        v => EmailValidator.validate(v) || '이메일 형식이 아닙니다.',
+      ],
+      password: "",
+      passwordConfirm: "",
+      passwordSchema: new PV(),
+      nicknameSchema: new PV(),
+      passwordRules: [
+        v => !!v || 'Password is required',
+        v => this.checkPass(v) || 'Password must be at least 8 digits including English and number',
+      ],
+      nickName: "",
+      isLoading: false,
+      error: {
+        nickName: false,
+        email: false,
+        password: false,
+        passwordConfirm: false,
+      },
+      isSubmit: false,
+      passwordType: "password",
+      passwordConfirmType: "password",
+      // termPopup: false
+      logo : { src : require("@/assets/images/logo.png") }
+    };
+  },
   created() {
+
     this.passwordSchema
       .is()
       .min(8)
@@ -79,25 +122,38 @@ export default {
       .digits()
       .has()
       .letters();
+
+    this.nicknameSchema
+      .is()
+      .min(2)
+      .is()
+      .max(6);
   },
 
   watch: {
     password: function() {
+      this.pass = true
+      this.checkForm();
+    },
+    nickName: function() {
+      this.nick = true
       this.checkForm();
     },
     email: function() {
       this.checkForm();
     },
     passwordConfirm: function() {
+      this.passconf = true
       this.checkForm();
     },
-    // isTerm: function() {
-    //   this.checkForm();
-    // }
+
   },
 
   methods: {
     checkForm() {
+      if (this.nickName.length >= 0 && !this.nicknameSchema.validate(this.nickName))
+        this.error.nickName = "닉네임 형식이 아닙니다.";
+      else this.error.nickName = false;
 
       if (this.email.length >= 0 && !EmailValidator.validate(this.email))
         this.error.email = "이메일 형식이 아닙니다.";
@@ -114,10 +170,6 @@ export default {
         this.error.passwordConfirm = "비밀번호와 일치하지 않습니다."
       else this.error.passwordConfirm = false;
 
-      // if (this.isTerm === false)
-      //   this.error.isTerm = true
-      // else this.error.isTerm = false
-
       let isSubmit = true;
       Object.values(this.error).map(v => {
         if (v) isSubmit = false;
@@ -127,6 +179,7 @@ export default {
     selectMyteam() {
       if (this.isSubmit) {
         let {nickName, email, password} = this;
+        console.log(nickName,email,password)
         let newuser = {
           nickName,
           email,
@@ -136,30 +189,35 @@ export default {
         this.$router.push({name:"SelectTeam"});
       }
     }
-   
   },
-
-  data: () => {
-    return {
-      email: "",
-      password: "",
-      passwordConfirm: "",
-      passwordSchema: new PV(),
-      nickName: "",
-      // isTerm: false,
-      isLoading: false,
-      error: {
-        email: false,
-        password: false,
-        nickName: false,
-        passwordConfirm: false,
-        // isTerm: false
-      },
-      isSubmit: false,
-      passwordType: "password",
-      passwordConfirmType: "password",
-      // termPopup: false
-    };
+  computed:{
+    passErrors () {
+      const errors = []
+      if (this.passwordSchema.validate(this.password) || (!this.pass)) {
+      return errors
+      } else {
+        errors.push("영문,숫자 포함 8 자리이상이어야 합니다.")
+      }
+      return errors
+    },
+    nickErrors () {
+      const errors = []
+      if (this.nicknameSchema.validate(this.nickName) || (!this.nick)) {
+      return errors
+      } else {
+        errors.push("2글자 이상 8글자 이하이어야 합니다.")
+      }
+      return errors
+    },
+    passconfirmErrors () {
+      const errors = []
+      if ((this.password === this.passwordConfirm) || (!this.passconf)) {
+      return errors
+      } else {
+        errors.push("비밀번호와 일치하지 않습니다.")
+      }
+      return errors
+    }
   }
 };
 </script>

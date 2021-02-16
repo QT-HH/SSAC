@@ -3,7 +3,7 @@
     <v-row align="center">
       <br>
       <br>
-      <br>
+      
       <v-col>
         <div 
         v-for="(article, idx) in articles" 
@@ -16,7 +16,11 @@
         class="mx-3 rounded-lg " 
         max-width="400" 
         outlined
-        type="white">
+        type="white"
+        
+>
+         
+
           <v-card-actions>
             <v-list-item class="grow">
               <v-list-item-avatar color="grey darken-3">
@@ -42,7 +46,7 @@
           </v-card-actions>
             <!-- <hr> -->
           <v-card-text class="headline font-weight-bold">
-            {{article.content}}
+            {{article.context}}
           </v-card-text>
 
         </v-card>
@@ -129,5 +133,9 @@ export default {
 </script>
 
 <style>
+.rounded-card{
+    border-radius:50px;
+    width: 95%
+}
 
 </style>

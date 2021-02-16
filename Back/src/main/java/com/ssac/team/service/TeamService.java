@@ -27,4 +27,8 @@ public interface TeamService {
 	List<Team> listBaseballTeam(HashMap<String, String> map) throws Exception;
 
 	List<Team> listLOLTeam(HashMap<String, String> map) throws Exception;
+
+	List<Team> searchTeam(HashMap<String, String> map) throws Exception;
+
+	List<HashMap<String, Object>> getFriendTeams(String userid) throws Exception;
 }

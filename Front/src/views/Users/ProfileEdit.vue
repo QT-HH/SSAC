@@ -1,9 +1,26 @@
 <template>
   <div>
-    <strong class="title">SSAC</strong>
-    <v-icon absolute top right @click="gotoProfile">
-      mdi-arrow-left
-    </v-icon>
+    <!-- Systembar & Navbar -->
+    <v-system-bar color="deep-purple darken-3"></v-system-bar>
+    <v-app-bar
+      color="deep-purple accent-4"
+      dark
+      height="54px"
+    >
+      <v-row>
+        <v-col cols="3">
+          <v-btn icon class="mr-5" @click="gotoProfile">
+            <v-icon>mdi-arrow-left</v-icon>
+          </v-btn>
+        </v-col>
+        <v-col class="mt-1" cols="6">
+          <h2 align="center" justify="center">Profile Edit</h2>
+        </v-col>
+        <v-col cols="3">     
+        </v-col>
+      </v-row>
+    </v-app-bar>
+
     <br>
     <br>
     <v-container class="text-center">

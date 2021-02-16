@@ -64,4 +64,22 @@
 		(no not in (select team_no from myteam where (id = #{userid}) and (event_no = 3)))) and
 		name like concat('%', #{search}, '%') 
 	</select>
+	
+	<select id="selectSearchTeam" parameterType="HashMap" resultType="com.ssac.team.dto.Team">
+		select *
+		from team
+		where no not in (select team_no from myteam where id = #{userid}) 
+		and	name like concat('%', #{search}, '%') 
+		order by count desc
+		limit 5
+	</select>
+	
+	<select id="selectFriendTeams" parameterType="String" resultType="HashMap">
+		select id, team_no, count(*) as count
+		from (select * from myteam where id in 
+		(select follow_id from follow where id = #{userid})) t
+		group by team_no
+		order by count(*) desc
+		limit 5;
+	</select>
 </mapper>

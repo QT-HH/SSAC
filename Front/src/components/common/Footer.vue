@@ -3,11 +3,11 @@
     <v-footer
       fixed
       :padless="padless"
+      class="ml-2 mr-2 mb-2 opa rounded-xl"
     >
       <v-card
-        tile
         width="100%"
-        class="text-center"
+        class="rounded-xl"
       >
         <v-card-text>
           <v-row>
@@ -42,6 +42,16 @@
               </v-btn>
             </v-col>
             <v-col>
+              <v-btn
+                icon
+                @click="gotoProfile"
+              >
+                <v-icon size="24px">
+                  {{ icons[3] }}
+                </v-icon>
+              </v-btn>
+            </v-col>
+            <v-col>
               <v-dialog
                 v-model="dialog"
                 width="500"
@@ -51,7 +61,7 @@
                     icon
                     v-bind="attrs"
                     v-on="on"
-                    ><v-icon>mdi-bell-outline</v-icon>
+                    ><v-icon>{{ icons[4] }}</v-icon>
                   </v-btn>
                 </template>
 
@@ -67,31 +77,7 @@
                 </v-card>
               </v-dialog>
             </v-col>
-            <v-col>
-              <v-btn
-                icon
-                @click="gotoProfile"
-              >
-                <v-icon size="24px">
-                  {{ icons[4] }}
-                </v-icon>
-              </v-btn>
-            </v-col>
           </v-row>
-
-
-
-
-          <!-- <v-btn
-            class="mx-4"
-            icon
-            @click="checkAlert"
-          >
-            <v-icon size="24px">
-              {{ icons[3] }}
-            </v-icon>
-          </v-btn> -->
-
         </v-card-text>
 
       </v-card>
@@ -103,6 +89,8 @@
 </template>
 
 <script>
+// import {getAlert} from "@/api/common.js"
+
 export default {
   name:"Footer",
   data () {
@@ -111,10 +99,11 @@ export default {
         'mdi-home',
         'mdi-text-box',
         'mdi-magnify',
-        'mdi-bell-outline',
         'mdi-account',
+        'mdi-bell-outline',
       ],
       padless: true,
+      rounded: true,
       dialog: false,
       funcs: [
         "gotoSports",
@@ -154,5 +143,9 @@ export default {
 </script>
 
 <style>
+.opa {
+  opacity: 0.6;
+  
+}
 
 </style>

@@ -1,7 +1,8 @@
 <template>
   <div>
     <br>
-    <div>
+    
+    <div >
     <v-dialog
      class="text-center"
       v-model="dialog"
@@ -17,7 +18,7 @@
           :team="team"
         >
           <v-card
-            :elevation="7"
+          :elevation="7"
           rounded-xl
             width="95%"
             height="80"

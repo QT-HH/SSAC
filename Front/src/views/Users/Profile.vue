@@ -1,26 +1,60 @@
 <template>
-  <div>
+  <div style="width:100%;">
+    <!-- Systembar & Navbar -->
+    <v-system-bar color="deep-purple darken-3"></v-system-bar>
+    <v-app-bar
+      color="deep-purple accent-4"
+      dark
+      height="54px"
+    >
+      <v-row>
+        <v-col cols="3">
+          <v-btn icon class="mr-5" @click="gotoProfileEdit">
+            <v-icon>mdi-account-plus</v-icon>
+          </v-btn>
+        </v-col>
+        <v-col class="mt-1" cols="6">
+          <h2 align="center" justify="center">Profile</h2>
+        </v-col>
+        <v-col cols="3">         
+          <v-btn icon class="ml-5" @click="gotoProfileEdit">
+            <v-icon>mdi-dots-vertical</v-icon>
+          </v-btn>
+        </v-col>
+      </v-row>
+      <!-- <v-btn icon>
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
+
+      <v-btn icon>
+        <v-icon>mdi-filter</v-icon>
+      </v-btn> -->
+    </v-app-bar>
+
+
+
     <div 
     style="border: 0px"
     class="media">
       <v-container  >
         <br>
-        <br>
         <v-row no-gutters >
+      <img class="d-flex ml-8 rounded-circle" width="80px" height="80px" src="https://mblogthumb-phinf.pstatic.net/MjAxNzAzMTVfMTE4/MDAxNDg5NTMzMTAwMjY0.m9UYu7Dt4CyJcaMMeAuIhOFP2nnXBnW5eUqx3rXZY14g.3axKiINI_FaRrOzK70_FY2qRXLulYTBkzwFIaeY8yd4g.JPEG.doghter4our/IMG_5252.jpg?type=w800" alt="Generic placeholder image">
           <v-col>
-            <img class="d-flex align-center justify-center mx-auto rounded-circle" width="80px" height="80px" src="https://mblogthumb-phinf.pstatic.net/MjAxNzAzMTVfMTE4/MDAxNDg5NTMzMTAwMjY0.m9UYu7Dt4CyJcaMMeAuIhOFP2nnXBnW5eUqx3rXZY14g.3axKiINI_FaRrOzK70_FY2qRXLulYTBkzwFIaeY8yd4g.JPEG.doghter4our/IMG_5252.jpg?type=w800" alt="Generic placeholder image">
             <div class="d-flex align-center justify-center mx-auto"
             style="text-align:center;
             font-weight: bold; 
+
             font-size: 1.7em;">
-              {{nickname}}
+              {{this.nickname}}
             </div>
+            <hr style="height:13px; visibility:hidden;" />
             <div class="d-flex align-center justify-center mx-auto"
             style="text-align:center;
             font-style: italic;
             font-size: 1.0em
             color: grey;">
-              {{introduce}}
+              {{this.introduce}}
             </div>
 
           </v-col>

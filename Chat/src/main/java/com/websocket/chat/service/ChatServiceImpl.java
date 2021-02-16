@@ -47,13 +47,8 @@ public class ChatServiceImpl implements ChatService {
 	}
 	
 	@Override
-	public List<ChatMessage> getChatMessage(HashMap<String, String> map) throws Exception {
-		return mapper.selectChatMessage(map);
-	}
-	
-	@Override
-	public String getEnterTime(HashMap<String, String> map) throws Exception {
-		return mapper.selectEnter(map);
+	public List<ChatMessage> getChatMessage(String roomId) throws Exception {
+		return mapper.selectChatMessage(roomId);
 	}
 	
 	@Override
