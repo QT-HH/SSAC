@@ -24,7 +24,7 @@ public class ImageController {
     private ImageService imageService;
 
     @PostMapping("/logo")
-    public ResponseEntity<?> uploadOne(MultipartFile file) throws Exception {
+    public ResponseEntity<?> uploadOne() throws Exception {
         try {
             imageService.logoImage();
             return new ResponseEntity<String>("success", HttpStatus.OK);
