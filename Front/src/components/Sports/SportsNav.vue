@@ -31,6 +31,7 @@
   </v-app-bar>
 
   <v-navigation-drawer
+    v-if="drawer"
     v-model="drawer"
     temporary
     bottom
