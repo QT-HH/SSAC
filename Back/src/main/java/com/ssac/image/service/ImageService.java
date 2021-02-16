@@ -28,13 +28,14 @@ public class ImageService {
 		String pathRoot = "/home/image/logo";
 		for(int i=0; i<teams.size(); i++) {
 			String eventRoot = "";
-			if(teams.get(i).getEvent_no() == 1) eventRoot = "/football";
-			else if(teams.get(i).getEvent_no() == 2) eventRoot = "/baseball";
-			else eventRoot = "/lol";
+			if(teams.get(i).getEvent_no() == 1) eventRoot = "/football/";
+			else if(teams.get(i).getEvent_no() == 2) eventRoot = "/baseball/";
+			else eventRoot = "/lol/";
 			String totalRoot = pathRoot + eventRoot;
 			filename = teams.get(i).getName();
 			filename.replace(" ", "_");
 			filename += ext;
+			System.out.println(totalRoot+filename);
 			InputStream imgStream = new FileInputStream(totalRoot+filename);
 			byte[] imgByteArray = IOUtils.toByteArray(imgStream);
 			imgStream.close();
