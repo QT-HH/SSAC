@@ -7,7 +7,6 @@
     <b-icon :icon="iconType" @click="[saveMyTeam(team), changeIconType()]"></b-icon>
   </b-list-group-item> -->
   
-
     <v-list-item-avatar>
       <v-img
         :alt="team.name"

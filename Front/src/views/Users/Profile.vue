@@ -1,25 +1,26 @@
 <template>
   <div>
-    SSAC
     <div 
     style="border: 0px"
     class="media">
       <v-container  >
+        <br>
         <v-row no-gutters >
-      <img class="d-flex mx-3 rounded-circle" width="80px" height="80px" src="https://mblogthumb-phinf.pstatic.net/MjAxNzAzMTVfMTE4/MDAxNDg5NTMzMTAwMjY0.m9UYu7Dt4CyJcaMMeAuIhOFP2nnXBnW5eUqx3rXZY14g.3axKiINI_FaRrOzK70_FY2qRXLulYTBkzwFIaeY8yd4g.JPEG.doghter4our/IMG_5252.jpg?type=w800" alt="Generic placeholder image">
+      <img class="d-flex ml-8 rounded-circle" width="80px" height="80px" src="https://mblogthumb-phinf.pstatic.net/MjAxNzAzMTVfMTE4/MDAxNDg5NTMzMTAwMjY0.m9UYu7Dt4CyJcaMMeAuIhOFP2nnXBnW5eUqx3rXZY14g.3axKiINI_FaRrOzK70_FY2qRXLulYTBkzwFIaeY8yd4g.JPEG.doghter4our/IMG_5252.jpg?type=w800" alt="Generic placeholder image">
           <v-col>
             <div class="d-flex align-center justify-center mx-auto"
             style="text-align:center;
             font-weight: bold; 
 
-            font-size: 1.5em;">
+            font-size: 1.7em;">
               {{this.nickname}}
             </div>
-            <br>
+            <hr style="height:13px; visibility:hidden;" />
             <div class="d-flex align-center justify-center mx-auto"
             style="text-align:center;
             font-style: italic;
-            font-size: 1.0em;">
+            font-size: 1.0em
+            color: grey;">
               {{this.introduce}}
             </div>
 
@@ -29,44 +30,62 @@
       <v-container>
         <v-row>
 
-        <v-col >
-            <div  class="pa-2 text" style="text-align:center">
+        <v-col style="font-weight: bold">
+            <div  class="pa-2 text" style="text-align:center ">
               게시글
             </div>
             <div 
             style="text-align:center;
             font-weight: bold; 
             font-style: italic;
-            font-size: 1.0em;"
+            font-size: 1.0em;
+            color: grey"
             class="pa-2 text">
               123
             </div>
           </v-col>
-          <v-col>
-            <div class="pa-2 text" style="text-align:center">
+          <v-col style="font-weight: bold">
+            <div class="pa-2 text" style="text-align:center font-weight: bold">
               팔로워
             </div>
             <div 
             style="text-align:center;
             font-weight: bold; 
             font-style: italic;
-            font-size: 1.0em;"
+            font-size: 1.0em;
+            color: grey"
             class="pa-2 text">
               345
             </div>
           </v-col>
-          <v-col>
-            <div class="pa-2 text" style="text-align:center">
+          <v-col style="font-weight: bold">
+            <div class="pa-2 text" style="text-align:center font-weight: bold">
               팔로잉
             </div>
 
             <div 
             style="text-align:center;
-            font-weight: bold; 
+; 
             font-style: italic;
-            font-size: 1.0em;"
+            font-size: 1.0em;
+            color: grey"
             class="pa-2 text">
               789
+            </div>
+          </v-col>
+          <v-col style="font-weight: bold">
+            <div class="pa-2 text" style="text-align:center font-weight: bold; ">
+              포인트
+            </div>
+
+            <div 
+            style="text-align:center;
+            
+            font-style: italic;
+            font-size: 1.0em;
+            color: grey"
+            class="pa-2 text">
+              74532
             </div>
           </v-col>
         </v-row>
@@ -77,7 +96,7 @@
           <v-btn 
             :elevation="0"
             style="width: 300px"
-            rounded
+            
             color="primary"
             dark
           >
@@ -88,7 +107,7 @@
           <v-btn
             :elevation="0"
             style="width: 300px"
-            rounded
+            class="rounded-lg"
             color="grey lighten-2"
             @click="gotoProfileEdit"
           >

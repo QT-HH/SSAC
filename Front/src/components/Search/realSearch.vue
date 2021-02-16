@@ -6,16 +6,23 @@
         align="center"
         justify="space-around"
       >
-        <v-col cols=8>
+        <v-col cols=9>
           <v-text-field
             label="검색어를 입력하세요."
             v-model="search"
 
           ></v-text-field>
         </v-col>
-        <v-col cols=2>
-          <v-btn @click="realSearch">
-            검색
+        <v-col>
+          <v-btn
+          fab
+          dark
+          small
+          color="primary"
+          @click="realSearch">
+            <v-icon>
+              {{ icons.mdiMagnify }}
+            </v-icon>
           </v-btn>
         </v-col>
       </v-row>
@@ -23,7 +30,8 @@
     </div>
 
     <!-- <li v-for="(user, idx) in users" :key="idx"><img src="user.img" alt="img"> {{user.name}}</li> -->
-    
+    <!-- <p v-if="searched">유저 검색 결과<span></span></p> -->
+    <v-container cols=9 class="mt-0 pt-0">
 
     <v-list subheader>
       <p v-if="searched"><v-subheader>유저 검색 결과</v-subheader></p>
@@ -43,11 +51,14 @@
         :team="team"
         />
     </v-list>
+  </v-container>
 
   </div>
 </template>
 
 <script>
+import { mdiMagnify } from '@mdi/js'
+
 import userSearchResult from './userSearchResult.vue'
 import teamSearchResult from './teamSearchResult.vue'
 import axios from 'axios'
@@ -59,6 +70,10 @@ export default {
   },
   data: function() {
     return {
+      icons: {
+        mdiMagnify,
+
+      },
       search: '',
       users: [
         // {img: 'src', name: 'user1'}, {img: 'src', name: 'user2'}, {img: 'src', name: 'user3'}
