@@ -31,7 +31,7 @@
                 text
                 @click="dialog = false"
               >취소</v-btn>
-            <v-btn color="primary" text @click="dialog = false">
+            <v-btn color="primary" text @click="dialog = false, upload()">
               적용
             </v-btn>
           </v-card-actions>
@@ -114,6 +114,7 @@ export default {
       nickname: '',
       introduce: '',
       dialog: false,
+      files:[],
       rules: [
         value => !!value || 'Required.',
         value => value === '나는 빡빡이다' || '나는 빡빡이다를 작성하세요',
@@ -127,6 +128,10 @@ export default {
       ])
     },
     methods:{
+      upload() {
+        console.log("Hello, Upload")
+        console.log(this.files.name)
+      },
       gotoProfile() {
         if (this.$route.path !== "/profile") {
           this.$router.push({name:"Article"})

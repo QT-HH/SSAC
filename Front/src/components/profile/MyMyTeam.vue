@@ -1,55 +1,79 @@
 <template>
-  <div class="text-center">
+  <div>
     <br>
-    
-    <div class="text-center">
+    <div>
     <v-dialog
+     class="text-center"
       v-model="dialog"
       width="500"
     >
       <template v-slot:activator="{ on, attrs }">
+      <v-container>
       <v-row>
         <v-col 
-          cols=4
+          style="mx-4"
           v-for="(team, idx) in myteams"
           :key = "idx"
           :team="team"
         >
           <v-card
+            :elevation="7"
+          rounded-xl
+            width="95%"
+            height="80"
             hover
-            class="mx-auto"
-            style="max-width: 15rem;"
+            class="mx-3 my-0 rounded-xl"
             tag="article"
             border-variant="success"
-            v-bind="attrs"
-            v-on="on"
             @click="selectTeam(team)"
           >
-            <v-img
-              :src="team.img"
-              class="white--text align-end"
-              height="100px"
-            >
-              <!-- <v-card-title v-if="team.nickname.length === 0 ">{{ team.name }}</v-card-title> -->
-              <v-card-title>{{ team.name }}</v-card-title>
-            </v-img>
-
-            <v-card-text class="text--primary">
-              {{ team.count }} 명이 좋아합니다.
-            </v-card-text>
-
-            <v-card-actions>
-              <v-btn
-                color="error"
-                @click="removeMyteam()"
+            <v-list-item style="height:100%">
+              <v-list-item-avatar
+                @click="selectTeam(team)"
+                v-bind="attrs"
+                v-on="on"
+                rounded-lg
+                size="50"
+                color="grey"
               >
-                내 팀 제거
+                <v-img
+                  :src="team.img"
+                  class="white--text align-end"
+                  height="60"
+                >
+                </v-img>
+              </v-list-item-avatar>
+<v-list-item-content
+            @click="selectTeam(team)"
+            v-bind="attrs"
+            v-on="on">
+              <v-list-item-title class="headline mb-1" style="padding:0px" v-if="team.nickname.length === 0 ">{{ team.name }}</v-list-item-title>
+              <v-list-item-title style="padding:0px" v-else>{{ team.nickname }}</v-list-item-title>
+              <v-list-item-subtitle >{{ team.count }} 명</v-list-item-subtitle>
+            </v-list-item-content>
+          <div >
+            <v-btn
+                icon
+                dark
+                small
+                class=" red rounded-circle d-inline-block"
+              >
+              <v-icon 
+              dark
+              >
+                mdi-minus
+              </v-icon>
               </v-btn>
-            </v-card-actions>
+          </div>
+          </v-list-item>
           </v-card>
 
         </v-col>
       </v-row>
+      </v-container>
+      <br>
+      <br>
+      <br>
       </template>
 
       <v-card>

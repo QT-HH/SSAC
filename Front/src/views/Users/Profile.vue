@@ -1,17 +1,26 @@
 <template>
   <div>
-    SSAC
-    <div class="media">
-      <v-container >
+    <div 
+    style="border: 0px"
+    class="media">
+      <v-container  >
+        <br>
+        <br>
         <v-row no-gutters >
-      <img class="d-flex mx-3 rounded-circle" width="80px" height="80px" src="https://mblogthumb-phinf.pstatic.net/MjAxNzAzMTVfMTE4/MDAxNDg5NTMzMTAwMjY0.m9UYu7Dt4CyJcaMMeAuIhOFP2nnXBnW5eUqx3rXZY14g.3axKiINI_FaRrOzK70_FY2qRXLulYTBkzwFIaeY8yd4g.JPEG.doghter4our/IMG_5252.jpg?type=w800" alt="Generic placeholder image">
           <v-col>
-            <div class="d-flex align-center justify-center mx-auto">
-              내 별명: {{nickname}}
+            <img class="d-flex align-center justify-center mx-auto rounded-circle" width="80px" height="80px" src="https://mblogthumb-phinf.pstatic.net/MjAxNzAzMTVfMTE4/MDAxNDg5NTMzMTAwMjY0.m9UYu7Dt4CyJcaMMeAuIhOFP2nnXBnW5eUqx3rXZY14g.3axKiINI_FaRrOzK70_FY2qRXLulYTBkzwFIaeY8yd4g.JPEG.doghter4our/IMG_5252.jpg?type=w800" alt="Generic placeholder image">
+            <div class="d-flex align-center justify-center mx-auto"
+            style="text-align:center;
+            font-weight: bold; 
+            font-size: 1.7em;">
+              {{nickname}}
             </div>
-            <br>
-            <div class="d-flex align-center justify-center mx-auto">
-              아이디: {{useremail}}
+            <div class="d-flex align-center justify-center mx-auto"
+            style="text-align:center;
+            font-style: italic;
+            font-size: 1.0em
+            color: grey;">
+              {{introduce}}
             </div>
 
           </v-col>
@@ -19,71 +28,93 @@
       </v-container>
       <v-container>
         <v-row>
-
-        <v-col >
-            <div  class="pa-2 text">
+        <v-col class="pt-0 pb-0" style="font-weight: bold">
+            <div  class="pb-0 text" style="text-align:center ">
               게시글
             </div>
-            <div class="pa-2 text">
-              {{ articles.length }} 개
+            <div 
+            style="text-align:center;
+            font-weight: bold; 
+            font-style: italic;
+            font-size: 1.0em;
+            color: grey"
+            class="pt-0 text">
+              {{ articles.length }}
             </div>
           </v-col>
-          <v-col>
-            <div class="pa-2 text">
+          <v-col class="pt-0 pb-0" style="font-weight: bold">
+            <div class="pb-0 text" style="text-align:center">
               팔로워
             </div>
-            <div class="pa-2 text">
-              {{follower.length}} 명
+            <div 
+            style="text-align:center;
+            font-weight: bold; 
+            font-style: italic;
+            font-size: 1.0em;
+            color: grey"
+            class="pt-0 text">
+              {{follower.length}}
             </div>
           </v-col>
-          <v-col>
-            <div class="pa-2 text">
+          <v-col class="pt-0 pb-0" style="font-weight: bold">
+            <div class="pb-0 text" style="text-align:center">
               팔로잉
             </div>
-            <div class="pa-2 text">
-              {{following.length}} 명
+
+            <div 
+            style="text-align:center;
+; 
+            font-style: italic;
+            font-size: 1.0em;
+            color: grey"
+            class="pt-0 text">
+              {{following.length}}
             </div>
           </v-col>
-          <v-col>
-            <div class="pa-2 text">
+          <v-col class="pt-0 pb-0" style="font-weight: bold">
+            <div class="pb-0 text" style="text-align:center">
               포인트
             </div>
-            <div class="pa-2 text">
-              {{ point }} p
+
+            <div 
+            style="text-align:center;
+            
+            font-style: italic;
+            font-size: 1.0em;
+            color: grey"
+            class="pt-0 text">
+              {{ point }}
             </div>
           </v-col>
         </v-row>
       </v-container>
-      
-      <v-container>
-        <div class="text-center">
-          <v-btn
+
+          <!-- <v-btn
+          v-if="useremail === this.$store.state.user.email"
+            :elevation="0"
             style="width: 300px"
-            rounded
-            color="primary"
-            dark
-          >
-            팔로우
-          </v-btn>
-        </div>
-        <div class="text-center">
-          <v-btn
-            style="width: 300px"
-            rounded
+            class="rounded-lg"
             color="grey lighten-2"
             @click="gotoProfileEdit"
           >
             프로필 편집
           </v-btn>
-        </div>
-      </v-container>
+          <v-btn 
+            v-else
+            :elevation="0"
+            style="width: 300px"
+            
+            color="primary"
+            dark
+          >
+            팔로우
+          </v-btn> -->
     </div>
     
-    <hr>
     <div>
       <v-tabs
-        background-color="#536DFE"
-        dark
+        
+        background-color="white"
         fixed-tabs
         >
         <v-tab @click="gotoArticle">게시글</v-tab>
@@ -112,6 +143,7 @@ export default {
       nickname: '',
       useremail: '',
       point: '',
+      introduce: 'Hi there!',
       follower: [],
       articles: Object
       // introduce: this.$store.state.user.introduce,

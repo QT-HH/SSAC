@@ -5,23 +5,18 @@
       <br>
       <br>
       <v-col>
-        <v-card 
-        class="mx-auto" 
-        max-width="400" 
+        <div 
         v-for="(article, idx) in articles" 
         :key="idx" 
         :article="article"
+        >
+        <hr style="height:14px; visibility:hidden;" />
+        <v-card 
+        :elevation="2"
+        class="mx-3 rounded-lg " 
+        max-width="400" 
         outlined
-        type="white"
->
-          <v-card-title>
-            <span class="title font-weight-light">{{ article.no }}</span>
-          </v-card-title>
-
-          <v-card-text class="headline font-weight-bold">
-            {{article.content}}
-          </v-card-text>
-
+        type="white">
           <v-card-actions>
             <v-list-item class="grow">
               <v-list-item-avatar color="grey darken-3">
@@ -39,13 +34,19 @@
                 <span class="subheading mr-2">256</span>
                 <span class="mr-1">·</span>
                 <v-icon class="mr-1">
-                  mdi-share-variant
+                  mdi-email
                 </v-icon>
                 <span class="subheading">45</span>
               </v-row>
             </v-list-item>
           </v-card-actions>
+            <!-- <hr> -->
+          <v-card-text class="headline font-weight-bold">
+            {{article.content}}
+          </v-card-text>
+
         </v-card>
+        </div>
         <br>
         <br>
         <br>
