@@ -1,77 +1,111 @@
 <template>
-  <div class="user" id="login">
-    <v-parallax src="https://cdn.vuetifyjs.com/images/parallax/material.jpg">
-    <div class="wrapC">
-      <h1>
-        SSAC
-      </h1>
+  <div class="fill-height">
+    <!-- 로고 -->
+    <v-container>
+      <v-row class="mt-5 mb-5" align="center" justify="center">
+        <v-img
+          :src="logo.src"
+          max-width="130"
+          max-height="50"
+          class="rounded-pill"
+        >
+        </v-img>
+      </v-row>
+    </v-container>
+    <v-row class="mt-4 mb-1 ml-7" align="center">
+      <h5>Login to your Account</h5>
+    </v-row>
+    <!-- 로그인 폼 -->
+    <!-- v-model="valid" -->
+  <v-form
+    ref="form"
+    lazy-validation
+    class="mr-7 ml-7"
+  >
 
-      <div class="input-with-label">
-        <label for="email">ID</label>
-        <input
-          v-model="email"
-          v-bind:class="{error : error.email, complete:!error.email&&email.length!==0}"
-          @keyup.enter="Login"
-          id="email"
-          placeholder="이메일을 입력하세요."
-          type="text"
-          style="text-transform:lowercase"
-        />
-        <div class="error-text" v-if="error.email">{{error.email}}</div>
-      </div>
+    <v-text-field
+      v-model="email"   
+      :rules="emailRules"
+      label="E-mail"
+      required
+      style="text-transform:lowercase"
+      @keyup.enter="Login"
+    ></v-text-field>
+<!-- :rules="passwordRules" -->
+    <v-text-field
+      v-model="password"
+      :error-messages="passErrors"
+      label="password"
+      required
+      @keyup.enter="Login"
+    ></v-text-field>
 
-      <div class="input-with-label">
-        <label for="password">PW</label>
-        <input
-          v-model="password"
-          type="password"
-          v-bind:class="{error : error.password, complete:!error.password&&password.length!==0}"
-          id="password"
-          @keyup.enter="Login"
-          placeholder="비밀번호를 입력하세요."
-        />
-        <div class="error-text" v-if="error.password">{{error.password}}</div>
-      </div>
+    <v-row  class="mt-3 mb-5" justify="center" align="center">
       <v-btn
-        color="blue"
+        class="white--text"
+        color="#536DFE"
         @click="onLogin"
         :disabled="!isSubmit"
         :class="{disabled : !isSubmit}"
-        v-if="isSubmit === true"
-      >로그인</v-btn>
+        width="265"
+      >
+        Login
+      </v-btn>
+    </v-row>
+  </v-form>
 
-      <div class="sns-login">
-        <div class="text">
-          <p>SNS 간편 로그인</p>
-          <v-btn
-          color="yellow"
-          @click="KakaoLogin"
-            >카카오톡</v-btn>
-          <v-btn
-          color="green"
+  <!-- SNS 로그인 -->
+  <v-container class="sns-login mb-3">
+    <v-row class="mt-3 mb-5" align="center" justify="center">
+      <h6>- Or Login with -</h6>
+    </v-row>
+
+    <v-row class="mb-10" align="center" justify="center">
+      <!-- 카카오톡 -->
+      <v-btn 
+        class="mr-1 ml-1" 
+        @click="KakaoLogin"
+        color="#FFFFFF"
+      >
+        <v-img
+          class="mr-1 ml-1 rounded-lg"
+          :src="kakaosns.src"        
+          max-height="20"
+          max-width="20"
+        >
+        </v-img>
+        <h3 class="mr-1 ml-1">KAKAO</h3>     
+      </v-btn>
+      <!-- 네이버 -->
+      <v-btn 
+        class="mr-1 ml-1" 
+        @click="NaverLogin"
+        color="#FFFFFF"
+      >
+        <v-img
+          class="mr-1 ml-1 rounded-lg"
+          :src="naversns.src"
           @click="NaverLogin"
-            >네이버</v-btn>
-        </div>
+          max-height="20"
+          max-width="20"
+        >
+        </v-img>
+        <h3 class="mr-1 ml-1">NAVER</h3>
+      </v-btn>
+    </v-row>
+  </v-container>
 
-        <!-- <kakaoLogin :component="component" /> -->
-        <!-- <NaverLogin :component="component" /> -->
-        <!-- <GoogleLogin :component="component" />  -->
-      </div>
-      <div class="add-option">
-        <div class="text">
-          <div class="bar"></div>
-        </div>
-        <div class="wrap">
-          <p>비밀번호를 잊으셨나요?</p>
-        </div>
-        <div class="wrap">
-          <p>아직 회원이 아니신가요?</p>
-          <router-link to="/signup" class="btn--text">가입하기</router-link>
-        </div>
-      </div>
-    </div>
-  </v-parallax>
+  <div class="add-option">
+    <v-row align="center" justify="center">
+      <h5>Don't have an account?</h5>
+      <router-link to="/signup" class="btn--text"> Sign up</router-link>
+    </v-row>
   </div>
+
+  <!-- <div class="wrap">
+    <p>비밀번호를 잊으셨나요?</p>
+  </div> -->
+	</div>
 </template>
 
 <script>
@@ -84,7 +118,20 @@ import * as EmailValidator from "email-validator";
 import { login, kakaologin, naverlogin } from "@/api/user/login.js";
 
 
+
 export default {
+  name: "Login",
+  computed:{
+    passErrors () {
+      const errors = []
+      if (this.passwordSchema.validate(this.password) || (!this.pass)) {
+      return errors
+      } else {
+        errors.push("영문,숫자 포함 8 자리이상이어야 합니다.")
+      }
+      return errors
+    },
+  },
   components: {
     // KakaoLogin,
     // GoogleLogin
@@ -104,14 +151,15 @@ export default {
   },
   watch: {
     password: function() {
+      this.pass = true
       this.checkForm();
     },
     email: function() {
       this.checkForm();
-    }
+    },
   },
   methods: {
-    checkForm() {    
+    checkForm() {
       if (this.email.length >= 0 && !EmailValidator.validate(this.email))
         this.error.email = "이메일 형식이 아닙니다.";
       else this.error.email = false;
@@ -194,20 +242,37 @@ export default {
             alert("아이디 또는 비밀번호가 일치하지 않습니다.");
           }        
       )
-    }
+    },
   },
   data: () => {
     return {
+      pass:false,
       email: "",
-      password: "",
+      emailRules: [
+        v => !!v || '이메일을 입력해주세요.',
+        v => EmailValidator.validate(v) || '이메일 형식이 아닙니다.',
+      ],
       passwordSchema: new PV(),
+      password: "",
+      passwordRules: [
+        v => !!v || 'Password is required',
+        v => this.checkPass(v) || 'Password must be at least 8 digits including English and number',
+      ],
       error: {
         email: false,
         passowrd: false
       },
       isSubmit: false,
-      component: this
+      component: this,
+      logo : { src : require("@/assets/images/logo.png") },
+      kakaosns : { src : require("@/assets/images/KAKAO.png") },
+      naversns : { src : require("@/assets/images/NAVER.png") }
     };
   }
 };
 </script>
+<style>
+.fade-transition {
+  transform: transform 0.5s ease, opacity 1000s ease;
+}
+</style>

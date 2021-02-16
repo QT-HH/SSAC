@@ -1,65 +1,112 @@
 <template>
-  <div>
-      <h1>좋아하는 팀을 고르세요.</h1>
-      <h3>(최소 1개 이상)</h3>
-      선택한 팀들:
-      <v-btn v-for="(team, idx) in myteams" :key="idx" @click="addmyteams(team)">
-          {{ team.name }} ({{ translate[team.event_no] }})
-      </v-btn>
-      <!-- {{myteams}} -->
-      
-      <hr>
+  <div class="fill-height">
 
-        <v-container>
+    <v-row class="mt-3 ml-4 mr-4" justify="space-between">
+      <v-btn icon
+        @click="backtoSignup"
+        color="#536DFE"
+      >
+        <v-icon>mdi-arrow-left</v-icon>
+      </v-btn>
+      <v-btn icon
+        @click="completeSignup"
+        color="#536DFE"
+      >
+        <v-icon>mdi-arrow-right</v-icon>
+      </v-btn>
+    </v-row>
+
+    <!-- 로고 -->
+    <v-container>
+      <v-row class="mt-2 mb-5" align="center" justify="center">
+        <v-img
+          :src="logo.src"
+          max-width="130"
+          max-height="50"
+          class="rounded-pill"
+        >
+        </v-img>
+      </v-row>
+    </v-container>
+
+    <v-row class="mt-4 mb-2 ml-7" align="center">
+      <h5>Choose your Teams</h5>
+    </v-row>
+
+    <!-- 전체 팀 필터 -->
+    <v-row class="ml-5 mr-5 mb-1" justify="space-between">
+        <v-chip class="ma-2" @click="turnAll">Total</v-chip>
+        <v-chip class="ma-2" @click="turnFootball" color="primary" text-color="white">Football</v-chip>
+        <v-chip class="ma-2" @click="turnBaseball" color="red" text-color="white">Baseball</v-chip>
+        <v-chip class="ma-2" @click="turnLOL" color="green" text-color="white">LoL</v-chip>
+    </v-row>
+    <!-- 전체 팀 검색-->
+    <v-toolbar
+      flat
+      color="transparent"
+      class="mt-3 ml-2 mr-2"
+    >
+      <v-text-field
+        v-model="query"
+        append-icon="mdi-magnify"
+        label="Search Teams"
+        single-line
+      ></v-text-field>
+    </v-toolbar>
+
+    <!-- MyTeam으로 선택한 팀들 -->
+    <v-row class="ml-5 mr-5 mb-1">
+        <h4>My Teams:</h4>
+        <v-chip
+            v-for="(team, idx) in myteams"
+            :key="idx"
+            @click="addmyteams(team)"
+            close
+            small
+            class="ml-1 mr-1"
+        >
+            {{ team.name }}
+        </v-chip>
+    </v-row>
+    <!-- DB에 저장되어 있는 전체 팀들 -->
+    <v-container class="mr-2 ml-2">
         <v-row>
             <v-col 
-            cols=4
+            cols="4"
             v-for="(team, idx) in filterTeam(cat,query)"
             :key="idx"
             :team="team"
+            @click="addmyteams(team)"
             >
-            <v-card
-                hover
-                class="mx-auto"
-                style="max-width: 15rem;"
-                tag="article"
-                border-variant="success"
-            >
-                <v-img
-                :src="team.img"
-                class="white--text align-end"
-                height="100px"
+                <v-sheet
+                    hover
+                    color="white"
+                    elevation="2"
+                    height="100"
+                    rounded
+                    width="100"
                 >
-                <v-card-title>{{ team.name }}</v-card-title>
-                </v-img>
-
-                <v-card-text class="text--primary">
-                {{ team.count }} 명이 좋아합니다.
-                </v-card-text>
-
-            </v-card>
+                    <v-img
+                        :src="team.logo"
+                        align="center"
+                        justify="center"
+                    >
+                    </v-img>
+                    <v-row class="white--text">{{ team.name }}</v-row>
+                    <v-row class="text--primary">
+                    {{team.count}} likes
+                    </v-row>
+                </v-sheet>
             </v-col>
         </v-row>
-        </v-container>
-
-      <div>
-        <button
-          class="btn-bottom"
-          @click="backtoSignup"
-          >BEFORE
-        </button>
-        <button
-          class="btn-bottom"
-          @click="completeSignup"
-          >NEXT
-        </button>
-      </div>
+    </v-container>
   </div>
 </template>
 
 <script>
 import { signup } from "@/api/user/signup.js"
-import axios from 'axios'
+import { getTeam } from "@/api/tabs/sports.js"
+// import axios from 'axios'
 
 export default {
     name: "MyTeam",
@@ -75,53 +122,6 @@ export default {
                     "count": Number
                 }
             ],
-            // [ 
-            //     {
-            //         event_no: 1,
-            //         name : "포항스틸러스",
-            //         count : 1234 
-            //     },
-            //     {   
-            //         event_no: 1,
-            //         name : "대구FC",
-            //         count : 100000
-            //     },
-            //     {
-            //         event_no: 1,
-            //         name: "서울FC",
-            //         count : 123
-            //     },
-            //     {
-            //         event_no: 2,
-            //         name : "삼성라이온즈",
-            //         count : 1234 
-            //     },
-            //     {
-            //         event_no: 2,
-            //         name : "롯데자이언츠",
-            //         count : 100000
-            //     },
-            //     {
-            //         event_no: 2,
-            //         name: "한화이글스",
-            //         count : 123
-            //     },
-            //     {
-            //         event_no: 3,
-            //         name : "T1",
-            //         count : 1234 
-            //     },
-            //     {
-            //         event_no: 3,
-            //         name : "젠지",
-            //         count : 100000
-            //     },
-            //     {
-            //         event_no: 3,
-            //         name: "KT",
-            //         count : 123
-            //     }
-            // ],
             cat: 0,
             query: "",
             translate: {
@@ -129,7 +129,8 @@ export default {
                 2 : "야구",
                 3 : "롤"
             },
-            myteams: []
+            myteams: [],
+            logo : { src : require("@/assets/images/logo.png") }
         }
     },
     // filters: {
@@ -181,6 +182,7 @@ export default {
         },
         completeSignup() {
             this.$store.dispatch("CREATE_USER2", this.myteams)
+            // console.log(this.$store.state.newUser),
             signup(
                 this.$store.state.newUser,
                 (res) => {
@@ -198,8 +200,17 @@ export default {
         }
     },
     mounted: function () {
-        axios.get("http://i4d102.p.ssafy.io:9000/ssac/team/list").then(response => (this.items = response.data))
-        console.log('MyTeams')
+        getTeam(
+            (res) => {
+                this.items = res.data
+                // console.log(1)
+                // console.log(this.myteams)
+            },
+            (err) => {
+                console.log(err)
+                // console.log(2)
+            }
+        )
     }
 }
 </script>

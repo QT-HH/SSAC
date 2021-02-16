@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Start from "@/components/common/Start.vue"
 import Login from "../views/Users/Login.vue";
 import Signup from "../views/Users/Signup.vue";
 import Profile from "../views/Users/Profile.vue";
@@ -7,11 +8,20 @@ import ProfileEdit from "../views/Users/ProfileEdit.vue";
 import Tabs from "../views/Tabs/Tabs.vue";
 import ChatRoom from '@/components/chat/chatRoom.vue';
 
+
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: "/",
+    name: "Start",
+    component: Start,
+    children: [
+
+    ]
+  },
+  {
+    path: "/login",
     name: "Login",
     component: Login,
     children: [
@@ -152,7 +162,12 @@ const routes = [
                 path: "/tabs/search/recommend/question4",
                 name: "Question4",
                 component: () => import("@/components/Search/Question4.vue")
-              },                        
+              },
+              {
+                path: "/tabs/search/recommend/recomteam",
+                name: "recomTeam",
+                component: () => import("@/components/Search/recomTeam.vue")
+              },                           
             ]
           },
         ]

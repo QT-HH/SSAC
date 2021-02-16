@@ -6,14 +6,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -62,21 +59,41 @@ public class SearchController {
 	@ApiOperation(value = "팀추천", notes = "입력 : 유저이메일(userid), 설문결과(surveyAnswers)")
 	@GetMapping("/recommend")
 	public ResponseEntity<?> getRecommend(@RequestParam String userid, 
-			@RequestParam(value="surveyAnswers") List<String> surveyAnswers) throws Exception {
+			@RequestParam String surveyAnswers) throws Exception {
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("userid", userid);
 		map.put("search", "");
-		System.out.println("팀추천 userid : "+userid+", 설문 : "+surveyAnswers.get(0)+" "+surveyAnswers.size());
+		System.out.println("팀추천 userid : "+userid+", 설문 : "+surveyAnswers+" "+surveyAnswers);
 		Random random = new Random();
 		random.setSeed(System.currentTimeMillis());
 		int idx = 0;
 		List<Team> teams = new ArrayList<Team>();
-		if(surveyAnswers.get(0).equals("축구")) teams = teamService.listFootballTeam(map);
-		else if(surveyAnswers.get(0).equals("야구")) teams = teamService.listBaseballTeam(map);
+		if(surveyAnswers.equals("축구")) teams = teamService.listFootballTeam(map);
+		else if(surveyAnswers.equals("야구")) teams = teamService.listBaseballTeam(map);
 		else teams = teamService.listLOLTeam(map);
 		idx = random.nextInt(teams.size()-1);
 		return new ResponseEntity<>(teams.get(idx), HttpStatus.OK);
 	}
 	
-	
+	@ApiOperation(value = "친구의 팀 조회", notes = "입력 : 유저이메일(userid)")
+	@GetMapping("/friteams")
+	public ResponseEntity<?> getFriendTeams(@RequestParam String userid) throws Exception {
+		List<HashMap<String, Object>> teams = teamService.getFriendTeams(userid);
+		List<HashMap<String, Object>> result = new ArrayList<HashMap<String,Object>>();
+		System.out.println("친구팀 조회 : "+userid);
+		for(int i=0; i<teams.size(); i++) {
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			int no = (int) teams.get(i).get("team_no");
+			String id = (String) teams.get(i).get("id");
+			Team team = teamService.getTeam(no);
+			User user = userService.findUser(new User(id));
+			map.put("logo", team.getLogo());
+			map.put("name", team.getName());
+			map.put("no", no);
+			map.put("friend_name", user.getNickname());
+			map.put("people", (long) teams.get(i).get("count"));
+			result.add(map);
+		}
+		return new ResponseEntity<>(result, HttpStatus.OK);
+	}
 }

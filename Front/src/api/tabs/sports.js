@@ -10,7 +10,14 @@ function getSchedule(success,fail) {
     .then(success)
     .catch(fail);
 }
- 
+
+function getTeam(success,fail) {
+  instance
+    .get("http://i4d102.p.ssafy.io:9000/ssac/team/allTeamList")
+    .then(success)
+    .catch(fail);
+}
+
 function pmScore(event_id,n,pm,success,fail) {
   let config = {
     event_id : event_id,
@@ -71,4 +78,4 @@ function calculPts(event_no,users,pts,success,fail) {
     .catch(fail);
 }
  
-export { getSchedule, pmScore, betGame, endBet, endGame, calculPts};
+export { getSchedule, pmScore, betGame, endBet, endGame, calculPts, getTeam};
