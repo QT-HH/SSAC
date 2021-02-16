@@ -11,6 +11,6 @@ public class Team {
 	private int no;
 	private int event_no;
 	private String name;
-	private String logo;
+	private byte[] logo;
 	private int count;
 }

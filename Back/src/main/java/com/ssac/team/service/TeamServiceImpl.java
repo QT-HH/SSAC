@@ -55,4 +55,12 @@ public class TeamServiceImpl implements TeamService {
 	public List<Team> listLOLTeam(HashMap<String, String> map) throws Exception {
 		return mapper.selectLOLteamBySearch(map);
 	}
+	@Override
+	public List<Team> searchTeam(HashMap<String, String> map) throws Exception {
+		return mapper.selectSearchTeam(map);
+	}
+	@Override
+	public List<HashMap<String, Object>> getFriendTeams(String userid) throws Exception {
+		return mapper.selectFriendTeams(userid);
+	}
 }

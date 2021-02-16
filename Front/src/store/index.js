@@ -17,12 +17,12 @@ const state = {
   newUser: {
     email: "",
     password: "",
-    nickname: "",
+    nickName: "",
     myteams: []
   },
   surveyAnswers: [],
   chat: {
-    idx: 0
+    roomid: ''
   },
   user: {
     userid: "aaa@aaa.com",

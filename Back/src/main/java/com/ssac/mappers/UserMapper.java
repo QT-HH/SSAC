@@ -17,4 +17,5 @@ public interface UserMapper {
 	public List<String> selectFollower(String userid) throws Exception;
 	public int updateUserPassword(HashMap<String, String> map) throws Exception;
 	public int insertFollowing(HashMap<String, String> map) throws Exception;
+	public List<User> searchUser(String search) throws Exception;
 }
