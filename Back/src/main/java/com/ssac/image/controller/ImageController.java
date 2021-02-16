@@ -1,5 +1,6 @@
 package com.ssac.image.controller;
 
+import com.ssac.image.dto.Image;
 import com.ssac.image.service.ImageService;
 
 import io.swagger.annotations.Api;
@@ -22,18 +23,28 @@ import java.util.List;
 public class ImageController {
 	@Autowired
     private ImageService imageService;
-
-    @PostMapping("/logo")
-    public ResponseEntity<?> uploadOne() throws Exception {
-        try {
-            imageService.logoImage();
-            return new ResponseEntity<String>("success", HttpStatus.OK);
-        } catch(Exception e){
-            e.printStackTrace();
-        }
-        return new ResponseEntity<String>("fail", HttpStatus.OK);
-    }
-
+	
+	@ApiOperation(value = "뉴스피드에 이미지 넣기", notes = "입력 : file(MultipartFile형식의 이미지)")
+	@GetMapping("/newsfeedImageAdd")
+	public ResponseEntity<?> addImageNewsFeed(MultipartFile file) throws Exception {
+		try {
+			return new ResponseEntity<>(imageService.addImageIntoNewsFeed(file), HttpStatus.OK);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity<>("fail", HttpStatus.OK);
+	}
+	
+	@ApiOperation(value = "프로필에 이미지 넣기", notes = "입력 : file(MultipartFile형식의 이미지)")
+	@GetMapping("/newsfeedImageAdd")
+	public ResponseEntity<?> addImageProfile(MultipartFile file) throws Exception {
+		try {
+			return new ResponseEntity<>(imageService.addImageIntoProfile(file), HttpStatus.OK);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity<>("fail", HttpStatus.OK);
+	}
 //    @ApiOperation(value="이미지 서빙(n개)", notes = "여러개의 이미지 불러오기", httpMethod = "GET")
 //    @GetMapping(value = "/fileServe")
 //    public Response fileServe(@ApiParam(value="파일 고유값 리스트") @RequestParam(value="fileIds",required = true) List<Integer> fileIds) throws IllegalStateException {

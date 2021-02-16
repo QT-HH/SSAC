@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.ssac.image.dto.Image;
 import com.ssac.mappers.ImageMapper;
 import com.ssac.team.dto.Team;
 import com.ssac.team.service.TeamService;
@@ -17,33 +18,75 @@ import java.util.*;
 @Service
 public class ImageService {
 	@Autowired
-	public TeamService teamService;
-	@Autowired
-	public ImageMapper mapper;
+	private ImageMapper mapper;
 	
-	public void logoImage() throws Exception {
-		List<Team> teams = teamService.listTeam();
-		String ext = ".png";
-		String filename = "";
-		String pathRoot = "/home/image/logo";
-		for(int i=0; i<teams.size(); i++) {
-			String eventRoot = "";
-			if(teams.get(i).getEvent_no() == 1) eventRoot = "/football/";
-			else if(teams.get(i).getEvent_no() == 2) eventRoot = "/baseball/";
-			else eventRoot = "/lol/";
-			String totalRoot = pathRoot + eventRoot;
-			filename = teams.get(i).getName();
-			filename = filename.replace(" ", "_");
-			filename += ext;
-			System.out.println(filename);
-			InputStream imgStream = new FileInputStream(totalRoot+filename);
-			byte[] imgByteArray = IOUtils.toByteArray(imgStream);
-			imgStream.close();
-			HashMap<String, Object> map = new HashMap<String, Object>();
-			map.put("name", teams.get(i).getName());
-			map.put("logo", imgByteArray);
-			mapper.insertLogo(map);
+	public Image addImageIntoNewsFeed(MultipartFile file) throws Exception {
+		if(file.isEmpty()) throw new Exception("파일없음");
+		// 파일이름에서 확장자부분만 때기
+		String originName = file.getOriginalFilename();
+		String ext = "";
+		int index = originName.lastIndexOf(".");
+		if(index != -1) ext = originName.substring(index);
+		// 서버에 저장될 사진이름
+		String filename = UUID.randomUUID().toString() + ext;
+		// 서버에 저장될 폴더
+		String folderRoot = "/home/image/newsfeed/";
+		// 폴더에 접근
+		File pFile = new File(folderRoot);
+		// 폴더에 사진 저장
+		file.transferTo(new File(pFile,filename));
+		// 폴더에 저장된 사진 불러오기
+		InputStream imgStream = new FileInputStream(folderRoot+filename);
+		// 이미지 blob형태로 변형
+		byte[] blob = IOUtils.toByteArray(imgStream);
+		// 폴더 닫기
+		imgStream.close();
+		// 이미지 객체에 저장
+		Image image = new Image(filename, blob);
+		// 이미지 DB에 저장
+		try {
+			mapper.insertImageIntoNewsFeed(image);
+		} catch(Exception e) {
+			e.printStackTrace();
 		}
+		return image;
+	}
+	
+	public Image addImageIntoProfile(MultipartFile file) throws Exception {
+		if(file.isEmpty()) throw new Exception("파일없음");
+		// 파일이름에서 확장자부분만 때기
+		String originName = file.getOriginalFilename();
+		String ext = "";
+		int index = originName.lastIndexOf(".");
+		if(index != -1) ext = originName.substring(index);
+		// 서버에 저장될 사진이름
+		String filename = UUID.randomUUID().toString() + ext;
+		// 서버에 저장될 폴더
+		String folderRoot = "/home/image/profile/";
+		// 폴더에 접근
+		File pFile = new File(folderRoot);
+		// 폴더에 사진 저장
+		file.transferTo(new File(pFile,filename));
+		// 폴더에 저장된 사진 불러오기
+		InputStream imgStream = new FileInputStream(folderRoot+filename);
+		// 이미지 blob형태로 변형
+		byte[] blob = IOUtils.toByteArray(imgStream);
+		// 폴더 닫기
+		imgStream.close();
+		// 이미지 객체에 저장
+		Image image = new Image(filename, blob);
+		// 이미지 DB에 저장
+		try {
+			mapper.insertImageIntoNewsFeed(image);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return image;
+	}
+	
+	public Image filenameToBlob(String filename) throws Exception {
+		if(filename.equals("")) return null;
+		return mapper.selectImage(filename);
 	}
 
 //    public Image addFile(MultipartFile file) throws Exception{

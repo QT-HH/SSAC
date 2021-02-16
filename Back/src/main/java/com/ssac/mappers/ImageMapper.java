@@ -1,10 +1,12 @@
 package com.ssac.mappers;
 
-import java.util.HashMap;
-
 import org.apache.ibatis.annotations.Mapper;
+
+import com.ssac.image.dto.Image;
 
 @Mapper
 public interface ImageMapper {
-	public int insertLogo(HashMap<String, Object> map) throws Exception;
+	public int insertImageIntoNewsFeed(Image image) throws Exception;
+	public Image selectImage(String filename) throws Exception;
+	public int deleteImage(String filename) throws Exception;
 }

@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,106 +20,172 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ssac.image.dto.Image;
+import com.ssac.image.service.ImageService;
+import com.ssac.newsfeed.dto.NewsFeed;
+import com.ssac.newsfeed.dto.NewsFeedLike;
+import com.ssac.newsfeed.service.NewsFeedService;
+import com.ssac.user.dto.User;
+import com.ssac.user.service.UserService;
+
 import io.swagger.annotations.ApiOperation;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/newsfeed")
 public class NewsfeedController {
-
-	@ApiOperation(value = "뉴스피드 리스트 조회", notes = "입력 : userid")
+	@Autowired
+	private NewsFeedService newsfeedService;
+	@Autowired
+	private ImageService imageService;
+	@Autowired
+	private UserService userService;
+	
+	@ApiOperation(value = "뉴스피드 탭에서 리스트 조회 (팔로우된 친구 피드 포함 10개)", notes = "입력 : userid")
 	@GetMapping("/newsFeedList")
 	public ResponseEntity<?> getAllNewsfeedList(@RequestParam String userid) throws Exception {
 		// 뉴스피드 불러오기 (내가쓴글 + 내 팔로워가 쓴 글)
 		// 입력 : userid
 		// 출력 : 뉴스피드 게시글 (개수는 협의)
-		
-		/// 게시글 
-		List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
-		Map<String, Object> resultMap1 = new HashMap<>();
-		resultMap1.put("no", "1");
-		resultMap1.put("id", "aaa@aaa.com");
-		resultMap1.put("content", "1번게시글입니다");
-		resultMap1.put("regtime", "2021-02-09 04:41:09");
-		resultMap1.put("like", "2");
-		list.add(resultMap1);
-		Map<String, Object> resultMap2 = new HashMap<>();
-		resultMap2.put("no", "2");
-		resultMap2.put("id", "aaa@aaa.com");
-		resultMap2.put("content", "2번게시글입니다");
-		resultMap2.put("regtime", "2021-02-09 05:41:09");
-		resultMap2.put("like", "2");
-		list.add(resultMap2);
-		Map<String, Object> resultMap3 = new HashMap<>();
-		resultMap3.put("no", "3");
-		resultMap3.put("id", "aaa@aaa.com");
-		resultMap3.put("content", "3번게시글입니다");
-		resultMap3.put("regtime", "2021-02-09 06:41:09");
-		resultMap3.put("like", "2");
-		list.add(resultMap3);
-		return new ResponseEntity<>(list, HttpStatus.OK);
+		try {
+			System.out.println("뉴스피드 불러오기(전체) : "+userid);
+			List<NewsFeed> newsfeeds = newsfeedService.listNewsFeed(userid);
+			List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
+			for(int i=0; i<newsfeeds.size(); i++) {
+				Map<String, Object> map = new HashMap<>();
+				map.put("no", newsfeeds.get(i).getNo());
+				map.put("id", newsfeeds.get(i).getId());
+				User user = userService.findUser(new User(newsfeeds.get(i).getId()));
+				map.put("nickname", user.getNickname());
+				map.put("profile", imageService.filenameToBlob(user.getProfile()));
+				map.put("content", newsfeeds.get(i).getContent());
+				map.put("regtime", newsfeeds.get(i).getRegtime());
+				Image image = imageService.filenameToBlob(newsfeeds.get(i).getImagename());
+				if(image != null) map.put("image", image.getImage());
+				else map.put("image", "");
+				List<NewsFeedLike> like = newsfeedService.listNewsFeedLike(newsfeeds.get(i).getNo());
+				map.put("like", like);
+				map.put("comment", newsfeedService.countComment(newsfeeds.get(i).getNo()));
+				list.add(map);
+			}
+			return new ResponseEntity<>(list, HttpStatus.OK);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity<>("fail", HttpStatus.NO_CONTENT);
 	}
 	
-	@ApiOperation(value = "뉴스피드 작성", notes = "입력 : userid, 내용(content)")
+	@ApiOperation(value = "프로필에서 본인이 작성한 피드 불러오기", notes = "입력 : userid")
+	@GetMapping("/newsFeedInProfil")
+	public ResponseEntity<?> getNewsfeedList(@RequestParam String userid) throws Exception {
+		try {
+			System.out.println("뉴스피드 불러오기(프로필) : "+userid);
+			List<NewsFeed> newsfeeds = newsfeedService.listNewsFeedById(userid);
+			List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
+			for(int i=0; i<newsfeeds.size(); i++) {
+				Map<String, Object> map = new HashMap<>();
+				map.put("no", newsfeeds.get(i).getNo());
+				map.put("content", newsfeeds.get(i).getContent());
+				map.put("regtime", newsfeeds.get(i).getRegtime());
+				Image image = imageService.filenameToBlob(newsfeeds.get(i).getImagename());
+				if(image != null) map.put("image", image.getImage());
+				else map.put("image", "");
+				List<NewsFeedLike> like = newsfeedService.listNewsFeedLike(newsfeeds.get(i).getNo());
+				map.put("like", like);
+				map.put("comment", newsfeedService.countComment(newsfeeds.get(i).getNo()));
+				list.add(map);
+			}
+			return new ResponseEntity<>(list, HttpStatus.OK);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity<>("fail", HttpStatus.NO_CONTENT);
+	}
+	
+	@ApiOperation(value = "뉴스피드 작성", notes = "입력 : userid, 내용(content), 파일이름(filename)")
 	@PostMapping("/newsFeedWrite")
 	public ResponseEntity<?> writeNewsfeed(@RequestBody String js) throws Exception {
 		// 뉴스피드 작성하기
 		// 입력 : userid, content
 		// 출력 : 성공, 실패
-		return new ResponseEntity<String>("success", HttpStatus.OK);
+		JSONParser jsonParse = new JSONParser();
+		JSONObject jsonObj = null;
+		try {
+			jsonObj = (JSONObject) jsonParse.parse(js);
+			String userid = (String) jsonObj.get("userid");
+			String content = (String) jsonObj.get("content");
+			String filename = (String) jsonObj.get("filename");
+			System.out.println("뉴스피드 작성 : "+userid+" "+filename);
+			NewsFeed newsfeed = new NewsFeed(userid, content, filename);
+			newsfeedService.writeNewsFeed(newsfeed);
+			return new ResponseEntity<String>("success", HttpStatus.OK);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity<String>("fail", HttpStatus.NO_CONTENT);
 	}
 	
-	@ApiOperation(value = "뉴스피드 수정", notes = "입력 : 게시글번호(no), 변경내용(content)")
+	@ApiOperation(value = "뉴스피드 수정", notes = "입력 : 게시글번호(no), 변경내용(content), 파일이름(filename)")
 	@PatchMapping("/newsFeedUpdate")
 	public ResponseEntity<?> updateNewsfeed(@RequestBody String js) throws Exception {
 		// 뉴스피드 수정하기
 		// 입력 : no, content
 		// 출력 : 성공, 실패
-		return new ResponseEntity<String>("success", HttpStatus.OK);
+		JSONParser jsonParse = new JSONParser();
+		JSONObject jsonObj = null;
+		try {
+			jsonObj = (JSONObject) jsonParse.parse(js);
+			String userid = (String) jsonObj.get("userid");
+			String content = (String) jsonObj.get("content");
+			String filename = (String) jsonObj.get("filename");
+			System.out.println("뉴스피드 수정 : "+userid+" "+filename);
+			NewsFeed newsfeed = new NewsFeed(userid, content, filename);
+			newsfeedService.modifyNewsFeed(newsfeed);
+			return new ResponseEntity<String>("success", HttpStatus.OK);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity<String>("fail", HttpStatus.NO_CONTENT);
 	}
 	
 	@ApiOperation(value = "뉴스피드 삭제", notes = "입력 : 게시글번호(no)")
 	@DeleteMapping("/newsFeedDelete")
-	public ResponseEntity<?> deleteNewsfeed(@RequestParam String no) throws Exception {
+	public ResponseEntity<?> deleteNewsfeed(@RequestParam int no) throws Exception {
 		// 뉴스피드 삭제하기
 		// 입력 : no
 		// 출력 : 성공, 실패
-		return new ResponseEntity<String>("success", HttpStatus.OK);
+		try {
+			System.out.println("뉴스피드 삭제 : "+no);
+			newsfeedService.removeNewsFeed(no);
+			return new ResponseEntity<String>("success", HttpStatus.OK);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity<String>("fail", HttpStatus.NO_CONTENT);
 	}
 	
 	//////////////////// like ///////////////////////
 	
-	@ApiOperation(value = "뉴스피드 좋아요 리스트 조회", notes = "입력 : 게시글번호(no)")
-	@GetMapping("/likeList")
-	public ResponseEntity<?> getLikeList(@RequestParam String no) throws Exception {
-		// 좋아요한 사람 목록 불러오기
-		// 입력 : 게시글 번호
-		// 출력 : 좋아요한 사람 목록
-		List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
-		Map<String, Object> resultMap1 = new HashMap<>();
-		resultMap1.put("no", "1");
-		resultMap1.put("feed_no", no);
-		resultMap1.put("like_id", "leegw215@naver.com");
-		resultMap1.put("nickname", "이지원");
-		resultMap1.put("regtime", "2021-02-09 14:51:09");
-		list.add(resultMap1);
-		Map<String, Object> resultMap2 = new HashMap<>();
-		resultMap2.put("no", "12");
-		resultMap2.put("feed_no", no);
-		resultMap2.put("like_id", "leegw215@naver.com");
-		resultMap2.put("nickname", "이지원");
-		resultMap2.put("regtime", "2021-02-09 15:51:09");
-		list.add(resultMap2);
-		return new ResponseEntity<>(list, HttpStatus.OK);
-	}
-	
-	@ApiOperation(value = "뉴스피드 좋아요 누르기", notes = "입력 : userid, nickname, 게시글번호(no)")
+	@ApiOperation(value = "뉴스피드 좋아요 누르기", notes = "입력 : userid, 게시글번호(no)")
 	@PostMapping("/likeWrite")
 	public ResponseEntity<?> writeLike(@RequestBody String js) throws Exception {
 		// 좋아요 누르기
-		// 입력 : 게시글 번호, userid, 닉네임
+		// 입력 : 게시글 번호, userid
 		// 출력 : 성공, 실패
-		return new ResponseEntity<String>("success", HttpStatus.OK); 
+		JSONParser jsonParse = new JSONParser();
+		JSONObject jsonObj = null;
+		try {
+			jsonObj = (JSONObject) jsonParse.parse(js);
+			String userid = (String) jsonObj.get("userid");
+			int no = (int) jsonObj.get("no");
+			System.out.println("좋아요 : "+userid+" "+no);
+			NewsFeedLike like = new NewsFeedLike(no, userid);
+			newsfeedService.writeNewsFeedLike(like);
+			return new ResponseEntity<String>("success", HttpStatus.OK); 
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity<String>("fail", HttpStatus.NO_CONTENT);
 	}
 	
 	@ApiOperation(value = "뉴스피드 좋아요 취소", notes = "입력 : userid, 게시글번호(no)")
@@ -125,6 +194,19 @@ public class NewsfeedController {
 		// 좋아요 취소
 		// 입력 : 게시글 번호, userid
 		// 출력 : 성공, 실패
-		return new ResponseEntity<String>("success", HttpStatus.OK); 
+		JSONParser jsonParse = new JSONParser();
+		JSONObject jsonObj = null;
+		try {
+			jsonObj = (JSONObject) jsonParse.parse(js);
+			String userid = (String) jsonObj.get("userid");
+			int no = (int) jsonObj.get("no");
+			System.out.println("좋아요 취소 : "+userid+" "+no);
+			NewsFeedLike like = new NewsFeedLike(no, userid);
+			newsfeedService.removeNewsFeedLike(like);
+			return new ResponseEntity<String>("success", HttpStatus.OK); 
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity<String>("fail", HttpStatus.NO_CONTENT);
 	}
 }
