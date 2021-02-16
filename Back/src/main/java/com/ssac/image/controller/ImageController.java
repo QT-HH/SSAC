@@ -36,7 +36,7 @@ public class ImageController {
 	}
 	
 	@ApiOperation(value = "프로필에 이미지 넣기", notes = "입력 : file(MultipartFile형식의 이미지)")
-	@GetMapping("/newsfeedImageAdd")
+	@GetMapping("/profileImageAdd")
 	public ResponseEntity<?> addImageProfile(MultipartFile file) throws Exception {
 		try {
 			return new ResponseEntity<>(imageService.addImageIntoProfile(file), HttpStatus.OK);
