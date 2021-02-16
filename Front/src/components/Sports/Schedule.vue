@@ -75,7 +75,7 @@
               <v-btn
                 rounded
                 :color="colors[event.events_no]"
-                dark
+                dark 
               >
                 {{ event.name }}
               </v-btn>
