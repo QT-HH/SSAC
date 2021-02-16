@@ -4,7 +4,7 @@
   
     <div>
       <v-text-field
-      :elevation="6"
+        :elevation="6"
         label="검색어를 입력하세요."
         v-model="query"
       ></v-text-field>

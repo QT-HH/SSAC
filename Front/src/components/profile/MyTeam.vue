@@ -1,7 +1,6 @@
 <template>
   <div>
     <v-tabs
-      
       background-color="white"
       fixed-tabs
       >

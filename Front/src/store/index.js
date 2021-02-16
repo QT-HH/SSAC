@@ -34,8 +34,7 @@ const state = {
 
   },
   user: {
-
-    userid: "aaa@aaa.com",
+    userid: 0,
     email: "aaa@aaa.com",
     password: "123123123",
     nickname: "nojjeong",

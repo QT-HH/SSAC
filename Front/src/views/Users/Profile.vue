@@ -62,9 +62,8 @@
       </v-container>
       <v-container>
         <v-row>
-
-        <v-col style="font-weight: bold">
-            <div  class="pa-2 text" style="text-align:center ">
+        <v-col class="pt-0 pb-0" style="font-weight: bold">
+            <div  class="pb-0 text" style="text-align:center ">
               게시글
             </div>
             <div 
@@ -73,12 +72,12 @@
             font-style: italic;
             font-size: 1.0em;
             color: grey"
-            class="pa-2 text">
-              123
+            class="pt-0 text">
+              {{ articles.length }}
             </div>
           </v-col>
-          <v-col style="font-weight: bold">
-            <div class="pa-2 text" style="text-align:center font-weight: bold">
+          <v-col class="pt-0 pb-0" style="font-weight: bold">
+            <div class="pb-0 text" style="text-align:center">
               팔로워
             </div>
             <div 
@@ -87,12 +86,12 @@
             font-style: italic;
             font-size: 1.0em;
             color: grey"
-            class="pa-2 text">
-              345
+            class="pt-0 text">
+              {{follower.length}}
             </div>
           </v-col>
-          <v-col style="font-weight: bold">
-            <div class="pa-2 text" style="text-align:center font-weight: bold">
+          <v-col class="pt-0 pb-0" style="font-weight: bold">
+            <div class="pb-0 text" style="text-align:center">
               팔로잉
             </div>
 
@@ -102,12 +101,12 @@
             font-style: italic;
             font-size: 1.0em;
             color: grey"
-            class="pa-2 text">
-              789
+            class="pt-0 text">
+              {{following.length}}
             </div>
           </v-col>
-          <v-col style="font-weight: bold">
-            <div class="pa-2 text" style="text-align:center font-weight: bold; ">
+          <v-col class="pt-0 pb-0" style="font-weight: bold">
+            <div class="pb-0 text" style="text-align:center">
               포인트
             </div>
 
@@ -117,12 +116,33 @@
             font-style: italic;
             font-size: 1.0em;
             color: grey"
-            class="pa-2 text">
-              74532
+            class="pt-0 text">
+              {{ point }}
             </div>
           </v-col>
         </v-row>
       </v-container>
+
+          <!-- <v-btn
+          v-if="useremail === this.$store.state.user.email"
+            :elevation="0"
+            style="width: 300px"
+            class="rounded-lg"
+            color="grey lighten-2"
+            @click="gotoProfileEdit"
+          >
+            프로필 편집
+          </v-btn>
+          <v-btn 
+            v-else
+            :elevation="0"
+            style="width: 300px"
+            
+            color="primary"
+            dark
+          >
+            팔로우
+          </v-btn> -->
     </div>
     
     <div>
@@ -141,21 +161,34 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+// import { mapState } from 'vuex'
+import axios from 'axios'
 
 export default {
   name:"Profile",
-  data() {
+  // data() {
+  //   return {
+
+  //   }
+  // },
+  data: function() {
     return {
-      introduce: this.$store.state.user.introduce,
-      nickname: this.$store.state.user.nickname
+      following: [],
+      nickname: '',
+      useremail: '',
+      point: '',
+      introduce: 'Hi there!',
+      follower: [],
+      articles: Object
+      // introduce: this.$store.state.user.introduce,
+      // nickname: this.$store.state.user.nickname
     }
   },
-  computed: {
-      ...mapState([
-        'user'
-      ])
-    },
+  // computed: {
+  //     ...mapState([
+  //       'user'
+  //     ])
+  //   },
   methods:{
     gotoArticle() {
       if (this.$route.path !== "/profile") {
@@ -172,7 +205,63 @@ export default {
         this.$router.push({name:"ProfileEdit"})
       }
     },
+    
+  },
+
+
+  computed: {
+    // ...mapState({
+    //  articles: 'articles',
+    //  user: 'user'
+  //  })
+    userid: function () {
+      return this.$store.state.user.email
+    }
+
+  },
+  created() {
+    console.log('created')
+
+    const params = {
+      params: {
+        userid: this.userid,
+      }
+    }
+
+    axios.get(`http://i4d102.p.ssafy.io:9000/ssac/user/userSelect/`, params)
+      .then(response => {
+        console.log(response.data)
+        this.nickname = response.data.usernickname
+        this.useremail = response.data.userid
+        this.point = response.data.point
+        this.follower = response.data.follower
+        this.following = response.data.following
+        // this.users = response.data.items
+        // this.searched = true // 유저검색결과 한 줄 
+      })
+      .catch(error => {
+        console.error(error)
+      })
+
+    const params2 = {
+      params2: {
+        userid: this.userid,
+      }
+    }
+
+    axios.get(`http://i4d102.p.ssafy.io:9000/ssac/newsfeed/newsFeedList/`, params2)
+      .then(response => {
+        console.log(response.data)
+        this.articles = response.data
+        // this.users = response.data.items
+        // this.searched = true // 유저검색결과 한 줄 
+      })
+      .catch(error => {
+        console.error(error)
+      })
+
   }
+
 }
 </script>
 

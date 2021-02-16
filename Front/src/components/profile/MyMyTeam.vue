@@ -26,26 +26,25 @@
             class="mx-3 my-0 rounded-xl"
             tag="article"
             border-variant="success"
-            
-            
-          >
-          <v-list-item style="height:100%">
-          <v-list-item-avatar
             @click="selectTeam(team)"
-            v-bind="attrs"
-            v-on="on"
-            rounded-lg
-            size="50"
-            color="grey"
           >
-            <v-img
-              :src="team.img"
-              class="white--text align-end"
-              height="60"
-            >
-            </v-img>
-          </v-list-item-avatar>
-            <v-list-item-content
+            <v-list-item style="height:100%">
+              <v-list-item-avatar
+                @click="selectTeam(team)"
+                v-bind="attrs"
+                v-on="on"
+                rounded-lg
+                size="50"
+                color="grey"
+              >
+                <v-img
+                  :src="team.img"
+                  class="white--text align-end"
+                  height="60"
+                >
+                </v-img>
+              </v-list-item-avatar>
+<v-list-item-content
             @click="selectTeam(team)"
             v-bind="attrs"
             v-on="on">
@@ -124,8 +123,8 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-
+// import { mapState } from 'vuex'
+import axios from 'axios'
 
 export default {
   name: 'MyMyTeam',
@@ -134,13 +133,21 @@ export default {
         dialog: false,
         selectedData: Object,
         nickname: '',
+        myteams: Object,
 
       }
     },
+  // computed: {
+  //  ...mapState({
+  //    myteams: 'myTeams'
+  //  })
+  // },
+
   computed: {
-   ...mapState({
-     myteams: 'myTeams'
-   })
+    userid: function () {
+      return this.$store.state.user.email
+    }
+
   },
   methods: {
     selectTeam(team) {
@@ -150,8 +157,66 @@ export default {
       this.$store.dispatch('nicknaming', {selectedData,nickname});
       console.log(selectedData);
       console.log(nickname);
-      this.nickname = ''
+
+
+    console.log('created')
+    const params2 = {
+      params2: {
+        userid: this.userid,
+        name: this.nickname
+      }
     }
+
+    axios.patch(`http://i4d102.p.ssafy.io:9000/ssac/team/myTeamNameChange`, params2)
+      .then(response => {
+        console.log(response.data)
+        // this.articles = response.data
+        // this.users = response.data.items
+        // this.searched = true // 유저검색결과 한 줄 
+      })
+      .catch(error => {
+        console.error(error)
+      })
+    },
+    removeMyteam () {
+    const params3 = {
+      params3: {
+        userid: this.userid,
+        no: this.no
+      }
+    }
+
+    axios.delete(`http://i4d102.p.ssafy.io:9000/ssac/team/myTeamDelete`, params3)
+      .then(response => {
+        console.log(response.data)
+        // this.articles = response.data
+        // this.users = response.data.items
+        // this.searched = true // 유저검색결과 한 줄 
+      })
+      .catch(error => {
+        console.error(error)
+      })
+    },
+  },
+
+  created() {
+    console.log('created')
+    const params = {
+      params: {
+        userid: this.userid,
+      }
+    }
+
+    axios.get(`http://i4d102.p.ssafy.io:9000/ssac/team/myTeamList`, params)
+      .then(response => {
+        console.log(response.data)
+        this.myteams = response.data
+        // this.users = response.data.items
+        // this.searched = true // 유저검색결과 한 줄 
+      })
+      .catch(error => {
+        console.error(error)
+      })
   }
 }
 </script>
