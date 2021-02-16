@@ -47,7 +47,7 @@ export default {
       .then(response => {
         console.log(response.data)
         // axios 요청부분 - 요청한번보내서 this.users랑 this.teams를 다 업데이트.
-        // this.fri_teams = response.data
+        this.fri_teams = response.data
         // this.searched = response.data.searched // 유저검색결과 한 줄 
       })
       .catch(error => {
