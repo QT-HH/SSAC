@@ -1,14 +1,14 @@
 <template>
-  <div class="black fill-height fill-width">
+  <div class="deep-purple accent-4 fill-height fill-width">
     <v-container class="fill-height" align="center" justify="center">
       <v-row align="center" justify="center">
-        <div v-anime="{ rotate: '1turn', backgroundColor: '#000000', duration: 20000, loop: false }">
-          <v-img
-            :src="start.src"
-            @click="gotoLogin"
-          >
-          </v-img>
-        </div>
+        <v-btn
+          depressed
+          color="deep-purple accent-4"
+          @click="gotoLogin"
+        >
+          <h1 class="white--text">SSAC</h1> 
+        </v-btn>
       </v-row>
     </v-container>
   </div>

@@ -70,35 +70,51 @@
     </v-row>
     <!-- DB에 저장되어 있는 전체 팀들 -->
     <v-container class="mr-2 ml-2">
-        <v-row>
-            <v-col 
-            cols="4"
-            v-for="(team, idx) in filterTeam(cat,query)"
-            :key="idx"
-            :team="team"
-            @click="addmyteams(team)"
-            >
-                <v-sheet
-                    hover
-                    color="white"
-                    elevation="2"
-                    height="100"
-                    rounded
-                    width="100"
+        <v-item-group
+            v-model="myteams"
+            multiple
+        >
+            <v-row>
+                <v-col 
+                cols="4"
+                v-for="(team, idx) in filterTeam(cat,query)"
+                :key="idx"
+                :team="team"
+                @click="addmyteams(team)"
                 >
-                    <v-img
-                        :src="team.logo"
-                        align="center"
-                        justify="center"
+                    <v-sheet 
+                        v-slot="{ active, toggle }"
+                        hover
+                        color="white"
+                        elevation="2"
+                        height="100"
+                        rounded
+                        width="100"
                     >
-                    </v-img>
-                    <v-row class="white--text">{{ team.name }}</v-row>
-                    <v-row class="text--primary">
-                    {{team.count}} likes
-                    </v-row>
-                </v-sheet>
-            </v-col>
-        </v-row>
+                        <v-img
+                            :src="items.logo"
+                            class="text-right pa-2"
+                            @click="toggle"
+                            align="center"
+                            justify="center"
+                        >
+                            <v-btn
+                                icon
+                                dark
+                            >
+                                <v-icon>
+                                    {{ active ? 'mdi-heart' : 'mdi-heart-outline' }}
+                                </v-icon>
+                            </v-btn>
+                        </v-img>                  
+                        <v-row class="white--text">{{ team.name }}</v-row>
+                        <v-row class="text--primary">
+                        {{ team.count }} likes
+                        </v-row>
+                    </v-sheet>
+                </v-col>
+            </v-row>
+        </v-item-group>
     </v-container>
   </div>
 </template>
