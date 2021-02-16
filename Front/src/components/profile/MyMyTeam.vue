@@ -97,8 +97,8 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-
+// import { mapState } from 'vuex'
+import axios from 'axios'
 
 export default {
   name: 'MyMyTeam',
@@ -110,11 +110,11 @@ export default {
 
       }
     },
-  computed: {
-   ...mapState({
-     myteams: 'myTeams'
-   })
-  },
+  // computed: {
+  //  ...mapState({
+  //    myteams: 'myTeams'
+  //  })
+  // },
   methods: {
     selectTeam(team) {
       this.selectedData = team
@@ -124,6 +124,35 @@ export default {
       console.log(selectedData);
       console.log(nickname);
     }
+  },
+  computed: {
+    // ...mapState({
+    //  articles: 'articles',
+    //  user: 'user'
+  //  })
+    userid: function () {
+      return this.$store.state.user.email
+    }
+
+  },
+  created() {
+    console.log('created')
+    const params = {
+      params: {
+        userid: this.userid,
+      }
+    }
+
+    axios.get(`http://i4d102.p.ssafy.io:9000/ssac/user/userSelect`, params)
+      .then(response => {
+        console.log(response.data)
+        // this.articles = response.data.items
+        // this.users = response.data.items
+        // this.searched = true // 유저검색결과 한 줄 
+      })
+      .catch(error => {
+        console.error(error)
+      })
   }
 }
 </script>
