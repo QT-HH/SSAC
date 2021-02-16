@@ -33,9 +33,9 @@ public class ImageService {
 			else eventRoot = "/lol/";
 			String totalRoot = pathRoot + eventRoot;
 			filename = teams.get(i).getName();
-			filename.replace(" ", "_");
+			filename = filename.replace(" ", "_");
 			filename += ext;
-			System.out.println(totalRoot+filename);
+			System.out.println(filename);
 			InputStream imgStream = new FileInputStream(totalRoot+filename);
 			byte[] imgByteArray = IOUtils.toByteArray(imgStream);
 			imgStream.close();
