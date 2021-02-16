@@ -1,11 +1,37 @@
 <template>
   <div class="text-center mt-4">
-    <h3>이 팀을 추천해요</h3>
-    팀명: {{ name }}
-    <br>
-    팀 팔로우수: {{ follownum }}
-    
-    <div class="mx-5 py-2"><v-btn outlined color="error" x-large class="mt-3" @click="goNext()"> 다시하기 </v-btn></div>
+    <v-container>
+      <h3
+      style="text-align:center;
+            font-weight: bold; 
+            font-size: 1.7em;">이 팀을 추천해요</h3>
+            <br>
+        <v-card
+        dark
+          class="mx-8"
+          max-width="344"
+          style="height:30vh"
+        >
+          <v-img
+            class="white--text align-end"
+            src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+            style="height:100%"
+          >
+          <v-card-title 
+          style="text-align:left; font-weight: bold;">
+            {{ name }}
+          </v-card-title>
+
+          <v-card-subtitle 
+          style="text-align:left; font-weight: bold;">
+            {{ follownum }} 명이 좋아합니다.
+          </v-card-subtitle>
+          </v-img>
+        </v-card>
+      </v-container>
+      <hr style="height:10vh; visibility:hidden;" />
+     
+    <div class="mx-5 py-2"><v-btn outlined :elevation="2" color="black" x-large class="mt-3" @click="goNext()"> 다시하기 </v-btn></div>
 
   </div>
 </template>
