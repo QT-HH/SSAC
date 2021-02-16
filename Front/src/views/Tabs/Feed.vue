@@ -60,10 +60,8 @@
                 label="File input" 
                 filled
                 prepend-icon="mdi-camera"
-                accept="image/*"
-                multiple
+                accept="image/*" 
                 chips
-                counter
                 v-model="files"
               ></v-file-input>
 
@@ -262,36 +260,11 @@
                 </v-list-item-content>
               </v-list-item>
             </v-list>
-            <v-carousel
-              :continuous="false"
-              :cycle="cycle"
-              :show-arrows="false"
-              hide-delimiter-background
-              delimiter-icon="mdi-minus"
-              height="300"
-              v-if="selected.imgs"
+            <v-img
+              v-if="selected.img"
+              :src="selected.img"
             >
-              <v-carousel-item
-                v-for="(img, i) in selected.imgs"
-                :key="i"
-              >
-                <v-sheet
-                  :color="colors[i]"
-                  height="100%"
-                  tile
-                >
-                  <v-row
-                    class="fill-height"
-                    align="center"
-                    justify="center"
-                  >
-                    <div class="display-3">
-                      {{ i }} Slide
-                    </div>
-                  </v-row>
-                </v-sheet>
-              </v-carousel-item>
-            </v-carousel>
+            </v-img>
             <v-card-title>
               {{selected.content}}
             </v-card-title>
@@ -408,12 +381,28 @@
               label="Content"
               v-model="selected.content"
             ></v-textarea>
-          <v-btn @click="deleteFeed(selected.no)">
-            삭제하기
-          </v-btn>
-          <v-btn @click="updateFeed(selected)">
-            수정하기
-          </v-btn>
+            <v-file-input 
+              class="d-flex align-center justify-center pa-4 mx-auto" 
+              label="File input" 
+              filled
+              prepend-icon="mdi-camera"
+              accept="image/*" 
+              chips
+              v-model="files"
+            ></v-file-input>
+            ※글 수정에서 사진 업로드시<br>
+            기존 사진에서 변경됩니다. <br>
+            <v-btn color="primary" @click="upload">
+              적용
+            </v-btn>
+            <v-divider></v-divider>
+            <br>
+            <v-btn @click="deleteFeed(selected.no)">
+              삭제하기
+            </v-btn>
+            <v-btn @click="updateFeed(selected)">
+              수정하기
+            </v-btn>
           </v-container>
         </v-card>
       </v-dialog>
@@ -431,7 +420,8 @@
 <script>
 import { mapState } from 'vuex';
 import { getArticle, writeArticle, updateArticle, deleteArticle, likeArticle, getLikeUsers, unlikeArticle,  getComment, writeComment, updateComment, deleteComment} from '@/api/tabs/feed.js'
-//  
+import axios from "axios" 
+
 export default {
   name:"Feed",
   data () {
@@ -521,6 +511,7 @@ export default {
         regtime:String,
         like:Number,
         content:String,
+        img:String,
       },
       comments: [],
       editFeed:{
@@ -529,6 +520,7 @@ export default {
         regtime:String,
         like:Number,
         content:String,
+        img:String,
       },
       files:[],
     }
@@ -775,24 +767,24 @@ export default {
         }
       )
     },
-    // async upload(){
-    //   this.dialog = false
-    //   let fd = new FormData();
-    //   fd.append('files',this.files)
-    //   await axios.post('http://localhost:1337/upload',
-    //     fd, {
-    //       headers: {
-    //         'Content-Type': 'multipart/form-data'
-    //       }
-    //     }
-    //   ).then( response => {
-    //     console.log('SUCCESS!!');
-    //     console.log(response.data)
-    //   })
-    //   .catch(function () {
-    //     console.log('FAILURE!!');
-    //   });
-    // }
+    async upload(){
+      this.dialog = false
+      let fd = new FormData();
+      fd.append('files',this.files)
+      await axios.post('http://localhost:1337/upload',
+        fd, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }
+      ).then( response => {
+        console.log('SUCCESS!!');
+        console.log(response.data)
+      })
+      .catch(function () {
+        console.log('FAILURE!!');
+      });
+    }
 
   },
 }

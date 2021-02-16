@@ -89,6 +89,8 @@
 </template>
 
 <script>
+// import {getAlert} from "@/api/common.js"
+
 export default {
   name:"Footer",
   data () {

@@ -112,4 +112,14 @@ function deleteComment(no, success, fail) {
     .catch(fail);
 }
  
+// function uploadPicture(data, success, fail) {
+//   instance.defaults.headers['Content-Type'] = 'multipart/form-data'
+
+//   const body = {
+//     userid: email,
+//     userpw: password
+//   };
+
+// }
+
 export { getArticle, writeArticle, updateArticle, deleteArticle, likeArticle, getLikeUsers, unlikeArticle, getComment, writeComment, updateComment, deleteComment};
