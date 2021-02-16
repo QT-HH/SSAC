@@ -20,7 +20,7 @@
             프로필 사진
           </v-card-title>
 
-          <v-file-input class="d-flex align-center justify-center pa-4 mx-auto" label="File input" filled
+          <v-file-input v-model="files" class="d-flex align-center justify-center pa-4 mx-auto" label="File input" filled
             prepend-icon="mdi-camera"></v-file-input>
 
           <v-divider></v-divider>
@@ -106,6 +106,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import axios from 'axios'
 
 export default {
     name: 'ProfileEdit',
@@ -128,9 +129,22 @@ export default {
       ])
     },
     methods:{
-      upload() {
-        console.log("Hello, Upload")
-        console.log(this.files.name)
+      async upload() {
+        var fd = new FormData();
+        fd.append('files', this.files)
+        await axios.post('http://localhost:8080/profile/edit',
+              fd, {
+                headers: {
+                  'Content-Type': 'multipart/form-data'
+                }
+              }
+            ).then( response => {
+              console.log('SUCCESS!!');
+              console.log(response.data)
+            })
+            .catch(function () {
+              console.log('FAILURE!!');
+            });
       },
       gotoProfile() {
         if (this.$route.path !== "/profile") {
