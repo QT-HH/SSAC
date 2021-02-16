@@ -4,7 +4,7 @@
     <div class="mx-5 py-2"><v-btn outlined color="error" x-large class="mt-3" @click="[saveQuestion(choices[0]), goNext()]"> {{ choices[0] }} </v-btn></div>
     <div class="mx-5 py-2"><v-btn outlined color="error" x-large class="mt-3" @click="[saveQuestion(choices[0]), goNext()]"> {{ choices[1] }} </v-btn></div>
 
-    {{ surveyAnswers }}
+    <!-- {{ surveyAnswers }} -->
   </div>
 </template>
 
@@ -22,8 +22,8 @@ export default {
       'saveQuestion',
     ]),
     goNext: function() {
-      // this.$router.push({ name: 'Question3'})
-      console.log('모든 질문에 답변 완료')
+      this.$router.push({ name: 'recomTeam'})
+      // console.log('모든 질문에 답변 완료')
       // axios
     }
   },

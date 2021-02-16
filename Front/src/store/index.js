@@ -25,7 +25,7 @@ const state = {
     roomid: ''
   },
   user: {
-    userid: "aaa@aaa.com",
+    email: "aaa@aaa.com",
     password: "123123123",
     nickname: "nojjeong",
     myteams: [34,35],
