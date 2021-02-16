@@ -1,4 +1,5 @@
 <template>
+  <div>
   <v-app-bar
     app
     fixed
@@ -59,6 +60,7 @@
 
 
   </v-app-bar>
+  </div>
 </template>
 
 <script>

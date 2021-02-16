@@ -1,5 +1,6 @@
 <template>
   <div>
+    <hr style="height:10px; visibility:hidden;"/>
     <div class="p-3">
       <v-row v-for="(post, idx) in posts" :key="idx">
         <v-col cols=12>

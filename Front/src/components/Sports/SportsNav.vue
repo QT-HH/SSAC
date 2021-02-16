@@ -1,9 +1,11 @@
 <template>
 <div style="width:100%;">
+  <hr style="height:25px; visibility:hidden;" />
     <v-card>
       <v-tabs
         fixed-tabs
         background-color="#536DFE"
+        class="rounded-0"
         dark
         >
         <v-tab @click="gotoSchedule">일정</v-tab>
@@ -14,7 +16,6 @@
     </v-card>
 
  <!-- #82B1FF -->
-
 </div>
 </template>
 

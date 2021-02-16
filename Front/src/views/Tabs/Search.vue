@@ -3,6 +3,7 @@
     <SearchNav style="position:fixed; z-index:100; width:100%"/>
     <br>
     <br>
+    <br>
     <div style="position:static; z-index:0; width:100%;">
       <router-view />
     </div>

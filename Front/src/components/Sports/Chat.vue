@@ -5,7 +5,6 @@
         <v-col width="max-content">
           <v-card style="height: 545px" width="max-content">
             <v-list two-line>
-              <br>
               <v-list-item  
               v-for="(chat,idx) in chats" 
               :key="idx" 
