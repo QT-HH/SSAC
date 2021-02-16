@@ -1,8 +1,24 @@
 <template>
   <div class="fill-height">
+
+    <v-row class="mt-3 ml-4 mr-4" justify="space-between">
+      <v-btn icon
+        @click="backtoSignup"
+        color="#536DFE"
+      >
+        <v-icon>mdi-arrow-left</v-icon>
+      </v-btn>
+      <v-btn icon
+        @click="completeSignup"
+        color="#536DFE"
+      >
+        <v-icon>mdi-arrow-right</v-icon>
+      </v-btn>
+    </v-row>
+
     <!-- 로고 -->
     <v-container>
-      <v-row class="mt-5 mb-5" align="center" justify="center">
+      <v-row class="mt-2 mb-5" align="center" justify="center">
         <v-img
           :src="logo.src"
           max-width="130"
@@ -13,65 +29,77 @@
       </v-row>
     </v-container>
 
-    선택한 팀들:
-    <v-btn v-for="(team, idx) in myteams" :key="idx" @click="addmyteams(team)">
-        {{ team.name }} ({{ translate[team.event_no] }})
-    </v-btn>
-    <!-- {{myteams}} -->
-    
-    <hr>
-
-    <v-container>
-    <v-row>
-        <v-col 
-        cols=4
-        v-for="(team, idx) in filterTeam(cat,query)"
-        :key="idx"
-        :team="team"
-        >
-        <v-card
-            hover
-            class="mx-auto"
-            style="max-width: 15rem;"
-            tag="article"
-            border-variant="success"
-        >
-            <v-img
-            :src="team.img"
-            class="white--text align-end"
-            height="100px"
-            >
-            <v-card-title>{{ team.name }}</v-card-title>
-            </v-img>
-
-            <v-card-text class="text--primary">
-            <!-- {{ team.count }} 명이 좋아합니다. -->
-            {{team.name}}
-            </v-card-text>
-
-        </v-card>
-        </v-col>
+    <v-row class="mt-4 mb-2 ml-7" align="center">
+      <h5>Choose your Teams</h5>
     </v-row>
-    </v-container>
 
-    <div>
-        <v-row class="mb-10" align="center" justify="center">
-            <v-btn 
-                class="mr-2 ml-2" 
-                @click="backtoSignup"
-                color="#536DFE"
+    <!-- 전체 팀 필터 -->
+    <v-row class="ml-5 mr-5 mb-1" justify="space-between">
+        <v-chip class="ma-2" @click="turnAll">Total</v-chip>
+        <v-chip class="ma-2" @click="turnFootball" color="primary" text-color="white">Football</v-chip>
+        <v-chip class="ma-2" @click="turnBaseball" color="red" text-color="white">Baseball</v-chip>
+        <v-chip class="ma-2" @click="turnLOL" color="green" text-color="white">LoL</v-chip>
+    </v-row>
+    <!-- 전체 팀 검색-->
+    <v-toolbar
+      flat
+      color="transparent"
+      class="mt-3 ml-2 mr-2"
+    >
+      <v-text-field
+        v-model="query"
+        append-icon="mdi-magnify"
+        label="Search Teams"
+        single-line
+      ></v-text-field>
+    </v-toolbar>
+
+    <!-- MyTeam으로 선택한 팀들 -->
+    <v-row class="ml-5 mr-5 mb-1">
+        <h4>My Teams:</h4>
+        <v-chip
+            v-for="(team, idx) in myteams"
+            :key="idx"
+            @click="addmyteams(team)"
+            close
+            small
+            class="ml-1 mr-1"
+        >
+            {{ team.name }}
+        </v-chip>
+    </v-row>
+    <!-- DB에 저장되어 있는 전체 팀들 -->
+    <v-container class="mr-2 ml-2">
+        <v-row>
+            <v-col 
+            cols="4"
+            v-for="(team, idx) in filterTeam(cat,query)"
+            :key="idx"
+            :team="team"
+            @click="addmyteams(team)"
             >
-                <h3 class="mr-1 ml-1">BEFORE</h3>     
-            </v-btn>
-            <v-btn 
-                class="mr-2 ml-2" 
-                @click="completeSignup"
-                color="#536DFE"
-            >
-                <h3 class="mr-1 ml-1">NEXT</h3>
-            </v-btn>
+                <v-sheet
+                    hover
+                    color="white"
+                    elevation="2"
+                    height="100"
+                    rounded
+                    width="100"
+                >
+                    <v-img
+                        :src="team.logo"
+                        align="center"
+                        justify="center"
+                    >
+                    </v-img>
+                    <v-row class="white--text">{{ team.name }}</v-row>
+                    <v-row class="text--primary">
+                    {{team.count}} likes
+                    </v-row>
+                </v-sheet>
+            </v-col>
         </v-row>
-    </div>
+    </v-container>
   </div>
 </template>
 
