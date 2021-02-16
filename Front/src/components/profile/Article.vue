@@ -15,11 +15,11 @@
         type="white"
 >
           <v-card-title>
-            <span class="title font-weight-light">{{ article.title }}</span>
+            <span class="title font-weight-light">{{ article.no }}</span>
           </v-card-title>
 
           <v-card-text class="headline font-weight-bold">
-            {{article.context}}
+            {{article.content}}
           </v-card-text>
 
           <v-card-actions>
@@ -29,7 +29,7 @@
               </v-list-item-avatar>
 
               <v-list-item-content>
-                <v-list-item-title>{{user.nickname}}</v-list-item-title>
+                <v-list-item-title>{{nickname}}</v-list-item-title>
               </v-list-item-content>
 
               <v-row align="center" justify="end">
@@ -62,8 +62,13 @@ export default {
   name:"Article",
   data: function() {
     return {
-      articles: '',
+      articles: [],
       user: '',
+      following: [],
+      nickname: '',
+      useremail: '',
+      point: '',
+      follower: [],
     }
   },
   computed: {
@@ -84,10 +89,33 @@ export default {
       }
     }
 
-    axios.get(`http://i4d102.p.ssafy.io:9000/ssac/user/userSelect/`, params)
+    axios.get(`http://i4d102.p.ssafy.io:9000/ssac/newsfeed/newsFeedList/`, params)
       .then(response => {
         console.log(response.data)
-        // this.articles = response.data.items
+        this.articles = response.data
+        // this.users = response.data.items
+        // this.searched = true // 유저검색결과 한 줄 
+      })
+      .catch(error => {
+        console.error(error)
+      })
+
+
+    
+    const params2 = {
+      params2: {
+        userid: this.userid,
+      }
+    }
+
+    axios.get(`http://i4d102.p.ssafy.io:9000/ssac/user/userSelect/`, params2)
+      .then(response => {
+        console.log(response.data)
+        this.nickname = response.data.usernickname
+        this.useremail = response.data.userid
+        this.point = response.data.point
+        this.follower = response.data.follower
+        this.following = response.data.following
         // this.users = response.data.items
         // this.searched = true // 유저검색결과 한 줄 
       })

@@ -30,8 +30,8 @@
               class="white--text align-end"
               height="100px"
             >
-              <v-card-title v-if="team.nickname.length === 0 ">{{ team.name }}</v-card-title>
-              <v-card-title v-else>{{ team.nickname }}</v-card-title>
+              <!-- <v-card-title v-if="team.nickname.length === 0 ">{{ team.name }}</v-card-title> -->
+              <v-card-title>{{ team.name }}</v-card-title>
             </v-img>
 
             <v-card-text class="text--primary">
@@ -41,6 +41,7 @@
             <v-card-actions>
               <v-btn
                 color="error"
+                @click="removeMyteam()"
               >
                 내 팀 제거
               </v-btn>
@@ -107,6 +108,7 @@ export default {
         dialog: false,
         selectedData: Object,
         nickname: '',
+        myteams: Object,
 
       }
     },
@@ -115,6 +117,13 @@ export default {
   //    myteams: 'myTeams'
   //  })
   // },
+
+  computed: {
+    userid: function () {
+      return this.$store.state.user.email
+    }
+
+  },
   methods: {
     selectTeam(team) {
       this.selectedData = team
@@ -123,18 +132,48 @@ export default {
       this.$store.dispatch('nicknaming', {selectedData,nickname});
       console.log(selectedData);
       console.log(nickname);
-    }
-  },
-  computed: {
-    // ...mapState({
-    //  articles: 'articles',
-    //  user: 'user'
-  //  })
-    userid: function () {
-      return this.$store.state.user.email
+
+
+    console.log('created')
+    const params2 = {
+      params2: {
+        userid: this.userid,
+        name: this.nickname
+      }
     }
 
+    axios.patch(`http://i4d102.p.ssafy.io:9000/ssac/team/myTeamNameChange`, params2)
+      .then(response => {
+        console.log(response.data)
+        // this.articles = response.data
+        // this.users = response.data.items
+        // this.searched = true // 유저검색결과 한 줄 
+      })
+      .catch(error => {
+        console.error(error)
+      })
+    },
+    removeMyteam () {
+    const params3 = {
+      params3: {
+        userid: this.userid,
+        no: this.no
+      }
+    }
+
+    axios.delete(`http://i4d102.p.ssafy.io:9000/ssac/team/myTeamDelete`, params3)
+      .then(response => {
+        console.log(response.data)
+        // this.articles = response.data
+        // this.users = response.data.items
+        // this.searched = true // 유저검색결과 한 줄 
+      })
+      .catch(error => {
+        console.error(error)
+      })
+    },
   },
+
   created() {
     console.log('created')
     const params = {
@@ -143,10 +182,10 @@ export default {
       }
     }
 
-    axios.get(`http://i4d102.p.ssafy.io:9000/ssac/user/userSelect`, params)
+    axios.get(`http://i4d102.p.ssafy.io:9000/ssac/team/myTeamList`, params)
       .then(response => {
         console.log(response.data)
-        // this.articles = response.data.items
+        this.myteams = response.data
         // this.users = response.data.items
         // this.searched = true // 유저검색결과 한 줄 
       })

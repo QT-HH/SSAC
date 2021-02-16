@@ -7,11 +7,11 @@
       <img class="d-flex mx-3 rounded-circle" width="80px" height="80px" src="https://mblogthumb-phinf.pstatic.net/MjAxNzAzMTVfMTE4/MDAxNDg5NTMzMTAwMjY0.m9UYu7Dt4CyJcaMMeAuIhOFP2nnXBnW5eUqx3rXZY14g.3axKiINI_FaRrOzK70_FY2qRXLulYTBkzwFIaeY8yd4g.JPEG.doghter4our/IMG_5252.jpg?type=w800" alt="Generic placeholder image">
           <v-col>
             <div class="d-flex align-center justify-center mx-auto">
-              {{this.nickname}}
+              내 별명: {{nickname}}
             </div>
             <br>
             <div class="d-flex align-center justify-center mx-auto">
-              {{this.introduce}}
+              아이디: {{useremail}}
             </div>
 
           </v-col>
@@ -25,7 +25,7 @@
               게시글
             </div>
             <div class="pa-2 text">
-              123
+              {{ articles.length }} 개
             </div>
           </v-col>
           <v-col>
@@ -33,7 +33,7 @@
               팔로워
             </div>
             <div class="pa-2 text">
-              345
+              {{follower.length}} 명
             </div>
           </v-col>
           <v-col>
@@ -41,7 +41,15 @@
               팔로잉
             </div>
             <div class="pa-2 text">
-              456
+              {{following.length}} 명
+            </div>
+          </v-col>
+          <v-col>
+            <div class="pa-2 text">
+              포인트
+            </div>
+            <div class="pa-2 text">
+              {{ point }} p
             </div>
           </v-col>
         </v-row>
@@ -57,7 +65,6 @@
           >
             팔로우
           </v-btn>
-          <v-btn @click="temp">임시</v-btn>
         </div>
         <div class="text-center">
           <v-btn
@@ -101,7 +108,12 @@ export default {
   // },
   data: function() {
     return {
-      user: '',
+      following: [],
+      nickname: '',
+      useremail: '',
+      point: '',
+      follower: [],
+      articles: Object
       // introduce: this.$store.state.user.introduce,
       // nickname: this.$store.state.user.nickname
     }
@@ -127,25 +139,7 @@ export default {
         this.$router.push({name:"ProfileEdit"})
       }
     },
-    temp() {
-      const params = {
-      params: {
-        userid: this.userid,
-      }
-    }
-
-    axios.get(`http://i4d102.p.ssafy.io:9000/ssac/user/userSelect/`, params)
-      .then(response => {
-        console.log(response.data)
-        // this.articles = response.data.items
-        // this.users = response.data.items
-        // this.searched = true // 유저검색결과 한 줄 
-      })
-      .catch(error => {
-        console.error(error)
-      })
-
-    }
+    
   },
 
 
@@ -161,6 +155,44 @@ export default {
   },
   created() {
     console.log('created')
+
+    const params = {
+      params: {
+        userid: this.userid,
+      }
+    }
+
+    axios.get(`http://i4d102.p.ssafy.io:9000/ssac/user/userSelect/`, params)
+      .then(response => {
+        console.log(response.data)
+        this.nickname = response.data.usernickname
+        this.useremail = response.data.userid
+        this.point = response.data.point
+        this.follower = response.data.follower
+        this.following = response.data.following
+        // this.users = response.data.items
+        // this.searched = true // 유저검색결과 한 줄 
+      })
+      .catch(error => {
+        console.error(error)
+      })
+
+    const params2 = {
+      params2: {
+        userid: this.userid,
+      }
+    }
+
+    axios.get(`http://i4d102.p.ssafy.io:9000/ssac/newsfeed/newsFeedList/`, params2)
+      .then(response => {
+        console.log(response.data)
+        this.articles = response.data
+        // this.users = response.data.items
+        // this.searched = true // 유저검색결과 한 줄 
+      })
+      .catch(error => {
+        console.error(error)
+      })
 
   }
 
