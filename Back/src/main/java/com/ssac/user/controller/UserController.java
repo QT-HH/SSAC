@@ -83,18 +83,7 @@ public class UserController {
 							teamService.modifyTeamCount(map);
 						}
 					}
-					User temp = userService.findUser(user);
-					Map<String, Object> resultMap = new HashMap<>();
-					String token = jwtService.create(temp);
-					System.out.println("토큰생성 완료");
-					resultMap.put("access-token", token);
-					resultMap.put("id", temp.getId());
-					resultMap.put("nickname", temp.getNickname());
-					resultMap.put("point", temp.getPoint());
-					resultMap.put("profile", imageService.profileFilenameToBlob(temp.getProfile()).getBlob());
-					resultMap.put("intro", temp.getIntro());
-					resultMap.put("grade", temp.getGrade());
-					return new ResponseEntity<>(resultMap, HttpStatus.OK);
+					return new ResponseEntity<>("success", HttpStatus.OK);
 				}
 			}
 		} catch(Exception e) {
