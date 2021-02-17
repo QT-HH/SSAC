@@ -1,6 +1,6 @@
 <template>
   <div class="text-center">
-    <h2>스플릿A</h2>
+    <h2 class="mb-1">Split A</h2>
     <v-data-table
       :headers="headers"
       :items="itemsA"
@@ -9,8 +9,7 @@
       hide-default-footer
     ></v-data-table>
     <br>
-    <br>
-    <h2>스플릿B</h2>
+    <h2 class="mb-1">Split B</h2>
     <v-data-table
       :headers="headers"
       :items="itemsB"
