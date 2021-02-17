@@ -20,5 +20,14 @@ function doFollow(para, success, fail) {
       .then(success)
       .catch(fail);
   }
+
   
-  export { modifyNickname, doFollow };
+
+function deleteAccount(userid, success, fail) {
+  instance
+    .delete(`${url}/user/userDelete/${userid}`)
+    .then(success)
+    .catch(fail);
+}
+  
+  export { modifyNickname, doFollow,deleteAccount };

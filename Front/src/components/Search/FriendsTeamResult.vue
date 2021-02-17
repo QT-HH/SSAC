@@ -1,18 +1,32 @@
 <template>
-  <v-list-item>
-    <v-list-item-avatar>
-      <v-img
-        :alt="team.name"
-        src="https://mblogthumb-phinf.pstatic.net/MjAxNzAzMTVfMTg0/MDAxNDg5NTMzMTAwNjQ0.V7tqJArWLv350swvN0w8KFfjGEE8LFauuomjhAjJv9Eg.ARhfQCD6kfix4RdJt5YK4EYdvW6HIT2ctqkPlw6RRgsg.JPEG.doghter4our/IMG_5221.jpg?type=w800"
-      ></v-img>
-    </v-list-item-avatar>
+  <div>
+    <hr style="height:10px; visibility:hidden;" />
+  <v-card
 
-    <v-list-item-content>
-      <span class="mr-auto">{{ team.name }}</span>
-      <span class="mr-auto">{{ team.friend_name }} 님 외에 {{ team.people }}명이 좋아합니다.</span>
-    </v-list-item-content>
+          class="mx-auto rounded-xl"
+          width="80vw"
+          style="height:25vh"
+        >
+          <v-img
+            class="white--text align-end"
+            :src="team.logo"
+            style="height:60%"
+          >
+          </v-img>
+          <v-card-title
+          class="pt-1 ml-2"
+          style="text-align:left; font-weight: bold;">
+            {{ team.name }}
+          </v-card-title>
 
-  </v-list-item> 
+          <v-card-subtitle
+          class="pt-1 ml-2" 
+          style="text-align:left; font-weight: bold;">
+            {{team.friend_name}}님 외에 {{ team.people }} 명이 좋아합니다.
+          </v-card-subtitle>
+        </v-card>
+        <hr style="height:10px; visibility:hidden;" />
+  </div>
 </template>
 
 <script>

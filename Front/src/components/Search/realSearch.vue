@@ -93,6 +93,22 @@ export default {
     }
   },
   methods: {
+    
+    changeBlob(data){
+      const byteCharacters = window.atob(data)
+      const byteNumbers = new Array(byteCharacters.length)
+      for (let i = 0; i< byteCharacters.length; i++){
+        byteNumbers[i] = byteCharacters.charCodeAt(i);
+      }
+
+      const byteArray = new Uint8Array(byteNumbers);
+      const blob = new Blob([byteArray],{type:"image/jpg"})
+      const url = window.URL.createObjectURL(blob)
+
+      return url
+      },
+
+    
     realSearch: function() {
       console.log('realSearch')
       
@@ -110,6 +126,12 @@ export default {
           this.users = response.data.users
           this.teams = response.data.teams
           this.searched = response.data.searched // 유저검색결과 한 줄 
+          for (let idx = 0; idx<this.teams.length; idx++){
+          if (this.teams[idx].logo) {
+            this.teams[idx].logo = this.changeBlob(this.teams[idx].logo)
+          } else {
+            this.teams[idx].logo=''
+          }}      
         })
         .catch(error => {
           console.error(error)
