@@ -69,7 +69,7 @@
         </v-chip>
     </v-row>
     <!-- DB에 저장되어 있는 전체 팀들 -->
-    <v-container class="mr-2 ml-2">
+    <v-container class="mx-auto">
         <v-item-group
             v-model="myteams"
             multiple
