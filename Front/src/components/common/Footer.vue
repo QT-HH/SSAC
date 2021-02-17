@@ -61,23 +61,32 @@
                     icon
                     v-bind="attrs"
                     v-on="on"
+                    @click="updateAlert"
                     ><v-icon>{{ icons[4] }}</v-icon>
                   </v-btn>
                 </template>
 
                 <v-card>
-                  <v-card-title class="headline grey lighten-2">
-                    알림
+                  <v-card-title class="headline deep-purple accent-3 white--text">
+                    <div class="mx-auto">
+                      {{this.$store.state.user.nickname}}님을 위한 알림
+                    </div>
                   </v-card-title>
+                  <br>
 
                   <v-card-text class="p-2">
                     <div
                       v-for="(item,idx) in alertList"
                       :key=idx
-                      class="py-3 text--primary"
+                      class=""
                     >
-                      {{item}}
-                      <v-divider class="mt-4"></v-divider>
+                      <v-card  
+                        class="pa-2 elevation-5"
+                      >
+                        <div class="text--primary">{{item.content}}</div>
+                        <div class="text-right ma-1" >{{timeForToday(item.regtime)}}</div>
+                      </v-card>
+                      <v-divider class="my-3"></v-divider>
                     </div>
                   </v-card-text>
 
@@ -96,7 +105,7 @@
 </template>
 
 <script>
-// import {getAlert} from "@/api/common.js"
+import {getAlert} from "@/api/common.js"
 
 export default {
   name:"Footer",
@@ -147,18 +156,44 @@ export default {
         this.$router.push({name:'Article'})
       }
     },
+    updateAlert(){
+    getAlert(
+      this.userid,
+      (res) => {
+        // console.log(res.data)
+        this.alertList = res.data
+      },
+      (err) => {
+        console.log(err)
+      }
+    )
+    },
+    timeForToday(value) {
+      const today = new Date();
+      const timeValue = new Date(value);
+
+      const betweenTime = Math.floor((today.getTime() - timeValue.getTime()) / 1000 / 60);
+      if (betweenTime < 1 || !betweenTime) return '방금전';
+      if (betweenTime < 60) {
+          return `${betweenTime}분전`;
+      }
+
+      const betweenTimeHour = Math.floor(betweenTime / 60);
+      if (betweenTimeHour < 24) {
+          return `${betweenTimeHour}시간전`;
+      }
+
+      const betweenTimeDay = Math.floor(betweenTime / 60 / 24);
+      if (betweenTimeDay < 365) {
+          return `${betweenTimeDay}일전`;
+      }
+
+      return `${Math.floor(betweenTimeDay / 365)}년전`;
+    }
+
   },
   // created() {
-  //   getAlert(
-  //     this.userid,
-  //     (res) => {
-  //       console.log(res.data)
-  //       this.alertList = res.data
-  //     },
-  //     (err) => {
-  //       console.log(err)
-  //     }
-  //   )
+
   // },
 }
 </script>
