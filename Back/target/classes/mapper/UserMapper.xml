@@ -59,4 +59,8 @@
 		from user
 		where nickname like concat('%', #{search}, '%')
 	</select>
+	
+	<select id="selectAllUser" resultType="String">
+		select id from user;
+	</select>
 </mapper>

@@ -232,12 +232,12 @@ public class UserController {
 		return new ResponseEntity<String>("fail", HttpStatus.NO_CONTENT);
 	}
 	
-	@ApiOperation(value = "이메일 중복여부 체크", notes = "입력 : userid")
+	@ApiOperation(value = "이메일 중복여부 체크", notes = "입력 필요없음")
 	@GetMapping("/isCheck")
-	public ResponseEntity<?> ischeck(@RequestParam String userid) throws Exception {
+	public ResponseEntity<?> ischeck() throws Exception {
 		try {
-			User check = userService.findUser(new User(userid));
-			if(check == null) return new ResponseEntity<>("success", HttpStatus.OK);
+			List<String> users = userService.getAllUser();
+			return new ResponseEntity<>(users, HttpStatus.OK);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
