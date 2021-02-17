@@ -70,4 +70,10 @@
 		set point = point + #{point}
 		where id = #{userid}
 	</update>
+	
+	<select id="selectTodaySchedule" parameterType="String" resultType="com.ssac.schedule.dto.Schedule">
+		select *
+		from schedule
+		where start = #{date}
+	</select>
 </mapper>

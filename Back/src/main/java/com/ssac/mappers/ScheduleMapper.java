@@ -22,4 +22,5 @@ public interface ScheduleMapper {
 	public String selectBetByUserId(Bet bet) throws Exception;
 	public int deleteBetting(Bet bet) throws Exception;
 	public int updateUserPoint(HashMap<String, Object> map) throws Exception;
+	public List<Schedule> selectTodaySchedule(String date) throws Exception;
 }

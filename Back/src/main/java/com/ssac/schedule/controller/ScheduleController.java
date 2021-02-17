@@ -21,9 +21,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ssac.image.service.ImageService;
 import com.ssac.schedule.dto.Bet;
 import com.ssac.schedule.dto.Schedule;
 import com.ssac.schedule.service.ScheduleService;
+import com.ssac.team.service.TeamService;
 import com.ssac.user.dto.User;
 import com.ssac.user.service.UserService;
 
@@ -37,44 +39,85 @@ public class ScheduleController {
 	private ScheduleService scheduleService;
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private TeamService teamService;
 	
-	@ApiOperation(value = "경기일정 조회", notes = "입력 없어도됨")
+	@ApiOperation(value = "전체 경기일정 조회", notes = "입력 없어도됨")
 	@GetMapping("/schedule")
 	public ResponseEntity<?> getScheduleList() throws Exception {
 		// 경기 일정 조회
 		// 입력 : userid
 		// 출력 : 경기 일정
-		List<Map<String, Object>> result = new ArrayList<Map<String,Object>>();
-		List<Schedule> list = scheduleService.listSchedule();
-		for(int i=0; i<list.size(); i++) {
-			Map<String, Object> map = new HashMap<String, Object>();
-			List<Bet> betting = scheduleService.getBettingInfo(list.get(i).getId());
-			List<String> team1_user = new ArrayList<String>();
-			List<String> team2_user = new ArrayList<String>();
-			List<String> draw_user = new ArrayList<String>();
-			for(int j=0; j<betting.size(); j++) {
-				if(betting.get(j).getBet_num() == 1) team1_user.add(betting.get(j).getUserid());
-				else if(betting.get(j).getBet_num() == 2) team2_user.add(betting.get(j).getUserid());
-				else draw_user.add(betting.get(j).getUserid());
+		try {
+			List<Map<String, Object>> result = new ArrayList<Map<String,Object>>();
+			List<Schedule> list = scheduleService.listSchedule();
+			for(int i=0; i<list.size(); i++) {
+				Map<String, Object> map = new HashMap<String, Object>();
+				List<Bet> betting = scheduleService.getBettingInfo(list.get(i).getId());
+				List<String> team1_user = new ArrayList<String>();
+				List<String> team2_user = new ArrayList<String>();
+				List<String> draw_user = new ArrayList<String>();
+				for(int j=0; j<betting.size(); j++) {
+					if(betting.get(j).getBet_num() == 1) team1_user.add(betting.get(j).getUserid());
+					else if(betting.get(j).getBet_num() == 2) team2_user.add(betting.get(j).getUserid());
+					else draw_user.add(betting.get(j).getUserid());
+				}
+				map.put("id", list.get(i).getId());
+				map.put("start", list.get(i).getStart());
+				map.put("start_time", list.get(i).getStart_time());
+				map.put("team1_id", list.get(i).getTeam1_id());
+				map.put("team2_id", list.get(i).getTeam2_id());
+				map.put("name", list.get(i).getName());
+				map.put("team1_score", list.get(i).getTeam1_score());
+				map.put("team2_score", list.get(i).getTeam2_score());
+				map.put("events_no", list.get(i).getEvents_no());
+				map.put("team1_user", team1_user);
+				map.put("team2_user", team2_user);
+				map.put("draw_user", draw_user);
+				map.put("betDone", list.get(i).getBetDone());
+				map.put("gameDone", list.get(i).getGameDone());
+				map.put("calDone", list.get(i).getCalDone());
+				result.add(map);
 			}
-			map.put("id", list.get(i).getId());
-			map.put("start", list.get(i).getStart());
-			map.put("start_time", list.get(i).getStart_time());
-			map.put("team1_id", list.get(i).getTeam1_id());
-			map.put("team2_id", list.get(i).getTeam2_id());
-			map.put("name", list.get(i).getName());
-			map.put("team1_score", list.get(i).getTeam1_score());
-			map.put("team2_score", list.get(i).getTeam2_score());
-			map.put("events_no", list.get(i).getEvents_no());
-			map.put("team1_user", team1_user);
-			map.put("team2_user", team2_user);
-			map.put("draw_user", draw_user);
-			map.put("betDone", list.get(i).getBetDone());
-			map.put("gameDone", list.get(i).getGameDone());
-			map.put("calDone", list.get(i).getCalDone());
-			result.add(map);
+			return new ResponseEntity<>(result, HttpStatus.OK);
+		} catch(Exception e) {
+			e.printStackTrace();
 		}
-		return new ResponseEntity<>(result, HttpStatus.OK);
+		return new ResponseEntity<>("fail", HttpStatus.NO_CONTENT);
+	}
+	
+	@ApiOperation(value = "당일 경기일정 조회", notes = "입력 없어도됨")
+	@GetMapping("/todaySchedule")
+	public ResponseEntity<?> getTodaySchedule() throws Exception {
+		try {
+			List<Map<String, Object>> result = new ArrayList<Map<String,Object>>();
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			Date time = new Date();
+			String today = format.format(time);
+			List<Schedule> list = scheduleService.getTodaySchedules(today);
+			for(int i=0; i<list.size(); i++) {
+				Map<String, Object> map = new HashMap<String, Object>();
+				map.put("id", list.get(i).getId());
+				map.put("start", list.get(i).getStart());
+				map.put("start_time", list.get(i).getStart_time());
+				map.put("team1_id", list.get(i).getTeam1_id());
+				map.put("team2_id", list.get(i).getTeam2_id());
+				map.put("name", list.get(i).getName());
+				map.put("team1_score", list.get(i).getTeam1_score());
+				map.put("team2_score", list.get(i).getTeam2_score());
+				map.put("events_no", list.get(i).getEvents_no());
+				map.put("team1_logo", teamService.getTeam(list.get(i).getTeam1_id()).getLogo());
+				map.put("team2_logo", teamService.getTeam(list.get(i).getTeam2_id()).getLogo());
+				map.put("betDone", list.get(i).getBetDone());
+				map.put("gameDone", list.get(i).getGameDone());
+				map.put("calDone", list.get(i).getCalDone());
+				result.add(map);
+			}
+			return new ResponseEntity<>(result, HttpStatus.OK);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity<>("fail", HttpStatus.NO_CONTENT);
 	}
 	
 	@ApiOperation(value = "당일 경기 제목, 팔로우 목록 불러오기", notes = "입력 : userid")

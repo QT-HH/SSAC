@@ -32,4 +32,6 @@ public interface ScheduleService {
 
 	int getPoint(HashMap<String, Object> map) throws Exception;
 
+	List<Schedule> getTodaySchedules(String date) throws Exception;
+
 }

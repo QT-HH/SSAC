@@ -74,4 +74,9 @@ public class ScheduleServiceImpl implements ScheduleService {
 	public int getPoint(HashMap<String, Object> map) throws Exception {
 		return mapper.updateUserPoint(map);
 	}
+	
+	@Override
+	public List<Schedule> getTodaySchedules(String date) throws Exception {
+		return mapper.selectTodaySchedule(date);
+	}
 }
