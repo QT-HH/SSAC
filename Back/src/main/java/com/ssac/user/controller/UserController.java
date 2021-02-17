@@ -67,13 +67,13 @@ public class UserController {
 				// 회원가입 먼저
 				if(userService.createUser(user) > 0) {
 					// 마이팀 추가
-					List<Integer> teams = (List<Integer>) jsonObj.get("userteam");
-					System.out.println("teams size " + teams.size());
-					for(int i=0; i<teams.size(); i++) {
+					int[] teams = (int[]) jsonObj.get("userteam");
+					System.out.println("teams size " + teams.length);
+					for(int i=0; i<teams.length; i++) {
 						MyTeam myteam = new MyTeam();
 						myteam.setId(user.getId());
-						myteam.setTeam_no(teams.get(i));
-						myteam.setName(teamService.getTeam(teams.get(i)).getName());
+						myteam.setTeam_no(teams[i]);
+						myteam.setName(teamService.getTeam(teams[i]).getName());
 						// 마이팀 추가가 성공하면
 						if(teamService.writeMyTeam(myteam) > 0) {
 							HashMap<String, Integer> map = new HashMap<String, Integer>();
