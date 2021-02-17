@@ -4,7 +4,6 @@ const instance = createInstance();
 const url = "http://i4d102.p.ssafy.io:9000/ssac"
 
 
-
 //닉네임, 한줄소개 변경
 function modifyNickname(para, success, fail) {
     instance

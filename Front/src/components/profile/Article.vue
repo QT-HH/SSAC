@@ -24,7 +24,7 @@
           <v-card-actions>
             <v-list-item class="grow">
               <v-list-item-avatar color="grey darken-3">
-                <v-img class="elevation-6" alt="" :src="user.img"></v-img>
+                <v-img class="elevation-6" alt="" :src="profile"></v-img>
               </v-list-item-avatar>
 
               <v-list-item-content>
@@ -35,18 +35,18 @@
                 <v-icon class="mr-1">
                   mdi-heart
                 </v-icon>
-                <span class="subheading mr-2">256</span>
+                <span class="subheading mr-2">{{like.length}}</span>
                 <span class="mr-1">·</span>
                 <v-icon class="mr-1">
                   mdi-email
                 </v-icon>
-                <span class="subheading">45</span>
+                <span class="subheading">{{comment}}</span>
               </v-row>
             </v-list-item>
           </v-card-actions>
             <!-- <hr> -->
           <v-card-text class="headline font-weight-bold">
-            {{article.context}}
+            {{article.content}}
           </v-card-text>
 
         </v-card>
@@ -72,9 +72,12 @@ export default {
       user: '',
       following: [],
       nickname: '',
+      like: [],
+      comment:0,
       useremail: '',
       point: '',
       follower: [],
+      profile: ''
     }
   },
   computed: {
@@ -87,37 +90,45 @@ export default {
   //   }
 
   },
+  methods: {
+    changeBlob(data){
+      const byteCharacters = window.atob(data)
+      const byteNumbers = new Array(byteCharacters.length)
+      for (let i = 0; i< byteCharacters.length; i++){
+        byteNumbers[i] = byteCharacters.charCodeAt(i);
+      }
+
+      const byteArray = new Uint8Array(byteNumbers);
+      const blob = new Blob([byteArray],{type:"image/jpg"})
+      const url = window.URL.createObjectURL(blob)
+
+      return url
+      }
+    },
   created() {
     console.log('created')
-    const params = {
-      params: {
-        userid: this.userid,
-      }
-    }
 
-    axios.get(`http://i4d102.p.ssafy.io:9000/ssac/newsfeed/newsFeedList/`, params)
+
+     axios.get(`http://i4d102.p.ssafy.io:9000/ssac/user/userSelect?userid=${this.$store.state.user.userid}`)
       .then(response => {
         console.log(response.data)
-        this.articles = response.data
-        // this.users = response.data.items
-        // this.searched = true // 유저검색결과 한 줄 
+        this.nickname = response.data.usernickname
+        this.useremail = response.data.userid
+        this.$store.state.user.useremail = response.data.userid
+        this.point = response.data.point
+        this.follower = response.data.follower
+        this.following = response.data.following
+        this.profile = this.changeBlob(response.data.profile)
       })
       .catch(error => {
         console.error(error)
       })
 
 
-    
-
-
-    axios.get(`http://i4d102.p.ssafy.io:9000/ssac/user/userSelect?userid=${this.userid}`)
+    axios.get(`http://i4d102.p.ssafy.io:9000/ssac/newsfeed/newsFeedList?userid=${this.$store.state.user.userid}`)
       .then(response => {
         console.log(response.data)
-        this.nickname = response.data.usernickname
-        this.useremail = response.data.userid
-        this.point = response.data.point
-        this.follower = response.data.follower
-        this.following = response.data.following
+        this.articles = response.data
         // this.users = response.data.items
         // this.searched = true // 유저검색결과 한 줄 
       })

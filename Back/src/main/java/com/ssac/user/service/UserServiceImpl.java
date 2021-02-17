@@ -60,4 +60,9 @@ public class UserServiceImpl implements UserService {
 	public List<User> getSearchUser(String search) throws Exception {
 		return mapper.searchUser(search);
 	}
+	
+	@Override
+	public List<String> getAllUser() throws Exception {
+		return mapper.selectAllUser();
+	}
 }

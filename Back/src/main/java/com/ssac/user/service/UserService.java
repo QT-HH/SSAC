@@ -17,4 +17,5 @@ public interface UserService {
 	int removeUser(User user) throws Exception;
 	int doFollowing(HashMap<String, String> map) throws Exception;
 	List<User> getSearchUser(String search) throws Exception;
+	List<String> getAllUser() throws Exception;
 }

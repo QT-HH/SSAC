@@ -42,7 +42,7 @@ const state = {
     nickname: "nojjeong",
     myteams: [34,35],
     img: "https://placekitten.com/300/300",
-    introduce: "Frei Aber Froh",
+    intro: "Frei Aber Froh",
     profile: "",
   },
   myTeams: [

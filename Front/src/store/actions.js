@@ -73,6 +73,10 @@ export default {
     // console.log('actions')
     commit('SAVE_CHATROOM', roomid)
   },
+  makeProfile: function ({ commit }, data) {
+    // console.log('actions')
+    commit('MAKE_PROFILE', data)
+  },
   nicknaming: function ({commit}, {selectedData,nickname}) {
     commit('NICKNAMING', {selectedData,nickname})
   },

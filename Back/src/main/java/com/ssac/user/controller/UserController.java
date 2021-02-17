@@ -231,4 +231,16 @@ public class UserController {
 		}
 		return new ResponseEntity<String>("fail", HttpStatus.NO_CONTENT);
 	}
+	
+	@ApiOperation(value = "이메일 중복여부 체크", notes = "입력 필요없음")
+	@GetMapping("/isCheck")
+	public ResponseEntity<?> ischeck() throws Exception {
+		try {
+			List<String> users = userService.getAllUser();
+			return new ResponseEntity<>(users, HttpStatus.OK);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity<>("fail", HttpStatus.OK);
+	}
 }
