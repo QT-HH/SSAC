@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-1">
+  <div class="mt-10 ml-2 mr-2 mb-3">
     <v-sheet>
       <div v-if="filterCarousel2(today,'15:00').length > 0">
         <h1 class="ml-5">
@@ -218,6 +218,8 @@
         </v-card-actions>
       </v-card>
     </v-expand-transition>
+
+    <!-- 팀 필터 -->
     <v-sheet>
       <v-card class="px-5">
         <h3>Myteams</h3>
@@ -233,17 +235,11 @@
             <img @click="filterMyteam(myteam.team_no)" class="d-flex rounded-circle" width="60px" height="60px" :src="changeBlob(myteam.logo)" alt="team">
             {{teamname[myteam.team_no]}}
           </v-col>
-          <!-- <v-col cols=2>
-            <img @click="filterMyteam(37)" class="d-flex rounded-circle" width="60px" height="60px" src="https://mblogthumb-phinf.pstatic.net/MjAxNzAzMTVfMTE4/MDAxNDg5NTMzMTAwMjY0.m9UYu7Dt4CyJcaMMeAuIhOFP2nnXBnW5eUqx3rXZY14g.3axKiINI_FaRrOzK70_FY2qRXLulYTBkzwFIaeY8yd4g.JPEG.doghter4our/IMG_5252.jpg?type=w800" alt="Generic placeholder image">
-            T1
-          </v-col>
-          <v-col cols=2>
-            <img @click="filterMyteam(3)" class="d-flex rounded-circle" width="60px" height="60px" src="https://mblogthumb-phinf.pstatic.net/MjAxNzAzMTVfMTE4/MDAxNDg5NTMzMTAwMjY0.m9UYu7Dt4CyJcaMMeAuIhOFP2nnXBnW5eUqx3rXZY14g.3axKiINI_FaRrOzK70_FY2qRXLulYTBkzwFIaeY8yd4g.JPEG.doghter4our/IMG_5252.jpg?type=w800" alt="Generic placeholder image">
-            대구
-          </v-col> -->
         </v-row>
       </v-card>
     </v-sheet>
+
+
     <v-sheet>
       <v-toolbar
         flat
@@ -311,17 +307,6 @@
     </v-sheet>
     <br>
     <br>
-    <br>
-    <br>
-    <br>
-    <v-btn @click="master">
-      master user
-    </v-btn>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
   </div>
 </template>
 
@@ -340,8 +325,8 @@ import { getTeamImage, getMyTeam, getSchedule, pmScore, betGame, endBet, endGame
       ],
       teamname:{
         1: '강원', 2: '광주', 3: '대구', 4: '서울', 5: '성남', 6: '수원', 7: '수원FC', 8: '울산', 9: '인천', 10: '전북', 11: '제주', 12: '포항',
-        23: '두산', 24: '롯데', 25: '삼성', 26: '키움', 27: '한화', 28: 'KIA', 29: 'KT', 30: 'LG', 31: 'NC', 32: 'SK',
-        33: '담원', 34: 'DRX', 35: '젠지', 36: '아프리카', 37: 'T1', 38: 'KT', 39: '리브샌박', 40: '농심', 41: '한화', 42: '프레딧'
+        23: '두산', 24: '롯데', 25: '삼성', 26: '키움', 27: '한화', 28: 'KIA', 29: 'KT wiz', 30: 'LG', 31: 'NC', 32: 'SK',
+        33: '담원 기아', 34: 'DRX', 35: '젠지', 36: '아프리카', 37: 'T1', 38: 'KT', 39: '리브 샌박', 40: '농심', 41: '한화생명', 42: '프레딧'
       },
       expandGame:[false,false,false,false,false,false,false,false,false,false],
       expandDaily:false,
