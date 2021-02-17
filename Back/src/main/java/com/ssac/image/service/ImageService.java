@@ -78,10 +78,10 @@ public class ImageService {
 	
 	public Image feedFilenameToBlob(String filename) throws Exception {
 		if(filename == null || filename.equals("")) return null;
-		System.out.println(filename);
 		String folderRoot = "/home/image/newsfeed/";
 		InputStream imgStream = new FileInputStream(folderRoot+filename);
 	    byte[] imgByteArray = IOUtils.toByteArray(imgStream);
+	    System.out.println(Arrays.toString(imgByteArray));
 	    imgStream.close();
 	    Image image = new Image();
 	    image.setFilename(filename);
