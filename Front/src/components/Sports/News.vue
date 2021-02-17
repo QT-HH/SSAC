@@ -1,16 +1,22 @@
 <template>
   <div class="mt-7">
     <v-row align="center" justify="space-around">
-      <v-card class="ml-6 rounded-lg white--text deep-purple lighten-4" width="30vw" @click="showFootball">
-        <v-card-title 
-        class="justify-center"
-        style="font-size: 16px; font-weight: bold">Football</v-card-title>
+      <v-card class="ml-6 rounded-lg deep-purple lighten-4" height="10vh" width="30vw" @click="showFootball">
+        <v-img height="10vh" :src="photos[6]" style="opacity:0.8">
+          <v-card-title 
+        class="white--text justify-center"
+        style="font-size: 15px; font-weight: bold">Football</v-card-title>
+      </v-img>
       </v-card>
-      <v-card  class="mx-1 rounded-lg white--text deep-purple lighten-4"  width="30vw" @click="showBaseball">
-        <v-card-title class="justify-center" style="font-size: 16px; font-weight: bold">Baseball</v-card-title>
+      <v-card  class="mx-1 rounded-lg deep-purple lighten-4" height="10vh" width="30vw" @click="showBaseball">
+        <v-img height="10vh" :src="photos[7]" style="opacity:0.8">
+          <v-card-title class="white--text justify-center" style="font-size: 15px; font-weight: bold">Baseball</v-card-title>
+        </v-img>
       </v-card>
-      <v-card  class="mr-6 rounded-lg white--text deep-purple lighten-4" width="30vw" @click="showLOL">
-        <v-card-title class="justify-center" style="font-size: 15px; font-weight: bold">e-SPORTS</v-card-title>
+      <v-card  class="mr-6 rounded-lg  deep-purple lighten-4" height="10vh" width="30vw" @click="showLOL">
+        <v-img height="10vh" :src="photos[8]" style="opacity:0.7">
+          <v-card-title class="white--text justify-center" style="font-size: 15px; font-weight: bold">e-SPORTS</v-card-title>
+        </v-img>
       </v-card>
     </v-row>
 
@@ -25,6 +31,7 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 import football from "./news/football"
 import baseball from "./news/baseball"
 import lol from "./news/lol"
@@ -41,6 +48,9 @@ export default {
 
     }
   },
+  computed: {
+      ...mapState(['photos']),
+    },
   data() {
     return {
       now:"Football",

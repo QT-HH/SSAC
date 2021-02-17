@@ -32,12 +32,15 @@
         </v-btn> -->
       </v-app-bar>
     </div>
+
+
+
     <div 
     style="border: 0px"
     class="media">
       <v-container  >
-        <br><br><br><br>
-      <img class="d-flex align-center justify-center mx-auto rounded-circle" width="80px" height="80px" src="https://mblogthumb-phinf.pstatic.net/MjAxNzAzMTVfMTE4/MDAxNDg5NTMzMTAwMjY0.m9UYu7Dt4CyJcaMMeAuIhOFP2nnXBnW5eUqx3rXZY14g.3axKiINI_FaRrOzK70_FY2qRXLulYTBkzwFIaeY8yd4g.JPEG.doghter4our/IMG_5252.jpg?type=w800" alt="Generic placeholder image">
+        <br><br><br>
+      <img class="d-flex align-center justify-center mx-auto rounded-circle" width="80px" height="80px" :src="profile">
         <v-row no-gutters >
           <v-col>
             <div class="d-flex align-center justify-center mx-auto"
@@ -178,17 +181,27 @@ export default {
       point: '',
       introduce: 'Hi there!',
       follower: [],
-      articles: Object
+      articles: [],
+      profile:''
       // introduce: this.$store.state.user.introduce,
       // nickname: this.$store.state.user.nickname
     }
   },
-  // computed: {
-  //     ...mapState([
-  //       'user'
-  //     ])
-  //   },
+
   methods:{
+    changeBlob(data){
+      const byteCharacters = window.atob(data)
+      const byteNumbers = new Array(byteCharacters.length)
+      for (let i = 0; i< byteCharacters.length; i++){
+        byteNumbers[i] = byteCharacters.charCodeAt(i);
+      }
+
+      const byteArray = new Uint8Array(byteNumbers);
+      const blob = new Blob([byteArray],{type:"image/jpg"})
+      const url = window.URL.createObjectURL(blob)
+
+      return url
+      },
     gotoArticle() {
       if (this.$route.path !== "/profile") {
         this.$router.push({name:"Article"})
@@ -200,9 +213,8 @@ export default {
       }
     },
     gotoProfileEdit() {
-      if (this.$route.path !== "/profile/edit") {
         this.$router.push({name:"ProfileEdit"})
-      }
+      
     },
     doFollow() {
       let para = {
@@ -213,22 +225,12 @@ export default {
       doFollow (
         para,
       )
-    }
-  },
-
-
-  computed: {
-    // ...mapState({
-    //  articles: 'articles',
-    //  user: 'user'
-  //  })
-
-  },
+    }},
   created() {
     console.log('created')
 
 
-    axios.get(`http://i4d102.p.ssafy.io:9000/ssac/user/userSelect?userid=${this.userid}`)
+    axios.get(`http://i4d102.p.ssafy.io:9000/ssac/user/userSelect?userid=${this.$store.state.user.userid}`)
       .then(response => {
         console.log(response.data)
         this.nickname = response.data.usernickname
@@ -237,20 +239,14 @@ export default {
         this.point = response.data.point
         this.follower = response.data.follower
         this.following = response.data.following
-        // this.users = response.data.items
-        // this.searched = true // 유저검색결과 한 줄 
+        this.profile = this.changeBlob(response.data.profile)
       })
       .catch(error => {
         console.error(error)
       })
 
-    const params2 = {
-      params2: {
-        userid: this.userid,
-      }
-    }
 
-    axios.get(`http://i4d102.p.ssafy.io:9000/ssac/newsfeed/newsFeedList/`, params2)
+    axios.get(`http://i4d102.p.ssafy.io:9000/ssac/newsfeed/newsFeedList?userid=${this.$store.state.user.userid}`)
       .then(response => {
         console.log(response.data)
         this.articles = response.data

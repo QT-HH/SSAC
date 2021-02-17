@@ -33,6 +33,11 @@ export default {
     console.log(roomid)
     state.chat.roomid = roomid
   },
+  MAKE_PROFILE: function (state, data) {
+    // console.log('mutations')
+    
+    state.profile = data
+  },
   NICKNAMING: function (state, {selectedData,nickname}) {
     state.myTeams = state.myTeams.map((team) => {
       if (team.name === selectedData.name) {

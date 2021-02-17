@@ -31,7 +31,9 @@ const state = {
     3: 'https://cdn.pixabay.com/photo/2018/10/20/14/57/ball-3760961_1280.jpg',
     4: 'https://t1.daumcdn.net/cfile/tistory/99EF21475A47381534',
     5: 'https://cgeimage.commutil.kr/phpwas/restmb_allidxmake.php?idx=999&simg=2020072711565608529283f60ce7c21850179202.jpg',
-
+    6: 'https://post-phinf.pstatic.net/MjAxOTExMjVfMTQ5/MDAxNTc0NjQ1MjI1MjY2.Zn4qn_krvEvxdzNLmtsHXm6r28u-MTxqZ0s_5VaJQesg.magZqCx3QZWeAXl9p6CldnXvib7ovGAjFPXg2BU-xTsg.JPEG/394462_292576_570.jpg?type=w1200',
+    7: 'https://lh3.googleusercontent.com/proxy/yL8EcYIPeBF8kImj8okhIFkWVuHv82jEnukkqfV3ses6WajszvyMPhXwCaLiNF4NtB6hGTF6DLB0xnZ4dmGy390DEFdFcaVuP97GStshESVMA-Cy0cv8RUc',
+    8: 'https://t1.daumcdn.net/cfile/tistory/99A9433B5A3E30D92A',
   },
   user: {
     userid: "aaa@aaa.com",
@@ -40,7 +42,7 @@ const state = {
     nickname: "nojjeong",
     myteams: [34,35],
     img: "https://placekitten.com/300/300",
-    introduce: "Frei Aber Froh",
+    intro: "Frei Aber Froh",
     profile: "",
   },
   myTeams: [
