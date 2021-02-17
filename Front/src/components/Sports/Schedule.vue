@@ -1,6 +1,6 @@
 <template>
   <div class="mt-7 ml-2 mr-2 mb-3">
-    <v-sheet>
+    <v-sheet height="362">
       <div v-if="todayEvents.length > 0">
         <v-row class="mr-1" justify="space-between">
           <h3 class="ml-5 grey--text text--darken-2" style="font-weight: bolder">Today's</h3>
@@ -8,8 +8,7 @@
             <v-icon> mdi-calendar-refresh </v-icon>
           </v-btn>
         </v-row>
-        <h2 class="ml-2 mb-2">Sports Matches</h2>
-
+        <h2 class="ml-2 mb-2">Sports Matches</h2>        
       <v-carousel
         cycle
         height="300"
@@ -33,14 +32,12 @@
                   size="172"
                   tile
               >
-                <!-- <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"></v-img> -->
                 <v-img :src="changeBlob(event.team1_logo)"></v-img>
               </v-avatar>
               <v-avatar
                   size="172"
                   tile
               >
-                <!-- <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"></v-img> -->
                 <v-img :src="changeBlob(event.team2_logo)"></v-img>
               </v-avatar>
 
@@ -56,174 +53,14 @@
         </v-carousel-item>
       </v-carousel>
       </div>
-
     </v-sheet>
-    <v-expand-transition>
-      <v-card
-        v-show="expandDaily"
-        width="95%"
-        class="mx-auto grey lighten-2 text-center"
-        elevation="2"
-      >
-        <div class="py-3 grey darken-3 white--text" @click="closeDaily">
-          <span><h2>{{focus}}</h2></span>
-        </div>
-        <v-list-item
-          v-for="(event, i) in filterDaily(focus)"
-          :key="i"
-        >
-          <v-list-item-content>
-            <v-list-item-title class="text-center" @click="changeShow(i)">
-              <v-btn
-                rounded
-                :color="colors[event.events_no]"
-                dark 
-              >
-                {{ event.name }}
-              </v-btn>
-            </v-list-item-title>
-             <v-expand-transition>
-              <v-card
-                v-show="expandGame[i]"
-              >
-                <v-card-text>
-                  <v-row justify="center">
-                    <v-col 
-                      v-if="event.gameDone.length === 4"
-                      cols=12
-                    >
-                      경기끝
-                    </v-col>
-                    <v-col 
-                      v-if="event.betDone.length === 4"
-                      cols=12
-                    >
-                      베팅끝
-                    </v-col>
-                    <v-col 
-                      v-if="event.calDone.length === 4"
-                      cols=12
-                    >
-                      정산끝
-                    </v-col>
-                    <v-col cols=4>
-                        <span><h1>{{teamname[event.team1_id]}}</h1></span>
-                    </v-col>
-                    <v-col cols=4>
-                        {{event.team1_score}}   vs   {{event.team2_score}}
-                    </v-col>
-                    <v-col cols=4>
-                        <span><h1>{{teamname[event.team2_id]}}</h1></span>
-                    </v-col>
-                        <br>
-                    <v-col cols=6>
-                      <v-btn
-                        @click="editScore(event,1,-1)"
-                        v-if="mas"
-                      >
-                        -
-                      </v-btn>
-                      <v-btn
-                        @click="editScore(event,1,1)"
-                        v-if="mas"
-                      >
-                        +
-                      </v-btn>
-                      <v-btn
-                        :disabled="isDisabled(event,event.team1_user)"
-                        @click="betTeam(event,1)"
-                      >
-                        투표!
-                      </v-btn>
-
-                    </v-col>
-
-                    <v-col cols=6>
-                      <v-btn
-                        @click="editScore(event,2,-1)"
-                        v-if="mas"
-                      >
-                        -
-                      </v-btn>
-                      <v-btn
-                        @click="editScore(event,2,1)"
-                        v-if="mas"
-                      >
-                        +
-                      </v-btn>
-                      <v-btn
-                        :disabled="isDisabled(event,event.team2_user)"
-                        @click="betTeam(event,2)"
-                      >
-                        투표!
-                      </v-btn>
-                    </v-col>
-                    <v-col cols=12>
-                      무승부
-                      <br>
-                      <v-btn
-                        :disabled="isDisabled(event,event.draw_user)"
-                        @click="betTeam(event,3)"
-                      >
-                        투표!
-                      </v-btn>
-                    </v-col>
-                    <v-col>
-                      투표비율({{teamname[event.team1_id]}} : {{teamname[event.team2_id]}} : 무승부): {{event.team1_user.length}} : {{event.team2_user.length}} : {{event.draw_user.length}}
-                      <br>
-                      예상획득포인트({{teamname[event.team1_id]}}) : {{ betRatio(event.team1_user.length,event.team2_user.length,event.draw_user.length,event.team1_user.length) }}
-                      <br>
-                      예상획득포인트({{teamname[event.team2_id]}}) : {{ betRatio(event.team1_user.length,event.team2_user.length,event.draw_user.length,event.team2_user.length) }}
-                      <br>
-                      예상획득포인트(무승부) : {{ betRatio(event.team1_user.length,event.team2_user.length,event.draw_user.length,event.draw_user.length) }}
-                    </v-col>
-                    <v-col cols=12>
-                      <v-btn
-                        @click="endBetting(event)"
-                        v-if="mas"
-                      >
-                        베팅 끝내기
-                      </v-btn>
-                      <br>
-                      <v-btn
-                        @click="endtheGame(event)"
-                        v-if="mas"
-                      >
-                        경기 끝내기
-                      </v-btn>
-                      <br>
-                      <v-btn
-                        @click="calculEvent(event)"
-                        v-if="mas"
-                      >
-                        정산하기
-                      </v-btn>
-                    </v-col>
-                  </v-row>
-                </v-card-text>
-              </v-card>
-            </v-expand-transition>
-          </v-list-item-content>
-        </v-list-item>
-        <v-card-actions>
-          <v-btn 
-            @click="closeDaily"
-            text
-            class="ml-auto"
-          >
-            닫기
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-expand-transition>
-
     <!-- 팀 필터 -->
-    <v-sheet class="mb-3">
-      <h3 class="ml-2 mb-4 grey--text text--darken-2" style="font-weight: bolder" >My teams</h3>
+    <v-sheet class="mb-5">
+        <h3 class="ml-2 mb-4 grey--text text--darken-2" style="font-weight: bolder" >My teams</h3>
       <v-card class="px-5">
         <v-row>
           <v-col cols=3>
-            <img @click="filterMyteam(0)" class="d-flex rounded-circle" width="60px" height="60px" src="https://mblogthumb-phinf.pstatic.net/MjAxNzAzMTVfMTE4/MDAxNDg5NTMzMTAwMjY0.m9UYu7Dt4CyJcaMMeAuIhOFP2nnXBnW5eUqx3rXZY14g.3axKiINI_FaRrOzK70_FY2qRXLulYTBkzwFIaeY8yd4g.JPEG.doghter4our/IMG_5252.jpg?type=w800" alt="Generic placeholder image">
+            <v-img @click="filterMyteam(0)" class="d-flex rounded-circle" width="60px" height="60px" :src="logo.src"></v-img>
             <h4 class="mt-1" justify="center" align="center">전체</h4>
           </v-col>
           <v-col cols=3 
@@ -231,14 +68,11 @@
             :key=idx
           >
             <img @click="filterMyteam(myteam.team_no)" class="d-flex rounded-circle" width="60px" height="60px" :src="changeBlob(myteam.logo)" alt="team">
-            <h4 class="mt-1" justify="center" align="center">{{teamname[myteam.team_no]}}</h4>
-           
+            <h4 class="mt-1" justify="center" align="center">{{teamname[myteam.team_no]}}</h4>          
           </v-col>
         </v-row>
       </v-card>
     </v-sheet>
-
-
     <v-sheet>
       <v-toolbar
         flat
@@ -278,25 +112,258 @@
         @click:date="viewDay"
         :type="type[tog]"
       ></v-calendar>
-      <!-- <v-menu
-        v-model="selectedOpen"
-        :close-on-content-click="false"
-        :activator="selectedElement"
-        offset-x
-      >
-        <v-card
-          color="grey lighten-4"
-          min-width="350px"
-          flat
-        >
-
-          <v-card-text>
-            
-          </v-card-text>
-
-        </v-card>
-      </v-menu>  -->
     </v-sheet>
+
+    <!-- Daily 일정 -->
+    <v-expand-transition>
+      <v-card
+        v-show="expandDaily"
+        width="100%"
+        class="mx-auto mt-2 mb-2 indigo lighten-5 text-center"
+        elevation="2"
+      >
+        <div class="pl-6 py-3 indigo accent-1 white--text" @click="closeDaily">
+          <v-row class="ml-16" align="center" justify="center">
+            <h2>{{ focus }}</h2>
+            <v-btn
+              class="ml-15" 
+              @click="closeDaily"
+              icon
+            >
+              <v-icon>
+                mdi-window-close
+              </v-icon>
+            </v-btn>
+          </v-row>
+        </div>
+        <v-list-item
+          v-for="(event, i) in filterDaily(focus)"
+          :key="i"
+        >
+          <v-list-item-content>
+            <v-list-item-title class="text-center rounded-xl" @click="changeShow(i)">
+              <v-card :elevation="10" class="rounded-xl text-center align-center pa-0 mx-0" link>
+                <v-img 
+                  height="65"
+                  v-if="event.name.includes('담원') || event.name.includes('케이티') || event.name.includes('T1') || event.name.includes('DRX')" 
+                  :src="photos[5]"><v-card-title class="justify-center">
+                    <div class="headerClass white--text">
+                      {{event.name}}
+                    </div>
+                  </v-card-title>
+                </v-img>
+                <v-img 
+                  height="65"
+                  v-else-if="event.name.includes('젠지') || event.name.includes('아프리카') || event.name.includes('프레딧') || event.name.includes('농심') || event.name.includes('한화생명') || event.name.includes('리브')" 
+                  :src="photos[4]"
+                >
+                  <v-card-title class="justify-center">
+                    <div class="headerClass white--text">
+                      {{event.name}}
+                    </div>
+                  </v-card-title>
+                </v-img>
+                <v-img 
+                  height="65"
+                  v-else-if="event.name.includes('kt') || event.name.includes('sk') || event.name.includes('두산') || event.name.includes('삼성') || event.name.includes('LG')" 
+                  :src="photos[3]"
+                >
+                  <v-card-title class="justify-center">
+                    <div class="headerClass white--text">
+                      {{event.name}}
+                    </div>
+                  </v-card-title>
+                </v-img>
+                <v-img 
+                  height="65"
+                  v-else-if="event.name.includes('롯데') || event.name.includes('기아') || event.name.includes('키움') || event.name.includes('NC')" 
+                  :src="photos[2]"
+                >
+                  <v-card-title class="justify-center">
+                    <div class="headerClass white--text">
+                      {{event.name}}
+                    </div>
+                  </v-card-title>
+                </v-img>
+                <v-img 
+                  height="65"
+                  v-else-if="event.name.includes('대구') || event.name.includes('제주') || event.name.includes('경남') || event.name.includes('서울')" 
+                  :src="photos[1]"
+                >
+                  <v-card-title class="justify-center">
+                    <div class="headerClass white--text">
+                      {{event.name}}
+                    </div>
+                  </v-card-title>
+                </v-img>
+                <v-img 
+                  height="65"
+                  v-else-if="event.name.includes('전북') || event.name.includes('인천') || event.name.includes('강원') || event.name.includes('수원') || event.name.includes('전북')" 
+                  :src="photos[0]"
+                >
+                  <v-card-title class="justify-center">
+                    <div class="headerClass white--text">
+                      {{event.name}}
+                    </div>
+                  </v-card-title>
+                </v-img>
+                <v-img 
+                  height="65"
+                  v-else 
+                  :src="logo.src"
+                >
+                  <v-card-title class="justify-center">
+                    <div class="headerClass white--text">
+                      {{event.name}}
+                    </div>
+                  </v-card-title>
+                </v-img>
+              </v-card>
+            </v-list-item-title>
+
+            <!-- 배팅 -->
+            <v-expand-transition>
+              <v-card
+                v-show="expandGame[i]"
+                class="mt-1"
+              >
+                <v-card-text>
+                  <!-- 관리(경기) 상태 -->
+                  <v-row justify="center">
+                    <v-col 
+                      v-if="event.betDone.length === 4"
+                      cols=4
+                    >
+                      Bat Over
+                    </v-col>
+                    <v-col 
+                      v-if="event.gameDone.length === 4"
+                      cols=4
+                    >
+                      Game Over
+                    </v-col>
+                    <v-col 
+                      v-if="event.calDone.length === 4"
+                      cols=4
+                    >
+                      Cal Over
+                    </v-col>
+                    <v-col cols=12>
+                      <v-btn
+                        @click="endBetting(event)"
+                        v-if="mas"
+                      >
+                        Bat
+                      </v-btn>
+                      <v-btn
+                        @click="endtheGame(event)"
+                        v-if="mas"
+                      >
+                        Game
+                      </v-btn>
+                      <v-btn
+                        @click="calculEvent(event)"
+                        v-if="mas"
+                      >
+                        Accounts
+                      </v-btn>
+                    </v-col>
+                  </v-row>
+                  <!-- 팀 매치 -->
+                  <v-row>
+                    <v-col cols=5 class="px-0">
+                      <span><h2>{{teamname[event.team1_id]}}</h2></span>
+                    </v-col>
+                    <v-col cols=2 class="px-0">
+                      {{event.team1_score}} vs {{event.team2_score}}
+                    </v-col>
+                    <v-col cols=5 class="px-0">
+                      <span><h2>{{teamname[event.team2_id]}}</h2></span>
+                    </v-col>
+                  </v-row>
+                  <!-- 투표 -->
+                  <v-row>
+                    <v-col cols=6>
+                      <v-btn
+                        @click="editScore(event,2,-1)"
+                        v-if="mas"
+                      >
+                        -
+                      </v-btn>
+                      <v-btn
+                        @click="editScore(event,2,1)"
+                        v-if="mas"
+                      >
+                        +
+                      </v-btn>
+                      <v-btn
+                        class="white--text"
+                        :disabled="isDisabled(event,event.team2_user)"
+                        @click="betTeam(event,2)"
+                        color="#536DFE"
+                      >
+                        Vote
+                      </v-btn>
+                    </v-col>
+                    <v-col cols=6>
+                      <v-btn
+                        class="white--text"
+                        @click="editScore(event,1,-1)"
+                        v-if="mas"
+                      >
+                        -
+                      </v-btn>
+                      <v-btn
+                        @click="editScore(event,1,1)"
+                        v-if="mas"
+                      >
+                        +
+                      </v-btn>
+                      <v-btn
+                        class="white--text"
+                        :disabled="isDisabled(event,event.team1_user)"
+                        @click="betTeam(event,1)"
+                        color="#536DFE"
+                      >
+                        Vote
+                      </v-btn>
+                    </v-col>
+                    <v-col cols=12>
+                      무승부
+                      <br>
+                      <v-btn
+                        class="white--text"
+                        :disabled="isDisabled(event,event.draw_user)"
+                        @click="betTeam(event,3)"
+                        color="#536DFE"
+                        width="224"
+                      >
+                        Vote
+                      </v-btn>
+                    </v-col>
+                  </v-row>                  
+                  <!-- 배팅 정보 -->
+                  <v-row>
+                    <v-col>
+                      투표비율({{teamname[event.team1_id]}} : {{teamname[event.team2_id]}} : 무승부): {{event.team1_user.length}} : {{event.team2_user.length}} : {{event.draw_user.length}}
+                      <br>
+                      예상획득포인트({{teamname[event.team1_id]}}) : {{ betRatio(event.team1_user.length,event.team2_user.length,event.draw_user.length,event.team1_user.length) }}
+                      <br>
+                      예상획득포인트({{teamname[event.team2_id]}}) : {{ betRatio(event.team1_user.length,event.team2_user.length,event.draw_user.length,event.team2_user.length) }}
+                      <br>
+                      예상획득포인트(무승부) : {{ betRatio(event.team1_user.length,event.team2_user.length,event.draw_user.length,event.draw_user.length) }}
+                    </v-col>
+                  </v-row>
+                </v-card-text>
+              </v-card>
+            </v-expand-transition>
+
+          </v-list-item-content>
+        </v-list-item>
+      </v-card>
+    </v-expand-transition>
+    <br>
+    <br>
     <br>
     <br>
   </div>
@@ -304,17 +371,15 @@
 
 <script>
 import { getTodayEventImage, getMyTeam, getSchedule, pmScore, betGame, endBet, endGame, calculPts } from "@/api/tabs/sports.js"
+import { mapState } from 'vuex' 
 // 
   export default {
     name:"Schedule",
     data: () => ({
       mas:false,
-      myteamss:[
-
-      ],
-      myteams:[
-
-      ],
+      logo : { src : require("@/assets/images/싹7(롤기죽임).jpg") },
+      myteamss:[],
+      myteams:[],
       teamname:{
         1: '강원', 2: '광주', 3: '대구', 4: '서울', 5: '성남', 6: '수원', 7: '수원FC', 8: '울산', 9: '인천', 10: '전북', 11: '제주', 12: '포항',
         23: '두산', 24: '롯데', 25: '삼성', 26: '키움', 27: '한화', 28: 'KIA', 29: 'KT wiz', 30: 'LG', 31: 'NC', 32: 'SK',
@@ -349,98 +414,22 @@ import { getTodayEventImage, getMyTeam, getSchedule, pmScore, betGame, endBet, e
       selectedElement: null,
       selectedOpen: false,
       colors: ['grey darken-1','blue','red', 'green'],
-      // events:[],
       originevents:[
-        // {
-        //   id: 1,
-        //   events_no: 3,
-        //   name: "T1 vs 젠지", // (달력에 표시할 이름) 
-        //   start: "2021-02-13", // ('YYYY-MM-DD')
-        //   start_time: "17:00", // ("hh-mm")
-        //   team1_id: 37, // (팀1 고유번호)
-        //   team2_id: 35, // (팀2 고유번호)
-        //   team1_score: 1, // (팀1 점수)
-        //   team2_score: 2, // (팀2 점수)
-        //   team1_user: [1],  // (팀1에 베팅한 유저 고유번호 리스트)
-        //   team2_user: [], // (팀2에 베팅한 유저 고유번호 리스트)
-        //   draw_user: [], // (무승부에 베팅한 유저 고유번호 리스트)
-        //   betDone: "true", // (베팅 끝났는지)
-        //   gameDone: "true", // (게임 끝났는지)
-        //   calDone: "true", // (게임 끝났는지)
-        // }, 
-        // {
-        //   id: 2,
-        //   events_no: 1,
-        //   name: "대구 vs 서울", // (달력에 표시할 이름) 
-        //   start: "2021-02-18", // ('YYYY-MM-DD')
-        //   start_time: "19:00", // ("hh-mm")
-        //   team1_id: 3, // (팀1 고유번호)
-        //   team2_id: 4, // (팀2 고유번호)
-        //   team1_score: 0, // (팀1 점수)
-        //   team2_score: 0, // (팀2 점수)
-        //   team1_user: [],  // (팀1에 베팅한 유저 고유번호 리스트)
-        //   team2_user: [], // (팀2에 베팅한 유저 고유번호 리스트)
-        //   draw_user: [0], // (무승부에 베팅한 유저 고유번호 리스트)
-        //   betDone: "false", // (베팅 끝났는지)
-        //   gameDone: "true", // (게임 끝났는지)
-        //   calDone: "true", // (게임 끝났는지)
-        // },
-        // {
-        //   id: 3,
-        //   events_no: 2,
-        //   name: "삼성 vs 롯데", // (달력에 표시할 이름) 
-        //   start: "2021-02-19", // ('YYYY-MM-DD')
-        //   start_time: "21:30", // ("hh-mm")
-        //   team1_id: 25, // (팀1 고유번호)
-        //   team2_id: 24, // (팀2 고유번호)
-        //   team1_score: 0, // (팀1 점수)
-        //   team2_score: 0, // (팀2 점수)
-        //   team1_user: [1,2,3,4,5,6,7],  // (팀1에 베팅한 유저 고유번호 리스트)
-        //   team2_user: [8,9,10,11,12,13], // (팀2에 베팅한 유저 고유번호 리스트)
-        //   draw_user: [14,15], // (무승부에 베팅한 유저 고유번호 리스트)
-        //   betDone: "false", // (베팅 끝났는지)
-        //   gameDone: "false", // (게임 끝났는지)
-        //   calDone: "false", // (게임 끝났는지)
-        // },
-        // {
-        //   id: 4,
-        //   events_no: 1,
-        //   name: "강원 vs 수원FC", // (달력에 표시할 이름) 
-        //   start: "2021-02-19", // ('YYYY-MM-DD')
-        //   start_time: "21:30", // ("hh-mm")
-        //   team1_id: 1, // (팀1 고유번호)
-        //   team2_id: 7, // (팀2 고유번호)
-        //   team1_score: 0, // (팀1 점수)
-        //   team2_score: 0, // (팀2 점수)
-        //   team1_user: [1,2,3,4,5,6,7],  // (팀1에 베팅한 유저 고유번호 리스트)
-        //   team2_user: [8,9,10,11], // (팀2에 베팅한 유저 고유번호 리스트)
-        //   draw_user: [14,15], // (무승부에 베팅한 유저 고유번호 리스트)
-        //   betDone: "false", // (베팅 끝났는지)
-        //   calDone: "false", // (게임 끝났는지)
-        // },
-        // {
-        //   id: 5,
-        //   events_no: 3,
-        //   name: "DRX vs 아프리카", // (달력에 표시할 이름) 
-        //   start: "2021-02-19", // ('YYYY-MM-DD')
-        //   start_time: "13:00", // ("hh-mm")
-        //   team1_id: 34, // (팀1 고유번호)
-        //   team2_id: 36, // (팀2 고유번호)
-        //   team1_score: 0, // (팀1 점수)
-        //   team2_score: 0, // (팀2 점수)
-        //   team1_user: [1,2,3,4,5,6,7],  // (팀1에 베팅한 유저 고유번호 리스트)
-        //   team2_user: [8,9,10,11,12,13,14,15], // (팀2에 베팅한 유저 고유번호 리스트)
-        //   draw_user: [], // (무승부에 베팅한 유저 고유번호 리스트)
-        //   betDone: "true", // (베팅 끝났는지)
-        //   calDone: "false", // (게임 끝났는지)
-        // },
       ],
       events:[],
       today:'',
       hm:'',
       todayEvents: [],
     }),
+    computed: {
+      ...mapState([ 'photos']),
+    },
     mounted () { 
+      if (this.$store.state.user.grade === 10) {
+        this.mas = true
+      } else {
+        this.mas = false
+      }
       this.$refs.calendar.checkChange()
       getSchedule(
         (res) => {
@@ -517,7 +506,6 @@ import { getTodayEventImage, getMyTeam, getSchedule, pmScore, betGame, endBet, e
         if (items.length > 0){
           this.expandDaily = true
         }
-        // this.tog = false
       },
       getEventColor (event) {
         return this.colors[event.events_no]
@@ -531,24 +519,6 @@ import { getTodayEventImage, getMyTeam, getSchedule, pmScore, betGame, endBet, e
       next () {
         this.$refs.calendar.next()
       },
-      // showEvent ({ nativeEvent, event }) {
-      //   const open = () => {
-      //     this.selectedEvent = event
-      //     this.selectedElement = nativeEvent.target
-      //     setTimeout(() => {
-      //       this.selectedOpen = true
-      //     }, 10)
-      //   }
-
-      //   if (this.selectedOpen) {
-      //     this.selectedOpen = false
-      //     setTimeout(open, 10)
-      //   } else {
-      //     open()
-      //   }
-
-      //   nativeEvent.stopPropagation()
-      // },
       showEvents ({event}) {
         let ev = {
           date:event.start
@@ -707,8 +677,6 @@ import { getTodayEventImage, getMyTeam, getSchedule, pmScore, betGame, endBet, e
               console.log(err)
             }
           )
-          
-
         } else {
           alert("베팅, 게임먼저 끝내세용")
         }
@@ -758,26 +726,6 @@ import { getTodayEventImage, getMyTeam, getSchedule, pmScore, betGame, endBet, e
           return myteams.includes(ev.team1_id) || myteams.includes(ev.team2_id)
         })
       },
-      // filterCarousel : function(today,hm) {
-      //   let items = this.filterDaily(today)
-      //   for(let idx = 0; idx < items.length; idx++) {
-      //     this.getImage(items[idx])
-      //   }
-      //   // console.log(items)
-      //   // console.log(2)
-      //   // console.log(items)
-      //   return items.filter(function(ev){
-      //     return ev.start_time > hm
-      //   })
-      // },
-      // filterCarousel2 : function(today,hm) {
-      //   let items = this.filterCarousel(today,hm)
-      //   // console.log(1)
-      //   console.log(items)
-      //   return items.sort(function(a,b){
-      //     return a.start_time - b.start_time
-      //   })
-      // },
       master() {
         this.mas = !this.mas
       },
@@ -787,7 +735,6 @@ import { getTodayEventImage, getMyTeam, getSchedule, pmScore, betGame, endBet, e
         for (let i = 0; i< byteCharacters.length; i++){
           byteNumbers[i] = byteCharacters.charCodeAt(i);
         }
-
         const byteArray = new Uint8Array(byteNumbers);
         const blob = new Blob([byteArray],{type:"image/jpg"})
         const url = window.URL.createObjectURL(blob)
