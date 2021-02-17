@@ -45,8 +45,8 @@ public class SearchController {
 			Map<String, Object> user = new HashMap<String, Object>();
 			user.put("id", temp.get(i).getId());
 			user.put("nickname", temp.get(i).getNickname());
-			Image image = imageService.filenameToBlob(temp.get(i).getProfile());
-			user.put("profile", image.getImage());
+			Image image = imageService.profileFilenameToBlob(temp.get(i).getProfile());
+			user.put("profile", image.getBlob());
 			users.add(user);
 		}
 		System.out.println("검색 userid : "+userid+", search : "+search);

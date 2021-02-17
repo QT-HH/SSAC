@@ -56,8 +56,8 @@ public class NewsfeedCommentController {
 				map.put("id", comments.get(i).getWriter());
 				User user = userService.findUser(new User(comments.get(i).getWriter()));
 				map.put("nickname", user.getNickname());
-				Image image = imageService.filenameToBlob(user.getProfile());
-				if(image != null) map.put("profile", image.getImage());
+				Image image = imageService.profileFilenameToBlob(user.getProfile());
+				if(image != null) map.put("profile", image.getBlob());
 				else map.put("profile", "");
 				map.put("comment", comments.get(i).getComment());
 				map.put("regtime", comments.get(i).getRegtime());
