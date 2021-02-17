@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ssac.image.dto.Image;
 import com.ssac.image.service.ImageService;
 import com.ssac.team.dto.Team;
 import com.ssac.team.service.TeamService;
@@ -45,8 +44,7 @@ public class SearchController {
 			Map<String, Object> user = new HashMap<String, Object>();
 			user.put("id", temp.get(i).getId());
 			user.put("nickname", temp.get(i).getNickname());
-//			Image image = imageService.profileFilenameToBlob(temp.get(i).getProfile());
-//			user.put("profile", image.getBlob());
+			user.put("profile", imageService.profileFilenameToBlob(temp.get(i).getProfile()).getBlob());
 			users.add(user);
 		}
 		System.out.println("검색 userid : "+userid+", search : "+search);
@@ -65,19 +63,25 @@ public class SearchController {
 	@GetMapping("/recommend")
 	public ResponseEntity<?> getRecommend(@RequestParam String userid, 
 			@RequestParam String surveyAnswers) throws Exception {
-		HashMap<String, String> map = new HashMap<String, String>();
-		map.put("userid", userid);
-		map.put("search", "");
-		System.out.println("팀추천 userid : "+userid+", 설문 : "+surveyAnswers+" "+surveyAnswers);
-		Random random = new Random();
-		random.setSeed(System.currentTimeMillis());
-		int idx = 0;
-		List<Team> teams = new ArrayList<Team>();
-		if(surveyAnswers.equals("축구")) teams = teamService.listFootballTeam(map);
-		else if(surveyAnswers.equals("야구")) teams = teamService.listBaseballTeam(map);
-		else teams = teamService.listLOLTeam(map);
-		idx = random.nextInt(teams.size()-1);
-		return new ResponseEntity<>(teams.get(idx), HttpStatus.OK);
+		try {
+			System.out.println("팀추천 userid : "+userid+", 설문 : "+surveyAnswers);
+			Random random = new Random();
+			random.setSeed(System.currentTimeMillis());
+			int idx = 0;
+			List<Team> newteam = teamService.listNewTeam(userid);
+			List<Team> teams = new ArrayList<Team>();
+			int event_no = 0;
+			if(surveyAnswers.equals("축구")) event_no = 1;
+			else if(surveyAnswers.equals("야구")) event_no = 2; 
+			else event_no = 3;
+			for(int i=0; i<newteam.size(); i++)
+				if(newteam.get(i).getEvent_no() == event_no) teams.add(newteam.get(i));
+			idx = random.nextInt(teams.size()-1);
+			return new ResponseEntity<>(teams.get(idx), HttpStatus.OK);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity<>("fail", HttpStatus.NO_CONTENT);
 	}
 	
 	@ApiOperation(value = "친구의 팀 조회", notes = "입력 : 유저이메일(userid)")

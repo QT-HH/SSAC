@@ -11,7 +11,7 @@ import com.ssac.user.dto.User;
 public interface UserMapper {
 	public User selectUser(User user) throws Exception;
 	public int insertUser(User user) throws Exception;
-	public int updateUserNickname(User user) throws Exception;
+	public int updateUserInformation(User user) throws Exception;
 	public int deleteUser(User user) throws Exception;
 	public List<String> selectFollowing(String userid) throws Exception;
 	public List<String> selectFollower(String userid) throws Exception;

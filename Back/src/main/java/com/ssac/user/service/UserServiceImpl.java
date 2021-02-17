@@ -37,8 +37,8 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public int modifyUserNickname(User user) throws Exception {
-		return mapper.updateUserNickname(user);
+	public int modifyUserInformation(User user) throws Exception {
+		return mapper.updateUserInformation(user);
 	}
 	
 	@Override

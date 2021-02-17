@@ -41,28 +41,11 @@
 		where no = #{team_no}
 	</update>
 	
-	<select id="selectFootballteamBySearch" parameterType="HashMap" resultType="com.ssac.team.dto.Team">
+	<select id="selectNewTeam" parameterType="String" resultType="com.ssac.team.dto.Team">
 		select *
 		from team
-		where ((event_no = 1) and 
-		(no not in (select team_no from myteam where (id = #{userid}) and (event_no = 1)))) and
-		name like concat('%', #{search}, '%') 
-	</select>
-	
-	<select id="selectBaseballteamBySearch" parameterType="HashMap" resultType="com.ssac.team.dto.Team">
-		select *
-		from team
-		where ((event_no = 2) and 
-		(no not in (select team_no from myteam where (id = #{userid}) and (event_no = 2)))) and
-		name like concat('%', #{search}, '%') 
-	</select>
-	
-	<select id="selectLOLteamBySearch" parameterType="HashMap" resultType="com.ssac.team.dto.Team">
-		select *
-		from team
-		where ((event_no = 3) and 
-		(no not in (select team_no from myteam where (id = #{userid}) and (event_no = 3)))) and
-		name like concat('%', #{search}, '%') 
+		where no not in
+		(select team_no from myteam where id = #{userid})
 	</select>
 	
 	<select id="selectSearchTeam" parameterType="HashMap" resultType="com.ssac.team.dto.Team">

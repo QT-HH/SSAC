@@ -99,8 +99,8 @@ public class UserController {
 			resultMap.put("userid", user.getId());
 			resultMap.put("usernickname", user.getNickname());
 			resultMap.put("point", user.getPoint());
-//			Image image = imageService.profileFilenameToBlob(user.getProfile());
-//			resultMap.put("profile", image.getBlob());
+			resultMap.put("profile", imageService.profileFilenameToBlob(user.getProfile()).getBlob());
+			resultMap.put("intro", user.getIntro());
 			List<String> following = userService.getFollowingList(user.getId());
 			List<String> follower = userService.getFollowerList(user.getId());
 			resultMap.put("following", following);
@@ -117,7 +117,7 @@ public class UserController {
 		return new ResponseEntity<>("fail", HttpStatus.NO_CONTENT);
 	}
 	
-	@ApiOperation(value = "유저 닉네임 수정", notes = "입력 : userid, userpw, 변경할닉네임(newnickname)")
+	@ApiOperation(value = "유저 정보 수정", notes = "입력 : userid, 변경할 이미지이름(newimagename), 변경할 소개(newintro), 변경할닉네임(newnickname)")
 	@PatchMapping("/userNickNameChange")
 	public ResponseEntity<?> changeUserNickName(@RequestBody String js) throws Exception {
 		// 유저 닉네임 수정
@@ -127,22 +127,26 @@ public class UserController {
 		JSONObject jsonObj = null;
 		try {
 			jsonObj = (JSONObject) jsonParse.parse(js);
+			String userid = (String)jsonObj.get("userid");
 			User check = new User();
-			check.setId((String)jsonObj.get("userid"));
+			check.setId(userid);
 			User user = userService.findUser(check);
-			System.out.println("유저 닉네임 수정 : "+user.getId());
-			if(user.getPw().equals((String)jsonObj.get("userpw"))) {
-				user.setNickname((String)jsonObj.get("newnickname"));
-				if(userService.modifyUserNickname(user) > 0)
-					return new ResponseEntity<String>("success", HttpStatus.OK);
-			}
+			String newnickname = (String)jsonObj.get("newnickname");
+			String newintro = (String)jsonObj.get("newintro");
+			String newimagename = (String)jsonObj.get("newimagename");
+			System.out.println("유저 닉네임 수정 : "+user.getId()+" "+newnickname+" "+newintro+" "+newimagename);
+			user.setNickname(newnickname);
+			user.setIntro(newintro);
+			if(userService.modifyUserInformation(user) > 0)
+				return new ResponseEntity<String>("success", HttpStatus.OK);
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		return new ResponseEntity<String>("fail", HttpStatus.NO_CONTENT);
 	}
 	
-	@ApiOperation(value = "유저 비밀번호 수정", notes = "입력 : userid, userpw, 변경할 비밀번호(newpw)")
+	@ApiOperation(value = "유저 비밀번호 수정", notes = "입력 : userid, 변경할 비밀번호(newpw)")
 	@PatchMapping("/userPasswordChange")
 	public ResponseEntity<?> changeUserPassword(@RequestBody String js) throws Exception {
 		// 유저 비밀번호 수정
@@ -156,37 +160,30 @@ public class UserController {
 			check.setId((String)jsonObj.get("userid"));
 			User user = userService.findUser(check);
 			System.out.println("유저 비밀번호 수정 : "+user.getId());
-			if(user.getPw().equals((String)jsonObj.get("userpw"))) {
-				HashMap<String, String> map = new HashMap<String, String>();
-				map.put("userid", user.getId());
-				map.put("userpw", (String)jsonObj.get("nwepw"));
-				if(userService.modifyUserPassword(map) > 0)
-					return new ResponseEntity<String>("success", HttpStatus.OK);
-			}
+			HashMap<String, String> map = new HashMap<String, String>();
+			map.put("userid", user.getId());
+			map.put("userpw", (String)jsonObj.get("newpw"));
+			if(userService.modifyUserPassword(map) > 0)
+				return new ResponseEntity<String>("success", HttpStatus.OK);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		return new ResponseEntity<String>("fail", HttpStatus.NO_CONTENT);
 	}
 	
-	@ApiOperation(value = "유저 탈퇴", notes = "입력 : userid, userpw")
+	@ApiOperation(value = "유저 탈퇴", notes = "입력 : userid")
 	@DeleteMapping("/userDelete")
-	public ResponseEntity<?> deleteUser(@RequestBody String js) throws Exception {
+	public ResponseEntity<?> deleteUser(@RequestParam String userid) throws Exception {
 		// 유저 탈퇴
 		// 입력 : userid, userpw
 		// 출력 : 성공, 실패
-		JSONParser jsonParse = new JSONParser();
-		JSONObject jsonObj = null;
 		try {
-			jsonObj = (JSONObject) jsonParse.parse(js);
 			User check = new User();
-			check.setId((String)jsonObj.get("userid"));
+			check.setId(userid);
 			User user = userService.findUser(check);
 			System.out.println("유저탈퇴 : "+user.getId());
-			if(user.getPw().equals((String)jsonObj.get("userpw"))) {
-				if(userService.removeUser(user) > 0)
-					return new ResponseEntity<String>("success", HttpStatus.OK);
-			}
+			if(userService.removeUser(user) > 0)
+				return new ResponseEntity<String>("success", HttpStatus.OK);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

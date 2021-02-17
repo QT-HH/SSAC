@@ -16,9 +16,9 @@
 	</insert>	
 	
 	<!-- 회원수정 -->
-	<update id="updateUserNickname" parameterType="com.ssac.user.dto.User">
+	<update id="updateUserInformation" parameterType="com.ssac.user.dto.User">
 		update user
-		   set nickname = #{nickname}
+		   set nickname = #{nickname}, intro = #{intro}, profile = #{profile}
 		 where id = #{id}
 	</update>	
 	
