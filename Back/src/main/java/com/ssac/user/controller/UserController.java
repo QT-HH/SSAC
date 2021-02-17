@@ -85,7 +85,7 @@ public class UserController {
 					}
 					User temp = userService.findUser(user);
 					Map<String, Object> resultMap = new HashMap<>();
-					String token = jwtService.create(check);
+					String token = jwtService.create(temp);
 					System.out.println("토큰생성 완료");
 					resultMap.put("access-token", token);
 					resultMap.put("id", temp.getId());
