@@ -1,6 +1,7 @@
 package com.ssac.newsfeed.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,7 +62,10 @@ public class NewsfeedController {
 				map.put("content", newsfeeds.get(i).getContent());
 				map.put("regtime", newsfeeds.get(i).getRegtime());
 				Image image = imageService.feedFilenameToBlob(newsfeeds.get(i).getImagename());
-				if(image != null) map.put("image", image);
+				if(image != null) {
+					System.out.println(Arrays.toString(image.getBlob()));
+					map.put("image", image);
+				}
 				else map.put("image", "");
 				List<NewsFeedLike> like = newsfeedService.listNewsFeedLike(newsfeeds.get(i).getNo());
 				List<String> likeid = new ArrayList<String>();
