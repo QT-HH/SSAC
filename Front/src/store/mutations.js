@@ -4,7 +4,7 @@ export default {
   },
   setUserInfo(state, userInfo) {
     state.isLogin = true;
-    state.userInfo = userInfo;
+    state.user = userInfo;
   },
   logout(state) {
     state.isLogin = false;

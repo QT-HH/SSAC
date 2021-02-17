@@ -1,6 +1,11 @@
 <template>
   <div class="mt-10 ml-2 mr-2 mb-3">
     <v-sheet>
+      <div v-if="filterCarousel2(today,'15:00').length > 0">
+        <h1 class="ml-5">
+          오늘의 경기
+        </h1>
+
       <v-carousel
         cycle
         height="300"
@@ -8,13 +13,10 @@
         show-arrows-on-hover
         light
         hide-delimiters
-        v-if="filterCarousel2(today,hm).length > 0"
+        
       >
-        <h1 class="ml-5">
-          오늘의 경기
-        </h1>
         <v-carousel-item
-          v-for="(event, i) in filterCarousel2(today,hm)"
+          v-for="(event, i) in filterCarousel2(today,'15:00')"
           :key="i"
         >
           <v-sheet 
@@ -29,12 +31,14 @@
                   tile
               >
                 <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"></v-img>
+                <!-- <v-img :src="getIMage(event.team1_id)"></v-img> -->
               </v-avatar>
               <v-avatar
                   size="172"
                   tile
               >
                 <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"></v-img>
+                <!-- <v-img :src="getIMage(event.team2_id)"></v-img> -->
               </v-avatar>
 
               <v-card-title>
@@ -48,6 +52,7 @@
           </v-sheet>
         </v-carousel-item>
       </v-carousel>
+      </div>
       <div v-else class="text-center">
         <h1> 오늘은 경기가 없습니다 </h1>
       </div>
@@ -306,7 +311,7 @@
 </template>
 
 <script>
-import { getMyTeam, getSchedule, pmScore, betGame, endBet, endGame, calculPts } from "@/api/tabs/sports.js"
+import { getTeamImage, getMyTeam, getSchedule, pmScore, betGame, endBet, endGame, calculPts } from "@/api/tabs/sports.js"
 // 
   export default {
     name:"Schedule",
@@ -455,7 +460,20 @@ import { getMyTeam, getSchedule, pmScore, betGame, endBet, endGame, calculPts } 
         }
       )
       let now = new Date()
-      let time = `${now.getFullYear()}-${now.getMonth()+1}-${now.getDate()}`
+      let month = now.getMonth()+1
+      let date = now.getDate()
+
+      month = `${month}`
+      date = `${date}`
+      if (month.length === 1){
+        month = `0${month}`
+      }
+      if (date.length === 1){
+        date = `0${date}`
+      }
+
+      let time = `${now.getFullYear()}-${month}-${date}`
+      console.log(time)
       // let hourmin = `${now.getHours()}:${now.getMinutes()}`
       let h = now.getHours()
       let m = now.getMinutes()
@@ -470,6 +488,9 @@ import { getMyTeam, getSchedule, pmScore, betGame, endBet, endGame, calculPts } 
       this.today = time
       this.focus = time
       this.hm = `${h}:${m}`
+      console.log(this.today)
+      // console.log()
+      console.log(this.hm)
       // console.log(this.hm < '19:00')
       // this.events = this.originevents
       getMyTeam(
@@ -755,11 +776,31 @@ import { getMyTeam, getSchedule, pmScore, betGame, endBet, endGame, calculPts } 
         this.mas = !this.mas
       },
       changeBlob(data){
-        let blob = new Blob([new ArrayBuffer(data)], {type: "image/jpg"});
-        const url = window.URL.createObjectURL(blob);
-        // document.getElementsByClassName("feedimg").src = url
-        console.log(url)
+        const byteCharacters = window.atob(data)
+        const byteNumbers = new Array(byteCharacters.length)
+        for (let i = 0; i< byteCharacters.length; i++){
+          byteNumbers[i] = byteCharacters.charCodeAt(i);
+        }
+
+        const byteArray = new Uint8Array(byteNumbers);
+        const blob = new Blob([byteArray],{type:"image/jpg"})
+        const url = window.URL.createObjectURL(blob)
+
         return url
+      },
+      getImage(teamno){
+        let img = ''
+        getTeamImage(
+          teamno,
+          (res) => {
+            console.log(res.data)
+            img = this.changeBlob(res.data)
+          },
+          (err) => {
+            console.log(err)
+          }
+        )
+        return img
       }
 
     }, 
