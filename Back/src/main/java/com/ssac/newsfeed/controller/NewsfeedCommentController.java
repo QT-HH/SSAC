@@ -83,7 +83,10 @@ public class NewsfeedCommentController {
 			long feed_no = (long) jsonObj.get("feed_no");
 			String comment = (String) jsonObj.get("comment");
 			System.out.println("뉴스피드 댓글 작성 : "+userid+" "+comment);
-			NewsFeedComment nfcomment = new NewsFeedComment((int)feed_no, userid, comment);
+			NewsFeedComment nfcomment = new NewsFeedComment();
+			nfcomment.setWriter(userid);
+			nfcomment.setFeed_no((int)feed_no);
+			nfcomment.setComment(comment);
 			newsfeedService.writeNewsFeedComment(nfcomment);
 			return new ResponseEntity<String>("success", HttpStatus.OK);
 		} catch(Exception e) {
@@ -105,7 +108,9 @@ public class NewsfeedCommentController {
 			long no = (long) jsonObj.get("no");
 			String comment = (String) jsonObj.get("comment");
 			System.out.println("뉴스피드 댓글 수정 : "+no+" "+comment);
-			NewsFeedComment nfcomment = new NewsFeedComment((int)no, comment);
+			NewsFeedComment nfcomment = new NewsFeedComment();
+			nfcomment.setNo((int)no);
+			nfcomment.setComment(comment);
 			newsfeedService.modifyNewsFeedComment(nfcomment);
 			return new ResponseEntity<String>("success", HttpStatus.OK);
 		} catch(Exception e) {
