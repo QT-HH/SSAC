@@ -85,7 +85,6 @@ public class ImageService {
 	}
 	
 	public Image filenameToBlob(String filename) throws Exception {
-		if(filename.equals("")) return null;
 		return mapper.selectImage(filename);
 	}
 
