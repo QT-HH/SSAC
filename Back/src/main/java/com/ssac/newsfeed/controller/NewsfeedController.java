@@ -202,20 +202,15 @@ public class NewsfeedController {
 	
 	@ApiOperation(value = "뉴스피드 좋아요 취소", notes = "입력 : userid, 게시글번호(no)")
 	@DeleteMapping("/likeDelete")
-	public ResponseEntity<?> deleteLike(@RequestBody String js) throws Exception {
+	public ResponseEntity<?> deleteLike(@RequestParam String userid, @RequestParam int no) throws Exception {
 		// 좋아요 취소
 		// 입력 : 게시글 번호, userid
 		// 출력 : 성공, 실패
-		JSONParser jsonParse = new JSONParser();
-		JSONObject jsonObj = null;
 		try {
-			jsonObj = (JSONObject) jsonParse.parse(js);
-			String userid = (String) jsonObj.get("userid");
-			long no = (long) jsonObj.get("no");
 			System.out.println("좋아요 취소 : "+userid+" "+no);
 			NewsFeedLike like = new NewsFeedLike();
 			like.setLike_id(userid);
-			like.setFeed_no((int)no);
+			like.setFeed_no(no);
 			newsfeedService.removeNewsFeedLike(like);
 			return new ResponseEntity<String>("success", HttpStatus.OK); 
 		} catch(Exception e) {
