@@ -116,7 +116,10 @@ public class NewsfeedController {
 			String content = (String) jsonObj.get("content");
 			String filename = (String) jsonObj.get("filename");
 			System.out.println("뉴스피드 작성 : "+userid+" "+filename);
-			NewsFeed newsfeed = new NewsFeed(userid, content, filename);
+			NewsFeed newsfeed = new NewsFeed();
+			newsfeed.setId(userid);
+			newsfeed.setContent(content);
+			newsfeed.setImagename(filename);
 			newsfeedService.writeNewsFeed(newsfeed);
 			return new ResponseEntity<String>("success", HttpStatus.OK);
 		} catch(Exception e) {
@@ -139,7 +142,10 @@ public class NewsfeedController {
 			String content = (String) jsonObj.get("content");
 			String filename = (String) jsonObj.get("filename");
 			System.out.println("뉴스피드 수정 : "+no+" "+filename);
-			NewsFeed newsfeed = new NewsFeed(no, content, filename);
+			NewsFeed newsfeed = new NewsFeed();
+			newsfeed.setNo(no);
+			newsfeed.setContent(content);
+			newsfeed.setImagename(filename);
 			newsfeedService.modifyNewsFeed(newsfeed);
 			return new ResponseEntity<String>("success", HttpStatus.OK);
 		} catch(Exception e) {
