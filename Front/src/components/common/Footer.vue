@@ -67,11 +67,18 @@
 
                 <v-card>
                   <v-card-title class="headline grey lighten-2">
-                    여러가지 알림들!
+                    알림
                   </v-card-title>
 
                   <v-card-text class="p-2">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    <div
+                      v-for="(item,idx) in alertList"
+                      :key=idx
+                      class="py-3 text--primary"
+                    >
+                      {{item}}
+                      <v-divider class="mt-4"></v-divider>
+                    </div>
                   </v-card-text>
 
                 </v-card>
@@ -111,7 +118,9 @@ export default {
         "gotoSearch",
         "checkAlert",
         "gotoProfile",
-      ]
+      ],
+      userid: this.$store.state.user.userid,
+      alertList:['ㅇㅇ님이 회원님의 게시글을 좋아합니다.','ㅇㅇ님이 댓글을 달았습니다','ㅇㅇ님이 댓글을 달았습니다.','ㅇㅇ님이 회원님의 게시글을 좋아합니다.','ㅇㅇ님이 댓글을 달았습니다','ㅇㅇ님이 댓글을 달았습니다.','ㅇㅇ님이 회원님의 게시글을 좋아합니다.','ㅇㅇ님이 댓글을 달았습니다','ㅇㅇ님이 댓글을 달았습니다.','ㅇㅇ님이 회원님의 게시글을 좋아합니다.','ㅇㅇ님이 댓글을 달았습니다','ㅇㅇ님이 댓글을 달았습니다.',],
     }
   },
   methods: {
@@ -138,7 +147,19 @@ export default {
         this.$router.push({name:'Article'})
       }
     },
-  }
+  },
+  // created() {
+  //   getAlert(
+  //     this.userid,
+  //     (res) => {
+  //       console.log(res.data)
+  //       this.alertList = res.data
+  //     },
+  //     (err) => {
+  //       console.log(err)
+  //     }
+  //   )
+  // },
 }
 </script>
 
