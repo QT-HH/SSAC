@@ -53,10 +53,9 @@ public class TeamController {
 		List<MyTeam> myteams = teamService.listMyTeam(userid);
 		List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
 		for(int i=0; i<myteams.size(); i++) {
-			int no = myteams.get(i).getNo();
-			Team team = teamService.getTeam(no);
+			Team team = teamService.getTeam(myteams.get(i).getTeam_no());
 			Map<String, Object> resultMap = new HashMap<>();
-			resultMap.put("no", no);
+			resultMap.put("no", myteams.get(i).getNo());
 			resultMap.put("id", myteams.get(i).getId());
 			resultMap.put("team_no", myteams.get(i).getTeam_no());
 			resultMap.put("name", myteams.get(i).getName());
