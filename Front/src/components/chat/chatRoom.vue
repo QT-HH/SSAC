@@ -60,7 +60,7 @@ export default {
             placeholder: 'send your message',
             colors: {
                 header: {
-                    bg: '#536DFE',
+                    bg: '#6200EA',
                     text: '#fff'
                 },
                 message: {
@@ -69,15 +69,15 @@ export default {
                         text: '#616161'
                     },
                     others: {
-                        bg: '#536DFE',
+                        bg: '#6200EA',
                         text: '#fff'
                     },
                     messagesDisplay: {
                         bg: '#f7f3f3'
                     }
                 },
-                submitIcon: '#536DFE',
-                submitImageIcon: '#536DFE',
+                submitIcon: '#6200EA',
+                submitImageIcon: '#6200EA',
             },
             borderStyle: {
                 topLeft: "10px",
