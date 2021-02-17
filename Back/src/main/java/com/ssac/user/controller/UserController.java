@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ssac.image.dto.Image;
+import com.ssac.image.service.ImageService;
 import com.ssac.team.dto.MyTeam;
 import com.ssac.team.service.TeamService;
 import com.ssac.user.dto.User;
@@ -37,6 +39,8 @@ public class UserController {
 	private UserService userService;
 	@Autowired
 	private TeamService teamService;
+	@Autowired
+	private ImageService imageService;
 	
 	@ApiOperation(value = "회원가입", notes = "입력 : userid, userpw, usernickname, userteam")
 	@PostMapping("/signup")
@@ -95,6 +99,8 @@ public class UserController {
 			resultMap.put("userid", user.getId());
 			resultMap.put("usernickname", user.getNickname());
 			resultMap.put("point", user.getPoint());
+			Image image = imageService.filenameToBlob(user.getProfile());
+			resultMap.put("profile", image.getImage());
 			List<String> following = userService.getFollowingList(user.getId());
 			List<String> follower = userService.getFollowerList(user.getId());
 			resultMap.put("following", following);
