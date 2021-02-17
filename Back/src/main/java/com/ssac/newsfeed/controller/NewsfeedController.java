@@ -64,7 +64,9 @@ public class NewsfeedController {
 				if(image != null) map.put("image", image);
 				else map.put("image", "");
 				List<NewsFeedLike> like = newsfeedService.listNewsFeedLike(newsfeeds.get(i).getNo());
-				map.put("like", like);
+				List<String> likeid = new ArrayList<String>();
+				for(int j=0; j<like.size(); j++) likeid.add(like.get(j).getLike_id());
+				map.put("like", likeid);
 				map.put("comment", newsfeedService.countComment(newsfeeds.get(i).getNo()));
 				list.add(map);
 			}
@@ -91,7 +93,9 @@ public class NewsfeedController {
 				if(image != null) map.put("image", image.getImage());
 				else map.put("image", "");
 				List<NewsFeedLike> like = newsfeedService.listNewsFeedLike(newsfeeds.get(i).getNo());
-				map.put("like", like);
+				List<String> likeid = new ArrayList<String>();
+				for(int j=0; j<like.size(); j++) likeid.add(like.get(j).getLike_id());
+				map.put("like", likeid);
 				map.put("comment", newsfeedService.countComment(newsfeeds.get(i).getNo()));
 				list.add(map);
 			}
