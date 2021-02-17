@@ -35,10 +35,10 @@
                 v-on="on"
                 rounded-lg
                 size="50"
-                color="grey"
+                color="white"
               >
                 <v-img
-                  :src="team.img"
+                  :src="team.logo"
                   class="white--text align-end"
                   height="60"
                 >
@@ -149,6 +149,19 @@ export default {
 
   },
   methods: {
+    changeBlob(data){
+      const byteCharacters = window.atob(data)
+      const byteNumbers = new Array(byteCharacters.length)
+      for (let i = 0; i< byteCharacters.length; i++){
+        byteNumbers[i] = byteCharacters.charCodeAt(i);
+      }
+
+      const byteArray = new Uint8Array(byteNumbers);
+      const blob = new Blob([byteArray],{type:"image/jpg"})
+      const url = window.URL.createObjectURL(blob)
+
+      return url
+      },
     selectTeam(team) {
       this.selectedData = team
     },
@@ -210,6 +223,15 @@ export default {
       .then(response => {
         console.log(response.data)
         this.myteams = response.data
+
+        for (let idx = 0; idx<this.myteams.length; idx++){
+                  if (this.myteams[idx].logo) {
+                    this.myteams[idx].logo = this.changeBlob(this.myteams[idx].logo)
+                  } else {
+                    this.myteams[idx].logo=''
+                  }}
+
+
         // this.users = response.data.items
         // this.searched = true // 유저검색결과 한 줄 
       })

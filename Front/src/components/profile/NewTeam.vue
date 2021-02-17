@@ -68,13 +68,13 @@
           <v-list-item style="height:100%">
             <v-list-item-avatar
               rounded-lg
-              size="50"
-              color="grey"
+              size="60"
+              color="white"
             >
               <v-img
                 :src="team.logo"
                 class="white--text align-end"
-                height="60"
+                height="60" 
               >
               </v-img>
             </v-list-item-avatar>
@@ -123,15 +123,35 @@ export default {
   
   created() {
     listTeams(
+      this.$store.state.user.userid,
       (response) => {
         console.log(response);
         this.teams = response.data
-      },
+        for (let idx = 0; idx<this.teams.length; idx++){
+          if (this.teams[idx].logo) {
+            this.teams[idx].logo = this.changeBlob(this.teams[idx].logo)
+          } else {
+            this.teams[idx].logo=''
+          }
+      }},
       error => {
         console.log(error);
-      });
-  },
+      })
+      },
   methods: {
+    changeBlob(data){
+      const byteCharacters = window.atob(data)
+      const byteNumbers = new Array(byteCharacters.length)
+      for (let i = 0; i< byteCharacters.length; i++){
+        byteNumbers[i] = byteCharacters.charCodeAt(i);
+      }
+
+      const byteArray = new Uint8Array(byteNumbers);
+      const blob = new Blob([byteArray],{type:"image/jpg"})
+      const url = window.URL.createObjectURL(blob)
+
+      return url
+      },
     realSearch: function() {
       console.log('realSearch')
     },

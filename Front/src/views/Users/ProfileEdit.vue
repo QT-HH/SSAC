@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mt-9">
     <!-- Systembar & Navbar -->
     <div style="position:fixed; z-index:100; width:100%; top:0px;">
       <v-system-bar color="deep-purple darken-3"></v-system-bar>

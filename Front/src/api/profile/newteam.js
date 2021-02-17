@@ -2,9 +2,9 @@ import { createInstance } from "../index.js"
 
 const instance = createInstance();
 
-function listTeams(success, fail) {
+function listTeams(userid, success, fail) {
     instance
-      .get("http://i4d102.p.ssafy.io:9000/ssac/profile/newteam")
+      .get(`http://i4d102.p.ssafy.io:9000/ssac/team/newTeamList?userid=${userid}`)
       .then(success)
       .catch(fail);
   }
