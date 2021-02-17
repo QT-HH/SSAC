@@ -508,12 +508,15 @@ export default {
       // },
       newText : "",
       newImg: "",
+      newImgsrc: "",
+      newImgBlob: "",
       newComment : "",
       editComm : "",
       editCommBool : [false,],
       dialog:false,
       modal:false,
       editmodal:false,
+      selidx:Number,
       selected:{
         no:Number,
         id:String,
@@ -559,19 +562,15 @@ export default {
       (res) => {
         console.log(res.data)
         this.feeds = res.data
-        for (let idx = 0; idx<this.feeds.length; idx++){
-          if (this.feeds[idx].imageBLOB) {
-            this.feeds[idx].image = this.changeBlob(this.feeds[idx].imageBLOB)
-          } else {
-            this.feeds[idx].image=''
-          }
+        for (let idx = 0; idx<this.feeds.length; idx++) {
+          this.feeds[idx].image = this.changeBlob(this.feeds[idx].imageBLOB)
         }
-        console.log(this.feeds)
       },
       (err) => {
         console.log(err)
       }
     )
+
   },
   methods: {
     changeShow(idx) {
@@ -653,11 +652,13 @@ export default {
             profile:'',
             like:[],
             comment:0,
-            image:this.newImg,
+            imageName:this.newImg,
+            imageBLOB:this.newImgBlob,
+            image:this.newImgsrc,
             content:this.newText,
-            regtime:new Date(),
+            regtime:"방금",
           }
-          this.feeds.push(newArticle)
+          this.feeds.unshift(newArticle)
           this.newText = ""
         },
         (err) => {
@@ -686,6 +687,7 @@ export default {
     },
     editModal(feed) {
       this.selected = feed
+      this.selidx = this.feeds.indexOf(feed)
       this.editmodal=!this.editmodal
     },
     updateFeed(selected) {
@@ -699,6 +701,7 @@ export default {
             alert("글이 수정되었습니다")
             this.editmodal = !this.editmodal
             console.log(res.data)
+            this.feeds[this.selidx] = selected
           },
           (err) => {
             console.log(err)
@@ -787,7 +790,9 @@ export default {
       ).then( response => {
         console.log('SUCCESS!!');
         console.log(response.data)
-        this.newImg = response.data.imageName
+        this.newImg = response.data.filename
+        this.newImgBlob = response.data.blob
+        this.newImgsrc = this.changeBlob(response.data.blob)
       })
       .catch( error => {
         console.log('FAILURE!!');
@@ -814,7 +819,8 @@ export default {
         console.log('SUCCESS!!');
         // console.log(response.data)
         this.selected.imageName = response.data.filename
-        this.selected.image = this.changeBlob(response.data.imageBLOB)
+        this.selected.imageBLOB = response.data.blob
+        this.selected.image = this.changeBlob(response.data.blob)
       })
       .catch( error => {
         console.log('FAILURE!!');
@@ -822,6 +828,7 @@ export default {
         // console.log(this.files)
         // console.log(file)
       });
+      this.files = []
     },
     changeBlob(data){
 
