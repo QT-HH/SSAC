@@ -8,9 +8,4 @@ public class NewsFeedLike {
 	private int feed_no;
 	private String like_id;
 	private String regtime;
-	
-	public NewsFeedLike(int feed_no, String like_id) {
-		this.feed_no = feed_no;
-		this.like_id = like_id;
-	}
 }
