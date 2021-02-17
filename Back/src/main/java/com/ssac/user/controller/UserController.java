@@ -24,6 +24,7 @@ import com.ssac.image.dto.Image;
 import com.ssac.image.service.ImageService;
 import com.ssac.notice.dto.Notice;
 import com.ssac.notice.service.NoticeService;
+import com.ssac.schedule.service.ScheduleService;
 import com.ssac.team.dto.MyTeam;
 import com.ssac.team.service.TeamService;
 import com.ssac.user.dto.User;
@@ -47,7 +48,7 @@ public class UserController {
 	@Autowired
 	private JwtService jwtService;
 	@Autowired
-	private NoticeService noticeService;
+	private ScheduleService scheduleService;
 	
 	@ApiOperation(value = "회원가입", notes = "입력 : userid, userpw, usernickname, userteam")
 	@PostMapping("/signup")
@@ -236,11 +237,28 @@ public class UserController {
 	@GetMapping("/isCheck")
 	public ResponseEntity<?> ischeck() throws Exception {
 		try {
+			System.out.println("이메일 중복체크");
 			List<String> users = userService.getAllUser();
 			return new ResponseEntity<>(users, HttpStatus.OK);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		return new ResponseEntity<>("fail", HttpStatus.OK);
+	}
+	
+	@ApiOperation(value = "구독 포인트 증가", notes = "입력 : 포인트 받을 사람 id (userid)")
+	@GetMapping("/subscribe")
+	public ResponseEntity<?> getSubscribe(@RequestParam String userid) throws Exception {
+		try {
+			System.out.println("구독 "+userid);
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			map.put("userid", userid);
+			map.put("point", 100);
+			scheduleService.getPoint(map);
+			return new ResponseEntity<>("success", HttpStatus.OK);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity<>("fail", HttpStatus.NO_CONTENT);
 	}
 }
