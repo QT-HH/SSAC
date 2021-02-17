@@ -99,8 +99,8 @@ public class UserController {
 			resultMap.put("userid", user.getId());
 			resultMap.put("usernickname", user.getNickname());
 			resultMap.put("point", user.getPoint());
-			Image image = imageService.profileFilenameToBlob(user.getProfile());
-			resultMap.put("profile", image.getBlob());
+//			Image image = imageService.profileFilenameToBlob(user.getProfile());
+//			resultMap.put("profile", image.getBlob());
 			List<String> following = userService.getFollowingList(user.getId());
 			List<String> follower = userService.getFollowerList(user.getId());
 			resultMap.put("following", following);
