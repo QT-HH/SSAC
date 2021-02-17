@@ -1,18 +1,12 @@
 package com.ssac.image.service;
 
 import org.apache.commons.io.IOUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ssac.image.dto.Image;
-import com.ssac.mappers.ImageMapper;
-import com.ssac.team.dto.Team;
-import com.ssac.team.service.TeamService;
 
-import javax.imageio.ImageIO;
 import java.io.*;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Service

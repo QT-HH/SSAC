@@ -23,4 +23,5 @@ public interface NewsFeedMapper {
 	public int insertComment(NewsFeedComment comment) throws Exception;
 	public int updateComment(NewsFeedComment comment) throws Exception;
 	public int deleteComment(int no) throws Exception;
+	public NewsFeed selectNewsFeedByNo(int no) throws Exception;
 }

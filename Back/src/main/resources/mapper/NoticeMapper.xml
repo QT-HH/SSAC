@@ -3,6 +3,15 @@
 
 <mapper namespace="com.ssac.mappers.NoticeMapper">
 	<select id="selectNotice" parameterType="String" resultType="com.ssac.notice.dto.Notice">
-		
+		select *
+		from notice
+		where id = #{userid}
+		order by regtime desc
+		limit 10
 	</select>
+	
+	<insert id="insertNotice" parameterType="com.ssac.notice.dto.Notice">
+		insert into notice (id, content)
+		values (#{id}, #{content})
+	</insert>
 </mapper>

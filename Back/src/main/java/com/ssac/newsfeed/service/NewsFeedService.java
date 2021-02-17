@@ -34,4 +34,6 @@ public interface NewsFeedService {
 
 	int removeNewsFeedComment(int no) throws Exception;
 
+	NewsFeed getNewsFeedByNo(int no) throws Exception;
+
 }

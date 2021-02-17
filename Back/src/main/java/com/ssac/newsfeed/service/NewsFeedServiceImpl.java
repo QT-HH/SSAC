@@ -79,4 +79,9 @@ public class NewsFeedServiceImpl implements NewsFeedService {
 	public int removeNewsFeedComment(int no) throws Exception {
 		return mapper.deleteComment(no);
 	}
+	
+	@Override
+	public NewsFeed getNewsFeedByNo(int no) throws Exception {
+		return mapper.selectNewsFeedByNo(no);
+	}
 }

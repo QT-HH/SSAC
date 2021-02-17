@@ -16,6 +16,12 @@
 		limit 10;
 	</select>
 	
+	<select id="selectNewsFeedByNo" parameterType="int" resultType="com.ssac.newsfeed.dto.NewsFeed">
+		select *
+		from newsfeed
+		where no = #{no}
+	</select>
+	
 	<insert id="insertNewsFeed" parameterType="com.ssac.newsfeed.dto.NewsFeed">
 		insert into newsfeed (id, content, imagename)
 		values (#{id}, #{content}, #{imagename})

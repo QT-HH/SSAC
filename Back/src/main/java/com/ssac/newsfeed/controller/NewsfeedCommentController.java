@@ -21,8 +21,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ssac.image.service.ImageService;
+import com.ssac.newsfeed.dto.NewsFeed;
 import com.ssac.newsfeed.dto.NewsFeedComment;
 import com.ssac.newsfeed.service.NewsFeedService;
+import com.ssac.notice.dto.Notice;
+import com.ssac.notice.service.NoticeService;
 import com.ssac.user.dto.User;
 import com.ssac.user.service.UserService;
 
@@ -38,6 +41,8 @@ public class NewsfeedCommentController {
 	private UserService userService;
 	@Autowired
 	private ImageService imageService;
+	@Autowired
+	private NoticeService noticeService;
 	
 	@ApiOperation(value = "뉴스피드 댓글 조회", notes = "입력 : 게시글번호(no)")
 	@GetMapping("/commentList")
@@ -86,6 +91,14 @@ public class NewsfeedCommentController {
 			nfcomment.setFeed_no((int)feed_no);
 			nfcomment.setComment(comment);
 			newsfeedService.writeNewsFeedComment(nfcomment);
+			NewsFeed newsfeed = newsfeedService.getNewsFeedByNo((int)feed_no);
+			if(!newsfeed.getId().equals(userid)) {
+				Notice notice = new Notice();
+				notice.setId(newsfeed.getId());
+				User user = userService.findUser(new User(userid));
+				notice.setContent(user.getNickname()+"님이 게시글에 댓글을 달았습니다.");
+				noticeService.writeNotice(notice);
+			}
 			return new ResponseEntity<String>("success", HttpStatus.OK);
 		} catch(Exception e) {
 			e.printStackTrace();

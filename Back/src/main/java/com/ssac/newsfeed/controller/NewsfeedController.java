@@ -25,6 +25,8 @@ import com.ssac.image.service.ImageService;
 import com.ssac.newsfeed.dto.NewsFeed;
 import com.ssac.newsfeed.dto.NewsFeedLike;
 import com.ssac.newsfeed.service.NewsFeedService;
+import com.ssac.notice.dto.Notice;
+import com.ssac.notice.service.NoticeService;
 import com.ssac.user.dto.User;
 import com.ssac.user.service.UserService;
 
@@ -40,6 +42,8 @@ public class NewsfeedController {
 	private ImageService imageService;
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private NoticeService noticeService;
 	
 	@ApiOperation(value = "뉴스피드 탭에서 리스트 조회 (팔로우된 친구 피드 포함 10개)", notes = "입력 : userid")
 	@GetMapping("/newsFeedList")
@@ -198,6 +202,14 @@ public class NewsfeedController {
 			like.setLike_id(userid);
 			like.setFeed_no((int)no);
 			newsfeedService.writeNewsFeedLike(like);
+			NewsFeed newsfeed = newsfeedService.getNewsFeedByNo((int)no);
+			if(!newsfeed.getId().equals(userid)) {
+				Notice notice = new Notice();
+				notice.setId(newsfeed.getId());
+				User user = userService.findUser(new User(userid));
+				notice.setContent(user.getNickname()+"님이 게시글에 좋아요를 눌렀습니다.");
+				noticeService.writeNotice(notice);
+			}
 			return new ResponseEntity<String>("success", HttpStatus.OK); 
 		} catch(Exception e) {
 			e.printStackTrace();
