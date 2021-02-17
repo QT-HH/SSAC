@@ -125,7 +125,8 @@
 
 <script>
 import { mapState } from 'vuex'
-import axios from 'axios'
+import {modifyNickname} from '@/api/profile/profile.js'
+// import axios from 'axios'
 
 export default {
     name: 'ProfileEdit',
@@ -148,22 +149,27 @@ export default {
       ])
     },
     methods:{
-      async upload() {
-        var fd = new FormData();
-        fd.append('files', this.files)
-        await axios.post('http://localhost:8080/profile/edit',
-              fd, {
-                headers: {
-                  'Content-Type': 'multipart/form-data'
-                }
-              }
-            ).then( response => {
-              console.log('SUCCESS!!');
-              console.log(response.data)
-            })
-            .catch(function () {
-              console.log('FAILURE!!');
-            });
+      upload() {
+      console.log("Hello, Upload")
+      console.log(this.files)
+      // async upload() {
+      //   var fd = new FormData();
+      //   fd.append('files', this.files)
+      //   await axios.post('http://localhost:8080/profile/edit',
+      //         fd, {
+      //           headers: {
+      //             'Content-Type': 'multipart/form-data'
+      //           }
+      //         }
+      //       ).then( response => {
+      //         console.log('SUCCESS!!');
+      //         console.log(response.data)
+      //         console.log(this.files);
+      //       })
+      //       .catch(function () {
+      //         console.log('FAILURE!!');
+      //         console.log(this.files);
+      //       });
       },
       gotoProfile() {
         if (this.$route.path !== "/profile") {
@@ -174,12 +180,19 @@ export default {
         this.$router.push({name:"Article"})
       },
       usernickname() {
-        const nickname = this.nickname
-        const introduce = this.introduce
-        console.log(nickname);
-        console.log(introduce);
-        this.$store.dispatch('usernickname', {nickname,introduce})
-        this.$router.push({name:"Article"})
+        let para = {
+            userid: this.$store.state.user.useremail,
+            introduce: this.introduce,
+            newnickname: this.nickname
+        }
+        modifyNickname (
+          para,
+          (response) => {
+            console.log(response);
+          },
+          (error) => {
+            console.log(error)
+          });
       }
     }
 }
