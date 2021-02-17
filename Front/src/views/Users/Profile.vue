@@ -10,7 +10,7 @@
       >
         <v-row>
           <v-col cols="3">
-            <v-btn icon class="mr-5" @click="gotoProfileEdit">
+            <v-btn icon class="mr-5" @click="doFollow">
               <v-icon>mdi-account-plus</v-icon>
             </v-btn>
           </v-col>
@@ -162,6 +162,7 @@
 
 <script>
 // import { mapState } from 'vuex'
+import {doFollow} from '@/api/profile/profile.js'
 import axios from 'axios'
 
 export default {
@@ -174,6 +175,7 @@ export default {
   data: function() {
     return {
       following: [],
+      userid: this.$store.state.user.userid,
       nickname: '',
       useremail: '',
       point: '',
@@ -205,7 +207,16 @@ export default {
         this.$router.push({name:"ProfileEdit"})
       }
     },
-    
+    doFollow() {
+      let para = {
+        userid: this.useremail,
+        follow_id: this.useremail
+
+      }
+      doFollow (
+        para,
+      )
+    }
   },
 
 
@@ -214,25 +225,18 @@ export default {
     //  articles: 'articles',
     //  user: 'user'
   //  })
-    userid: function () {
-      return this.$store.state.user.email
-    }
 
   },
   created() {
     console.log('created')
 
-    const params = {
-      params: {
-        userid: this.userid,
-      }
-    }
 
-    axios.get(`http://i4d102.p.ssafy.io:9000/ssac/user/userSelect/`, params)
+    axios.get(`http://i4d102.p.ssafy.io:9000/ssac/user/userSelect?userid=${this.userid}`)
       .then(response => {
         console.log(response.data)
         this.nickname = response.data.usernickname
         this.useremail = response.data.userid
+        this.$store.state.user.useremail = response.data.userid
         this.point = response.data.point
         this.follower = response.data.follower
         this.following = response.data.following

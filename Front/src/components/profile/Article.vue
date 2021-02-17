@@ -68,6 +68,7 @@ export default {
   data: function() {
     return {
       articles: [],
+      userid: this.$store.state.user.userid,
       user: '',
       following: [],
       nickname: '',
@@ -80,10 +81,10 @@ export default {
     // ...mapState({
     //  articles: 'articles',
     //  user: 'user'
-  //  })
-    userid: function () {
-      return this.$store.state.user.email
-    }
+  // //  })
+  //   userid: function () {
+  //     return this.$store.state.user.email
+  //   }
 
   },
   created() {
@@ -107,13 +108,9 @@ export default {
 
 
     
-    const params2 = {
-      params2: {
-        userid: this.userid,
-      }
-    }
 
-    axios.get(`http://i4d102.p.ssafy.io:9000/ssac/user/userSelect/`, params2)
+
+    axios.get(`http://i4d102.p.ssafy.io:9000/ssac/user/userSelect?userid=${this.userid}`)
       .then(response => {
         console.log(response.data)
         this.nickname = response.data.usernickname

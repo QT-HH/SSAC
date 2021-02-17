@@ -108,7 +108,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+// import { mapState } from 'vuex'
 import { listTeams } from "@/api/profile/newteam.js"
 
 export default {
@@ -118,13 +118,10 @@ export default {
       name: '',
       cat: 0,
       query: "",
+      teams:[]
     }
   },
-  computed: {
-    ...mapState([
-      'teams'
-    ]),
-  },
+  
   created() {
     listTeams(
       (response) => {
