@@ -34,7 +34,7 @@
           <v-img
             class="elevation-6"
             alt=""
-            :src="user.profile"
+            :src="changeBlob(user.profile)"
           ></v-img>
         </v-list-item-avatar>
 
@@ -113,13 +113,14 @@
               <v-img
                 class="elevation-6"
                 alt=""
-                :src="feed.profile"
+                :src="changeBlob(feed.profile)"
               ></v-img>
             </v-list-item-avatar>
 
             <v-list-item-content class="ml-1" justify="center">
               <v-list-item-title class="headline mb-2">{{ feed.nickname }}</v-list-item-title>
-              <v-list-item-subtitle>{{ feed.regtime }}</v-list-item-subtitle>
+              <v-list-item-subtitle>{{ timeForToday(feed.regtime) }}</v-list-item-subtitle>
+              <!-- <v-list-item-subtitle>{{ feed.regtime }}</v-list-item-subtitle> -->
             </v-list-item-content>
             <v-icon 
               v-if="feed.id === user.userid"
@@ -212,7 +213,7 @@
             <v-list two-line>
               <v-list-item>
                 <v-list-item-avatar>
-                  <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
+                  <v-img :src="changeBlob(selected.profile)"></v-img>
                 </v-list-item-avatar>
                 <v-list-item-content>
                   <v-list-item-title>{{selected.nickname}}</v-list-item-title>
@@ -239,13 +240,13 @@
                   :key="idx"
                   small
                 >
-                  <!-- <template v-slot:icon>
+                  <template v-slot:icon>
                     <v-avatar>
-                      <img :src="comment.src">
+                      <img :src="changeBlob(comment.profile)">
                     </v-avatar>
-                  </template> -->
+                  </template>
                   <v-card class="elevation-1">
-                    <v-card-text><strong>{{ comment.nickname }}</strong> @{{ comment.regtime }}</v-card-text>
+                    <v-card-text><strong>{{ comment.nickname }}</strong> @{{ timeForToday(comment.regtime) }}</v-card-text>
                     <v-card-text class="font-weight-normal" v-show="!editCommBool[idx]">
                       {{ comment.comment }} 
                         <v-icon
@@ -281,7 +282,9 @@
                 <v-row>
                   <v-col cols=2 class="ml-7">
                     <v-list-item-avatar>
-                      <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
+                      <v-img 
+                        :src="changeBlob(user.profile)"
+                        ></v-img>
                     </v-list-item-avatar>
                   </v-col>
                   <v-col cols=6 class="px-0">
@@ -292,7 +295,7 @@
                     ></v-text-field>
                   </v-col>
                   <v-col cols=3>
-                    <v-btn @click="addNewComment(selected.no)">
+                    <v-btn @click="addNewComment(selected.no,selidx)">
                       입력
                     </v-btn>
                   </v-col>
@@ -461,7 +464,7 @@ export default {
     changeShow(idx) {
       this.$set(this.show, idx, !this.show[idx])
     },
-    addNewComment(no) {
+    addNewComment(no,selidx) {
       let comm = this.newComment
       if (comm.length === 0){
         alert("아무것도 입력하지 않았습니당")
@@ -476,8 +479,10 @@ export default {
               "nickname":this.user.nickname,
               "id":this.user.userid,
               "comment":comm,
-              "profile":'',
-            })
+              "profile":this.user.profile,
+            }
+            )
+            this.feeds[selidx].comment += 1
           },
           (err) => {
             console.log(err)
@@ -554,6 +559,7 @@ export default {
     changeModal(feed) {
       this.modal=!this.modal
       this.selected = feed
+      this.selidx = this.feeds.indexOf(feed)
       // this.selected.no = feed.no
       // this.selected.id = feed.id
       // this.selected.regtime = feed.regtime
@@ -715,18 +721,21 @@ export default {
       this.files = []
     },
     changeBlob(data){
-
-      const byteCharacters = window.atob(data)
-      const byteNumbers = new Array(byteCharacters.length)
-      for (let i = 0; i< byteCharacters.length; i++){
-        byteNumbers[i] = byteCharacters.charCodeAt(i);
+      if (data.length !==0){
+        const byteCharacters = window.atob(data)
+        const byteNumbers = new Array(byteCharacters.length)
+        for (let i = 0; i< byteCharacters.length; i++){
+          byteNumbers[i] = byteCharacters.charCodeAt(i);
+        }
+  
+        const byteArray = new Uint8Array(byteNumbers);
+        const blob = new Blob([byteArray],{type:"image/jpg"})
+        const url = window.URL.createObjectURL(blob)
+  
+        return url
+      } else {
+        return ""
       }
-
-      const byteArray = new Uint8Array(byteNumbers);
-      const blob = new Blob([byteArray],{type:"image/jpg"})
-      const url = window.URL.createObjectURL(blob)
-
-      return url
     },
     isLike(like){
       if(like.includes(this.user.userid)){
@@ -734,7 +743,29 @@ export default {
       } else {
         return ""
       }
-    }
+    },
+    timeForToday(value) {
+      const today = new Date();
+      const timeValue = new Date(value);
+
+      const betweenTime = Math.floor((today.getTime() - timeValue.getTime()) / 1000 / 60);
+      if (betweenTime < 1 || !betweenTime) return '방금전';
+      if (betweenTime < 60) {
+          return `${betweenTime}분전`;
+      }
+
+      const betweenTimeHour = Math.floor(betweenTime / 60);
+      if (betweenTimeHour < 24) {
+          return `${betweenTimeHour}시간전`;
+      }
+
+      const betweenTimeDay = Math.floor(betweenTime / 60 / 24);
+      if (betweenTimeDay < 365) {
+          return `${betweenTimeDay}일전`;
+      }
+
+      return `${Math.floor(betweenTimeDay / 365)}년전`;
+ }
 
   },
 }
