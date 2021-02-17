@@ -15,9 +15,6 @@
           <h2 align="center" justify="center">Search</h2>
         </v-col>
         <v-col cols="3">
-          <v-btn icon class="ml-5">
-            <v-icon> mdi-magnify </v-icon>
-          </v-btn>
         </v-col>
       </v-row>
       <!-- <v-btn icon>
