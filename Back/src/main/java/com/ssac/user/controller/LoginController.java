@@ -54,6 +54,7 @@ public class LoginController {
 				resultMap.put("point", check.getPoint());
 				resultMap.put("profile", imageService.profileFilenameToBlob(check.getProfile()).getBlob());
 				resultMap.put("intro", check.getIntro());
+				resultMap.put("grade", check.getGrade());
 				resultMap.put("message", "success");
 				return new ResponseEntity<Map<String, Object>>(resultMap, HttpStatus.OK);
 			}

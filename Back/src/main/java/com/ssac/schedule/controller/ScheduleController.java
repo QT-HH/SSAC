@@ -123,22 +123,26 @@ public class ScheduleController {
 	@ApiOperation(value = "당일 경기 제목, 팔로우 목록 불러오기", notes = "입력 : userid")
 	@GetMapping("/chatList")
 	public ResponseEntity<?> getTeamList(@RequestParam String userid) throws Exception {
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		Date time = new Date();
-		// String today = format.format(time);
-		String today = "2021-02-17";
-		List<String> todayGame = scheduleService.getTodayGame(today);
-		List<String> following = userService.getFollowingList(userid);
-		List<User> follow = new ArrayList<User>();
-		System.out.println(today);
-		for(int i=0; i<following.size(); i++) {
-			User friend = userService.findUser(new User(following.get(i)));
-			follow.add(friend);
+		try {
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			Date time = new Date();
+			String today = format.format(time);
+			List<String> todayGame = scheduleService.getTodayGame(today);
+			List<String> following = userService.getFollowingList(userid);
+			List<User> follow = new ArrayList<User>();
+			System.out.println(today);
+			for(int i=0; i<following.size(); i++) {
+				User friend = userService.findUser(new User(following.get(i)));
+				follow.add(friend);
+			}
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("game", todayGame);
+			map.put("follow", follow);
+			return new ResponseEntity<>(map, HttpStatus.OK);
+		} catch(Exception e) {
+			e.printStackTrace();
 		}
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("game", todayGame);
-		map.put("follow", follow);
-		return new ResponseEntity<>(map, HttpStatus.OK);
+		return new ResponseEntity<>("fail", HttpStatus.NO_CONTENT);
 	}
 	
 	@ApiOperation(value = "배팅하기", notes = "입력 : userid, 경기번호(schedule_id), 배팅정보(bet_num)-1:1팀, 2:2팀, 3:무승부")

@@ -14,6 +14,7 @@ public class User {
 	private int point;
 	private String profile;
 	private String intro;
+	private int grade;
 	
 	public User(String id) {
 		this.id = id;

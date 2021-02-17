@@ -92,6 +92,7 @@ public class UserController {
 					resultMap.put("point", temp.getPoint());
 					resultMap.put("profile", imageService.profileFilenameToBlob(temp.getProfile()).getBlob());
 					resultMap.put("intro", temp.getIntro());
+					resultMap.put("grade", temp.getGrade());
 					return new ResponseEntity<>(resultMap, HttpStatus.OK);
 				}
 			}
@@ -115,6 +116,7 @@ public class UserController {
 			resultMap.put("point", user.getPoint());
 			resultMap.put("profile", imageService.profileFilenameToBlob(user.getProfile()).getBlob());
 			resultMap.put("intro", user.getIntro());
+			resultMap.put("grade", user.getGrade());
 			List<String> following = userService.getFollowingList(user.getId());
 			List<String> follower = userService.getFollowerList(user.getId());
 			resultMap.put("following", following);

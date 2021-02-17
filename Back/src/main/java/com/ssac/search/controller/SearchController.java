@@ -37,26 +37,31 @@ public class SearchController {
 	@ApiOperation(value = "친구, 팀 검색", notes = "입력 : 유저이메일(userid), 검색내용(search)")
 	@GetMapping("/search")
 	public ResponseEntity<?> getSearchResult(@RequestParam String userid, @RequestParam String search) throws Exception {
-		List<User> temp = userService.getSearchUser(search);
-		List<Map<String,Object>> users = new ArrayList<Map<String,Object>>();
-		int size = temp.size()>5?5:temp.size();
-		for(int i=0; i<size; i++) {
-			Map<String, Object> user = new HashMap<String, Object>();
-			user.put("id", temp.get(i).getId());
-			user.put("nickname", temp.get(i).getNickname());
-			user.put("profile", imageService.profileFilenameToBlob(temp.get(i).getProfile()).getBlob());
-			users.add(user);
+		try {
+			List<User> temp = userService.getSearchUser(search);
+			List<Map<String,Object>> users = new ArrayList<Map<String,Object>>();
+			int size = temp.size()>5?5:temp.size();
+			for(int i=0; i<size; i++) {
+				Map<String, Object> user = new HashMap<String, Object>();
+				user.put("id", temp.get(i).getId());
+				user.put("nickname", temp.get(i).getNickname());
+				user.put("profile", imageService.profileFilenameToBlob(temp.get(i).getProfile()).getBlob());
+				users.add(user);
+			}
+			System.out.println("검색 userid : "+userid+", search : "+search);
+			HashMap<String, String> hmap = new HashMap<String, String>();
+			hmap.put("userid", userid);
+			hmap.put("search", search);
+			List<Team> teams = teamService.searchTeam(hmap);
+			Map<String, Object> result = new HashMap<String, Object>();
+			result.put("users", users);
+			result.put("teams", teams);
+			result.put("searched", true);
+			return new ResponseEntity<>(result, HttpStatus.OK);
+		} catch(Exception e) {
+			e.printStackTrace();
 		}
-		System.out.println("검색 userid : "+userid+", search : "+search);
-		HashMap<String, String> hmap = new HashMap<String, String>();
-		hmap.put("userid", userid);
-		hmap.put("search", search);
-		List<Team> teams = teamService.searchTeam(hmap);
-		Map<String, Object> result = new HashMap<String, Object>();
-		result.put("users", users);
-		result.put("teams", teams);
-		result.put("searched", true);
-		return new ResponseEntity<>(result, HttpStatus.OK);
+		return new ResponseEntity<>("fail", HttpStatus.NO_CONTENT);
 	}
 	
 	@ApiOperation(value = "팀추천", notes = "입력 : 유저이메일(userid), 설문결과(surveyAnswers)")
@@ -87,22 +92,27 @@ public class SearchController {
 	@ApiOperation(value = "친구의 팀 조회", notes = "입력 : 유저이메일(userid)")
 	@GetMapping("/friteams")
 	public ResponseEntity<?> getFriendTeams(@RequestParam String userid) throws Exception {
-		List<HashMap<String, Object>> teams = teamService.getFriendTeams(userid);
-		List<HashMap<String, Object>> result = new ArrayList<HashMap<String,Object>>();
-		System.out.println("친구팀 조회 : "+userid);
-		for(int i=0; i<teams.size(); i++) {
-			HashMap<String, Object> map = new HashMap<String, Object>();
-			int no = (int) teams.get(i).get("team_no");
-			String id = (String) teams.get(i).get("id");
-			Team team = teamService.getTeam(no);
-			User user = userService.findUser(new User(id));
-			map.put("logo", team.getLogo());
-			map.put("name", team.getName());
-			map.put("no", no);
-			map.put("friend_name", user.getNickname());
-			map.put("people", (long) teams.get(i).get("count"));
-			result.add(map);
+		try {
+			List<HashMap<String, Object>> teams = teamService.getFriendTeams(userid);
+			List<HashMap<String, Object>> result = new ArrayList<HashMap<String,Object>>();
+			System.out.println("친구팀 조회 : "+userid);
+			for(int i=0; i<teams.size(); i++) {
+				HashMap<String, Object> map = new HashMap<String, Object>();
+				int no = (int) teams.get(i).get("team_no");
+				String id = (String) teams.get(i).get("id");
+				Team team = teamService.getTeam(no);
+				User user = userService.findUser(new User(id));
+				map.put("logo", team.getLogo());
+				map.put("name", team.getName());
+				map.put("no", no);
+				map.put("friend_name", user.getNickname());
+				map.put("people", (long) teams.get(i).get("count"));
+				result.add(map);
+			}
+			return new ResponseEntity<>(result, HttpStatus.OK);
+		} catch(Exception e) {
+			e.printStackTrace();
 		}
-		return new ResponseEntity<>(result, HttpStatus.OK);
+		return new ResponseEntity<>("fail", HttpStatus.NO_CONTENT);
 	}
 }

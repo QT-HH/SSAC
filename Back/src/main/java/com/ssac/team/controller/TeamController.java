@@ -50,21 +50,26 @@ public class TeamController {
 		// 내팀 정보 불러오기
 		// 입력 : userid
 		// 출력 : 나의 팀
-		List<MyTeam> myteams = teamService.listMyTeam(userid);
-		List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
-		for(int i=0; i<myteams.size(); i++) {
-			Team team = teamService.getTeam(myteams.get(i).getTeam_no());
-			Map<String, Object> resultMap = new HashMap<>();
-			resultMap.put("no", myteams.get(i).getNo());
-			resultMap.put("id", myteams.get(i).getId());
-			resultMap.put("team_no", myteams.get(i).getTeam_no());
-			resultMap.put("name", myteams.get(i).getName());
-			resultMap.put("event_no", team.getEvent_no());
-			resultMap.put("logo", team.getLogo());
-			resultMap.put("count", team.getCount());
-			list.add(resultMap);
+		try {
+			List<MyTeam> myteams = teamService.listMyTeam(userid);
+			List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
+			for(int i=0; i<myteams.size(); i++) {
+				Team team = teamService.getTeam(myteams.get(i).getTeam_no());
+				Map<String, Object> resultMap = new HashMap<>();
+				resultMap.put("no", myteams.get(i).getNo());
+				resultMap.put("id", myteams.get(i).getId());
+				resultMap.put("team_no", myteams.get(i).getTeam_no());
+				resultMap.put("name", myteams.get(i).getName());
+				resultMap.put("event_no", team.getEvent_no());
+				resultMap.put("logo", team.getLogo());
+				resultMap.put("count", team.getCount());
+				list.add(resultMap);
+			}
+			return new ResponseEntity<>(list, HttpStatus.OK);
+		} catch(Exception e) {
+			e.printStackTrace();
 		}
-		return new ResponseEntity<>(list, HttpStatus.OK);
+		return new ResponseEntity<>("fail", HttpStatus.NO_CONTENT);
 	}
 	
 	@ApiOperation(value = "마이 팀 추가", notes = "입력 : userid, 팀고유번호(team_no)")
