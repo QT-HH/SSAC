@@ -138,12 +138,12 @@ public class NewsfeedController {
 		JSONObject jsonObj = null;
 		try {
 			jsonObj = (JSONObject) jsonParse.parse(js);
-			int no = (int) jsonObj.get("no");
+			long no = (long) jsonObj.get("no");
 			String content = (String) jsonObj.get("content");
 			String filename = (String) jsonObj.get("filename");
 			System.out.println("뉴스피드 수정 : "+no+" "+filename);
 			NewsFeed newsfeed = new NewsFeed();
-			newsfeed.setNo(no);
+			newsfeed.setNo((int)no);
 			newsfeed.setContent(content);
 			newsfeed.setImagename(filename);
 			newsfeedService.modifyNewsFeed(newsfeed);
