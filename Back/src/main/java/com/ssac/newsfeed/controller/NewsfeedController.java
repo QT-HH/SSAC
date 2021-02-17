@@ -61,7 +61,7 @@ public class NewsfeedController {
 				map.put("content", newsfeeds.get(i).getContent());
 				map.put("regtime", newsfeeds.get(i).getRegtime());
 				Image image = imageService.filenameToBlob(newsfeeds.get(i).getImagename());
-				if(image != null) map.put("image", image.getImage());
+				if(image != null) map.put("image", image);
 				else map.put("image", "");
 				List<NewsFeedLike> like = newsfeedService.listNewsFeedLike(newsfeeds.get(i).getNo());
 				map.put("like", like);

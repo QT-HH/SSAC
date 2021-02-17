@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ssac.image.dto.Image;
+import com.ssac.image.service.ImageService;
 import com.ssac.team.dto.Team;
 import com.ssac.team.service.TeamService;
 import com.ssac.user.dto.User;
@@ -30,18 +32,21 @@ public class SearchController {
 	private UserService userService;
 	@Autowired
 	private TeamService teamService;
+	@Autowired
+	private ImageService imageService;
 	
 	@ApiOperation(value = "친구, 팀 검색", notes = "입력 : 유저이메일(userid), 검색내용(search)")
 	@GetMapping("/search")
 	public ResponseEntity<?> getSearchResult(@RequestParam String userid, @RequestParam String search) throws Exception {
 		List<User> temp = userService.getSearchUser(search);
-		List<Map<String,String>> users = new ArrayList<Map<String,String>>();
+		List<Map<String,Object>> users = new ArrayList<Map<String,Object>>();
 		int size = temp.size()>5?5:temp.size();
 		for(int i=0; i<size; i++) {
-			Map<String, String> user = new HashMap<String, String>();
+			Map<String, Object> user = new HashMap<String, Object>();
 			user.put("id", temp.get(i).getId());
 			user.put("nickname", temp.get(i).getNickname());
-			user.put("profile", temp.get(i).getProfile());
+			Image image = imageService.filenameToBlob(temp.get(i).getProfile());
+			user.put("profile", image.getImage());
 			users.add(user);
 		}
 		System.out.println("검색 userid : "+userid+", search : "+search);
