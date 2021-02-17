@@ -1,14 +1,13 @@
 <template>
   <div class="mt-7 ml-2 mr-2 mb-3">
     <v-sheet>
-      <div v-if="filterCarousel2(today,'15:00').length > 0">
-        <v-row class="mr-1" justify="end">
+      <div v-if="todayEvents.length > 0">
+        <v-row class="mr-1" justify="space-between">
+          <h3 class="ml-5 grey--text text--darken-2" style="font-weight: bolder">Today's</h3>
           <v-btn icon @click="setToday" color="#8187ff">
             <v-icon> mdi-calendar-refresh </v-icon>
           </v-btn>
         </v-row>
-
-        <h3 class="ml-2 mb-0 grey--text text--darken-2" style="font-weight: bolder" >Today's</h3>
         <h2 class="ml-2 mb-2">Sports Matches</h2>
 
       <v-carousel
@@ -20,7 +19,7 @@
         hide-delimiters        
       >
         <v-carousel-item
-          v-for="(event, i) in filterCarousel2(today,'15:00')"
+          v-for="(event, i) in todayEvents"
           :key="i"
         >
           <v-sheet 
@@ -34,15 +33,15 @@
                   size="172"
                   tile
               >
-                <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"></v-img>
-                <!-- <v-img :src="getIMage(event.team1_id)"></v-img> -->
+                <!-- <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"></v-img> -->
+                <v-img :src="changeBlob(event.team1_logo)"></v-img>
               </v-avatar>
               <v-avatar
                   size="172"
                   tile
               >
-                <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"></v-img>
-                <!-- <v-img :src="getIMage(event.team2_id)"></v-img> -->
+                <!-- <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"></v-img> -->
+                <v-img :src="changeBlob(event.team2_logo)"></v-img>
               </v-avatar>
 
               <v-card-title>
@@ -219,7 +218,7 @@
     </v-expand-transition>
 
     <!-- 팀 필터 -->
-    <v-sheet>
+    <v-sheet class="mb-3">
       <h3 class="ml-2 mb-4 grey--text text--darken-2" style="font-weight: bolder" >My teams</h3>
       <v-card class="px-5">
         <v-row>
@@ -304,7 +303,7 @@
 </template>
 
 <script>
-import { getTeamImage, getMyTeam, getSchedule, pmScore, betGame, endBet, endGame, calculPts } from "@/api/tabs/sports.js"
+import { getTodayEventImage, getMyTeam, getSchedule, pmScore, betGame, endBet, endGame, calculPts } from "@/api/tabs/sports.js"
 // 
   export default {
     name:"Schedule",
@@ -439,6 +438,7 @@ import { getTeamImage, getMyTeam, getSchedule, pmScore, betGame, endBet, endGame
       events:[],
       today:'',
       hm:'',
+      todayEvents: [],
     }),
     mounted () { 
       this.$refs.calendar.checkChange()
@@ -496,6 +496,15 @@ import { getTeamImage, getMyTeam, getSchedule, pmScore, betGame, endBet, endGame
           console.log(err)
         }
       )
+      getTodayEventImage(
+        (res) => {
+          this.todayEvents = res.data
+        },
+        (err) => {
+          console.log(err)
+        }
+      )
+
     },
     methods: {
       toggle () {
@@ -749,22 +758,26 @@ import { getTeamImage, getMyTeam, getSchedule, pmScore, betGame, endBet, endGame
           return myteams.includes(ev.team1_id) || myteams.includes(ev.team2_id)
         })
       },
-      filterCarousel : function(today,hm) {
-        let items = this.filterDaily(today)
-        // console.log(2)
-        // console.log(items)
-        return items.filter(function(ev){
-          return ev.start_time > hm
-        })
-      },
-      filterCarousel2 : function(today,hm) {
-        let items = this.filterCarousel(today,hm)
-        // console.log(1)
-        // console.log(items)
-        return items.sort(function(a,b){
-          return a.start_time - b.start_time
-        })
-      },
+      // filterCarousel : function(today,hm) {
+      //   let items = this.filterDaily(today)
+      //   for(let idx = 0; idx < items.length; idx++) {
+      //     this.getImage(items[idx])
+      //   }
+      //   // console.log(items)
+      //   // console.log(2)
+      //   // console.log(items)
+      //   return items.filter(function(ev){
+      //     return ev.start_time > hm
+      //   })
+      // },
+      // filterCarousel2 : function(today,hm) {
+      //   let items = this.filterCarousel(today,hm)
+      //   // console.log(1)
+      //   console.log(items)
+      //   return items.sort(function(a,b){
+      //     return a.start_time - b.start_time
+      //   })
+      // },
       master() {
         this.mas = !this.mas
       },
@@ -781,20 +794,6 @@ import { getTeamImage, getMyTeam, getSchedule, pmScore, betGame, endBet, endGame
 
         return url
       },
-      getImage(teamno){
-        let img = ''
-        getTeamImage(
-          teamno,
-          (res) => {
-            console.log(res.data)
-            img = this.changeBlob(res.data)
-          },
-          (err) => {
-            console.log(err)
-          }
-        )
-        return img
-      }
 
     }, 
   }
