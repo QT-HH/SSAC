@@ -16,10 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Service
-public class ImageService {
-	@Autowired
-	private ImageMapper mapper;
-	
+public class ImageService {	
 	public Image addImageIntoNewsFeed(MultipartFile file) throws Exception {
 		if(file.isEmpty()) throw new Exception("파일없음");
 		// 파일이름에서 확장자부분만 때기
@@ -89,7 +86,6 @@ public class ImageService {
 	}
 	
 	public Image profileFilenameToBlob(String filename) throws Exception {
-		if(filename == null || filename.equals("")) return null;
 		String folderRoot = "/home/image/profile/";
 		InputStream imgStream = new FileInputStream(folderRoot+filename);
 	    byte[] imgByteArray = IOUtils.toByteArray(imgStream);

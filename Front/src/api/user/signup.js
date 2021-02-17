@@ -18,6 +18,14 @@ function signup(newuser, success, fail) {
     .catch(fail);
 }
 
+function getUser(userid, success, fail) {
+
+  instance
+    .get(`http://i4d102.p.ssafy.io:9000/ssac/user/userSelect?userid=${userid}`)
+    .then(success)
+    .catch(fail);
+}
+
 
 // async function getteams(success, fail) {
 //   instance.defaults.headers["access-token"] = window.localStorage.getItem(
@@ -40,4 +48,4 @@ function signup(newuser, success, fail) {
 //     .catch(fail);
 // }
 
-export { signup };
+export { signup, getUser };

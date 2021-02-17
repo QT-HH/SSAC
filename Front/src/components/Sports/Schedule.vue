@@ -1,20 +1,26 @@
 <template>
-  <div class="mt-10 ml-2 mr-2 mb-3">
+  <div class="mt-7 ml-2 mr-2 mb-3">
     <v-sheet>
+      <div v-if="filterCarousel2(today,'15:00').length > 0">
+        <v-row class="mr-1" justify="end">
+          <v-btn icon @click="setToday" color="#8187ff">
+            <v-icon> mdi-calendar-refresh </v-icon>
+          </v-btn>
+        </v-row>
+
+        <h3 class="ml-2 mb-0 grey--text text--darken-2" style="font-weight: bolder" >Today's</h3>
+        <h2 class="ml-2 mb-2">Sports Matches</h2>
+
       <v-carousel
         cycle
         height="300"
         hide-delimiter-background
         show-arrows-on-hover
         light
-        hide-delimiters
-        v-if="filterCarousel2(today,hm).length > 0"
+        hide-delimiters        
       >
-        <h1 class="ml-5">
-          오늘의 경기
-        </h1>
         <v-carousel-item
-          v-for="(event, i) in filterCarousel2(today,hm)"
+          v-for="(event, i) in filterCarousel2(today,'15:00')"
           :key="i"
         >
           <v-sheet 
@@ -29,12 +35,14 @@
                   tile
               >
                 <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"></v-img>
+                <!-- <v-img :src="getIMage(event.team1_id)"></v-img> -->
               </v-avatar>
               <v-avatar
                   size="172"
                   tile
               >
                 <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"></v-img>
+                <!-- <v-img :src="getIMage(event.team2_id)"></v-img> -->
               </v-avatar>
 
               <v-card-title>
@@ -48,9 +56,8 @@
           </v-sheet>
         </v-carousel-item>
       </v-carousel>
-      <div v-else class="text-center">
-        <h1> 오늘은 경기가 없습니다 </h1>
       </div>
+
     </v-sheet>
     <v-expand-transition>
       <v-card
@@ -66,9 +73,6 @@
           v-for="(event, i) in filterDaily(focus)"
           :key="i"
         >
-          <!-- <v-list-item-icon>
-            <v-icon v-text="item.icon"></v-icon>
-          </v-list-item-icon> -->
           <v-list-item-content>
             <v-list-item-title class="text-center" @click="changeShow(i)">
               <v-btn
@@ -216,19 +220,20 @@
 
     <!-- 팀 필터 -->
     <v-sheet>
+      <h3 class="ml-2 mb-4 grey--text text--darken-2" style="font-weight: bolder" >My teams</h3>
       <v-card class="px-5">
-        <h3>Myteams</h3>
         <v-row>
           <v-col cols=3>
             <img @click="filterMyteam(0)" class="d-flex rounded-circle" width="60px" height="60px" src="https://mblogthumb-phinf.pstatic.net/MjAxNzAzMTVfMTE4/MDAxNDg5NTMzMTAwMjY0.m9UYu7Dt4CyJcaMMeAuIhOFP2nnXBnW5eUqx3rXZY14g.3axKiINI_FaRrOzK70_FY2qRXLulYTBkzwFIaeY8yd4g.JPEG.doghter4our/IMG_5252.jpg?type=w800" alt="Generic placeholder image">
-            전체
+            <h4 class="mt-1" justify="center" align="center">전체</h4>
           </v-col>
           <v-col cols=3 
             v-for="(myteam,idx) in myteamss"
             :key=idx
           >
             <img @click="filterMyteam(myteam.team_no)" class="d-flex rounded-circle" width="60px" height="60px" :src="changeBlob(myteam.logo)" alt="team">
-            {{teamname[myteam.team_no]}}
+            <h4 class="mt-1" justify="center" align="center">{{teamname[myteam.team_no]}}</h4>
+           
           </v-col>
         </v-row>
       </v-card>
@@ -240,19 +245,11 @@
         flat
       >
       <v-row align="center" justify="space-around">
-        <v-btn
-          outlined
-          color="grey darken-2"
-          @click="setToday"
-          small
-          class="mr-3"
-        >
-          Today
-        </v-btn>
+
         <v-btn
           icon
           @click="prev"
-          color="blue"
+          color="#8187ff"
         >
           <v-icon>mdi-chevron-left</v-icon>
         </v-btn>
@@ -262,6 +259,7 @@
         <v-btn
           icon
           @click="next"
+          color="#8187ff"
         >
           <v-icon>mdi-chevron-right</v-icon>
         </v-btn>
@@ -306,7 +304,7 @@
 </template>
 
 <script>
-import { getMyTeam, getSchedule, pmScore, betGame, endBet, endGame, calculPts } from "@/api/tabs/sports.js"
+import { getTeamImage, getMyTeam, getSchedule, pmScore, betGame, endBet, endGame, calculPts } from "@/api/tabs/sports.js"
 // 
   export default {
     name:"Schedule",
@@ -455,7 +453,20 @@ import { getMyTeam, getSchedule, pmScore, betGame, endBet, endGame, calculPts } 
         }
       )
       let now = new Date()
-      let time = `${now.getFullYear()}-${now.getMonth()+1}-${now.getDate()}`
+      let month = now.getMonth()+1
+      let date = now.getDate()
+
+      month = `${month}`
+      date = `${date}`
+      if (month.length === 1){
+        month = `0${month}`
+      }
+      if (date.length === 1){
+        date = `0${date}`
+      }
+
+      let time = `${now.getFullYear()}-${month}-${date}`
+      console.log(time)
       // let hourmin = `${now.getHours()}:${now.getMinutes()}`
       let h = now.getHours()
       let m = now.getMinutes()
@@ -470,6 +481,9 @@ import { getMyTeam, getSchedule, pmScore, betGame, endBet, endGame, calculPts } 
       this.today = time
       this.focus = time
       this.hm = `${h}:${m}`
+      console.log(this.today)
+      // console.log()
+      console.log(this.hm)
       // console.log(this.hm < '19:00')
       // this.events = this.originevents
       getMyTeam(
@@ -755,11 +769,31 @@ import { getMyTeam, getSchedule, pmScore, betGame, endBet, endGame, calculPts } 
         this.mas = !this.mas
       },
       changeBlob(data){
-        let blob = new Blob([new ArrayBuffer(data)], {type: "image/jpg"});
-        const url = window.URL.createObjectURL(blob);
-        // document.getElementsByClassName("feedimg").src = url
-        console.log(url)
+        const byteCharacters = window.atob(data)
+        const byteNumbers = new Array(byteCharacters.length)
+        for (let i = 0; i< byteCharacters.length; i++){
+          byteNumbers[i] = byteCharacters.charCodeAt(i);
+        }
+
+        const byteArray = new Uint8Array(byteNumbers);
+        const blob = new Blob([byteArray],{type:"image/jpg"})
+        const url = window.URL.createObjectURL(blob)
+
         return url
+      },
+      getImage(teamno){
+        let img = ''
+        getTeamImage(
+          teamno,
+          (res) => {
+            console.log(res.data)
+            img = this.changeBlob(res.data)
+          },
+          (err) => {
+            console.log(err)
+          }
+        )
+        return img
       }
 
     }, 
