@@ -57,10 +57,10 @@ public class NewsfeedController {
 				map.put("id", newsfeeds.get(i).getId());
 				User user = userService.findUser(new User(newsfeeds.get(i).getId()));
 				map.put("nickname", user.getNickname());
-				map.put("profile", imageService.filenameToBlob(user.getProfile()));
+				map.put("profile", imageService.profileFilenameToBlob(user.getProfile()));
 				map.put("content", newsfeeds.get(i).getContent());
 				map.put("regtime", newsfeeds.get(i).getRegtime());
-				Image image = imageService.filenameToBlob(newsfeeds.get(i).getImagename());
+				Image image = imageService.feedFilenameToBlob(newsfeeds.get(i).getImagename());
 				if(image != null) map.put("image", image);
 				else map.put("image", "");
 				List<NewsFeedLike> like = newsfeedService.listNewsFeedLike(newsfeeds.get(i).getNo());
@@ -89,8 +89,8 @@ public class NewsfeedController {
 				map.put("no", newsfeeds.get(i).getNo());
 				map.put("content", newsfeeds.get(i).getContent());
 				map.put("regtime", newsfeeds.get(i).getRegtime());
-				Image image = imageService.filenameToBlob(newsfeeds.get(i).getImagename());
-				if(image != null) map.put("image", image.getImage());
+				Image image = imageService.feedFilenameToBlob(newsfeeds.get(i).getImagename());
+				if(image != null) map.put("image", image.getBlob());
 				else map.put("image", "");
 				List<NewsFeedLike> like = newsfeedService.listNewsFeedLike(newsfeeds.get(i).getNo());
 				List<String> likeid = new ArrayList<String>();

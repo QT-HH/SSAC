@@ -42,13 +42,9 @@ public class ImageService {
 		// 폴더 닫기
 		imgStream.close();
 		// 이미지 객체에 저장
-		Image image = new Image(filename, blob);
-		// 이미지 DB에 저장
-		try {
-			mapper.insertImageIntoNewsFeed(image);
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+		Image image = new Image();
+		image.setFilename(filename);
+		image.setBlob(blob);
 		return image;
 	}
 	
@@ -74,18 +70,32 @@ public class ImageService {
 		// 폴더 닫기
 		imgStream.close();
 		// 이미지 객체에 저장
-		Image image = new Image(filename, blob);
-		// 이미지 DB에 저장
-		try {
-			mapper.insertImageIntoNewsFeed(image);
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+		Image image = new Image();
+		image.setFilename(filename);
+		image.setBlob(blob);
 		return image;
 	}
 	
-	public Image filenameToBlob(String filename) throws Exception {
-		return mapper.selectImage(filename);
+	public Image feedFilenameToBlob(String filename) throws Exception {
+		String folderRoot = "/home/image/newsfeed/";
+		InputStream imgStream = new FileInputStream(folderRoot+filename);
+	    byte[] imgByteArray = IOUtils.toByteArray(imgStream);
+	    imgStream.close();
+	    Image image = new Image();
+	    image.setFilename(filename);
+	    image.setBlob(imgByteArray);
+		return image;
+	}
+	
+	public Image profileFilenameToBlob(String filename) throws Exception {
+		String folderRoot = "/home/image/profile/";
+		InputStream imgStream = new FileInputStream(folderRoot+filename);
+	    byte[] imgByteArray = IOUtils.toByteArray(imgStream);
+	    imgStream.close();
+	    Image image = new Image();
+	    image.setFilename(filename);
+	    image.setBlob(imgByteArray);
+		return image;
 	}
 
 //    public Image addFile(MultipartFile file) throws Exception{
