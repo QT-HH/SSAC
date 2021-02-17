@@ -3,7 +3,9 @@ import { createInstance } from "../index.js";
 const instance = createInstance();
 
 function signup(newuser, success, fail) {
-
+  console.log(1)
+  console.log(newuser)
+  console.log(2)
   const body = {
     userid: newuser.email,
     userpw: newuser.password,
@@ -18,10 +20,10 @@ function signup(newuser, success, fail) {
     .catch(fail);
 }
 
-function getUser(userid, success, fail) {
+function getUser(success, fail) {
 
   instance
-    .get(`http://i4d102.p.ssafy.io:9000/ssac/user/userSelect?userid=${userid}`)
+    .get(`http://i4d102.p.ssafy.io:9000/ssac/user/isCheck`)
     .then(success)
     .catch(fail);
 }

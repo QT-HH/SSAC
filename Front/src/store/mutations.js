@@ -5,6 +5,7 @@ export default {
   setUserInfo(state, userInfo) {
     state.isLogin = true;
     state.user = userInfo;
+    console.log(userInfo)
   },
   logout(state) {
     state.isLogin = false;

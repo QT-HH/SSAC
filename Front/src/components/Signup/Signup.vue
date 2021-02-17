@@ -110,7 +110,7 @@ export default {
       passwordConfirmType: "password",
       // termPopup: false
       logo : { src : require("@/assets/images/logo.png") },
-      isNew: true
+      allUsers : []
     };
   },
   created() {
@@ -144,7 +144,6 @@ export default {
     },
     email: function() {
       this.checkForm();
-      this.checkAlready();
     },
     passwordConfirm: function() {
       this.passconf = true
@@ -181,9 +180,7 @@ export default {
       this.isSubmit = isSubmit;
     },
     selectMyteam() {
-      this.checkAlready()
-
-      if (this.isNew){
+      if (!this.allUsers.includes(this.email)){
         if (this.isSubmit) {
           let {nickName, email, password} = this;
           console.log(nickName,email,password)
@@ -199,19 +196,6 @@ export default {
         alert("이미 가입된 e-mail입니다.")
       }
     },
-    checkAlready() {
-      getUser(
-        this.email,
-        (res)=>{
-          console.log(res.data)
-          this.isNew = false
-        },
-        (err)=>{
-          console.log(err)
-          this.isNew = true
-        }
-      )
-    }
   },
   computed:{
     passErrors () {
@@ -241,6 +225,17 @@ export default {
       }
       return errors
     },
+  },
+  mounted(){
+    getUser(
+      (res) => {
+        console.log(res.data)
+        this.allUsers = res.data
+      },
+      (err) => {
+        console.log(err)
+      }
+    )
   }
 };
 </script>

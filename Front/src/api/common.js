@@ -6,7 +6,7 @@ const url = "http://i4d102.p.ssafy.io:9000/ssac"
 
 function getAlert(userid, success, fail) {
   instance
-    .get(`${url} ?userid=${userid}`)
+    .get(`${url}/notice/noticeList?userid=${userid}`)
     .then(success)
     .catch(fail);
 }

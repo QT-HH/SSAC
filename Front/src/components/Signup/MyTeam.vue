@@ -71,47 +71,74 @@
     <!-- DB에 저장되어 있는 전체 팀들 -->
     <v-container class="mx-auto">
         <v-item-group
-            v-model="myteams"
+            v-model="items"
             multiple
         >
             <v-row>
                 <v-col 
-                cols="4"
                 v-for="(team, idx) in filterTeam(cat,query)"
+                cols="4"
                 :key="idx"
                 :team="team"
                 @click="addmyteams(team)"
                 >
-                    <v-sheet 
-                        v-slot="{ active, toggle }"
-                        hover
+                <v-card
+                    class="text-center"
+                    height="140"
+                    width="100"
+                >
+                    <v-avatar>
+                        <img :src="team.src" alt="1">
+                    </v-avatar>
+                    <div>{{ team.name }}</div>
+                    <div class="text--primary">{{ team.count }} likes</div>
+                    <v-icon>
+                        {{ isMyTeam(team) }}
+                    </v-icon>
+                </v-card>
+                        <!-- hover -->
+                        <!-- v-slot="{ active, toggle }" -->
+                    <!-- <v-sheet
                         color="white"
                         elevation="2"
                         height="100"
                         rounded
                         width="100"
                     >
-                        <v-img
-                            :src="items.logo"
                             class="text-right pa-2"
-                            @click="toggle"
-                            align="center"
-                            justify="center"
-                        >
-                            <v-btn
-                                icon
-                                dark
+                        <v-row>
+                            <v-avatar 
+                                @click="toggle"
+                                align="center"
+                                justify="center"
                             >
-                                <v-icon>
-                                    {{ active ? 'mdi-heart' : 'mdi-heart-outline' }}
-                                </v-icon>
-                            </v-btn>
-                        </v-img>                  
+                                <img
+                                    :src="team.src"
+                                    alt="a"
+                                >
+                                <v-img
+                                    :src="team.src"
+                                    class="text-right pa-2"
+                                    @click="toggle"
+                                    align="center"
+                                    justify="center"
+                                >
+                                </v-img>                  
+                                <v-btn
+                                    icon
+                                    dark
+                                >
+                                    <v-icon>
+                                        {{ active ? 'mdi-heart' : 'mdi-heart-outline' }}
+                                    </v-icon>
+                                </v-btn>
+                            </v-avatar>
+                        </v-row>
                         <v-row class="white--text">{{ team.name }}</v-row>
                         <v-row class="text--primary">
                         {{ team.count }} likes
                         </v-row>
-                    </v-sheet>
+                    </v-sheet> -->
                 </v-col>
             </v-row>
         </v-item-group>
@@ -177,6 +204,7 @@ export default {
             this.cat = 3
         },
         filterTeam: function(cat,que) {
+            console.log(this.items)
             return this.items.filter(function(it){
                 return (it.event_no*cat === 0 || it.event_no === cat) && it.name.includes(que)
             })
@@ -184,13 +212,13 @@ export default {
         addmyteams: function(item) {
             let before = this.myteams.length
             for (let index = this.myteams.length-1; index > -1; index--) {
-                if (this.myteams[index].name === item.name){
+                if (this.myteams[index] === item.no){
                     this.myteams.splice(index,1)
                 }
             }
             let now = this.myteams.length
             if(before == now){
-                this.myteams.push(item)
+                this.myteams.push(item.no)
             }
         },
         backtoSignup() {
@@ -198,29 +226,53 @@ export default {
         },
         completeSignup() {
             this.$store.dispatch("CREATE_USER2", this.myteams)
-            // console.log(this.$store.state.newUser),
+            console.log(this.$store.state.newUser),
             signup(
                 this.$store.state.newUser,
                 (res) => {
-                    if (res.data === "success") {
-                        this.$router.push("/signup/welcome")
-                    } else {
-                        alert("로그인 실패하였습니다1.")
-                    }
+                    console.log(res.data)
+                    this.$router.push("/signup/welcome")
+
                 },
                 (err) => {
                     console.log(err)
                     alert("로그인 실패하였습니다2.")
                 }
             );
+        },
+        changeBlob(data){
+        if (data.length !==0){
+            const byteCharacters = window.atob(data)
+            const byteNumbers = new Array(byteCharacters.length)
+            for (let i = 0; i< byteCharacters.length; i++){
+            byteNumbers[i] = byteCharacters.charCodeAt(i);
+            }
+    
+            const byteArray = new Uint8Array(byteNumbers);
+            const blob = new Blob([byteArray],{type:"image/jpg"})
+            const url = window.URL.createObjectURL(blob)
+            
+            console.log(2)
+            return url
+        } else {
+            return ""
+        }
+        },
+        isMyTeam(team){
+            if(this.myteams.includes(team.no)){
+                return 'mdi-heart' 
+            } else{
+                return 'mdi-heart-outline'
+            }
         }
     },
     mounted: function () {
         getTeam(
             (res) => {
                 this.items = res.data
-                // console.log(1)
-                // console.log(this.myteams)
+                for (let idx = 0; idx<this.items.length; idx++){
+                    this.items[idx].src = this.changeBlob(this.items[idx].logo)
+                }
             },
             (err) => {
                 console.log(err)

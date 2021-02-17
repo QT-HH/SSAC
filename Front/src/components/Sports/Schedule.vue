@@ -425,6 +425,7 @@ import { mapState } from 'vuex'
       ...mapState([ 'photos']),
     },
     mounted () { 
+      console.log(this.$store.state.user)
       if (this.$store.state.user.grade === 10) {
         this.mas = true
       } else {
