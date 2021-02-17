@@ -25,9 +25,10 @@ public class ImageController {
     private ImageService imageService;
 	
 	@ApiOperation(value = "뉴스피드에 이미지 넣기", notes = "입력 : file(MultipartFile형식의 이미지)")
-	@GetMapping("/newsfeedImageAdd")
+	@PostMapping("/newsfeedImageAdd")
 	public ResponseEntity<?> addImageNewsFeed(MultipartFile file) throws Exception {
 		try {
+			System.out.println("뉴스피드 이미지 넣기");
 			return new ResponseEntity<>(imageService.addImageIntoNewsFeed(file), HttpStatus.OK);
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -36,9 +37,10 @@ public class ImageController {
 	}
 	
 	@ApiOperation(value = "프로필에 이미지 넣기", notes = "입력 : file(MultipartFile형식의 이미지)")
-	@GetMapping("/profileImageAdd")
+	@PostMapping("/profileImageAdd")
 	public ResponseEntity<?> addImageProfile(MultipartFile file) throws Exception {
 		try {
+			System.out.println("프로필 이미지 넣기");
 			return new ResponseEntity<>(imageService.addImageIntoProfile(file), HttpStatus.OK);
 		} catch(Exception e) {
 			e.printStackTrace();

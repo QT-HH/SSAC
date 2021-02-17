@@ -76,7 +76,7 @@ public class NewsfeedController {
 	}
 	
 	@ApiOperation(value = "프로필에서 본인이 작성한 피드 불러오기", notes = "입력 : userid")
-	@GetMapping("/newsFeedInProfil")
+	@GetMapping("/newsFeedInProfile")
 	public ResponseEntity<?> getNewsfeedList(@RequestParam String userid) throws Exception {
 		try {
 			System.out.println("뉴스피드 불러오기(프로필) : "+userid);
