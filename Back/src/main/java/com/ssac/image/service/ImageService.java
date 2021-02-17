@@ -77,6 +77,7 @@ public class ImageService {
 	}
 	
 	public Image feedFilenameToBlob(String filename) throws Exception {
+		if(filename == null) return null;
 		String folderRoot = "/home/image/newsfeed/";
 		InputStream imgStream = new FileInputStream(folderRoot+filename);
 	    byte[] imgByteArray = IOUtils.toByteArray(imgStream);
