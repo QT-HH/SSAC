@@ -218,18 +218,25 @@
       <v-card class="px-5">
         <h3>Myteams</h3>
         <v-row>
-          <v-col cols=2>
+          <v-col cols=3>
             <img @click="filterMyteam(0)" class="d-flex rounded-circle" width="60px" height="60px" src="https://mblogthumb-phinf.pstatic.net/MjAxNzAzMTVfMTE4/MDAxNDg5NTMzMTAwMjY0.m9UYu7Dt4CyJcaMMeAuIhOFP2nnXBnW5eUqx3rXZY14g.3axKiINI_FaRrOzK70_FY2qRXLulYTBkzwFIaeY8yd4g.JPEG.doghter4our/IMG_5252.jpg?type=w800" alt="Generic placeholder image">
             전체
           </v-col>
-          <v-col cols=2>
+          <v-col cols=3 
+            v-for="(myteam,idx) in myteamss"
+            :key=idx
+          >
+            <img @click="filterMyteam(myteam.team_no)" class="d-flex rounded-circle" width="60px" height="60px" :src="changeBlob(myteam.logo)" alt="team">
+            {{teamname[myteam.team_no]}}
+          </v-col>
+          <!-- <v-col cols=2>
             <img @click="filterMyteam(37)" class="d-flex rounded-circle" width="60px" height="60px" src="https://mblogthumb-phinf.pstatic.net/MjAxNzAzMTVfMTE4/MDAxNDg5NTMzMTAwMjY0.m9UYu7Dt4CyJcaMMeAuIhOFP2nnXBnW5eUqx3rXZY14g.3axKiINI_FaRrOzK70_FY2qRXLulYTBkzwFIaeY8yd4g.JPEG.doghter4our/IMG_5252.jpg?type=w800" alt="Generic placeholder image">
             T1
           </v-col>
           <v-col cols=2>
             <img @click="filterMyteam(3)" class="d-flex rounded-circle" width="60px" height="60px" src="https://mblogthumb-phinf.pstatic.net/MjAxNzAzMTVfMTE4/MDAxNDg5NTMzMTAwMjY0.m9UYu7Dt4CyJcaMMeAuIhOFP2nnXBnW5eUqx3rXZY14g.3axKiINI_FaRrOzK70_FY2qRXLulYTBkzwFIaeY8yd4g.JPEG.doghter4our/IMG_5252.jpg?type=w800" alt="Generic placeholder image">
             대구
-          </v-col>
+          </v-col> -->
         </v-row>
       </v-card>
     </v-sheet>
@@ -315,13 +322,16 @@
 </template>
 
 <script>
-import {getSchedule, pmScore, betGame, endBet, endGame, calculPts } from "@/api/tabs/sports.js"
+import { getMyTeam, getSchedule, pmScore, betGame, endBet, endGame, calculPts } from "@/api/tabs/sports.js"
 // 
   export default {
     name:"Schedule",
     data: () => ({
       mas:false,
-      myteam:[
+      myteamss:[
+
+      ],
+      myteams:[
 
       ],
       teamname:{
@@ -478,6 +488,16 @@ import {getSchedule, pmScore, betGame, endBet, endGame, calculPts } from "@/api/
       this.hm = `${h}:${m}`
       // console.log(this.hm < '19:00')
       // this.events = this.originevents
+      getMyTeam(
+        this.$store.state.user.userid,
+        (res) => {
+          this.myteamss = res.data
+          console.log(res.data)
+        },
+        (err) => {
+          console.log(err)
+        }
+      )
     },
     methods: {
       toggle () {
@@ -710,25 +730,25 @@ import {getSchedule, pmScore, betGame, endBet, endGame, calculPts } from "@/api/
       },
       filterMyteam(number) {
         if (number === 0) {
-          this.myteam = []
+          this.myteams = []
         } else {
-          if (this.myteam.includes(number)){
-            let idx = this.myteam.indexOf(number)
-            this.myteam.splice(idx,1)
+          if (this.myteams.includes(number)){
+            let idx = this.myteams.indexOf(number)
+            this.myteams.splice(idx,1)
           } else {
-            this.myteam.push(number)
+            this.myteams.push(number)
           }  
         }
-        if (this.myteam.length === 0) {
+        if (this.myteams.length === 0) {
           this.events = this.originevents
         } else {
-          this.events = this.filterteam(this.myteam)
+          this.events = this.filterteam(this.myteams)
         }
       },
-      filterteam : function(myteam) {
+      filterteam : function(myteams) {
         // console.log(focus)
         return this.originevents.filter(function(ev){
-          return myteam.includes(ev.team1_id) || myteam.includes(ev.team2_id)
+          return myteams.includes(ev.team1_id) || myteams.includes(ev.team2_id)
         })
       },
       filterCarousel : function(today,hm) {
@@ -749,7 +769,15 @@ import {getSchedule, pmScore, betGame, endBet, endGame, calculPts } from "@/api/
       },
       master() {
         this.mas = !this.mas
+      },
+      changeBlob(data){
+        let blob = new Blob([new ArrayBuffer(data)], {type: "image/jpg"});
+        const url = window.URL.createObjectURL(blob);
+        // document.getElementsByClassName("feedimg").src = url
+        console.log(url)
+        return url
       }
+
     }, 
   }
 </script>

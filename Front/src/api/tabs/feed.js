@@ -10,22 +10,24 @@ function getArticle(userid, success, fail) {
     .catch(fail);
 }
  
-function writeArticle(userid,content,success, fail) {
+function writeArticle(userid,content,filename,success, fail) {
   const config = {
     userid: userid,
-    content: content
+    content: content,
+    filename: filename
   }
   instance
-    .post(`${url}/newsfeed/newsFeedwrite`,JSON.stringify(config))
+    .post(`${url}/newsfeed/newsFeedWrite`,JSON.stringify(config))
     .then(success)
     .catch(fail);
 }
  
  
-function updateArticle(no, content, success, fail) {
+function updateArticle(no, content, filename, success, fail) {
   const config = {
     no: no,
-    content: content
+    content: content,
+    filename: filename,
   }
   instance
     .patch(`${url}/newsfeed/newsFeedUpdate`,JSON.stringify(config))
@@ -34,19 +36,18 @@ function updateArticle(no, content, success, fail) {
 }
  
 function deleteArticle(no, success, fail) {
-  const config = {
-    no: no
-  }
+  // const config = {
+  //   no: no
+  // }
   instance
-    .delete(`${url}/newsfeed/newsFeedDelete`,JSON.stringify(config))
+    .delete(`${url}/newsfeed/newsFeedDelete?no=${no}`)
     .then(success)
     .catch(fail);
 }
  
-function likeArticle(userid, nickname, no, success, fail) {
+function likeArticle(userid, no, success, fail) {
   const config = {
     userid: userid,
-    nickname: nickname,
     no: no
   }
   instance
@@ -63,12 +64,12 @@ function getLikeUsers(no, success, fail) {
 }
  
 function unlikeArticle(userid, no, success, fail) {
-  const config = {
-    userid: userid,
-    no: no
-  }
+  // const config = {
+  //   userid: userid,
+  //   no: no
+  // }
   instance
-    .delete(`${url}/newsfeed/likeDelete`,JSON.stringify(config))
+    .delete(`${url}/newsfeed/likeDelete?userid=${userid}&no=${no}`)
     .then(success)
     .catch(fail);
 }
@@ -80,9 +81,10 @@ function getComment(no, success, fail) {
     .catch(fail);
 }
  
-function writeComment(userid,comment, success, fail) {
+function writeComment(userid,feed_no,comment, success, fail) {
   const config = {
     userid: userid,
+    feed_no:feed_no,
     comment: comment,
   }
   instance
@@ -103,14 +105,13 @@ function updateComment(no,comment, success, fail) {
 }
  
 function deleteComment(no, success, fail) {
-  const config = {
-    no: no,
-  }
   instance
-    .delete(`${url}/newsfeedcomment/commentDelete`,JSON.stringify(config))
+    .delete(`${url}/newsfeedcomment/commentDelete?no=${no}`)
     .then(success)
     .catch(fail);
 }
+ 
+
  
 // function uploadPicture(data, success, fail) {
 //   instance.defaults.headers['Content-Type'] = 'multipart/form-data'
