@@ -10,7 +10,7 @@
           <v-text-field
             label="검색어를 입력하세요."
             v-model="search"
-
+            class="ml-8"
           ></v-text-field>
         </v-col>
         <v-col>

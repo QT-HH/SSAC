@@ -1,14 +1,13 @@
 <template>
   <div>
-    <br>
-  
-    <div>
+
+    <div class="mx-5">
       <v-text-field
         :elevation="6"
         label="검색어를 입력하세요."
         v-model="query"
       ></v-text-field>
-
+      <hr style="height:10px; visibility:hidden;" />
       <v-row
         align="center"
         justify="space-around"
