@@ -74,6 +74,7 @@
 <script>
 import * as EmailValidator from "email-validator";
 import PV from "password-validator";
+import { getUser } from "@/api/user/signup.js"
 
 
 export default {
@@ -108,7 +109,8 @@ export default {
       passwordType: "password",
       passwordConfirmType: "password",
       // termPopup: false
-      logo : { src : require("@/assets/images/logo.png") }
+      logo : { src : require("@/assets/images/logo.png") },
+      isNew: true
     };
   },
   created() {
@@ -128,6 +130,7 @@ export default {
       .min(2)
       .is()
       .max(6);
+
   },
 
   watch: {
@@ -141,6 +144,7 @@ export default {
     },
     email: function() {
       this.checkForm();
+      this.checkAlready();
     },
     passwordConfirm: function() {
       this.passconf = true
@@ -177,17 +181,36 @@ export default {
       this.isSubmit = isSubmit;
     },
     selectMyteam() {
-      if (this.isSubmit) {
-        let {nickName, email, password} = this;
-        console.log(nickName,email,password)
-        let newuser = {
-          nickName,
-          email,
-          password
-        };
-        this.$store.dispatch("CREATE_USER1", newuser);
-        this.$router.push({name:"SelectTeam"});
+      this.checkAlready()
+
+      if (this.isNew){
+        if (this.isSubmit) {
+          let {nickName, email, password} = this;
+          console.log(nickName,email,password)
+          let newuser = {
+            nickName,
+            email,
+            password
+          };
+          this.$store.dispatch("CREATE_USER1", newuser);
+          this.$router.push({name:"SelectTeam"});
+        }
+      } else {
+        alert("이미 가입된 e-mail입니다.")
       }
+    },
+    checkAlready() {
+      getUser(
+        this.email,
+        (res)=>{
+          console.log(res.data)
+          this.isNew = false
+        },
+        (err)=>{
+          console.log(err)
+          this.isNew = true
+        }
+      )
     }
   },
   computed:{
@@ -217,7 +240,7 @@ export default {
         errors.push("비밀번호와 일치하지 않습니다.")
       }
       return errors
-    }
+    },
   }
 };
 </script>
