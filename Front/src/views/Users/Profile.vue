@@ -32,14 +32,11 @@
         </v-btn> -->
       </v-app-bar>
     </div>
-
-
-
     <div 
     style="border: 0px"
     class="media">
       <v-container  >
-        <br>
+        <br><br><br><br>
       <img class="d-flex align-center justify-center mx-auto rounded-circle" width="80px" height="80px" src="https://mblogthumb-phinf.pstatic.net/MjAxNzAzMTVfMTE4/MDAxNDg5NTMzMTAwMjY0.m9UYu7Dt4CyJcaMMeAuIhOFP2nnXBnW5eUqx3rXZY14g.3axKiINI_FaRrOzK70_FY2qRXLulYTBkzwFIaeY8yd4g.JPEG.doghter4our/IMG_5252.jpg?type=w800" alt="Generic placeholder image">
         <v-row no-gutters >
           <v-col>

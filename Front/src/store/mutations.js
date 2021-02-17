@@ -28,6 +28,11 @@ export default {
     console.log(selectTeam)
     state.myTeams.push(selectTeam)
   },
+  SAVE_CHATROOM: function (state, roomid) {
+    // console.log('mutations')
+    console.log(roomid)
+    state.chat.roomid = roomid
+  },
   NICKNAMING: function (state, {selectedData,nickname}) {
     state.myTeams = state.myTeams.map((team) => {
       if (team.name === selectedData.name) {
