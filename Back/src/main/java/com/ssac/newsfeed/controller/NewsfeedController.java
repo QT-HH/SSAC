@@ -63,8 +63,7 @@ public class NewsfeedController {
 				map.put("regtime", newsfeeds.get(i).getRegtime());
 				Image image = imageService.feedFilenameToBlob(newsfeeds.get(i).getImagename());
 				if(image != null) {
-					List<byte[]> blobarr = Arrays.asList(image.getBlob());
-					map.put("imageBLOB", blobarr);
+					map.put("imageBLOB", image.getBlob());
 					map.put("imageName", image.getFilename());
 				} else {
 					map.put("imageBLOB", "");
