@@ -80,10 +80,10 @@ public class NewsfeedCommentController {
 		try {
 			jsonObj = (JSONObject) jsonParse.parse(js);
 			String userid = (String) jsonObj.get("userid");
-			int feed_no = (int) jsonObj.get("feed_no");
+			long feed_no = (long) jsonObj.get("feed_no");
 			String comment = (String) jsonObj.get("comment");
 			System.out.println("뉴스피드 댓글 작성 : "+userid+" "+comment);
-			NewsFeedComment nfcomment = new NewsFeedComment(feed_no, userid, comment);
+			NewsFeedComment nfcomment = new NewsFeedComment((int)feed_no, userid, comment);
 			newsfeedService.writeNewsFeedComment(nfcomment);
 			return new ResponseEntity<String>("success", HttpStatus.OK);
 		} catch(Exception e) {
@@ -102,10 +102,10 @@ public class NewsfeedCommentController {
 		JSONObject jsonObj = null;
 		try {
 			jsonObj = (JSONObject) jsonParse.parse(js);
-			int no = (int) jsonObj.get("no");
+			long no = (long) jsonObj.get("no");
 			String comment = (String) jsonObj.get("comment");
 			System.out.println("뉴스피드 댓글 수정 : "+no+" "+comment);
-			NewsFeedComment nfcomment = new NewsFeedComment(no, comment);
+			NewsFeedComment nfcomment = new NewsFeedComment((int)no, comment);
 			newsfeedService.modifyNewsFeedComment(nfcomment);
 			return new ResponseEntity<String>("success", HttpStatus.OK);
 		} catch(Exception e) {

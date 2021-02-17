@@ -183,9 +183,9 @@ public class NewsfeedController {
 		try {
 			jsonObj = (JSONObject) jsonParse.parse(js);
 			String userid = (String) jsonObj.get("userid");
-			int no = (int) jsonObj.get("no");
+			long no = (long) jsonObj.get("no");
 			System.out.println("좋아요 : "+userid+" "+no);
-			NewsFeedLike like = new NewsFeedLike(no, userid);
+			NewsFeedLike like = new NewsFeedLike((int)no, userid);
 			newsfeedService.writeNewsFeedLike(like);
 			return new ResponseEntity<String>("success", HttpStatus.OK); 
 		} catch(Exception e) {
@@ -205,9 +205,9 @@ public class NewsfeedController {
 		try {
 			jsonObj = (JSONObject) jsonParse.parse(js);
 			String userid = (String) jsonObj.get("userid");
-			int no = (int) jsonObj.get("no");
+			long no = (long) jsonObj.get("no");
 			System.out.println("좋아요 취소 : "+userid+" "+no);
-			NewsFeedLike like = new NewsFeedLike(no, userid);
+			NewsFeedLike like = new NewsFeedLike((int)no, userid);
 			newsfeedService.removeNewsFeedLike(like);
 			return new ResponseEntity<String>("success", HttpStatus.OK); 
 		} catch(Exception e) {
