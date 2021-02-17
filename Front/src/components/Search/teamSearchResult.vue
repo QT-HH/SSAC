@@ -10,7 +10,7 @@
     <v-list-item-avatar>
       <v-img
         :alt="team.name"
-        src="https://mblogthumb-phinf.pstatic.net/MjAxNzAzMTVfMTY4/MDAxNDg5NTMzMTAxNTg3.3DcigjBTsc0_wKhaqCdjcRlFP4kK5J_GdUJVBZFliyIg.EVfpvEjWAGBzkOWVYiQxLlwn54CV1BJpoN9YMM9uuIkg.JPEG.doghter4our/IMG_5255.jpg?type=w800"
+        :src="team.logo"
       ></v-img>
     </v-list-item-avatar>
 

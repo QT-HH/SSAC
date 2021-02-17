@@ -96,21 +96,19 @@
         <template v-slot:default="dialog">
           <v-card>
             <v-toolbar
-              color="primary"
+              color="deep-purple accent-4"
               dark
             >회원탈퇴</v-toolbar>
             <v-card-text>
-              <div class="text-h6 pa-12">나는 빡빡이다.</div>
-              <template>
-                <v-text-field :rules="rules"></v-text-field>
-              </template>
+              <div class="text-h6 px-0 pt-10">정말로 탈퇴 하시겠습니까?</div>
             </v-card-text>
             <v-card-actions class="justify-end">
               <v-btn
                 text
                 @click="dialog.value = false"
               >취소</v-btn>
-              <v-btn color="red" text @click="dialog.value = false">
+              <v-btn 
+              color="red" text @click="dialog.value = false, deleteAccount()">
               회원탈퇴
             </v-btn>
             </v-card-actions>
@@ -125,7 +123,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import {modifyNickname} from '@/api/profile/profile.js'
+import {modifyNickname, deleteAccount} from '@/api/profile/profile.js'
 // import axios from 'axios'
 
 export default {
@@ -136,11 +134,7 @@ export default {
       introduce: '',
       dialog: false,
       files:[],
-      rules: [
-        value => !!value || 'Required.',
-        value => value === '나는 빡빡이다' || '나는 빡빡이다를 작성하세요',
-        
-      ],
+
     }),
 
     computed: {
@@ -187,6 +181,17 @@ export default {
         }
         modifyNickname (
           para,
+          (response) => {
+            console.log(response);
+          },
+          (error) => {
+            console.log(error)
+          });
+      },
+      deleteAccount() {
+        let  userid = this.$store.state.user.useremail
+        deleteAccount(
+          userid,
           (response) => {
             console.log(response);
           },

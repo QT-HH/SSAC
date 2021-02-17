@@ -9,16 +9,7 @@
     <div class="mx-5 py-2"><v-btn width="80vw" style="height: 15vh" :elevation="2" outlined color="black" x-large class="mt-3" @click="[saveQuestion(choices[0]), goNext()]"> {{ choices[0] }} </v-btn></div>
     <div class="mx-5 py-2"><v-btn width="80vw" style="height: 15vh" :elevation="2" outlined color="black" x-large class="mt-3" @click="[saveQuestion(choices[0]), goNext()]"> {{ choices[1] }} </v-btn></div>
     </v-container>
-    <div 
-    class="mt-6 mb-5" 
-    style=" top: 0;"
-    width="90vw">
-      <v-img
-            :src="welcome.src"
-            class="rounded-pill"
-          >
-      </v-img>
-    </div>
+    
     <!-- {{ surveyAnswers }} -->
   </div>
 </template>

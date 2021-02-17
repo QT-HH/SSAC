@@ -1,37 +1,27 @@
 <template>
   <div class="text-center mt-4">
     <v-container>
-      <h3
-      style="text-align:center;
+      <h3 style="text-align:center;
             font-weight: bold; 
             font-size: 1.7em;">이 팀을 추천해요</h3>
-            <br>
-        <v-card
-        dark
-          class="mx-8"
-          max-width="344"
-          style="height:30vh"
-        >
-          <v-img
-            class="white--text align-end"
-            src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-            style="height:100%"
-          >
-          <v-card-title 
-          style="text-align:left; font-weight: bold;">
-            {{ name }}
-          </v-card-title>
+      <br>
+      <hr style="height:10px; visibility:hidden;" />
+      <v-card class="mx-auto rounded-xl" width="80vw" style="height:40vh">
+        <v-img class="white--text align-end" :src="logo" style="height:70%">
+        </v-img>
+        <v-card-title class="pt-1 ml-2" style="text-align:left; font-weight: bold;">
+          {{ name }}
+        </v-card-title>
+        <v-card-subtitle class="pt-1 ml-2" style="text-align:left; font-weight: bold;">
+          {{ follownum }} 명이 좋아합니다.
+        </v-card-subtitle>
+      </v-card>
+      <br>
+  </v-container>
 
-          <v-card-subtitle 
-          style="text-align:left; font-weight: bold;">
-            {{ follownum }} 명이 좋아합니다.
-          </v-card-subtitle>
-          </v-img>
-        </v-card>
-      </v-container>
-      <hr style="height:10vh; visibility:hidden;" />
-     
-    <div class="mx-5 py-2"><v-btn outlined :elevation="2" color="black" x-large class="mt-3" @click="goNext()"> 다시하기 </v-btn></div>
+  <div class="mx-5 py-2">
+    <v-btn outlined :elevation="2" color="black" x-large class="mt-3" @click="goNext()"> 다시하기 </v-btn>
+  </div>
 
   </div>
 </template>
@@ -46,6 +36,7 @@ export default {
     return {
       name: '',
       follownum: '',
+      logo: '',
     }
   },
   methods: {
@@ -57,7 +48,19 @@ export default {
       // console.log('모든 질문에 답변 완료')
       // axios
     },
-  },
+    changeBlob(data){
+      const byteCharacters = window.atob(data)
+      const byteNumbers = new Array(byteCharacters.length)
+      for (let i = 0; i< byteCharacters.length; i++){
+        byteNumbers[i] = byteCharacters.charCodeAt(i);
+      }
+
+      const byteArray = new Uint8Array(byteNumbers);
+      const blob = new Blob([byteArray],{type:"image/jpg"})
+      const url = window.URL.createObjectURL(blob)
+
+      return url
+  },},
   computed: {
     surveyAnswers: function () {
       return this.$store.state.surveyAnswers
@@ -85,7 +88,7 @@ export default {
         console.log(response.data)
         this.name = response.data.name
         this.follownum = response.data.count
-        this.logo = response.data.logo
+        this.logo = this.changeBlob(response.data.logo)
         // this.searched = true // 유저검색결과 한 줄 
       })
       .catch(error => {

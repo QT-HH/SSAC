@@ -48,8 +48,8 @@
             @click="selectTeam(team)"
             v-bind="attrs"
             v-on="on">
-              <v-list-item-title class="headline mb-1" style="padding:0px" v-if="team.nickname.length === 0 ">{{ team.name }}</v-list-item-title>
-              <v-list-item-title style="padding:0px" v-else>{{ team.nickname }}</v-list-item-title>
+              <v-list-item-title class="headline mb-1" style="padding:0px" v-if="team.name.length === 0 ">{{ team.name }}</v-list-item-title>
+              <v-list-item-title style="padding:0px" v-else>{{ team.name }}</v-list-item-title>
               <v-list-item-subtitle >{{ team.count }} 명</v-list-item-subtitle>
             </v-list-item-content>
           <div >
@@ -109,7 +109,6 @@
             color="primary"
             text
             :nickname = 'nickname'
-
             @click="dialog = false; nicknaming({selectedData,nickname});"
           >
             변경완료
