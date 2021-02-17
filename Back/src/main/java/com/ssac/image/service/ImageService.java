@@ -88,6 +88,7 @@ public class ImageService {
 	}
 	
 	public Image profileFilenameToBlob(String filename) throws Exception {
+		if(filename == null) return null;
 		String folderRoot = "/home/image/profile/";
 		InputStream imgStream = new FileInputStream(folderRoot+filename);
 	    byte[] imgByteArray = IOUtils.toByteArray(imgStream);
