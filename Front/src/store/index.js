@@ -76,7 +76,8 @@ const state = {
     {title: "근데 여기서 의문인점", context: "나는 여기서 왜 일기를 쓰고 있는가"},
     {title: "왜긴 왜야", context: "더미를 채워야하기 때문이지"},
     {title: "마지막 할말은", context: "우리조,,,, 그냥,,, 화이팅,,,!!!"},
-  ]
+  ],
+  test:[]
 };
 
 export default new Vuex.Store({

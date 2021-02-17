@@ -49,7 +49,7 @@ public class LoginController {
 				String token = jwtService.create(check);
 				System.out.println("토큰생성 완료");
 				resultMap.put("access-token", token);
-				resultMap.put("id", check.getId());
+				resultMap.put("userid", check.getId());
 				resultMap.put("nickname", check.getNickname());
 				resultMap.put("point", check.getPoint());
 				resultMap.put("profile", imageService.profileFilenameToBlob(check.getProfile()).getBlob());

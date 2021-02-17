@@ -731,7 +731,8 @@ export default {
         const byteArray = new Uint8Array(byteNumbers);
         const blob = new Blob([byteArray],{type:"image/jpg"})
         const url = window.URL.createObjectURL(blob)
-  
+
+        console.log(1)
         return url
       } else {
         return ""
@@ -765,7 +766,7 @@ export default {
       }
 
       return `${Math.floor(betweenTimeDay / 365)}년전`;
- }
+    }
 
   },
 }

@@ -1,24 +1,25 @@
 import jwt_decode from "jwt-decode";
-import { findById, findByKakao, findByNaver } from "../api/user/login.js"
-
+import {  findByKakao, findByNaver } from "../api/user/login.js"
+// findById,
 
 export default {
-  async GET_MEMBER_INFO({ commit }, token) {
-    let decode = jwt_decode(token);
+  async GET_MEMBER_INFO({ commit }, data) {
+    commit("setUserInfo",data)
+    // let decode = jwt_decode(token);
 
-    await findById(
-      decode.userid,
-      (res) => {
-        if (res.data.message === "success") {
-          commit("setUserInfo", res.data.userInfo);
-        } else {
-          console.log("존재하지 않는 사용자 입니다.");
-        }
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+    // await findById(
+    //   decode.userid,
+    //   (res) => {
+    //     if (res.data.message === "success") {
+    //       commit("setUserInfo", res.data.userInfo);
+    //     } else {
+    //       console.log("존재하지 않는 사용자 입니다.");
+    //     }
+    //   },
+    //   (err) => {
+    //     console.log(err);
+    //   }
+    // );
   },
   async GET_KAKAO_INFO({ commit }, token) {
     let decode = jwt_decode(token);

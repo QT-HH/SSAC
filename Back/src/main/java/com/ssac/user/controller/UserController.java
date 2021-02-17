@@ -24,6 +24,7 @@ import com.ssac.image.dto.Image;
 import com.ssac.image.service.ImageService;
 import com.ssac.notice.dto.Notice;
 import com.ssac.notice.service.NoticeService;
+import com.ssac.schedule.service.ScheduleService;
 import com.ssac.team.dto.MyTeam;
 import com.ssac.team.service.TeamService;
 import com.ssac.user.dto.User;
@@ -47,7 +48,7 @@ public class UserController {
 	@Autowired
 	private JwtService jwtService;
 	@Autowired
-	private NoticeService noticeService;
+	private ScheduleService scheduleService;
 	
 	@ApiOperation(value = "회원가입", notes = "입력 : userid, userpw, usernickname, userteam")
 	@PostMapping("/signup")
@@ -66,13 +67,13 @@ public class UserController {
 				// 회원가입 먼저
 				if(userService.createUser(user) > 0) {
 					// 마이팀 추가
-					List<Integer> teams = (List<Integer>) jsonObj.get("userteam");
+					List<Long> teams = (List<Long>) jsonObj.get("userteam");
 					System.out.println("teams size " + teams.size());
 					for(int i=0; i<teams.size(); i++) {
 						MyTeam myteam = new MyTeam();
 						myteam.setId(user.getId());
-						myteam.setTeam_no(teams.get(i));
-						myteam.setName(teamService.getTeam(teams.get(i)).getName());
+						myteam.setTeam_no(teams.get(i).intValue());
+						myteam.setName(teamService.getTeam(teams.get(i).intValue()).getName());
 						// 마이팀 추가가 성공하면
 						if(teamService.writeMyTeam(myteam) > 0) {
 							HashMap<String, Integer> map = new HashMap<String, Integer>();
@@ -82,18 +83,7 @@ public class UserController {
 							teamService.modifyTeamCount(map);
 						}
 					}
-					User temp = userService.findUser(user);
-					Map<String, Object> resultMap = new HashMap<>();
-					String token = jwtService.create(check);
-					System.out.println("토큰생성 완료");
-					resultMap.put("access-token", token);
-					resultMap.put("id", temp.getId());
-					resultMap.put("nickname", temp.getNickname());
-					resultMap.put("point", temp.getPoint());
-					resultMap.put("profile", imageService.profileFilenameToBlob(temp.getProfile()).getBlob());
-					resultMap.put("intro", temp.getIntro());
-					resultMap.put("grade", temp.getGrade());
-					return new ResponseEntity<>(resultMap, HttpStatus.OK);
+					return new ResponseEntity<>("success", HttpStatus.OK);
 				}
 			}
 		} catch(Exception e) {
@@ -236,11 +226,28 @@ public class UserController {
 	@GetMapping("/isCheck")
 	public ResponseEntity<?> ischeck() throws Exception {
 		try {
+			System.out.println("이메일 중복체크");
 			List<String> users = userService.getAllUser();
 			return new ResponseEntity<>(users, HttpStatus.OK);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		return new ResponseEntity<>("fail", HttpStatus.OK);
+	}
+	
+	@ApiOperation(value = "구독 포인트 증가", notes = "입력 : 포인트 받을 사람 id (userid)")
+	@GetMapping("/subscribe")
+	public ResponseEntity<?> getSubscribe(@RequestParam String userid) throws Exception {
+		try {
+			System.out.println("구독 "+userid);
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			map.put("userid", userid);
+			map.put("point", 100);
+			scheduleService.getPoint(map);
+			return new ResponseEntity<>("success", HttpStatus.OK);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity<>("fail", HttpStatus.NO_CONTENT);
 	}
 }
