@@ -221,8 +221,7 @@
               </v-list-item>
             </v-list>
             <v-img
-              v-if="selected.img"
-              :src="selected.img"
+              :src="selected.image"
             >
             </v-img>
             <v-card-title>
@@ -341,6 +340,10 @@
               label="Content"
               v-model="selected.content"
             ></v-textarea>
+            <v-img
+              :src="selected.image"
+            >
+            </v-img>
             <v-file-input 
               class="d-flex align-center justify-center pa-4 mx-auto" 
               label="File input" 

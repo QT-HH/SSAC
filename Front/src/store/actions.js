@@ -69,6 +69,10 @@ export default {
     // console.log('actions')
     commit('ADD_MYTEAM', selectTeam)
   },
+  saveChatroom: function ({ commit }, roomid) {
+    // console.log('actions')
+    commit('SAVE_CHATROOM', roomid)
+  },
   nicknaming: function ({commit}, {selectedData,nickname}) {
     commit('NICKNAMING', {selectedData,nickname})
   },

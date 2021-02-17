@@ -22,11 +22,7 @@ public interface TeamService {
 
 	int modifyTeamCount(HashMap<String, Integer> map) throws Exception;
 
-	List<Team> listFootballTeam(HashMap<String, String> map) throws Exception;
-
-	List<Team> listBaseballTeam(HashMap<String, String> map) throws Exception;
-
-	List<Team> listLOLTeam(HashMap<String, String> map) throws Exception;
+	List<Team> listNewTeam(String userid) throws Exception;
 
 	List<Team> searchTeam(HashMap<String, String> map) throws Exception;
 

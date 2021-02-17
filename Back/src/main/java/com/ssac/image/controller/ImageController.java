@@ -29,7 +29,7 @@ public class ImageController {
 	public ResponseEntity<?> addImageNewsFeed(@RequestParam MultipartFile file) throws Exception {
 		try {
 			Image image = imageService.addImageIntoNewsFeed(file);			
-			System.out.println("뉴스피드 이미지 넣기 : "+file.getOriginalFilename()+image.getFilename());
+			System.out.println("뉴스피드 이미지 넣기 : "+file.getOriginalFilename()+" "+image.getFilename());
 			return new ResponseEntity<>(image, HttpStatus.OK);
 		} catch(Exception e) {
 			e.printStackTrace();

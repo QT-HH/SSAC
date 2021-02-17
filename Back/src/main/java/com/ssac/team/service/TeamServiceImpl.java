@@ -44,16 +44,8 @@ public class TeamServiceImpl implements TeamService {
 		return mapper.updateTeamCount(map);
 	}
 	@Override
-	public List<Team> listFootballTeam(HashMap<String, String> map) throws Exception {
-		return mapper.selectFootballteamBySearch(map);
-	}
-	@Override
-	public List<Team> listBaseballTeam(HashMap<String, String> map) throws Exception {
-		return mapper.selectBaseballteamBySearch(map);
-	}
-	@Override
-	public List<Team> listLOLTeam(HashMap<String, String> map) throws Exception {
-		return mapper.selectLOLteamBySearch(map);
+	public List<Team> listNewTeam(String userid) throws Exception {
+		return mapper.selectNewTeam(userid);
 	}
 	@Override
 	public List<Team> searchTeam(HashMap<String, String> map) throws Exception {

@@ -142,39 +142,28 @@ public class TeamController {
 		return new ResponseEntity<String>("fail", HttpStatus.NO_CONTENT);
 	}
 	
-	@ApiOperation(value = "축구 팀 검색 및 조회", notes = "userid, 검색내용(search)")
-	@GetMapping("/footballList")
-	public ResponseEntity<?> getFootBallTeam(@RequestParam String userid, @RequestParam(value="search",defaultValue="") String search) throws Exception {
+	@ApiOperation(value = "새로운 팀 불러오기", notes = "userid")
+	@GetMapping("/newTeamList")
+	public ResponseEntity<?> getFootBallTeam(@RequestParam String userid) throws Exception {
 		// 축구팀 검색
 		// 입력값 : userid, 검색내용
 		// 출력값 : 나의 팀을 제외한 축구 팀 중 검색내용에 해당하는 팀
-		HashMap<String, String> map = new HashMap<String, String>();
-		map.put("userid", userid);
-		map.put("search", search);
-		return new ResponseEntity<>(teamService.listFootballTeam(map), HttpStatus.OK);
+		try {
+			return new ResponseEntity<>(teamService.listNewTeam(userid), HttpStatus.OK);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity<>("fail", HttpStatus.NO_CONTENT);
 	}
 	
-	@ApiOperation(value = "야구 팀 검색 및 조회", notes = "userid, 검색내용(search)")
-	@GetMapping("/baseballList")
-	public ResponseEntity<?> getBaseBallTeam(@RequestParam String userid, @RequestParam(value="search",defaultValue="") String search) throws Exception {
-		// 야구팀 검색
-		// 입력값 : userid, 검색내용
-		// 출력값 : 나의 팀을 제외한 야구 팀 중 검색내용에 해당하는 팀
-		HashMap<String, String> map = new HashMap<String, String>();
-		map.put("userid", userid);
-		map.put("search", search);
-		return new ResponseEntity<>(teamService.listBaseballTeam(map), HttpStatus.OK);
-	}
-	
-	@ApiOperation(value = "롤 팀 검색 및 조회", notes = "userid, 검색내용(search)")
-	@GetMapping("/lolList")
-	public ResponseEntity<?> getLOLTeam(@RequestParam String userid, @RequestParam(value="search",defaultValue="") String search) throws Exception {
-		// 롤팀 검색
-		// 입력값 : userid, 검색내용
-		// 출력값 : 나의 팀을 제외한 롤 팀 중 검색내용에 해당하는 팀
-		HashMap<String, String> map = new HashMap<String, String>();
-		map.put("userid", userid);
-		map.put("search", search);
-		return new ResponseEntity<>(teamService.listLOLTeam(map), HttpStatus.OK);
+	@ApiOperation(value = "팀 로고 받아오기", notes = "입력 : 팀 고유번호(team_no)")
+	@GetMapping("/teamLogo")
+	public ResponseEntity<?> getTeamLogo(@RequestParam int team_no) throws Exception {
+		try {
+			return new ResponseEntity<>(teamService.getTeam(team_no).getLogo(), HttpStatus.OK);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity<>("fail", HttpStatus.NO_CONTENT);
 	}
 }

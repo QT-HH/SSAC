@@ -17,9 +17,7 @@ public interface TeamMapper {
 	public int updateMyTeamName(MyTeam myteam) throws Exception;
 	public int deleteMyTeam(MyTeam myteam) throws Exception;
 	public int updateTeamCount(HashMap<String, Integer> map) throws Exception;
-	public List<Team> selectFootballteamBySearch(HashMap<String, String> map) throws Exception;
-	public List<Team> selectBaseballteamBySearch(HashMap<String, String> map) throws Exception;
-	public List<Team> selectLOLteamBySearch(HashMap<String, String> map) throws Exception;
+	public List<Team> selectNewTeam(String userid) throws Exception;
 	public List<Team> selectSearchTeam(HashMap<String, String> map) throws Exception;
 	public List<HashMap<String, Object>> selectFriendTeams(String userid) throws Exception;
 }

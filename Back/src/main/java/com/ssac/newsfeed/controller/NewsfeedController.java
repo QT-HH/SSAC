@@ -1,7 +1,6 @@
 package com.ssac.newsfeed.controller;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -58,7 +57,7 @@ public class NewsfeedController {
 				map.put("id", newsfeeds.get(i).getId());
 				User user = userService.findUser(new User(newsfeeds.get(i).getId()));
 				map.put("nickname", user.getNickname());
-//				map.put("profile", imageService.profileFilenameToBlob(user.getProfile()));
+				map.put("profile", imageService.profileFilenameToBlob(user.getProfile()).getBlob());
 				map.put("content", newsfeeds.get(i).getContent());
 				map.put("regtime", newsfeeds.get(i).getRegtime());
 				Image image = imageService.feedFilenameToBlob(newsfeeds.get(i).getImagename());
