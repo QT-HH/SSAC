@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ssac.image.service.ImageService;
 import com.ssac.user.dto.User;
 import com.ssac.user.jwt.service.JwtService;
 import com.ssac.user.service.UserService;
@@ -29,6 +30,8 @@ public class LoginController {
 	private JwtService jwtService;
 	@Autowired
 	private UserService service;
+	@Autowired
+	private ImageService imageService;
 	
 	@PostMapping("/login")
 	public ResponseEntity<?> login(@RequestBody String js, HttpServletResponse response, HttpSession session) throws Exception {
@@ -48,13 +51,15 @@ public class LoginController {
 				resultMap.put("access-token", token);
 				resultMap.put("id", check.getId());
 				resultMap.put("nickname", check.getNickname());
+				resultMap.put("point", check.getPoint());
+				resultMap.put("profile", imageService.profileFilenameToBlob(check.getProfile()).getBlob());
+				resultMap.put("intro", check.getIntro());
 				resultMap.put("message", "success");
 				return new ResponseEntity<Map<String, Object>>(resultMap, HttpStatus.OK);
 			}
 		} catch(Exception e) {
-			System.out.println("JSON 파싱 실패");
+			e.printStackTrace();
 		}
-		resultMap.put("message", "로그인에 실패하였습니다.");
-		return new ResponseEntity<Map<String, Object>>(resultMap, HttpStatus.NO_CONTENT);
+		return new ResponseEntity<>("fail", HttpStatus.NO_CONTENT);
 	}
 }

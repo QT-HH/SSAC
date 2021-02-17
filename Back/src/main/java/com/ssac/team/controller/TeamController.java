@@ -160,7 +160,10 @@ public class TeamController {
 	@GetMapping("/teamLogo")
 	public ResponseEntity<?> getTeamLogo(@RequestParam int team_no) throws Exception {
 		try {
-			return new ResponseEntity<>(teamService.getTeam(team_no).getLogo(), HttpStatus.OK);
+			System.out.println("팀 로고 : "+team_no);
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("logo", teamService.getTeam(team_no).getLogo());
+			return new ResponseEntity<>(map, HttpStatus.OK);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

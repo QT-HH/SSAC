@@ -25,6 +25,7 @@ import com.ssac.image.service.ImageService;
 import com.ssac.team.dto.MyTeam;
 import com.ssac.team.service.TeamService;
 import com.ssac.user.dto.User;
+import com.ssac.user.jwt.service.JwtService;
 import com.ssac.user.service.UserService;
 
 import io.swagger.annotations.Api;
@@ -41,10 +42,12 @@ public class UserController {
 	private TeamService teamService;
 	@Autowired
 	private ImageService imageService;
+	@Autowired
+	private JwtService jwtService;
 	
 	@ApiOperation(value = "회원가입", notes = "입력 : userid, userpw, usernickname, userteam")
 	@PostMapping("/signup")
-	public ResponseEntity<String> joinUser(@RequestBody String js) throws Exception {
+	public ResponseEntity<?> joinUser(@RequestBody String js) throws Exception {
 		JSONParser jsonParse = new JSONParser();
 		JSONObject jsonObj = null;
 		try {
@@ -53,9 +56,7 @@ public class UserController {
 			user.setId((String) jsonObj.get("userid"));
 			user.setPw((String) jsonObj.get("userpw"));
 			user.setNickname((String) jsonObj.get("usernickname"));
-			System.out.println(user.getId());
-			System.out.println(user.getPw());
-			System.out.println(user.getNickname());
+			System.out.println("회원가입 : "+user.getId()+" "+user.getNickname());
 			User check = userService.findUser(new User(user.getId()));
 			if(check == null) {
 				// 회원가입 먼저
@@ -74,17 +75,26 @@ public class UserController {
 							map.put("no", myteam.getTeam_no());
 							map.put("count", 1);
 							// 팔로우수 증가
-							if(teamService.modifyTeamCount(map) <= 0)
-								return new ResponseEntity<String>("팔로우 수 증가 실패", HttpStatus.NO_CONTENT);
-						} else return new ResponseEntity<String>("마이팀 추가 실패", HttpStatus.NO_CONTENT);
+							teamService.modifyTeamCount(map);
+						}
 					}
-					return new ResponseEntity<String>("success", HttpStatus.OK);
+					User temp = userService.findUser(user);
+					Map<String, Object> resultMap = new HashMap<>();
+					String token = jwtService.create(check);
+					System.out.println("토큰생성 완료");
+					resultMap.put("access-token", token);
+					resultMap.put("id", temp.getId());
+					resultMap.put("nickname", temp.getNickname());
+					resultMap.put("point", temp.getPoint());
+					resultMap.put("profile", imageService.profileFilenameToBlob(temp.getProfile()).getBlob());
+					resultMap.put("intro", temp.getIntro());
+					return new ResponseEntity<>(resultMap, HttpStatus.OK);
 				}
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		return new ResponseEntity<String>("fail", HttpStatus.NO_CONTENT);
+		return new ResponseEntity<>("fail", HttpStatus.NO_CONTENT);
 	}
 	
 	@ApiOperation(value = "유저 정보 조회", notes = "입력 : userid")
