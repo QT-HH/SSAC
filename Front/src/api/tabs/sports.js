@@ -84,5 +84,12 @@ function getMyTeam(userid, success, fail) {
     .then(success)
     .catch(fail);
 }
+
+function getTeamImage(teamid, success, fail) {
+  instance
+    .get(`${url} ?teamid=${teamid}`)
+    .then(success)
+    .catch(fail);
+}
  
-export { getMyTeam, getSchedule, pmScore, betGame, endBet, endGame, calculPts, getTeam};
+export { getTeamImage, getMyTeam, getSchedule, pmScore, betGame, endBet, endGame, calculPts, getTeam};
