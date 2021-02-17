@@ -1,5 +1,5 @@
 <template>
-  <div style="width:100%;">
+  <div style="width:100%;" class="mt-5">
     <!-- Systembar & Navbar -->
     <div style="position:fixed; z-index:100; width:100%; top:0px;">
       <v-system-bar color="deep-purple darken-3"></v-system-bar>
@@ -10,7 +10,7 @@
       >
         <v-row>
           <v-col cols="3">
-            <v-btn icon class="mr-5" @click="doFollow">
+            <v-btn v-if="this.userid !== this.$store.state.user.userid" icon class="mr-5" @click="doFollow">
               <v-icon>mdi-account-plus</v-icon>
             </v-btn>
           </v-col>
@@ -18,8 +18,16 @@
             <h2 align="center" justify="center">Profile</h2>
           </v-col>
           <v-col cols="3">         
-            <v-btn icon class="ml-5" @click="gotoProfileEdit">
+            <v-btn v-if="this.userid === this.$store.state.user.userid" icon class="ml-5" @click="gotoProfileEdit">
               <v-icon>mdi-dots-vertical</v-icon>
+            </v-btn>
+            <v-btn v-else icon style="
+  top: 50%;
+  left: 60%;
+  transform: translate(-50%, -50%);" @click="doFollow">
+              <v-icon>
+              {{ icons.mdiHumanGreeting }}
+            </v-icon>
             </v-btn>
           </v-col>
         </v-row>
@@ -40,7 +48,7 @@
     class="media">
       <v-container  >
         <br><br><br>
-      <img class="d-flex align-center justify-center mx-auto rounded-circle" width="80px" height="80px" :src="profile">
+      <img style="border: solid; border-width:thin" class="d-flex align-center justify-center mx-auto rounded-circle" width="80px" height="80px" :src="profile">
         <v-row no-gutters >
           <v-col>
             <div class="d-flex align-center justify-center mx-auto"
@@ -161,6 +169,7 @@
 </template>
 
 <script>
+import { mdiHumanGreeting } from '@mdi/js';
 // import { mapState } from 'vuex'
 import {doFollow} from '@/api/profile/profile.js'
 import axios from 'axios'
@@ -174,8 +183,12 @@ export default {
   // },
   data: function() {
     return {
+      icons: {
+        mdiHumanGreeting,
+
+      },
       following: [],
-      userid: this.$store.state.user.userid,
+      userid: 'bbb@bbb.com',
       nickname: '',
       useremail: '',
       point: '',
