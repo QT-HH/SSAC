@@ -34,13 +34,14 @@ const state = {
 
   },
   user: {
-    userid: 0,
+    userid: "aaa@aaa.com",
     email: "aaa@aaa.com",
     password: "123123123",
     nickname: "nojjeong",
     myteams: [34,35],
     img: "https://placekitten.com/300/300",
-    introduce: "Frei Aber Froh"
+    introduce: "Frei Aber Froh",
+    profile: "",
   },
   myTeams: [
     {name: "T1", img: "https://placekitten.com/300/300" , nickname: "", count: 14565, event_no: 3},

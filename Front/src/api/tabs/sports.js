@@ -77,5 +77,12 @@ function calculPts(event_no,users,pts,success,fail) {
     .then(success)
     .catch(fail);
 }
+
+function getMyTeam(userid, success, fail) {
+  instance
+    .get(`${url}/team/myTeamList?userid=${userid}`)
+    .then(success)
+    .catch(fail);
+}
  
-export { getSchedule, pmScore, betGame, endBet, endGame, calculPts, getTeam};
+export { getMyTeam, getSchedule, pmScore, betGame, endBet, endGame, calculPts, getTeam};

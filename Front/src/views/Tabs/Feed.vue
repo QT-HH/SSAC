@@ -17,19 +17,12 @@
           <v-col cols="3">
           </v-col>
         </v-row>
-        <!-- <v-btn icon>
-          <v-icon>mdi-dots-vertical</v-icon>
-        </v-btn>
-        <v-btn icon>
-          <v-icon>mdi-magnify</v-icon>
-        </v-btn>
 
-        <v-btn icon>
-          <v-icon>mdi-filter</v-icon>
-        </v-btn> -->
       </v-app-bar>
     </div>
-     
+     <br>
+     <br>
+     <br>
     <!-- 새 글 작성 -->
     <v-card 
       ref="form"
@@ -102,16 +95,16 @@
         max-width="350"
       >
         <v-list-item class="grow">
-            <!-- <v-list-item-avatar color="grey darken-3">
+            <v-list-item-avatar color="grey darken-3">
               <v-img
                 class="elevation-6"
                 alt=""
-                :src="feed.src"
+                :src="feed.profile"
               ></v-img>
-            </v-list-item-avatar> -->
+            </v-list-item-avatar>
 
             <v-list-item-content>
-              <v-list-item-title>{{ feed.id }}</v-list-item-title>
+              <v-list-item-title>{{ feed.nickname }}</v-list-item-title>
             </v-list-item-content>
 
             <v-row
@@ -129,6 +122,17 @@
             </v-row>
         </v-list-item>
 
+        <v-img
+          v-if="feed.image"
+          class="elevation-6 feedimg"
+          alt="asdf"
+          :src="feed.image"
+          max-height="200"
+          max-width="100%"
+        ></v-img>
+          <!-- :src="feed.image.image" -->
+          <!-- src="https://mblogthumb-phinf.pstatic.net/MjAxNzAzMTVfMTE4/MDAxNDg5NTMzMTAwMjY0.m9UYu7Dt4CyJcaMMeAuIhOFP2nnXBnW5eUqx3rXZY14g.3axKiINI_FaRrOzK70_FY2qRXLulYTBkzwFIaeY8yd4g.JPEG.doghter4our/IMG_5252.jpg?type=w800" -->
+
         <v-card-text class="headline font-weight-bold">
           {{ feed.content }}
         </v-card-text>
@@ -143,7 +147,7 @@
               <v-icon class="mr-1" @click="likeFeed(feed)">
                 mdi-heart
               </v-icon>
-              <span class="subheading mr-2">{{ feed.like }}</span>
+              <span class="subheading mr-2">{{ feed.like.length }}</span>
               <span class="mr-1">·</span>
               <v-btn
                 icon
@@ -153,7 +157,7 @@
                   mdi-message-text
                 </v-icon>
               </v-btn>
-              1
+              {{feed.comment}}
             </v-row>
           </v-list-item>
         </v-card-actions>
@@ -259,7 +263,7 @@
                   <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
                 </v-list-item-avatar>
                 <v-list-item-content>
-                  <v-list-item-title>{{selected.id}}</v-list-item-title>
+                  <v-list-item-title>{{selected.nickname}}</v-list-item-title>
                   <v-list-item-subtitle>{{selected.id}}</v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>
@@ -292,7 +296,7 @@
                   <v-card class="elevation-1">
                     <v-card-text><strong>{{ comment.nickname }}</strong> @{{ comment.regtime }}</v-card-text>
                     <v-card-text class="font-weight-normal" v-show="!editCommBool[idx]">
-                      {{ comment.content }} 
+                      {{ comment.comment }} 
                         <v-icon
                           v-if="comment.id === user.userid"
                           @click="editCommentBool(comment.content,idx)"
@@ -396,7 +400,7 @@
             ></v-file-input>
             ※글 수정에서 사진 업로드시<br>
             기존 사진에서 변경됩니다. <br>
-            <v-btn color="primary" @click="upload">
+            <v-btn color="primary" @click="upload2">
               적용
             </v-btn>
             <v-divider></v-divider>
@@ -503,6 +507,7 @@ export default {
       //   src: require("@/assets/images/corinlee.jpg")
       // },
       newText : "",
+      newImg: "",
       newComment : "",
       editComm : "",
       editCommBool : [false,],
@@ -512,21 +517,34 @@ export default {
       selected:{
         no:Number,
         id:String,
+        nickname:String,
+        profile:"",
         regtime:String,
-        like:Number,
+        like:[],
         content:String,
-        img:String,
+        image:{
+          image:'',
+          filename:'',
+        },
+        comment:Number
       },
       comments: [],
       editFeed:{
         no:Number,
         id:String,
+        nickname:String,
+        profile:"",
         regtime:String,
-        like:Number,
+        like:[],
         content:String,
-        img:String,
+        image:{
+          image:'',
+          filename:'',
+        },
+        comment:Number
       },
       files:[],
+
     }
   },
   computed: {
@@ -539,8 +557,16 @@ export default {
     getArticle(
       this.user.userid,
       (res) => {
-        // console.log(res.data)
+        console.log(res.data)
         this.feeds = res.data
+        for (let idx = 0; idx<this.feeds.length; idx++){
+          if (this.feeds[idx].imageBLOB) {
+            this.feeds[idx].image = this.changeBlob(this.feeds[idx].imageBLOB)
+          } else {
+            this.feeds[idx].image=''
+          }
+        }
+        console.log(this.feeds)
       },
       (err) => {
         console.log(err)
@@ -557,7 +583,7 @@ export default {
         alert("아무것도 입력하지 않았습니당")
       } else {
         writeComment(
-          this.user.userid,comm,
+          this.user.userid,no,comm,
           (res) => {
             console.log(res.data)
             this.comments.push({
@@ -565,7 +591,8 @@ export default {
               "no":no,
               "nickname":this.user.nickname,
               "id":this.user.userid,
-              "content":comm
+              "comment":comm,
+              "profile":'',
             })
           },
           (err) => {
@@ -578,6 +605,7 @@ export default {
     },
     editCommentBool(content,idx){
       this.editCommBool[idx] = !this.editCommBool[idx]
+      
       this.editComm = content
     },
     editComment(comm,idx) {
@@ -588,7 +616,7 @@ export default {
           no,comment,
           (res) => {
             console.log(res.data)
-            comm.content = comment
+            comm.comment = comment
             this.editCommBool[idx] = false
           },
           (err) => {
@@ -603,10 +631,8 @@ export default {
       deleteComment(
         no,
         (res) => {
-          console.log(2)
           console.log(res.data)
-          console.log(this.comments,idx)
-          // this.comments.splice(idx,1)
+          this.comments.splice(idx,1)
         },
         (err) => {
           console.log(3)
@@ -616,18 +642,20 @@ export default {
     },
     createNewFeed() {
       writeArticle(
-        this.user.userid,this.newText,
+        this.user.userid,this.newText,this.newImg,
         (res) => {
           console.log(res.data)
           let newArticle = 
           {
-              // src: require("@/assets/images/corinlee.jpg"), 
-              id:this.user.userid, 
-              regtime: new Date(), 
-              content: this.newText, 
-              like: 0,
-              no:20
-              // comments: []
+            no:-1,
+            id:this.user.userid,
+            nickname:this.user.nickname,
+            profile:'',
+            like:[],
+            comment:0,
+            image:this.newImg,
+            content:this.newText,
+            regtime:new Date(),
           }
           this.feeds.push(newArticle)
           this.newText = ""
@@ -648,6 +676,7 @@ export default {
       getComment(
         feed.no,
         (res) => {
+          console.log(res.data)
           this.comments = res.data
         },
         (err) => {
@@ -662,9 +691,10 @@ export default {
     updateFeed(selected) {
       let no = selected.no
       let content = selected.content
+      let image = selected.imageName
       if (content !== null) {
         updateArticle(
-          no,content,
+          no,content,image,
           (res) => {
             alert("글이 수정되었습니다")
             this.editmodal = !this.editmodal
@@ -686,67 +716,37 @@ export default {
           console.log(res.data)
         },
         (err) => {
+          console.log(1)
           console.log(err)
         }
       )
     },
-    likeFeed(event) {
-      // let userid = this.user.userid
-      let userid = "leegw215@naver.com"
-      let nickname = "이지원"
-      let no = event.no
-      let users = []
-      let bool = false
-      console.log(event.like)
-      getLikeUsers(
-        no,
-        (res) => {
-          // console.log(res.data)
-          console.log(1)
-          users = res.data
-          console.log(res.data)
-          for (let idx = 0; idx < users.length; idx++){
-            if (users[idx].like_id === userid) {
-              bool = true
-              break
-            }
+    likeFeed(feed) {
+      let userid = this.user.userid
+      let no = feed.no
+      if (feed.like.includes(userid)){
+        unlikeArticle(
+          userid,no,
+          (res) => {
+            console.log(res.data)
+            let idx = feed.like.indexOf(userid)
+            feed.like.splice(idx,1)
+          },
+          (err) => {
+            console.log(err)
+          })
+      } else {
+        likeArticle(
+          userid,no,
+          (res) => {
+            console.log(res.data)
+            feed.like.push(userid)
+          },
+          (err) => {
+            console.log(err)
           }
-          console.log(2)
-          console.log(bool)
-          if (!bool) {
-            likeArticle(
-              userid,nickname,no,
-              (res) => {
-                console.log(3)
-                console.log(res.data)
-                event.like *= 1
-                event.like += 1
-                event.like += ''
-              },
-              (err) => {
-                console.log(err)
-              }
-            )
-
-          } else {
-            unlikeArticle(
-              userid,no,
-              (res) => {
-                console.log(res.data)
-                event.like *= 1
-                event.like -= 1
-                event.like += ''
-              },
-              (err) => {
-                console.log(err)
-              }
-            )
-          }
-        },
-        (err) => {
-          console.log(err)
-        }
-      )
+        )
+      }
 
     },
     unlikeFeed(userid, no){
@@ -771,12 +771,15 @@ export default {
         }
       )
     },
-    async upload(){
+    async upload(event){
       this.dialog = false
-      let fd = new FormData();
-      fd.append('files',this.files)
-      await axios.post('http://localhost:1337/upload',
-        fd, {
+      event.preventDefault();
+      let file = new FormData();
+      file.append('file', this.files)
+      // file.append('asdf','asdf')
+
+      await axios.post('http://i4d102.p.ssafy.io:9000/ssac/file/newsfeedImageAdd',
+        file, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
@@ -784,10 +787,55 @@ export default {
       ).then( response => {
         console.log('SUCCESS!!');
         console.log(response.data)
+        this.newImg = response.data.imageName
       })
-      .catch(function () {
+      .catch( error => {
         console.log('FAILURE!!');
+        console.log(error)
+        // console.log(this.files)
+        // console.log(file)
       });
+      this.files = ""
+    },
+    async upload2(event){
+      this.dialog = false
+      event.preventDefault();
+      let file = new FormData();
+      file.append('file', this.files)
+      // file.append('asdf','asdf')
+
+      await axios.post('http://i4d102.p.ssafy.io:9000/ssac/file/newsfeedImageAdd',
+        file, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }
+      ).then( response => {
+        console.log('SUCCESS!!');
+        // console.log(response.data)
+        this.selected.imageName = response.data.filename
+        this.selected.image = this.changeBlob(response.data.imageBLOB)
+      })
+      .catch( error => {
+        console.log('FAILURE!!');
+        console.log(error)
+        // console.log(this.files)
+        // console.log(file)
+      });
+    },
+    changeBlob(data){
+
+      const byteCharacters = window.atob(data)
+      const byteNumbers = new Array(byteCharacters.length)
+      for (let i = 0; i< byteCharacters.length; i++){
+        byteNumbers[i] = byteCharacters.charCodeAt(i);
+      }
+
+      const byteArray = new Uint8Array(byteNumbers);
+      const blob = new Blob([byteArray],{type:"image/jpg"})
+      const url = window.URL.createObjectURL(blob)
+
+      return url
     }
 
   },
