@@ -63,10 +63,12 @@ public class NewsfeedController {
 				map.put("regtime", newsfeeds.get(i).getRegtime());
 				Image image = imageService.feedFilenameToBlob(newsfeeds.get(i).getImagename());
 				if(image != null) {
-					System.out.println(Arrays.toString(image.getBlob()));
-					map.put("image", image);
+					map.put("imageBLOB", image.getBlob());
+					map.put("imageName", image.getFilename());
+				} else {
+					map.put("imageBLOB", "");
+					map.put("imageName", "");
 				}
-				else map.put("image", "");
 				List<NewsFeedLike> like = newsfeedService.listNewsFeedLike(newsfeeds.get(i).getNo());
 				List<String> likeid = new ArrayList<String>();
 				for(int j=0; j<like.size(); j++) likeid.add(like.get(j).getLike_id());
