@@ -68,7 +68,7 @@
 	<update id="updateComment" parameterType="com.ssac.newsfeed.dto.NewsFeedComment">
 		update newsfeed_comment
 		set comment = #{comment}
-		where no = #{no} and writer = #{writer}
+		where no = #{no}
 	</update>
 	
 	<delete id="deleteComment" parameterType="int">
