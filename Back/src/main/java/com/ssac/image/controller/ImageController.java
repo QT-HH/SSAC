@@ -28,8 +28,9 @@ public class ImageController {
 	@PostMapping("/newsfeedImageAdd")
 	public ResponseEntity<?> addImageNewsFeed(@RequestParam MultipartFile file) throws Exception {
 		try {
-			System.out.println("뉴스피드 이미지 넣기 : "+file.getOriginalFilename());
-			return new ResponseEntity<>(imageService.addImageIntoNewsFeed(file), HttpStatus.OK);
+			Image image = imageService.addImageIntoNewsFeed(file);			
+			System.out.println("뉴스피드 이미지 넣기 : "+file.getOriginalFilename()+image.getFilename());
+			return new ResponseEntity<>(image, HttpStatus.OK);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
