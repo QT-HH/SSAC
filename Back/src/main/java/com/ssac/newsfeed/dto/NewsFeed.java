@@ -10,6 +10,12 @@ public class NewsFeed {
 	private String regtime;
 	private String imagename;
 	
+	public NewsFeed(String id, String content, String imagename) {
+		this.id = id;
+		this.content = content;
+		this.imagename = imagename;
+	}
+	
 	public NewsFeed(int no, String content, String imagename) {
 		this.no = no;
 		this.content = content;
