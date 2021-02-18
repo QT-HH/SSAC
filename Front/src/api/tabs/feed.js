@@ -1,7 +1,7 @@
 import { createInstance } from "../index.js"
 
 const instance = createInstance();
-const url = "http://i4d102.p.ssafy.io:9000/ssac"
+const url = "http://i4d102.p.ssafy.io/ssac"
 
 function getArticle(userid, success, fail) {
   instance

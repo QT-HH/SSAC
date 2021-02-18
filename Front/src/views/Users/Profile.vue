@@ -248,7 +248,7 @@ export default {
     console.log('created')
 
 
-    axios.get(`http://i4d102.p.ssafy.io:9000/ssac/user/userSelect?userid=${this.$store.state.user.userid}`)
+    axios.get(`http://i4d102.p.ssafy.io/ssac/user/userSelect?userid=${this.$store.state.user.userid}`)
       .then(response => {
         console.log(response.data)
         this.nickname = response.data.usernickname
@@ -265,7 +265,7 @@ export default {
       })
 
 
-    axios.get(`http://i4d102.p.ssafy.io:9000/ssac/newsfeed/newsFeedList?userid=${this.$store.state.user.userid}`)
+    axios.get(`http://i4d102.p.ssafy.io/ssac/newsfeed/newsFeedList?userid=${this.$store.state.user.userid}`)
       .then(response => {
         console.log(response.data)
         this.articles = response.data

@@ -4,7 +4,7 @@ const instance = createInstance();
 //채팅방 생성 리스트
 function createChat(userid, success, fail) {
   instance
-    .get(`http://i4d102.p.ssafy.io:9000/ssac/schedule/chatList?userid=${ userid }`)
+    .get(`http://i4d102.p.ssafy.io/ssac/schedule/chatList?userid=${ userid }`)
     .then(success)
     .catch(fail);
 }

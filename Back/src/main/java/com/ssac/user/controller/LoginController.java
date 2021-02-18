@@ -1,6 +1,8 @@
 package com.ssac.user.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
@@ -18,12 +20,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ssac.image.service.ImageService;
+import com.ssac.team.dto.MyTeam;
+import com.ssac.team.service.TeamService;
 import com.ssac.user.dto.User;
 import com.ssac.user.jwt.service.JwtService;
 import com.ssac.user.service.UserService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "*")
 @RequestMapping("/login")
 public class LoginController {
 	@Autowired
@@ -32,6 +36,8 @@ public class LoginController {
 	private UserService service;
 	@Autowired
 	private ImageService imageService;
+	@Autowired
+	private TeamService teamService;
 	
 	@PostMapping("/login")
 	public ResponseEntity<?> login(@RequestBody String js, HttpServletResponse response, HttpSession session) throws Exception {
@@ -55,6 +61,10 @@ public class LoginController {
 				resultMap.put("profile", imageService.profileFilenameToBlob(check.getProfile()).getBlob());
 				resultMap.put("intro", check.getIntro());
 				resultMap.put("grade", check.getGrade());
+				List<MyTeam> myteam = teamService.listMyTeam(user.getId());
+				List<Integer> myteams = new ArrayList<Integer>();
+				for(int i=0; i<myteam.size(); i++) myteams.add(myteam.get(i).getTeam_no());
+				resultMap.put("myteams", myteams);
 				resultMap.put("message", "success");
 				return new ResponseEntity<Map<String, Object>>(resultMap, HttpStatus.OK);
 			}

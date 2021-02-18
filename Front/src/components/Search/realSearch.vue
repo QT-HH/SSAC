@@ -1,36 +1,29 @@
 <template>
   <div>
     <!-- 검색창 -->
-    <div>
+    <div class="mt-7">
       <v-row 
         align="center"
         justify="space-around"
       >
-        <v-col cols=9>
+        <v-col class="ml-2">
           <v-text-field
             label="검색어를 입력하세요."
             v-model="search"
             class="ml-8"
           ></v-text-field>
         </v-col>
-        <v-col>
+        <v-col cols=3>
           <v-btn
-          fab
-          dark
-          small
-          color="primary"
-          @click="realSearch">
-            <v-icon>
-              {{ icons.mdiMagnify }}
-            </v-icon>
+            @click="realSearch"
+            icon
+          >
+            <v-icon color="#536DFE"> mdi-magnify </v-icon>
           </v-btn>
         </v-col>
       </v-row>
 
     </div>
-
-    <!-- <li v-for="(user, idx) in users" :key="idx"><img src="user.img" alt="img"> {{user.name}}</li> -->
-    <!-- <p v-if="searched">유저 검색 결과<span></span></p> -->
     <v-container cols=9 class="mt-0 pt-0">
 
     <v-list subheader>

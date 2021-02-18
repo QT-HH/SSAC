@@ -673,7 +673,7 @@ export default {
       file.append('file', this.files)
       // file.append('asdf','asdf')
 
-      await axios.post('http://i4d102.p.ssafy.io:9000/ssac/file/newsfeedImageAdd',
+      await axios.post('http://i4d102.p.ssafy.io/ssac/file/newsfeedImageAdd',
         file, {
           headers: {
             'Content-Type': 'multipart/form-data'
@@ -701,7 +701,7 @@ export default {
       file.append('file', this.files)
       // file.append('asdf','asdf')
 
-      await axios.post('http://i4d102.p.ssafy.io:9000/ssac/file/newsfeedImageAdd',
+      await axios.post('http://i4d102.p.ssafy.io/ssac/file/newsfeedImageAdd',
         file, {
           headers: {
             'Content-Type': 'multipart/form-data'

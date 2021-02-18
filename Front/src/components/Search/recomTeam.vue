@@ -83,7 +83,7 @@ export default {
       }
     }
 
-    axios.get(`http://i4d102.p.ssafy.io:9000/ssac/search/recommend/`, params)
+    axios.get(`http://i4d102.p.ssafy.io/ssac/search/recommend/`, params)
       .then(response => {
         console.log(response.data)
         this.name = response.data.name

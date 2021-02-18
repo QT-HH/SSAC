@@ -4,7 +4,7 @@ const instance = createInstance();
 
 function listTeams(userid, success, fail) {
     instance
-      .get(`http://i4d102.p.ssafy.io:9000/ssac/team/newTeamList?userid=${userid}`)
+      .get(`http://i4d102.p.ssafy.io/ssac/team/newTeamList?userid=${userid}`)
       .then(success)
       .catch(fail);
   }

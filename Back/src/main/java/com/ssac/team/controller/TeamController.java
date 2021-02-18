@@ -26,7 +26,7 @@ import com.ssac.team.service.TeamService;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "*")
 @RequestMapping("/team")
 public class TeamController {
 	@Autowired
@@ -52,6 +52,7 @@ public class TeamController {
 		// 출력 : 나의 팀
 		try {
 			List<MyTeam> myteams = teamService.listMyTeam(userid);
+			System.out.println("마이팀 리스트 조회 : "+userid);
 			List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
 			for(int i=0; i<myteams.size(); i++) {
 				Team team = teamService.getTeam(myteams.get(i).getTeam_no());
@@ -82,10 +83,14 @@ public class TeamController {
 		JSONObject jsonObj = null;
 		try {
 			jsonObj = (JSONObject) jsonParse.parse(js);
+			System.out.println("json");
 			MyTeam myteam = new MyTeam();
-			myteam.setId((String) jsonObj.get("userid"));
-			myteam.setTeam_no((int) jsonObj.get("team_no"));
+			String userid = (String) jsonObj.get("userid");
+			long team_no = (long) jsonObj.get("team_no");
+			myteam.setId(userid);
+			myteam.setTeam_no((int)team_no);
 			myteam.setName(teamService.getTeam(myteam.getTeam_no()).getName());
+			System.out.println("마이팀추가 : "+userid+" "+team_no);
 			if(teamService.writeMyTeam(myteam) > 0) {
 				HashMap<String, Integer> map = new HashMap<String, Integer>();
 				map.put("no", myteam.getTeam_no());
@@ -110,9 +115,12 @@ public class TeamController {
 		try {
 			jsonObj = (JSONObject) jsonParse.parse(js);
 			MyTeam myteam = new MyTeam();
-			myteam.setNo((int) jsonObj.get("no"));
-			myteam.setId((String) jsonObj.get("userid"));
-			myteam.setName((String) jsonObj.get("name"));
+			long no = (long) jsonObj.get("no");
+			String userid = (String) jsonObj.get("userid");
+			String name = (String) jsonObj.get("name");
+			myteam.setNo((int) no);
+			myteam.setId(userid);
+			myteam.setName(name);
 			if(teamService.modifyMyTeam(myteam) > 0)
 				return new ResponseEntity<String>("success", HttpStatus.OK);				
 		} catch(Exception e) {
@@ -123,17 +131,15 @@ public class TeamController {
 	
 	@ApiOperation(value = "마이 팀 삭제", notes = "userid, 내팀번호(no)")
 	@DeleteMapping("/myTeamDelete")
-	public ResponseEntity<?> deleteMyTeam(@RequestBody String js) throws Exception {
+	public ResponseEntity<?> deleteMyTeam(@RequestParam String userid, @RequestParam int no) throws Exception {
 		// 나의 팀 삭제
 		// 입력값 : userid, 내팀번호(no)
 		// 출력값 : 성공, 실패
-		JSONParser jsonParse = new JSONParser();
-		JSONObject jsonObj = null;
 		try {
-			jsonObj = (JSONObject) jsonParse.parse(js);
 			MyTeam myteam = new MyTeam();
-			myteam.setId((String) jsonObj.get("userid"));
-			myteam.setNo((int) jsonObj.get("no"));
+			myteam.setId(userid);
+			myteam.setNo(no);
+			System.out.println("마이팀 삭제 : "+userid+" "+no);
 			if(teamService.removeMyTeam(myteam) > 0) {
 				HashMap<String, Integer> map = new HashMap<String, Integer>();
 				map.put("no", myteam.getTeam_no());
