@@ -6,6 +6,7 @@ com/ssac/user/dto/KakaoProfile$KakaoAccount.class
 com/ssac/schedule/service/ScheduleServiceImpl.class
 com/ssac/schedule/dto/Bet.class
 com/ssac/mappers/ScheduleMapper.class
+com/ssac/notice/dto/Notice.class
 com/ssac/user/dto/KakaoProfile$KakaoAccount$Profile.class
 com/ssac/user/dto/KakaoProfile.class
 com/ssac/user/service/NaverService.class
@@ -16,7 +17,10 @@ com/ssac/schedule/service/ScheduleService.class
 com/ssac/mappers/NewsFeedMapper.class
 com/ssac/user/controller/SocialLoginController.class
 com/ssac/user/dto/KakaoProfile$Properties.class
+com/ssac/mappers/NoticeMapper.class
+com/ssac/notice/service/NoticeServiceImpl.class
 com/ssac/newsfeed/dto/NewsFeedComment.class
+com/ssac/notice/service/NoticeService.class
 com/ssac/newsfeed/dto/NewsFeed.class
 com/ssac/image/dto/Image.class
 com/ssac/newsfeed/dto/NewsFeedLike.class
@@ -29,3 +33,4 @@ com/ssac/image/controller/ImageController.class
 com/ssac/user/dto/NaverToken.class
 com/ssac/user/dto/NaverProfile.class
 com/ssac/newsfeed/service/NewsFeedServiceImpl.class
+com/ssac/notice/controller/NoticeController.class
