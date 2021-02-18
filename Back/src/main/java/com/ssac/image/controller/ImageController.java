@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
-@CrossOrigin(origins = "http://i4d102.p.ssafy.io/")
+@CrossOrigin(origins = "http://localhost:8080/")
 @RequestMapping("/file")
 public class ImageController {
 	@Autowired
