@@ -83,8 +83,11 @@ public class TeamController {
 		try {
 			jsonObj = (JSONObject) jsonParse.parse(js);
 			MyTeam myteam = new MyTeam();
-			myteam.setId((String) jsonObj.get("userid"));
-			myteam.setTeam_no((int) jsonObj.get("team_no"));
+			String userid = (String) jsonObj.get("userid");
+			int team_no = (int) jsonObj.get("team_no");
+			myteam.setId(userid);
+			myteam.setTeam_no(team_no);
+			System.out.println("마이팀추가 : "+userid+" "+team_no);
 			myteam.setName(teamService.getTeam(myteam.getTeam_no()).getName());
 			if(teamService.writeMyTeam(myteam) > 0) {
 				HashMap<String, Integer> map = new HashMap<String, Integer>();
