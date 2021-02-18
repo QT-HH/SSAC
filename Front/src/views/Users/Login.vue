@@ -188,7 +188,7 @@ export default {
               this.$store.commit("setIsLogined", true);
               localStorage.setItem("access-token", token);
   
-              this.$store.dispatch("GET_MEMBER_INFO", token);
+              this.$store.dispatch("GET_MEMBER_INFO", res.data);
               this.$router.push({name:"SportsSchedule"});
             } else {
               this.isLoginError = true;
