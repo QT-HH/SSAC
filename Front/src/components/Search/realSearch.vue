@@ -112,7 +112,7 @@ export default {
         }
       }
 
-      axios.get(`http://i4d102.p.ssafy.io:9000/ssac/search/search/`, params)
+      axios.get(`http://i4d102.p.ssafy.io/ssac/search/search/`, params)
         .then(response => {
           console.log(response.data)
           // axios 요청부분 - 요청한번보내서 this.users랑 this.teams를 다 업데이트.

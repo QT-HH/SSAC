@@ -2,18 +2,18 @@ import { createInstance } from "../index.js";
 
 const instance = createInstance();
 
-// http://i4d102.p.ssafy.io:9000/ssac/schedule/schedule
-const url = "http://i4d102.p.ssafy.io:9000/ssac"
+// http://i4d102.p.ssafy.io/ssac/schedule/schedule
+const url = "http://i4d102.p.ssafy.io/ssac"
 function getSchedule(success,fail) {
   instance
-    .get("http://i4d102.p.ssafy.io:9000/ssac/schedule/schedule")
+    .get("http://i4d102.p.ssafy.io/ssac/schedule/schedule")
     .then(success)
     .catch(fail);
 }
 
 function getTeam(success,fail) {
   instance
-    .get("http://i4d102.p.ssafy.io:9000/ssac/team/allTeamList")
+    .get("http://i4d102.p.ssafy.io/ssac/team/allTeamList")
     .then(success)
     .catch(fail);
 }

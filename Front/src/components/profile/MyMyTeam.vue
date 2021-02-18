@@ -179,7 +179,7 @@ export default {
       }
     }
 
-    axios.patch(`http://i4d102.p.ssafy.io:9000/ssac/team/myTeamNameChange`, params2)
+    axios.patch(`http://i4d102.p.ssafy.io/ssac/team/myTeamNameChange`, params2)
       .then(response => {
         console.log(response.data)
         // this.articles = response.data
@@ -198,7 +198,7 @@ export default {
       }
     }
 
-    axios.delete(`http://i4d102.p.ssafy.io:9000/ssac/team/myTeamDelete`, params3)
+    axios.delete(`http://i4d102.p.ssafy.io/ssac/team/myTeamDelete`, params3)
       .then(response => {
         console.log(response.data)
         // this.articles = response.data
@@ -219,7 +219,7 @@ export default {
       }
     }
 
-    axios.get(`http://i4d102.p.ssafy.io:9000/ssac/team/myTeamList`, params)
+    axios.get(`http://i4d102.p.ssafy.io/ssac/team/myTeamList`, params)
       .then(response => {
         console.log(response.data)
         this.myteams = response.data

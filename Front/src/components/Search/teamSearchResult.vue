@@ -59,7 +59,7 @@ export default {
           }
         }
 
-      axios.post(`http://i4d102.p.ssafy.io:9000/ssac/team/myTeamInsert/`, params)
+      axios.post(`http://i4d102.p.ssafy.io/ssac/team/myTeamInsert/`, params)
         .then(response => {
           console.log(response.data)
           // axios 요청부분 - 요청한번보내서 this.users랑 this.teams를 다 업데이트.
