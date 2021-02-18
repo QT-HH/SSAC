@@ -85,9 +85,9 @@ public class TeamController {
 			System.out.println("json");
 			MyTeam myteam = new MyTeam();
 			String userid = (String) jsonObj.get("userid");
-			int team_no = (int) jsonObj.get("team_no");
+			long team_no = (long) jsonObj.get("team_no");
 			myteam.setId(userid);
-			myteam.setTeam_no(team_no);
+			myteam.setTeam_no((int)team_no);
 			myteam.setName(teamService.getTeam(myteam.getTeam_no()).getName());
 			System.out.println("마이팀추가 : "+userid+" "+team_no);
 			if(teamService.writeMyTeam(myteam) > 0) {
