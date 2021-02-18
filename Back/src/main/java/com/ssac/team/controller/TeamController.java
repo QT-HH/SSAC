@@ -115,9 +115,12 @@ public class TeamController {
 		try {
 			jsonObj = (JSONObject) jsonParse.parse(js);
 			MyTeam myteam = new MyTeam();
-			myteam.setNo((int) jsonObj.get("no"));
-			myteam.setId((String) jsonObj.get("userid"));
-			myteam.setName((String) jsonObj.get("name"));
+			long no = (long) jsonObj.get("no");
+			String userid = (String) jsonObj.get("userid");
+			String name = (String) jsonObj.get("name");
+			myteam.setNo((int) no);
+			myteam.setId(userid);
+			myteam.setName(name);
 			if(teamService.modifyMyTeam(myteam) > 0)
 				return new ResponseEntity<String>("success", HttpStatus.OK);				
 		} catch(Exception e) {
@@ -137,8 +140,11 @@ public class TeamController {
 		try {
 			jsonObj = (JSONObject) jsonParse.parse(js);
 			MyTeam myteam = new MyTeam();
-			myteam.setId((String) jsonObj.get("userid"));
-			myteam.setNo((int) jsonObj.get("no"));
+			String userid = (String) jsonObj.get("userid");
+			long no = (long) jsonObj.get("no");
+			myteam.setId(userid);
+			myteam.setNo((int)no);
+			System.out.println("마이팀 삭제 : "+userid+" "+no);
 			if(teamService.removeMyTeam(myteam) > 0) {
 				HashMap<String, Integer> map = new HashMap<String, Integer>();
 				map.put("no", myteam.getTeam_no());
