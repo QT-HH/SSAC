@@ -52,6 +52,7 @@ public class TeamController {
 		// 출력 : 나의 팀
 		try {
 			List<MyTeam> myteams = teamService.listMyTeam(userid);
+			System.out.println("마이팀 리스트 조회 : "+userid);
 			List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
 			for(int i=0; i<myteams.size(); i++) {
 				Team team = teamService.getTeam(myteams.get(i).getTeam_no());
