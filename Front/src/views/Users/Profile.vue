@@ -24,7 +24,7 @@
             <v-btn v-else icon style="
   top: 50%;
   left: 60%;
-  transform: translate(-50%, -50%);" @click="doFollow">
+  transform: translate(-50%, -50%);" @click="upPoint">
               <v-icon>
               {{ icons.mdiHumanGreeting }}
             </v-icon>
@@ -33,9 +33,9 @@
         </v-row>
         <!-- <v-btn icon>
           <v-icon>mdi-magnify</v-icon>
-        </v-btn>
+        </v-btn> -->
 
-        <v-btn icon>
+        <!-- <v-btn icon @click="gotoProfileEdit">
           <v-icon>mdi-filter</v-icon>
         </v-btn> -->
       </v-app-bar>
@@ -125,7 +125,7 @@
             font-size: 1.0em;
             color: grey"
             class="pt-0 text">
-              {{ point }}
+              {{ this.$store.state.user.point }}
             </div>
           </v-col>
         </v-row>
@@ -238,7 +238,12 @@ export default {
       doFollow (
         para,
       )
-    }},
+    },
+    upPoint(){
+      console.log(this.$store.state.user)
+      this.$store.commit('GUDOK')
+    }
+  },
   created() {
     console.log('created')
 
@@ -253,6 +258,7 @@ export default {
         this.follower = response.data.follower
         this.following = response.data.following
         this.profile = this.changeBlob(response.data.profile)
+        this.introduce = response.data.intro
       })
       .catch(error => {
         console.error(error)

@@ -1,5 +1,5 @@
 <template>
-  <v-list-item>
+  <v-list-item @click="gotoInF">
     <v-list-item-avatar>
       <v-img
         :alt="user.name"
@@ -20,6 +20,11 @@ export default {
   props: {
     user: {
       type: Object,
+    }
+  },
+  methods :{
+    gotoInF(){
+      this.$router.push({name:'Article'})
     }
   }
 }

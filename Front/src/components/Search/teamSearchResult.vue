@@ -18,7 +18,7 @@
       <v-list-item-title v-text="team.name"></v-list-item-title>
     </v-list-item-content>
 
-    <v-icon @click="[saveMyTeam(team), changeIconType(), dbRequest()]">{{ iconType }}</v-icon>
+    <v-icon @click="[saveMyTeam(team), changeIconType(team), dbRequest(team)]">{{ icon[changeIconType(team)] }}</v-icon>
 
 
 </v-list-item>
@@ -27,7 +27,8 @@
 
 <script>
 import { mapActions, mapState } from 'vuex'
-import axios from 'axios'
+// import axios from 'axios'
+import {addmyteam} from '@/api/tmp/search.js'
 
 export default {
   name: 'teamSearchResult',
@@ -36,40 +37,64 @@ export default {
       type: Object,
     }
   },
-  data: function() {
+  data() {
     return {
-      iconType: 'mdi-plus-circle-outline'
+      icon: {
+        false: 'mdi-plus-circle-outline',
+        true: ''
+      },
     }
   },
   methods: {
     ...mapActions ([
       'saveMyTeam',
     ]),
-    changeIconType: function() {
-      this.iconType = 'blank'
+    changeIconType: function(team) {
+      if (this.$store.state.user.myteams.includes(team.no)){
+        return true
+      } else {
+        return false
+      }
     },
 
-    dbRequest: function() {
+    dbRequest: function(team) {
+      // console.log(team)
+      // console.log('created')
+      // const body = {
+      //   userid: this.$store.state.user.userid,
+      //   team_no: team.no
+      // }
 
-      console.log('created')
-      const params = {
-          params: {
-            userid: this.userid,
-            team_no: this.team_no
-          }
+      let userid = this.$store.state.user.userid
+      let team_no = team.no
+
+
+      addmyteam(
+        userid, team_no,
+        (res) => {
+          console.log(res.data)
+          // this.$store.state.user.myteams.push(team_no)
+
+        },
+        (err) => {
+          console.log(err)
         }
+      )
 
-      axios.post(`http://i4d102.p.ssafy.io/ssac/team/myTeamInsert/`, params)
-        .then(response => {
-          console.log(response.data)
-          // axios 요청부분 - 요청한번보내서 this.users랑 this.teams를 다 업데이트.
-          // this.fri_teams = response.data
-          // this.searched = response.data.searched // 유저검색결과 한 줄 
-        })
-        .catch(error => {
-          console.error(error)
-        })
-      
+      // axios.post(`http://i4d102.p.ssafy.io:9000/ssac/team/myTeamInsert/`, JSON.stringify(body))
+      //   .then(response => {
+      //     console.log(1)
+      //     console.log(response.data)
+      //     console.log(2)
+      //     console.log(this.$store.state.user.myteams)
+      //     // axios 요청부분 - 요청한번보내서 this.users랑 this.teams를 다 업데이트.
+      //     // this.fri_teams = response.data
+      //     // this.searched = response.data.searched // 유저검색결과 한 줄 
+      //   })
+      //   .catch(error => {
+      //     console.log(3)
+      //     console.error(error)
+      //   })
 
     }
   },
@@ -81,7 +106,7 @@ export default {
   created() {
     // console.log('created')
     if (this.team in this.myTeams) {
-        this.iconType = ''
+        this.iconType = 'mdi-minus-circle-outline'
     }
   }
 }

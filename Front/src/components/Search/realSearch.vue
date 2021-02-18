@@ -82,7 +82,7 @@ export default {
   },
   computed: {
     userid: function () {
-      return this.$store.state.user.email
+      return this.$store.state.user.userid
     }
   },
   methods: {
@@ -104,15 +104,10 @@ export default {
     
     realSearch: function() {
       console.log('realSearch')
-      
-      const params = {
-        params: {
-          userid: this.userid,
-          search: this.search,
-        }
-      }
+      let userid= this.userid
+      let search= this.search
 
-      axios.get(`http://i4d102.p.ssafy.io/ssac/search/search/`, params)
+      axios.get(`http://i4d102.p.ssafy.io:9000/ssac/search/search?userid=${userid}&search=${search}`)
         .then(response => {
           console.log(response.data)
           // axios 요청부분 - 요청한번보내서 this.users랑 this.teams를 다 업데이트.

@@ -4,6 +4,7 @@ export default {
   },
   setUserInfo(state, userInfo) {
     state.isLogin = true;
+    console.log(state.isLogin)
     state.user = userInfo;
     console.log(userInfo)
   },
@@ -27,7 +28,7 @@ export default {
   ADD_MYTEAM: function (state, selectTeam) {
     // console.log('mutations')
     console.log(selectTeam)
-    state.myTeams.push(selectTeam)
+    state.myTeams.push(selectTeam.no)
   },
   SAVE_CHATROOM: function (state, roomid) {
     // console.log('mutations')
@@ -56,5 +57,8 @@ export default {
     },
   FOOTEROUT: function (state)  {
       state.isChatRoom = !state.isChatRoom
-    }
+    },
+  GUDOK: function(state) {
+    state.user.point += 100
+  }
 };

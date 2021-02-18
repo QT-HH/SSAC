@@ -363,7 +363,7 @@
             </v-btn>
             <v-divider></v-divider>
             <br>
-            <v-btn @click="deleteFeed(selected.no)">
+            <v-btn @click="deleteFeed(selected)">
               삭제하기
             </v-btn>
             <v-btn @click="updateFeed(selected)">
@@ -602,10 +602,12 @@ export default {
         alert("글 내용이 없습니다")
       }
     },
-    deleteFeed(no) {
+    deleteFeed(select) {
       deleteArticle(
-        no,
+        select.no,
         (res) => {
+          let idx = this.feeds.indexOf(select)
+          this.feeds.splice(idx,1)
           this.editmodal = !this.editmodal
           console.log(res.data)
         },
@@ -732,7 +734,7 @@ export default {
         const blob = new Blob([byteArray],{type:"image/jpg"})
         const url = window.URL.createObjectURL(blob)
 
-        console.log(1)
+        // console.log(4)
         return url
       } else {
         return ""
