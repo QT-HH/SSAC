@@ -131,19 +131,14 @@ public class TeamController {
 	
 	@ApiOperation(value = "마이 팀 삭제", notes = "userid, 내팀번호(no)")
 	@DeleteMapping("/myTeamDelete")
-	public ResponseEntity<?> deleteMyTeam(@RequestBody String js) throws Exception {
+	public ResponseEntity<?> deleteMyTeam(@RequestParam String userid, @RequestParam int no) throws Exception {
 		// 나의 팀 삭제
 		// 입력값 : userid, 내팀번호(no)
 		// 출력값 : 성공, 실패
-		JSONParser jsonParse = new JSONParser();
-		JSONObject jsonObj = null;
 		try {
-			jsonObj = (JSONObject) jsonParse.parse(js);
 			MyTeam myteam = new MyTeam();
-			String userid = (String) jsonObj.get("userid");
-			long no = (long) jsonObj.get("no");
 			myteam.setId(userid);
-			myteam.setNo((int)no);
+			myteam.setNo(no);
 			System.out.println("마이팀 삭제 : "+userid+" "+no);
 			if(teamService.removeMyTeam(myteam) > 0) {
 				HashMap<String, Integer> map = new HashMap<String, Integer>();
