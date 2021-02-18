@@ -24,7 +24,7 @@ import com.ssac.user.service.UserService;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://i4d102.p.ssafy.io/")
 @RequestMapping("/search")
 public class SearchController {
 	@Autowired

@@ -30,7 +30,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://i4d102.p.ssafy.io/")
 @RequestMapping("/chat")
 public class ChatRoomController {
 	@Autowired

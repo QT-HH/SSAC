@@ -17,7 +17,7 @@ import com.ssac.notice.service.NoticeService;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://i4d102.p.ssafy.io/")
 @RequestMapping("/notice")
 public class NoticeController {
 	@Autowired
