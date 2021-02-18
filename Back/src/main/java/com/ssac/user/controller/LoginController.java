@@ -23,7 +23,7 @@ import com.ssac.user.jwt.service.JwtService;
 import com.ssac.user.service.UserService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8080/")
+@CrossOrigin(origins = "*")
 @RequestMapping("/login")
 public class LoginController {
 	@Autowired

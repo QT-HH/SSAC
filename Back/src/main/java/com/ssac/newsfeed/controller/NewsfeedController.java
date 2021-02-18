@@ -33,7 +33,7 @@ import com.ssac.user.service.UserService;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8080/")
+@CrossOrigin(origins = "*")
 @RequestMapping("/newsfeed")
 public class NewsfeedController {
 	@Autowired
