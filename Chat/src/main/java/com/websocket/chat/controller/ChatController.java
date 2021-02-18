@@ -25,6 +25,7 @@ public class ChatController {
         System.out.println("보낸사람 : "+message.getSender());
         System.out.println("내용 : "+message.getMessage());
         chatService.chatting(message);
+        
         return message;
     }
 }
