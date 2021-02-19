@@ -189,7 +189,7 @@ export default {
               localStorage.setItem("access-token", token);
   
               this.$store.dispatch("GET_MEMBER_INFO", token);
-              this.$router.push("/sports");
+              this.$router.push("/tabs");
             } else {
               this.isLoginError = true;
             }

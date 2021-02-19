@@ -10,7 +10,7 @@ Vue.use(Vuex)
 const debug = process.env.NODE_ENV !== 'production';
 
 const state = {
-  isLogin: true,
+  isLogin: false,
   isChatRoom: false,
   userInfo: null,
   isNav: false, 
