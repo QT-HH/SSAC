@@ -15,7 +15,7 @@ function signup(newuser, success, fail) {
   console.log(body)
   console.log(JSON.stringify(body))
   instance
-    .post("http://i4d102.p.ssafy.io:9000/ssac/user/signup", JSON.stringify(body))
+    .post("http://i4d102.p.ssafy.io/ssac/user/signup", JSON.stringify(body))
     .then(success)
     .catch(fail);
 }
@@ -23,7 +23,7 @@ function signup(newuser, success, fail) {
 function getUser(success, fail) {
 
   instance
-    .get(`http://i4d102.p.ssafy.io:9000/ssac/user/isCheck`)
+    .get(`http://i4d102.p.ssafy.io/ssac/user/isCheck`)
     .then(success)
     .catch(fail);
 }

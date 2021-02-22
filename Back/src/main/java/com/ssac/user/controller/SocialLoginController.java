@@ -36,7 +36,7 @@ import com.ssac.user.service.UserService;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "*")
 @RequestMapping("/social")
 public class SocialLoginController {
 	@Autowired

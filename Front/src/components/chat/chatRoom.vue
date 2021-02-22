@@ -174,6 +174,7 @@ export default {
                 this.participants= response.data.participants
                 this.myself= response.data.myself
                 this.messages= response.data.messages
+                this.roomId = para.roomid
             },
             (error) => {
                 console.log(error)
@@ -195,26 +196,34 @@ export default {
                     // 서버의 메시지 전송 endpoint를 구독합니다.
                     // 이런형태를 pub sub 구조라고 합니다.
                     this.stompClient.subscribe("/send", res => {
-                        console.log('구독으로 받은 메시지 입니다.', this.authname, JSON.parse(res.body));
+                        console.log('구독으로 받은 메시지 입니다.', res.body);
+                        let now = new Date()
+                        let data = JSON.parse(res.body)
                         this.message = {
-                        id: JSON.parse(res.body).mrcUNo,
-                        roomNo: JSON.parse(res.body).mrcMrNo,
-                        author: this.user[JSON.parse(res.body).mrcUNo],
-                        contents: JSON.parse(res.body).mrcContent,
-                        image: '',
-                        imageUrl: '',
-                        date: moment().format('HH:mm:ss')
+                            content:data.message,
+                            myself: this.$store.state.user.userid === data.sender,
+                            participantId:data.sender,
+                            timestamp:{
+                                year:now.getFullYear(),
+                                month:now.getMonth(),
+                                day:now.getDate(),
+                                hour:now.getHours(),
+                                minute:now.getMinutes(),
+                                second:now.getSeconds(),
+                                millisecond:0
+                            },
+                            type:'text'
                         }
-                        if(this.message.roomNo===this.mrNo){
+                        if(res.body.roomId === this.roomid){
                         console.log("방번호가 일치합니다.")
                         console.log(this.message)
-                        setTimeout(function () {
-                        var scrollContainer = document.getElementById('window__messages__container')
-                        var isScrolledToBottom = scrollContainer.scrollHeight - scrollContainer.clientHeight <= scrollContainer.scrollTop + 1
-                        if (!isScrolledToBottom) { scrollContainer.scrollTop = scrollContainer.scrollHeight }
-                        }, 201)
+                        // setTimeout(function () {
+                        // var scrollContainer = document.getElementById('window__messages__container')
+                        // var isScrolledToBottom = scrollContainer.scrollHeight - scrollContainer.clientHeight <= scrollContainer.scrollTop + 1
+                        // if (!isScrolledToBottom) { scrollContainer.scrollTop = scrollContainer.scrollHeight }
+                        // }, 201)
                         // 받은 데이터를 json으로 파싱하고 리스트에 넣어줍니다.
-                        this.feed.push(this.message)
+                        this.messages.push(this.message)
                         }
                     });
                     const msg = { 
@@ -265,7 +274,10 @@ export default {
             this.message = '';
         },
         recvMessage: function(recv) {
-            this.messages.unshift({"type":recv.type,"sender":recv.type=='ENTER'?'[알림]':recv.sender,"message":recv.message})
+            console.log(1)
+            console.log(recv)
+            console.log(2)
+            this.messages.unshift({"type":'text',"sender":recv.participantId,"content":recv.message,"myself":false,"year":recv.regtime.year,month:recv.regtime.month})
         },
         loadMoreMessages(resolve) {
             setTimeout(() => {

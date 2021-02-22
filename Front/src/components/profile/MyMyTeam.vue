@@ -58,6 +58,7 @@
                 dark
                 small
                 class=" red rounded-circle d-inline-block"
+                @click="removeMyteam(team)"
               >
               <v-icon 
               dark
@@ -144,7 +145,7 @@ export default {
 
   computed: {
     userid: function () {
-      return this.$store.state.user.email
+      return this.$store.state.user.userid
     }
 
   },
@@ -179,7 +180,7 @@ export default {
       }
     }
 
-    axios.patch(`http://i4d102.p.ssafy.io:9000/ssac/team/myTeamNameChange`, params2)
+    axios.patch(`http://i4d102.p.ssafy.io/ssac/team/myTeamNameChange`, params2)
       .then(response => {
         console.log(response.data)
         // this.articles = response.data
@@ -190,15 +191,12 @@ export default {
         console.error(error)
       })
     },
-    removeMyteam () {
-    const params3 = {
-      params3: {
-        userid: this.userid,
-        no: this.no
-      }
-    }
-
-    axios.delete(`http://i4d102.p.ssafy.io:9000/ssac/team/myTeamDelete`, params3)
+    removeMyteam(team) {
+    console.log(team)
+    let userid= this.userid
+    let no= team.no
+    // console.log(JSON.stringify(params3))
+    axios.delete(`http://i4d102.p.ssafy.io:9000/ssac/team/myTeamDelete?userid=${userid}&no=${no}`)
       .then(response => {
         console.log(response.data)
         // this.articles = response.data
@@ -213,13 +211,9 @@ export default {
 
   created() {
     console.log('created')
-    const params = {
-      params: {
-        userid: this.userid,
-      }
-    }
+    let userid = this.$store.state.user.userid
 
-    axios.get(`http://i4d102.p.ssafy.io:9000/ssac/team/myTeamList`, params)
+    axios.get(`http://i4d102.p.ssafy.io:9000/ssac/team/myTeamList?userid=${userid}`)
       .then(response => {
         console.log(response.data)
         this.myteams = response.data

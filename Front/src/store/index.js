@@ -34,15 +34,16 @@ const state = {
     6: 'https://post-phinf.pstatic.net/MjAxOTExMjVfMTQ5/MDAxNTc0NjQ1MjI1MjY2.Zn4qn_krvEvxdzNLmtsHXm6r28u-MTxqZ0s_5VaJQesg.magZqCx3QZWeAXl9p6CldnXvib7ovGAjFPXg2BU-xTsg.JPEG/394462_292576_570.jpg?type=w1200',
     7: 'https://lh3.googleusercontent.com/proxy/yL8EcYIPeBF8kImj8okhIFkWVuHv82jEnukkqfV3ses6WajszvyMPhXwCaLiNF4NtB6hGTF6DLB0xnZ4dmGy390DEFdFcaVuP97GStshESVMA-Cy0cv8RUc',
     8: 'https://t1.daumcdn.net/cfile/tistory/99A9433B5A3E30D92A',
+    9: 'https://cdn.theathletic.com/app/uploads/2020/04/16183331/GettyImages-1187112662.jpg'
   },
   user: {
-    userid: "aaa@aaa.com",
-    email: "aaa@aaa.com",
-    password: "123123123",
-    nickname: "nojjeong",
-    myteams: [34,35],
+    userid: "",
+    email: "",
+    password: "",
+    nickname: "",
+    myteams: [],
     img: "https://placekitten.com/300/300",
-    intro: "Frei Aber Froh",
+    intro: "",
     profile: "",
   },
   myTeams: [

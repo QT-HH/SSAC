@@ -426,6 +426,7 @@ import { mapState } from 'vuex'
     },
     mounted () { 
       console.log(this.$store.state.user)
+      console.log(this.$store.state.isLogin)
       if (this.$store.state.user.grade === 10) {
         this.mas = true
       } else {
@@ -512,7 +513,7 @@ import { mapState } from 'vuex'
         return this.colors[event.events_no]
       },
       setToday () {
-        this.focus = ''
+        this.focus = this.today
       }, 
       prev () {
         this.$refs.calendar.prev()
