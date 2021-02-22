@@ -52,9 +52,9 @@ export default {
     })
   },
   USERNICKNAME: function (state, {nickname,introduce})  {
-      state.user.nickname = nickname,
-      state.user.introduce = introduce  
-    },
+    state.user.nickname = nickname,
+    state.user.introduce = introduce  
+  },
   FOOTEROUT: function (state)  {
       state.isChatRoom = !state.isChatRoom
     },
