@@ -1,19 +1,21 @@
 <template>
   <div>
-    <Navbar />
-    <SearchNav />
-    <router-view />
+    <SearchNav style="position:fixed; z-index:100; width:100%"/>
+    <br>
+    <br>
+    <br>
+    <div style="position:static; z-index:0; width:100%;">
+      <router-view />
+    </div>
   </div>
 </template>
 
 <script>
-import Navbar from '@/components/common/Navbar.vue'
 import SearchNav from '@/components/Search/SearchNav.vue'
-
 export default {
+  name:"Search",
   components: {
-    Navbar,
-    SearchNav
+    SearchNav,
   }
 }
 </script>

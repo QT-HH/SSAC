@@ -1,24 +1,26 @@
 <template>
   <div>
-    <Navbar />
-    <SportsNav />
-    <router-view />
+    <SportsNav style="position:fixed; z-index:100;"/>
+    <br>
+    <br>
+    <br>
+    <div style="position:static;  z-index:0;">
+      <router-view />
+    </div>
   </div>
 </template>
 
 <script>
-import Navbar from '@/components/common/Navbar.vue'
-import SportsNav from '@/components/Sports/SportsNav.vue'
+import SportsNav from '../../components/Sports/SportsNav.vue'
 
 export default {
-  name: "Sports",
+  name:"Sports",
   components: {
-    Navbar,
-    SportsNav
+    SportsNav,
   }
-};
+}
 </script>
 
 <style>
 
-</style>
+</style> 
